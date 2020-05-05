@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:catel="http://schemas.catelproject.com">
+
+    <ResourceDictionary.MergedDictionaries>
+        <!-- All wpf controls restyled with accent colors -->
+        <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.catel.infobarmessagecontrol.xaml" />
+        <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.button.xaml" />
+        <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.window.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- Controls that use BasedOn need to be defined on this level -->
+    <Style x:Key="Orc.Styles.DataWindowStyle" TargetType="{x:Type Window}" BasedOn="{StaticResource Orc.Styles.Window}">
+
+    </Style>
+
+    <Style TargetType="{x:Type catel:DataWindow}" BasedOn="{StaticResource Orc.Styles.DataWindowStyle}">
+
+    </Style>
+
+    <Style x:Key="DataWindowButtonStyle" TargetType="Button" BasedOn="{StaticResource Orc.Styles.Button}">
+        <Setter Property="Margin" Value="6, 6, 0, 0" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="MinWidth" Value="100" />
+        <Setter Property="MinHeight" Value="23" />
+    </Style>
+    
+    <!-- InfoBarMessageControl -->
+    <Style x:Key="DefaultInfoBarMessageControlStyle" TargetType="{x:Type catel:InfoBarMessageControl}" BasedOn="{StaticResource Orc.Styles.InfoBarMessageControl}">
+    </Style>
+
+</ResourceDictionary>

@@ -5,26 +5,11 @@
     <ResourceDictionary.MergedDictionaries>
         <!-- Normal size by default, we could introduce a "none" as well for defaults -->
         <ResourceDictionary Source="/Orc.Theming;component/Themes/Theming.normal.xaml" />
-        
+
         <!-- Styles -->
+        <ResourceDictionary Source="/Orc.Theming;component/Themes/Theming.defaultstyles.catel.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/Themes/Theming.defaultstyles.wpf.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/Themes/Styles.xaml" />
     </ResourceDictionary.MergedDictionaries>
-
-    <!-- Controls that use BasedOn need to be defined on this level -->
-    <Style x:Key="DataWindowStyle" TargetType="{x:Type Window}" BasedOn="{StaticResource Orc.Styles.Window}">
-
-    </Style>
-
-    <Style TargetType="{x:Type catel:DataWindow}" BasedOn="{StaticResource DataWindowStyle}">
-
-    </Style>
-
-    <Style x:Key="DataWindowButtonStyle" TargetType="Button" BasedOn="{StaticResource Orc.Styles.Button}">
-        <Setter Property="Margin" Value="6, 6, 0, 0" />
-        <Setter Property="HorizontalAlignment" Value="Right" />
-        <Setter Property="MinWidth" Value="100" />
-        <Setter Property="MinHeight" Value="23" />
-    </Style>
 
 </ResourceDictionary>
