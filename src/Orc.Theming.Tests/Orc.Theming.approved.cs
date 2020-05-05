@@ -97,6 +97,8 @@ namespace Orc.Theming
     {
         public ThemeColor() { }
         public ThemeColor(Orc.Theming.ThemeColorStyle themeColorStyle) { }
+        public ThemeColor(string resourceName) { }
+        public string ResourceName { get; set; }
         public Orc.Theming.ThemeColorStyle ThemeColorStyle { get; set; }
         protected override void OnTargetObjectLoaded() { }
         protected override void OnTargetObjectUnloaded() { }
@@ -106,6 +108,8 @@ namespace Orc.Theming
     {
         public ThemeColorBrush() { }
         public ThemeColorBrush(Orc.Theming.ThemeColorStyle themeColorStyle) { }
+        public ThemeColorBrush(string resourceName) { }
+        public string ResourceName { get; set; }
         public Orc.Theming.ThemeColorStyle ThemeColorStyle { get; set; }
         protected override void OnTargetObjectLoaded() { }
         protected override void OnTargetObjectUnloaded() { }
@@ -118,47 +122,55 @@ namespace Orc.Theming
         AccentColor60 = 2,
         AccentColor40 = 3,
         AccentColor20 = 4,
+        [System.ObsoleteAttribute("Use `AccentColor80` instead. Will be removed in version 5.0.0.", true)]
         AccentColor1 = 1,
+        [System.ObsoleteAttribute("Use `AccentColor60` instead. Will be removed in version 5.0.0.", true)]
         AccentColor2 = 2,
+        [System.ObsoleteAttribute("Use `AccentColor40` instead. Will be removed in version 5.0.0.", true)]
         AccentColor3 = 3,
+        [System.ObsoleteAttribute("Use `AccentColor20` instead. Will be removed in version 5.0.0.", true)]
         AccentColor4 = 4,
-        AccentColor5 = 5,
-        BorderColor = 6,
-        BorderColor80 = 7,
-        BorderColor60 = 8,
-        BorderColor40 = 9,
-        BorderColor20 = 10,
-        BorderColor1 = 7,
-        BorderColor2 = 8,
-        BorderColor3 = 9,
-        BorderColor4 = 10,
-        BorderColor5 = 11,
-        BackgroundColor = 12,
-        ForegroundColor = 13,
-        ForegroundAlternativeColor = 14,
-        DarkHighlight = 3,
-        Highlight = 4,
-        BorderLight = 9,
-        BorderMedium = 8,
-        BorderDark = 7,
-        BorderMouseOver = 1,
-        BorderPressed = 0,
-        BorderChecked = 0,
-        BorderSelected = 0,
-        BorderSelectedInactive = 2,
-        BorderDisabled = 11,
-        BackgroundMouseOver = 4,
-        BackgroundPressed = 3,
-        BackgroundChecked = 0,
-        BackgroundSelected = 3,
-        BackgroundSelectedInactive = 4,
-        BackgroundDisabled = 5,
-        ForegroundMouseOver = 13,
-        ForegroundPressed = 14,
-        ForegroundChecked = 14,
-        ForegroundSelected = 14,
-        ForegroundSelectedInactive = 14,
-        ForegroundDisabled = 13,
+        BorderColor = 5,
+        BackgroundColor = 6,
+        ForegroundColor = 7,
+        HighlightColor = 8,
+        Gray1 = 9,
+        Gray2 = 10,
+        Gray3 = 11,
+        Gray4 = 12,
+        Gray5 = 13,
+        Gray6 = 14,
+        Gray7 = 15,
+        Gray8 = 16,
+        Gray9 = 17,
+        Gray10 = 18,
+        DefaultBorder = 5,
+        DefaultBackground = 6,
+        DefaultForeground = 7,
+        CheckedBorder = 8,
+        CheckedBackground = 4,
+        CheckedForeground = 7,
+        CheckedMouseOverBorder = 2,
+        CheckedMouseOverBackground = 4,
+        CheckedMouseOverForeground = 7,
+        MouseOverBorder = 3,
+        MouseOverBackground = 4,
+        MouseOverForeground = 7,
+        PressedBorder = 2,
+        PressedBackground = 3,
+        PressedForeground = 7,
+        DisabledBorder = 13,
+        DisabledBackground = 3,
+        DisabledForeground = 7,
+        HighlightedBorder = 2,
+        HighlightedBackground = 3,
+        HighlightedForeground = 7,
+        SelectionActiveBorder = 1,
+        SelectionActiveBackground = 2,
+        SelectionActiveForeground = 7,
+        SelectionInactiveBorder = 3,
+        SelectionInactiveBackground = 4,
+        SelectionInactiveForeground = 7,
     }
     public class ThemeInfo
     {
@@ -172,7 +184,9 @@ namespace Orc.Theming
         public ThemeManager(ControlzEx.Theming.ThemeManager controlzThemeManager, Orc.Theming.IAccentColorService accentColorService, Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
         public static Orc.Theming.ThemeManager Current { get; set; }
         public System.Windows.Media.SolidColorBrush GetAccentColorBrush() { }
+        public System.Windows.Media.Color GetThemeColor(string resourceName) { }
         public System.Windows.Media.Color GetThemeColor(Orc.Theming.ThemeColorStyle colorStyle = 0) { }
+        public System.Windows.Media.SolidColorBrush GetThemeColorBrush(string resourceName) { }
         public System.Windows.Media.SolidColorBrush GetThemeColorBrush(Orc.Theming.ThemeColorStyle colorStyle = 0) { }
         public virtual void SynchronizeTheme() { }
     }
