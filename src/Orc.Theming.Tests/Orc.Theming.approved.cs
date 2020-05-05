@@ -97,7 +97,6 @@ namespace Orc.Theming
     {
         public ThemeColor() { }
         public ThemeColor(Orc.Theming.ThemeColorStyle themeColorStyle) { }
-        public ThemeColor(string resourceName) { }
         public string ResourceName { get; set; }
         public Orc.Theming.ThemeColorStyle ThemeColorStyle { get; set; }
         protected override void OnTargetObjectLoaded() { }
@@ -108,7 +107,6 @@ namespace Orc.Theming
     {
         public ThemeColorBrush() { }
         public ThemeColorBrush(Orc.Theming.ThemeColorStyle themeColorStyle) { }
-        public ThemeColorBrush(string resourceName) { }
         public string ResourceName { get; set; }
         public Orc.Theming.ThemeColorStyle ThemeColorStyle { get; set; }
         protected override void OnTargetObjectLoaded() { }
@@ -144,33 +142,43 @@ namespace Orc.Theming
         Gray8 = 16,
         Gray9 = 17,
         Gray10 = 18,
+        Text = 19,
         DefaultBorder = 5,
         DefaultBackground = 6,
         DefaultForeground = 7,
+        DefaultText = 19,
         CheckedBorder = 8,
         CheckedBackground = 4,
         CheckedForeground = 7,
+        CheckedText = 19,
         CheckedMouseOverBorder = 2,
         CheckedMouseOverBackground = 4,
         CheckedMouseOverForeground = 7,
+        CheckedMouseOverText = 19,
         MouseOverBorder = 3,
         MouseOverBackground = 4,
         MouseOverForeground = 7,
+        MouseOverText = 19,
         PressedBorder = 2,
         PressedBackground = 3,
         PressedForeground = 7,
+        PressedText = 19,
         DisabledBorder = 13,
         DisabledBackground = 3,
         DisabledForeground = 7,
+        DisalbedText = 19,
         HighlightedBorder = 2,
         HighlightedBackground = 3,
         HighlightedForeground = 7,
+        HighlightedText = 19,
         SelectionActiveBorder = 1,
         SelectionActiveBackground = 2,
         SelectionActiveForeground = 7,
+        SelectionActiveText = 19,
         SelectionInactiveBorder = 3,
         SelectionInactiveBackground = 4,
         SelectionInactiveForeground = 7,
+        SelectionInactiveText = 19,
     }
     public class ThemeInfo
     {

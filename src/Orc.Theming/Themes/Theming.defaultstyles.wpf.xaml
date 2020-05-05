@@ -24,6 +24,7 @@
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.textbox.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.togglebutton.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.treeview.xaml" />
+        <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.window.xaml" />
     </ResourceDictionary.MergedDictionaries>
     
     <!-- Converters -->
@@ -295,6 +296,10 @@
     <Style x:Key="DefaultToggleButtonStyle" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource Orc.Styles.ToggleButton}">
         <Setter Property="Margin" Value="{DynamicResource Margin.Button}" />
         <Setter Property="Height" Value="{DynamicResource Size.Height}" />
+    </Style>
+
+    <!-- Window -->
+    <Style x:Key="DefaultWindowStyle" TargetType="{x:Type Window}" BasedOn="{StaticResource Orc.Styles.Window}">
     </Style>
 
 </ResourceDictionary>

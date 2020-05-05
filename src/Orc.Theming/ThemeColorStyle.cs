@@ -36,41 +36,52 @@
         Gray9 = 17,
         Gray10 = 18,
 
+        Text = 19,
+
         // Default aliases shared for all controls, these should be similar to the aliases in Themes/Theme.Template.xaml
         DefaultBorder = BorderColor,
         DefaultBackground = BackgroundColor,
         DefaultForeground = ForegroundColor,
+        DefaultText = Text,
 
         CheckedBorder = HighlightColor,
         CheckedBackground = AccentColor20,
         CheckedForeground = ForegroundColor,
+        CheckedText = Text,
 
         CheckedMouseOverBorder = AccentColor60,
         CheckedMouseOverBackground = AccentColor20,
         CheckedMouseOverForeground = ForegroundColor,
+        CheckedMouseOverText = Text,
 
         MouseOverBorder = AccentColor40,
         MouseOverBackground = AccentColor20,
         MouseOverForeground = ForegroundColor,
+        MouseOverText = Text,
 
         PressedBorder = AccentColor60,
         PressedBackground = AccentColor40,
         PressedForeground = ForegroundColor,
+        PressedText = Text,
 
         DisabledBorder = Gray5,
         DisabledBackground = AccentColor40,
         DisabledForeground = ForegroundColor,
+        DisalbedText = Text,
 
         HighlightedBorder = AccentColor60,
         HighlightedBackground = AccentColor40,
         HighlightedForeground = ForegroundColor,
+        HighlightedText = Text,
 
         SelectionActiveBorder = AccentColor80,
         SelectionActiveBackground = AccentColor60,
         SelectionActiveForeground = ForegroundColor,
+        SelectionActiveText = Text,
 
         SelectionInactiveBorder = AccentColor40,
         SelectionInactiveBackground = AccentColor20,
         SelectionInactiveForeground = ForegroundColor,
+        SelectionInactiveText = Text,
     }
 }

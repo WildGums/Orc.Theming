@@ -25,12 +25,6 @@
             ThemeColorStyle = themeColorStyle;
         }
 
-        public ThemeColorBrush(string resourceName)
-            : this()
-        {
-            ResourceName = resourceName;
-        }
-
         public ThemeColorStyle ThemeColorStyle { get; set; }
 
         public string ResourceName { get; set; }

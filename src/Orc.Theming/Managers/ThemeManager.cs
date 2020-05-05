@@ -56,8 +56,13 @@
         #region Methods
         public Color GetThemeColor(string resourceName)
         {
-            var color = (Color)(_currentTheme?.Resources[resourceName] ?? Colors.Red);
-            return color;
+            var resource = _currentTheme?.Resources[resourceName];
+            if (resource is Color color)
+            {
+                return color;
+            }
+
+            return Colors.Transparent;
         }
 
         public SolidColorBrush GetThemeColorBrush(string resourceName)
@@ -93,7 +98,7 @@
 
                     // Border
                     case ThemeColorStyle.BorderColor:
-                        return GetThemeColor("Orc.Colors.BorderColor");
+                        return GetThemeColor("Orc.Colors.Control.Border");
 
                     // Background
                     case ThemeColorStyle.BackgroundColor:
@@ -138,6 +143,10 @@
                     case ThemeColorStyle.Gray10:
                         return GetThemeColor("Gray10");
 
+                    // Text
+                    case ThemeColorStyle.Text:
+                        return GetThemeColor("Orc.Colors.Text");
+
                     default:
                         throw new ArgumentOutOfRangeException(nameof(colorStyle));
                 }
@@ -173,6 +182,7 @@
             Log.Debug("Theme has changed, clearing current cache");
 
             _accentColorBrushCache = null;
+            _resourceBrushesCache.Clear();
             _themeColorBrushesCache.Clear();
             _themeColorsCache.Clear();
 
