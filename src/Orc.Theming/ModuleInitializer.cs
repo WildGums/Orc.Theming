@@ -16,11 +16,13 @@ public static class ModuleInitializer
 
         serviceLocator.RegisterTypeIfNotYetRegistered<IAccentColorService, AccentColorService>();
         serviceLocator.RegisterTypeIfNotYetRegistered<IBaseColorSchemeService, BaseColorSchemeService>();
+        serviceLocator.RegisterTypeIfNotYetRegistered<IResourceDictionaryService, ResourceDictionaryService>();
         serviceLocator.RegisterTypeIfNotYetRegistered<IThemeService, ThemeService>();
 
         var themeManager = ControlzEx.Theming.ThemeManager.Current;
-        themeManager.RegisterLibraryThemeProvider(Orc.Theming.LibraryThemeProvider.DefaultInstance);
-        serviceLocator.RegisterInstance(Orc.Theming.ThemeManager.Current);
+        themeManager.RegisterLibraryThemeProvider(LibraryThemeProvider.DefaultInstance);
+        serviceLocator.RegisterInstance(themeManager);
+        serviceLocator.RegisterType<ThemeManager>();
 
         var languageService = serviceLocator.ResolveType<ILanguageService>();
         languageService.RegisterLanguageSource(new LanguageResourceSource("Orc.Theming", "Orc.Theming.Properties", "Resources"));

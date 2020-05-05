@@ -6,7 +6,7 @@
         <ResourceDictionary Source="/Orc.Theming;component/Themes/Theming.normal.xaml" />
         
         <!-- Styles -->
-        <ResourceDictionary Source="/Orc.Theming;component/Themes/Theming.generic.wpf.defaultstyles.xaml" />
+        <ResourceDictionary Source="/Orc.Theming;component/Themes/Theming.defaultstyles.wpf.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/Themes/Styles.xaml" />
     </ResourceDictionary.MergedDictionaries>
 

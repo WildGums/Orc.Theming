@@ -10,7 +10,7 @@
 
         <!-- Generic overrides (with margins) -->
         <ResourceDictionary Source="/Orc.Theming.Example;component/Themes/Orchestra/Orchestra.generic.wpf.xaml" />
-        <ResourceDictionary Source="/Orc.Theming.Example;component/Themes/Orchestra/Orchestra.generic.orc.controls.xaml" />
+        <ResourceDictionary Source="/Orc.Theming.Example;component/Themes/Orchestra/Orchestra.defaultstyles.orc.controls.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <!-- Controls that use BasedOn need to be defined on this level -->

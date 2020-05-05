@@ -59,6 +59,10 @@ namespace Orc.Theming
         string GetBaseColorScheme();
         bool SetBaseColorScheme(string color);
     }
+    public interface IResourceDictionaryService
+    {
+        bool IsResourceDictionaryAvailable(string resourceDictionaryUri);
+    }
     public interface IThemeService
     {
         Orc.Theming.ThemeInfo GetThemeInfo();
@@ -69,6 +73,11 @@ namespace Orc.Theming
         public static readonly ControlzEx.Theming.LibraryThemeProvider DefaultInstance;
         public LibraryThemeProvider() { }
         public override void FillColorSchemeValues(System.Collections.Generic.Dictionary<string, string> values, ControlzEx.Theming.RuntimeThemeColorValues colorValues) { }
+    }
+    public class ResourceDictionaryService : Orc.Theming.IResourceDictionaryService
+    {
+        public ResourceDictionaryService() { }
+        public virtual bool IsResourceDictionaryAvailable(string resourceDictionaryUri) { }
     }
     public class static ScreenHelper
     {
@@ -160,11 +169,12 @@ namespace Orc.Theming
     }
     public class ThemeManager
     {
-        public ThemeManager(ControlzEx.Theming.ThemeManager controlzThemeManager) { }
+        public ThemeManager(ControlzEx.Theming.ThemeManager controlzThemeManager, Orc.Theming.IAccentColorService accentColorService, Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
         public static Orc.Theming.ThemeManager Current { get; set; }
         public System.Windows.Media.SolidColorBrush GetAccentColorBrush() { }
         public System.Windows.Media.Color GetThemeColor(Orc.Theming.ThemeColorStyle colorStyle = 0) { }
         public System.Windows.Media.SolidColorBrush GetThemeColorBrush(Orc.Theming.ThemeColorStyle colorStyle = 0) { }
+        public virtual void SynchronizeTheme() { }
     }
     public class ThemeService : Orc.Theming.IThemeService
     {
