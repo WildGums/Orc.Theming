@@ -7,15 +7,18 @@
             <Setter.Value>
                 <ControlTemplate>
                     <Rectangle SnapsToDevicePixels="true" 
-								Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" 
-								StrokeThickness="1" 
-								StrokeDashArray="1 2"/>
+							   Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" 
+							   StrokeThickness="1" 
+							   StrokeDashArray="1 2"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
     <Style x:Key="Orc.Styles.RadioButton" TargetType="{x:Type RadioButton}">
+        <Setter Property="BorderBrush" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultBorder}" />
+        <Setter Property="Background" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultBackground}" />
+        <Setter Property="Foreground" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultForeground}" />
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Template">
@@ -26,18 +29,20 @@
                                      HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
                         <BulletDecorator.Bullet>
                             <Border x:Name="RadioButtonBorder"
-                                        Width="12"
-										Height="12"
+                                        Width="14"
+										Height="14"
 										CornerRadius="6" 
 										BorderThickness="{TemplateBinding BorderThickness}"
-										BorderBrush="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultBorder}" 
-										Background="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultBackground}">
+										BorderBrush="{TemplateBinding BorderBrush}" 
+										Background="{TemplateBinding Background}">
                                 <Border x:Name="RadioMark"
                                         Width="6" 
                                         Height="6"
                                         CornerRadius="6"
                                         BorderBrush="Transparent"
-                                        Background="Black"/>
+                                        Background="{orctheming:ThemeColorBrush ThemeColorStyle=AccentColor}"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center" />
                             </Border>
                         </BulletDecorator.Bullet>
                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"

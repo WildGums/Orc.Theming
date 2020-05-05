@@ -6,6 +6,18 @@
               Height="800" Width="1000">
 
     <Grid>
-        <views:ControlsView />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <views:ThemeSwitcherView Grid.Row="0" />
+
+        <TabControl Grid.Row="1">
+            <TabItem Header="Main view">
+                <views:ControlsView />
+            </TabItem>
+        </TabControl>
+        
     </Grid>
 </catel:Window>

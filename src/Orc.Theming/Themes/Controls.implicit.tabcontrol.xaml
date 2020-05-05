@@ -14,14 +14,6 @@
         </Setter>
     </Style>
 
-    <!-- TODO: Remove these styles and use orctheming instead -->
-    <SolidColorBrush x:Key="TabControlNormalBorderBrush" Color="{orctheming:ThemeColor ThemeColorStyle=DefaultBackground}"/>
-    <SolidColorBrush x:Key="ButtonNormalBackground" Color="{orctheming:ThemeColor ThemeColorStyle=DefaultBackground}"/>
-    <SolidColorBrush x:Key="TabItemSelectedBackground" Color="{orctheming:ThemeColor ThemeColorStyle=CheckedBackground}" />
-    <SolidColorBrush x:Key="TabItemHotBorderBrush" Color="{orctheming:ThemeColor ThemeColorStyle=CheckedBorder}"/>
-    <SolidColorBrush x:Key="TabItemDisabledBackground" Color="{orctheming:ThemeColor ThemeColorStyle=DisabledBackground}"/>
-    <SolidColorBrush x:Key="TabItemDisabledBorderBrush" Color="{orctheming:ThemeColor ThemeColorStyle=DisabledBorder}"/>
-
     <Style x:Key="Orc.Styles.TabItem" TargetType="{x:Type TabItem}">
         <Setter Property="BorderBrush" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultBorder}" />
         <Setter Property="Background" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultBackground}" />
@@ -52,14 +44,14 @@
                         </Trigger>
                         <Trigger Property="IsSelected" Value="true">
                             <Setter Property="Panel.ZIndex" Value="1"/>
-                            <Setter Property="Background" TargetName="Bd" Value="{StaticResource TabItemSelectedBackground}"/>
+                            <Setter Property="Background" TargetName="Bd" Value="{orctheming:ThemeColorBrush ThemeColorStyle=SelectionActiveBackground}"/>
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsSelected" Value="false"/>
                                 <Condition Property="IsMouseOver" Value="true"/>
                             </MultiTrigger.Conditions>
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource TabItemHotBorderBrush}"/>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="{orctheming:ThemeColorBrush ThemeColorStyle=MouseOverBorder}"/>
                         </MultiTrigger>
                         <Trigger Property="TabStripPlacement" Value="Bottom">
                             <Setter Property="BorderThickness" TargetName="Bd" Value="1,0,1,1"/>
@@ -103,9 +95,9 @@
                             <Setter Property="Margin" TargetName="Content" Value="1,0,0,0"/>
                         </MultiTrigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" TargetName="Bd" Value="{StaticResource TabItemDisabledBackground}"/>
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource TabItemDisabledBorderBrush}"/>
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            <Setter Property="Background" TargetName="Bd" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DisabledBackground}"/>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DisabledBorder}"/>
+                            <Setter Property="Foreground" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DisabledForeground}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -117,8 +109,8 @@
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
         <Setter Property="Padding" Value="4,4,4,4"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="BorderBrush" Value="{StaticResource TabControlNormalBorderBrush}"/>
-        <Setter Property="Background" Value="#FFF"/>
+        <Setter Property="BorderBrush" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultBorder}"/>
+        <Setter Property="Background" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultBackground}"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Template">
@@ -176,7 +168,7 @@
                             <Setter Property="Margin" TargetName="HeaderPanel" Value="0,2,2,2"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            <Setter Property="Foreground" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DisabledForeground}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
