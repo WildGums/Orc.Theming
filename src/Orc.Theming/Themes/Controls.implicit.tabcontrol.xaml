@@ -14,12 +14,12 @@
         </Setter>
     </Style>
 
-    <SolidColorBrush x:Key="TabControlNormalBorderBrush" Color="#D4D4D4"/>
-    <SolidColorBrush x:Key="ButtonNormalBackground" Color="#F4F4F4"/>
-    <SolidColorBrush x:Key="TabItemSelectedBackground" Color="#FFF"/>
-    <SolidColorBrush x:Key="TabItemHotBorderBrush" Color="#D4D4D4"/>
-    <SolidColorBrush x:Key="TabItemDisabledBackground" Color="#F4F4F4"/>
-    <SolidColorBrush x:Key="TabItemDisabledBorderBrush" Color="#FFC9C7BA"/>
+    <SolidColorBrush x:Key="TabControlNormalBorderBrush" Color="{orctheming:ThemeColor ThemeColorStyle=DefaultBackground}"/>
+    <SolidColorBrush x:Key="ButtonNormalBackground" Color="{orctheming:ThemeColor ThemeColorStyle=DefaultBackground}"/>
+    <SolidColorBrush x:Key="TabItemSelectedBackground" Color="{orctheming:ThemeColor ThemeColorStyle=CheckedBackground}" />
+    <SolidColorBrush x:Key="TabItemHotBorderBrush" Color="{orctheming:ThemeColor ThemeColorStyle=CheckedBorder}"/>
+    <SolidColorBrush x:Key="TabItemDisabledBackground" Color="{orctheming:ThemeColor ThemeColorStyle=DisabledBackground}"/>
+    <SolidColorBrush x:Key="TabItemDisabledBorderBrush" Color="{orctheming:ThemeColor ThemeColorStyle=DisabledBorder}"/>
 
     <Style x:Key="Orc.Styles.TabItem" TargetType="{x:Type TabItem}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource TabItemFocusVisual}"/>
@@ -47,7 +47,7 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Background" TargetName="Bd" Value="{orctheming:ThemeColorBrush ThemeColorStyle=BackgroundMouseOver}"/>
+                            <Setter Property="Background" TargetName="Bd" Value="{orctheming:ThemeColorBrush ThemeColorStyle=MouseOverBackground}"/>
                         </Trigger>
                         <Trigger Property="IsSelected" Value="true">
                             <Setter Property="Panel.ZIndex" Value="1"/>

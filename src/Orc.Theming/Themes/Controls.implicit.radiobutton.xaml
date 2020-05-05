@@ -30,8 +30,8 @@
 										Height="12"
 										CornerRadius="6" 
 										BorderThickness="{TemplateBinding BorderThickness}"
-										BorderBrush="{orctheming:ThemeColorBrush ThemeColorStyle=BorderColor}" 
-										Background="White">
+										BorderBrush="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultBorder}" 
+										Background="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultBackground}">
                                 <Border x:Name="RadioMark"
                                         Width="6" 
                                         Height="6"
@@ -51,11 +51,11 @@
                             <Setter Property="Padding" Value="4,0,0,0"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground" Value="{orctheming:ThemeColorBrush ThemeColorStyle=ForegroundDisabled}"/>
+                            <Setter Property="Foreground" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DisabledForeground}"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" TargetName="RadioButtonBorder" Value="{orctheming:ThemeColorBrush ThemeColorStyle=BackgroundMouseOver}"/>
-                            <Setter Property="BorderBrush" TargetName="RadioButtonBorder" Value="{orctheming:ThemeColorBrush ThemeColorStyle=BorderMouseOver}"/>
+                            <Setter Property="Background" TargetName="RadioButtonBorder" Value="{orctheming:ThemeColorBrush ThemeColorStyle=MouseOverBackground}"/>
+                            <Setter Property="BorderBrush" TargetName="RadioButtonBorder" Value="{orctheming:ThemeColorBrush ThemeColorStyle=MouseOverBorder}"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="false">
                             <Setter TargetName="RadioMark" Property="Visibility" Value="Collapsed"/>

@@ -5,35 +5,29 @@
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:system="clr-namespace:System;assembly=mscorlib"
                     mc:Ignorable="options d">
-    <!-- Matadata -->
+    <!-- Metadata -->
     <system:String x:Key="Theme.Name">{{ThemeName}}</system:String>
-    <system:String x:Key="Theme.Origin">ControlzEx.Showcase</system:String>
+    <system:String x:Key="Theme.Origin">Orc.Theming.Showcase</system:String>
     <system:String x:Key="Theme.DisplayName">{{ThemeDisplayName}}</system:String>
     <system:String x:Key="Theme.BaseColorScheme">{{BaseColorScheme}}</system:String>
     <system:String x:Key="Theme.ColorScheme">{{ColorScheme}}</system:String>
-    <Color x:Key="Theme.PrimaryAccentColor">{{ControlzEx.Colors.AccentBaseColor}}</Color>
-    <SolidColorBrush x:Key="Theme.ShowcaseBrush" Color="{{ControlzEx.Colors.AccentBaseColor}}" options:Freeze="True" />
+    <Color x:Key="Theme.PrimaryAccentColor">{{Orc.Colors.AccentBaseColor}}</Color>
+    <SolidColorBrush x:Key="Theme.ShowcaseBrush" Color="{{Orc.Colors.AccentBaseColor}}" options:Freeze="True" />
     <system:Boolean x:Key="Theme.IsHighContrast">{{IsHighContrast}}</system:Boolean>
 
     <!-- COLORS -->
 
     <!-- Accent colors -->
-    <Color x:Key="ControlzEx.Colors.AccentBaseColor">{{ControlzEx.Colors.AccentBaseColor}}</Color>
     <Color x:Key="Orc.Colors.AccentBaseColor">{{Orc.Colors.AccentBaseColor}}</Color>
     <!--80%-->
-    <Color x:Key="ControlzEx.Colors.AccentColor80">{{ControlzEx.Colors.AccentColor80}}</Color>
     <Color x:Key="Orc.Colors.AccentColor80">{{Orc.Colors.AccentColor80}}</Color>
     <!--60%-->
-    <Color x:Key="ControlzEx.Colors.AccentColor60">{{ControlzEx.Colors.AccentColor60}}</Color>
     <Color x:Key="Orc.Colors.AccentColor60">{{Orc.Colors.AccentColor60}}</Color>
     <!--40%-->
-    <Color x:Key="ControlzEx.Colors.AccentColor40">{{ControlzEx.Colors.AccentColor40}}</Color>
     <Color x:Key="Orc.Colors.AccentColor40">{{Orc.Colors.AccentColor40}}</Color>
     <!--20%-->
-    <Color x:Key="ControlzEx.Colors.AccentColor20">{{ControlzEx.Colors.AccentColor20}}</Color>
     <Color x:Key="Orc.Colors.AccentColor20">{{Orc.Colors.AccentColor20}}</Color>
 
-    <Color x:Key="ControlzEx.Colors.HighlightColor">{{ControlzEx.Colors.HighlightColor}}</Color>
     <Color x:Key="Orc.Colors.HighlightColor">{{Orc.Colors.HighlightColor}}</Color>
 
     <!-- Backwards compatible theming for Orchestra / Orc.Controls -->
@@ -64,29 +58,31 @@
     <Color x:Key="Gray8">{{Gray8}}</Color>
     <Color x:Key="Gray9">{{Gray9}}</Color>
     <Color x:Key="Gray10">{{Gray10}}</Color>
+    <Color x:Key="BackgroundColor">{{BackgroundColor}}</Color>
+    <Color x:Key="ForegroundColor">{{ForegroundColor}}</Color>
+    <Color x:Key="Orc.Colors.Background">{{BackgroundColor}}</Color>
+    <Color x:Key="Orc.Colors.Foreground">{{ForegroundColor}}</Color>
 
     <Color x:Key="TransparentWhiteColor">#00FFFFFF</Color>
-    <Color x:Key="ControlzEx.Colors.HighTransparentWhiteColor">#17FFFFFF</Color>
+    <Color x:Key="Orc.Colors.HighTransparentWhiteColor">#17FFFFFF</Color>
 
     <!-- Foreground -->
-    <Color x:Key="ControlzEx.Colors.IdealForegroundColor">{{ControlzEx.Colors.IdealForegroundColor}}</Color>
-    <Color x:Key="ControlzEx.Colors.DarkIdealForegroundDisabledColor">{{ControlzEx.Colors.DarkIdealForegroundDisabledColor}}</Color>
+    <Color x:Key="Orc.Colors.IdealForegroundColor">{{Orc.Colors.IdealForegroundColor}}</Color>
+    <Color x:Key="Orc.Colors.DarkIdealForegroundDisabledColor">{{Orc.Colors.DarkIdealForegroundDisabledColor}}</Color>
 
     <!-- Misc colors -->
-    <Color x:Key="ControlzEx.Colors.ExtremeHighlightColor">{{ControlzEx.Colors.ExtremeHighlightColor}}</Color>
-    <Color x:Key="ControlzEx.Colors.DarkExtremeHighlightColor">{{ControlzEx.Colors.DarkExtremeHighlightColor}}</Color>
+    <Color x:Key="Orc.Colors.ExtremeHighlightColor">{{Orc.Colors.ExtremeHighlightColor}}</Color>
+    <Color x:Key="Orc.Colors.DarkExtremeHighlightColor">{{Orc.Colors.DarkExtremeHighlightColor}}</Color>
+
+    <!-- Generic control brushes -->
+    <Color x:Key="Orc.Colors.Control.Border">{{Gray6}}</Color>
+    <Color x:Key="Orc.Colors.Control.Disabled.Border">{{Gray5}}</Color>
 
     <!-- END COLORS -->
 
     <!-- BRUSHES -->
 
     <!-- Accent brushes -->
-    <SolidColorBrush x:Key="ControlzEx.Brushes.AccentBaseColorBrush" Color="{StaticResource ControlzEx.Colors.AccentBaseColor}" options:Freeze="True" />
-    <SolidColorBrush x:Key="ControlzEx.Brushes.AccentColorBrush80" Color="{StaticResource ControlzEx.Colors.AccentColor80}" options:Freeze="True" />
-    <SolidColorBrush x:Key="ControlzEx.Brushes.AccentColorBrush60" Color="{StaticResource ControlzEx.Colors.AccentColor60}" options:Freeze="True" />
-    <SolidColorBrush x:Key="ControlzEx.Brushes.AccentColorBrush40" Color="{StaticResource ControlzEx.Colors.AccentColor40}" options:Freeze="True" />
-    <SolidColorBrush x:Key="ControlzEx.Brushes.AccentColorBrush20" Color="{StaticResource ControlzEx.Colors.AccentColor20}" options:Freeze="True" />
-
     <SolidColorBrush x:Key="Orc.Brushes.AccentBaseColorBrush" Color="{StaticResource Orc.Colors.AccentBaseColor}" options:Freeze="True" />
     <SolidColorBrush x:Key="Orc.Brushes.AccentColorBrush80" Color="{StaticResource Orc.Colors.AccentColor80}" options:Freeze="True" />
     <SolidColorBrush x:Key="Orc.Brushes.AccentColorBrush60" Color="{StaticResource Orc.Colors.AccentColor60}" options:Freeze="True" />
@@ -100,11 +96,11 @@
     <SolidColorBrush x:Key="AccentColorBrush4" Color="{StaticResource Orc.Colors.AccentColor20}" options:Freeze="True" />
     <SolidColorBrush x:Key="AccentColorBrush5" Color="{StaticResource Orc.Colors.AccentColor20}" options:Freeze="True" />
 
-    <SolidColorBrush x:Key="ControlzEx.Brushes.HighlightBrush" Color="{StaticResource ControlzEx.Colors.HighlightColor}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.HighlightBrush" Color="{StaticResource Orc.Colors.HighlightColor}" options:Freeze="True" />
 
     <!-- Misc brushes -->
-    <SolidColorBrush x:Key="ControlzEx.Brushes.ExtremeHighlightBrush" Color="{StaticResource ControlzEx.Colors.ExtremeHighlightColor}" options:Freeze="True" />
-    <SolidColorBrush x:Key="ControlzEx.Brushes.DarkExtremeHighlightBrush" Color="{StaticResource ControlzEx.Colors.DarkExtremeHighlightColor}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.ExtremeHighlightBrush" Color="{StaticResource Orc.Colors.ExtremeHighlightColor}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.DarkExtremeHighlightBrush" Color="{StaticResource Orc.Colors.DarkExtremeHighlightColor}" options:Freeze="True" />
 
     <!-- Base brushes -->
     <SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource WhiteColor}" options:Freeze="True" />
@@ -122,18 +118,31 @@
     <SolidColorBrush x:Key="GrayBrush9" Color="{StaticResource Gray9}" options:Freeze="True" />
     <SolidColorBrush x:Key="GrayBrush10" Color="{StaticResource Gray10}" options:Freeze="True" />
 
+    <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource BackgroundColor}" options:Freeze="True" />
+    <SolidColorBrush x:Key="ForegroundBrush" Color="{StaticResource ForegroundColor}" options:Freeze="True" />
     <SolidColorBrush x:Key="TransparentWhiteBrush" Color="{StaticResource TransparentWhiteColor}" options:Freeze="True" />
-    <SolidColorBrush x:Key="HighTransparentWhiteBrush" Color="{StaticResource ControlzEx.Colors.HighTransparentWhiteColor}" options:Freeze="True" />
+    <SolidColorBrush x:Key="HighTransparentWhiteBrush" Color="{StaticResource Orc.Colors.HighTransparentWhiteColor}" options:Freeze="True" />
 
     <!-- Foreground -->
-    <SolidColorBrush x:Key="ControlzEx.Brushes.IdealForegroundColorBrush" Color="{StaticResource ControlzEx.Colors.IdealForegroundColor}" options:Freeze="True" />
-    <SolidColorBrush x:Key="ControlzEx.Brushes.IdealForegroundDisabledBrush" Color="{StaticResource ControlzEx.Colors.IdealForegroundColor}" Opacity="0.4" options:Freeze="True" />
-    <SolidColorBrush x:Key="ControlzEx.Brushes.DarkIdealForegroundDisabledBrush" Color="{StaticResource ControlzEx.Colors.DarkIdealForegroundDisabledColor}" options:Freeze="True" />
-    <SolidColorBrush x:Key="ControlzEx.Brushes.LabelTextBrush" Color="{{ControlzEx.Brushes.LabelTextBrush}}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.IdealForegroundColorBrush" Color="{StaticResource Orc.Colors.IdealForegroundColor}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.IdealForegroundDisabledBrush" Color="{StaticResource Orc.Colors.IdealForegroundColor}" Opacity="0.4" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.DarkIdealForegroundDisabledBrush" Color="{StaticResource Orc.Colors.DarkIdealForegroundDisabledColor}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.LabelTextBrush" Color="{{Orc.Brushes.LabelTextBrush}}" options:Freeze="True" />
 
     <!-- Generic control brushes -->
-    <SolidColorBrush x:Key="ControlzEx.Brushes.Control.BorderBrush" Color="{StaticResource Gray6}" options:Freeze="True" />
-    <SolidColorBrush x:Key="ControlzEx.Brushes.Control.Disabled.BorderBrush" Color="{StaticResource Gray5}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.Control.BorderBrush" Color="{StaticResource Orc.Colors.Control.Border}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.Control.Disabled.BorderBrush" Color="{StaticResource Orc.Colors.Control.Disabled.Border}" options:Freeze="True" />
 
     <!-- END BRUSHES -->
+    
+    <!-- ToggleButton -->
+    <!--<SolidColorBrush x:Key="Orc.Brushes.ToggleButton.Checked.Background" Color="{StaticResource Orc.Colors.AccentColor20}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.ToggleButton.Checked.BorderBrush" Color="{StaticResource Orc.Colors.HighlightColor}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.ToggleButton.CheckedMouseOver.Background" Color="{StaticResource Orc.Colors.AccentColor20}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.ToggleButton.CheckedMouseOver.BorderBrush" Color="{StaticResource Orc.Colors.AccentColor60}" options:Freeze="True" />-->
+
+
+
+
+
 </ResourceDictionary>

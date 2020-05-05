@@ -14,9 +14,9 @@
                             <Border x:Name="CheckBoxBorder"
                                     Height="12"
                                     Width="12"
-                                    BorderBrush="{orctheming:ThemeColorBrush ThemeColorStyle=BorderColor}"
-                                    BorderThickness="1"
-                                    Background="White">
+                                    Background="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultBackground}"
+                                    BorderBrush="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultBorder}"
+                                    BorderThickness="1">
                                 <Path x:Name="CheckMark"
                                       Data="M7.2,5 L5.5,7.16 4.16,6.3 3.5,6.7 5.5,8.4 8.6,5.25 C8.6,5.25 8,4.7 7.22,5"
                                       Height="Auto"
@@ -34,11 +34,13 @@
                     </BulletDecorator>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Foreground" Value="{orctheming:ThemeColorBrush ThemeColorStyle=ForegroundDisabled}"/>
+                            <Setter Property="Background" TargetName="CheckBoxBorder" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DisabledBackground}"/>
+                            <Setter Property="BorderBrush" TargetName="CheckBoxBorder" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DisabledBorder}"/>
+                            <!--<Setter Property="Foreground" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DisabledForeground}"/>-->
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Background" TargetName="CheckBoxBorder" Value="{orctheming:ThemeColorBrush ThemeColorStyle=BackgroundMouseOver}"/>
-                            <Setter Property="BorderBrush" TargetName="CheckBoxBorder" Value="{orctheming:ThemeColorBrush ThemeColorStyle=BorderMouseOver}"/>
+                            <Setter Property="Background" TargetName="CheckBoxBorder" Value="{orctheming:ThemeColorBrush ThemeColorStyle=MouseOverBackground}"/>
+                            <Setter Property="BorderBrush" TargetName="CheckBoxBorder" Value="{orctheming:ThemeColorBrush ThemeColorStyle=MouseOverBorder}"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="False">
                             <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>

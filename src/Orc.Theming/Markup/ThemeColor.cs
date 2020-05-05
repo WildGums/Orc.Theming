@@ -25,7 +25,15 @@
             ThemeColorStyle = themeColorStyle;
         }
 
+        public ThemeColor(string resourceName)
+            : this()
+        {
+            ResourceName = resourceName;
+        }
+
         public ThemeColorStyle ThemeColorStyle { get; set; }
+
+        public string ResourceName { get; set; }
 
         protected override void OnTargetObjectLoaded()
         {
@@ -48,6 +56,12 @@
 
         protected override object ProvideDynamicValue(IServiceProvider serviceProvider)
         {
+            var resourceName = ResourceName;
+            if (!string.IsNullOrWhiteSpace(resourceName))
+            {
+                return _themeManager.GetThemeColor(resourceName);
+            }
+
             return _themeManager.GetThemeColor(ThemeColorStyle);
         }
     }

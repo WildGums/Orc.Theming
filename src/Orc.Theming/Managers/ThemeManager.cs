@@ -19,6 +19,8 @@
         private readonly IAccentColorService _accentColorService;
         private readonly IBaseColorSchemeService _baseColorSchemeService;
 
+        private readonly CacheStorage<string, SolidColorBrush> _resourceBrushesCache = new CacheStorage<string, SolidColorBrush>();
+
         private readonly CacheStorage<ThemeColorStyle, Color> _themeColorsCache = new CacheStorage<ThemeColorStyle, Color>();
         private readonly CacheStorage<ThemeColorStyle, SolidColorBrush> _themeColorBrushesCache = new CacheStorage<ThemeColorStyle, SolidColorBrush>();
 
@@ -52,85 +54,94 @@
         public static ThemeManager Current { get; set; }
 
         #region Methods
+        public Color GetThemeColor(string resourceName)
+        {
+            var color = (Color)(_currentTheme?.Resources[resourceName] ?? Colors.Red);
+            return color;
+        }
+
+        public SolidColorBrush GetThemeColorBrush(string resourceName)
+        {
+            return _resourceBrushesCache.GetFromCacheOrFetch(resourceName, () =>
+            {
+                var color = GetThemeColor(resourceName);
+                return color.ToSolidColorBrush();
+            });
+        }
+
         public Color GetThemeColor(ThemeColorStyle colorStyle = ThemeColorStyle.AccentColor)
         {
             return _themeColorsCache.GetFromCacheOrFetch(colorStyle, () =>
             {
-                var accentColor = GetAccentColorBrush().Color;
-
-                // For now use a fixed values, we might change in the future
-                var borderColor = Colors.LightGray;
-                var backgroundColor = Colors.WhiteSmoke;
-                var foregroundColor = Colors.Black;
-                var foregroundAlternativeColor = Colors.White;
-
-                const int Alpha0 = 255;
-                const int Alpha1 = 204;
-                const int Alpha2 = 153;
-                const int Alpha3 = 102;
-                const int Alpha4 = 51;
-                const int Alpha5 = 20;
-
                 switch (colorStyle)
                 {
                     // Accent color
                     case ThemeColorStyle.AccentColor:
-                        return CreateColor(Alpha0, accentColor);
+                        return GetThemeColor("Orc.Colors.AccentColor");
 
-                    case ThemeColorStyle.AccentColor1:
-                        return CreateColor(Alpha1, accentColor);
+                    case ThemeColorStyle.AccentColor80:
+                        return GetThemeColor("Orc.Colors.AccentColor80");
 
-                    case ThemeColorStyle.AccentColor2:
-                        return CreateColor(Alpha2, accentColor);
+                    case ThemeColorStyle.AccentColor60:
+                        return GetThemeColor("Orc.Colors.AccentColor60");
 
-                    case ThemeColorStyle.AccentColor3:
-                        return CreateColor(Alpha3, accentColor);
+                    case ThemeColorStyle.AccentColor40:
+                        return GetThemeColor("Orc.Colors.AccentColor40");
 
-                    case ThemeColorStyle.AccentColor4:
-                        return CreateColor(Alpha4, accentColor);
-
-                    case ThemeColorStyle.AccentColor5:
-                        return CreateColor(Alpha5, accentColor);
+                    case ThemeColorStyle.AccentColor20:
+                        return GetThemeColor("Orc.Colors.AccentColor20");
 
                     // Border
                     case ThemeColorStyle.BorderColor:
-                        return CreateColor(Alpha0, borderColor);
-
-                    case ThemeColorStyle.BorderColor1:
-                        return CreateColor(Alpha1, borderColor);
-
-                    case ThemeColorStyle.BorderColor2:
-                        return CreateColor(Alpha2, borderColor);
-
-                    case ThemeColorStyle.BorderColor3:
-                        return CreateColor(Alpha3, borderColor);
-
-                    case ThemeColorStyle.BorderColor4:
-                        return CreateColor(Alpha4, borderColor);
-
-                    case ThemeColorStyle.BorderColor5:
-                        return CreateColor(Alpha5, borderColor);
+                        return GetThemeColor("Orc.Colors.BorderColor");
 
                     // Background
                     case ThemeColorStyle.BackgroundColor:
-                        return CreateColor(Alpha0, backgroundColor);
+                        return GetThemeColor("Orc.Colors.Background");
 
                     // Foreground
                     case ThemeColorStyle.ForegroundColor:
-                        return CreateColor(Alpha0, foregroundColor);
+                        return GetThemeColor("Orc.Colors.Foreground");
 
-                    case ThemeColorStyle.ForegroundAlternativeColor:
-                        return CreateColor(Alpha0, foregroundAlternativeColor);
+                    // Highlight
+                    case ThemeColorStyle.HighlightColor:
+                        return GetThemeColor("Orc.Colors.HighlightColor");
+
+                    // Gray
+                    case ThemeColorStyle.Gray1:
+                        return GetThemeColor("Gray1");
+
+                    case ThemeColorStyle.Gray2:
+                        return GetThemeColor("Gray2");
+
+                    case ThemeColorStyle.Gray3:
+                        return GetThemeColor("Gray3");
+
+                    case ThemeColorStyle.Gray4:
+                        return GetThemeColor("Gray4");
+
+                    case ThemeColorStyle.Gray5:
+                        return GetThemeColor("Gray5");
+
+                    case ThemeColorStyle.Gray6:
+                        return GetThemeColor("Gray6");
+
+                    case ThemeColorStyle.Gray7:
+                        return GetThemeColor("Gray7");
+
+                    case ThemeColorStyle.Gray8:
+                        return GetThemeColor("Gray8");
+
+                    case ThemeColorStyle.Gray9:
+                        return GetThemeColor("Gray9");
+
+                    case ThemeColorStyle.Gray10:
+                        return GetThemeColor("Gray10");
 
                     default:
                         throw new ArgumentOutOfRangeException(nameof(colorStyle));
                 }
             });
-        }
-
-        private Color CreateColor(int alpha, Color color)
-        {
-            return Color.FromArgb((byte)alpha, color.R, color.G, color.B);
         }
 
         public SolidColorBrush GetThemeColorBrush(ThemeColorStyle colorStyle = ThemeColorStyle.AccentColor)
@@ -150,6 +161,11 @@
             }
 
             return _accentColorBrushCache;
+        }
+
+        private Color CreateColor(int alpha, Color color)
+        {
+            return Color.FromArgb((byte)alpha, color.R, color.G, color.B);
         }
 
         private void OnThemeManagerThemeChanged(object sender, ThemeChangedEventArgs e)
