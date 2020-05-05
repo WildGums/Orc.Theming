@@ -10,7 +10,7 @@
                         VerticalAlignment="Center" />
             </ControlTemplate>
         </Style.Resources>
-        
+
         <Setter Property="BorderBrush" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultBorder}" />
         <Setter Property="Background" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultBackground}" />
         <Setter Property="Foreground" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultForeground}" />
@@ -22,8 +22,9 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" Width="0"/>
                         </Grid.ColumnDefinitions>
-                        
-                        <Popup x:Name="PART_Popup" AllowsTransparency="True" Grid.ColumnSpan="2" Margin="1" Placement="Bottom" 
+
+                        <Popup x:Name="PART_Popup" AllowsTransparency="True" Grid.ColumnSpan="2" Margin="1" 
+                               Placement="Bottom" 
                                IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
                                PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
                             <Border x:Name="Shdw" 
@@ -37,17 +38,21 @@
                                     <ScrollViewer x:Name="DropDownScrollViewer">
                                         <Grid RenderOptions.ClearTypeHint="Enabled">
                                             <Canvas HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
-                                                <Rectangle x:Name="OpaqueRect" Fill="{Binding Background, ElementName=DropDownBorder}"
-                                                                   Height="{Binding ActualHeight, ElementName=DropDownBorder}"
-                                                                   Width="{Binding ActualWidth, ElementName=DropDownBorder}"/>
+                                                <Rectangle x:Name="OpaqueRect" 
+                                                           Fill="{Binding Background, ElementName=DropDownBorder}"
+                                                           Height="{Binding ActualHeight, ElementName=DropDownBorder}"
+                                                           Width="{Binding ActualWidth, ElementName=DropDownBorder}"/>
                                             </Canvas>
-                                            <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained"
-                                                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+
+                                            <ItemsPresenter x:Name="ItemsPresenter" 
+                                                            KeyboardNavigation.DirectionalNavigation="Contained"
+                                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                                         </Grid>
                                     </ScrollViewer>
                                 </Border>
                             </Border>
                         </Popup>
+
                         <ToggleButton Grid.ColumnSpan="2"
                                       BorderBrush="{TemplateBinding BorderBrush}"
                                       Background="{TemplateBinding Background}"
@@ -67,12 +72,18 @@
                                                         BorderBrush="{TemplateBinding BorderBrush}" 
                                                         Background="{TemplateBinding Background}"
                                                         SnapsToDevicePixels="True">
-                                                    <Grid x:Name="PathGrid" HorizontalAlignment="Right" Width="12">
-                                                        <Path x:Name="Arrow" Data="M0,0L3.5,4 7,0z" 
+                                                    <Grid x:Name="PathGrid" 
+                                                          HorizontalAlignment="Right" 
+                                                          Width="12">
+                                                        <Path x:Name="Arrow" 
+                                                              Data="M0,0L3.5,4 7,0z" 
                                                               Fill="{orctheming:ThemeColorBrush ThemeColorStyle=ForegroundColor}"
-                                                              HorizontalAlignment="Center" Margin="0,1,0,0" VerticalAlignment="Center"/>
+                                                              HorizontalAlignment="Center" 
+                                                              Margin="0,1,0,0" 
+                                                              VerticalAlignment="Center"/>
                                                     </Grid>
                                                 </Border>
+
                                                 <ControlTemplate.Triggers>
                                                     <Trigger Property="IsMouseOver" Value="True">
                                                         <Setter Property="Background" TargetName="PathGrid" Value="{orctheming:ThemeColorBrush ThemeColorStyle=MouseOverBackground}" />
@@ -82,8 +93,7 @@
                                                     <Trigger Property="IsChecked" Value="True">
                                                         <Setter Property="Background" TargetName="PathGrid" Value="{orctheming:ThemeColorBrush ThemeColorStyle=CheckedBackground}" />
                                                         <Setter Property="BorderBrush" TargetName="Chrome" Value="{orctheming:ThemeColorBrush ThemeColorStyle=CheckedBorder}" />
-                                                        <Setter Property="Background" TargetName="Chrome" Value="{orctheming:ThemeColorBrush ThemeColorStyle=CheckedForeground}" />
-                                                        <Setter Property="Fill" TargetName="Arrow" Value="{orctheming:ThemeColorBrush ThemeColorStyle=CheckedForeground}" />
+                                                         <Setter Property="Fill" TargetName="Arrow" Value="{orctheming:ThemeColorBrush ThemeColorStyle=CheckedForeground}" />
                                                     </Trigger>
                                                     <Trigger Property="IsEnabled" Value="False">
                                                         <Setter Property="Fill" TargetName="Arrow" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DisabledForeground}"/>
@@ -95,15 +105,17 @@
                                 </Style>
                             </ToggleButton.Style>
                         </ToggleButton>
+
                         <ContentPresenter Name="ContentSite"
-                                      ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
-                                      Content="{TemplateBinding SelectionBoxItem}"
-                                      ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                                      ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"
-                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                      IsHitTestVisible="False" Margin="{TemplateBinding Padding}"
-                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                          ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                          Content="{TemplateBinding SelectionBoxItem}"
+                                          ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                          ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          IsHitTestVisible="False" 
+                                          Margin="{TemplateBinding Padding}"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
 
                         <TextBox x:Name="PART_EditableTextBox"
                                  Style="{x:Null}" 
@@ -113,9 +125,11 @@
                                  Margin="{TemplateBinding Padding}"
                                  Focusable="True" 
                                  Background="Transparent"
+                                 Foreground="{TemplateBinding Foreground}"
                                  Visibility="Hidden"
                                  IsReadOnly="{TemplateBinding IsReadOnly}"/>
                     </Grid>
+
                     <ControlTemplate.Triggers>
                         <Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="True">
                             <Setter Property="Margin" TargetName="Shdw" Value="0,0,5,5"/>
@@ -138,12 +152,13 @@
                             <Setter TargetName="ContentSite" Property="Visibility" Value="Hidden"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
+
                     <ControlTemplate.Resources>
                         <Style TargetType="{x:Type ComboBoxItem}">
                             <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
                             <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
                             <Setter Property="Padding" Value="3"/>
-                            <Setter Property="BorderBrush" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultBorder}" />
+                            <Setter Property="BorderBrush" Value="Transparent" />
                             <Setter Property="Background" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultBackground}" />
                             <Setter Property="Foreground" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultForeground}" />
                             <Setter Property="Template">

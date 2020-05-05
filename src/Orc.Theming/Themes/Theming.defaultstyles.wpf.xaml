@@ -123,8 +123,6 @@
 
     <!-- GroupBox -->
     <Style x:Key="DefaultGroupBoxStyle" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource Orc.Styles.GroupBox}">
-        <Setter Property="BorderBrush" Value="#888" />
-        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Margin" Value="{DynamicResource Margin.GroupBox}" />
     </Style>
 
