@@ -29,12 +29,12 @@
                                      HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
                         <BulletDecorator.Bullet>
                             <Border x:Name="RadioButtonBorder"
-                                        Width="14"
-										Height="14"
-										CornerRadius="6" 
-										BorderThickness="{TemplateBinding BorderThickness}"
-										BorderBrush="{TemplateBinding BorderBrush}" 
-										Background="{TemplateBinding Background}">
+                                    Width="14"
+									Height="14"
+									CornerRadius="6" 
+									BorderThickness="{TemplateBinding BorderThickness}"
+									BorderBrush="{TemplateBinding BorderBrush}" 
+									Background="{TemplateBinding Background}">
                                 <Border x:Name="RadioMark"
                                         Width="6" 
                                         Height="6"
@@ -47,7 +47,8 @@
                         </BulletDecorator.Bullet>
                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           Margin="{TemplateBinding Padding}" 
-                                          RecognizesAccessKey="True" 
+                                          RecognizesAccessKey="True"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </BulletDecorator>
                     <ControlTemplate.Triggers>
