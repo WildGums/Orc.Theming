@@ -166,7 +166,7 @@ namespace Orc.Theming
         DisabledBorder = 13,
         DisabledBackground = 3,
         DisabledForeground = 7,
-        DisalbedText = 19,
+        DisabledText = 19,
         HighlightedBorder = 2,
         HighlightedBackground = 3,
         HighlightedForeground = 7,

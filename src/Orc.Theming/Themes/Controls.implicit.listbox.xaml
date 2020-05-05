@@ -3,7 +3,8 @@
                     xmlns:orctheming="clr-namespace:Orc.Theming">
 
     <Style x:Key="Orc.Styles.ListBox" TargetType="{x:Type ListBox}">
-        
+        <Setter Property="BorderBrush" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultBorder}" />
+        <Setter Property="Background" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultBackground}" />
     </Style>
 
     <Style x:Key="Orc.Styles.ListBoxItem" TargetType="{x:Type ListBoxItem}">

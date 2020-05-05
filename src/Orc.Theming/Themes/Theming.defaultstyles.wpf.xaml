@@ -23,6 +23,7 @@
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.textblock.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.textbox.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.togglebutton.xaml" />
+        <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.tooltip.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.treeview.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.window.xaml" />
     </ResourceDictionary.MergedDictionaries>
@@ -287,15 +288,20 @@
         </Style.Triggers>
     </Style>
 
-    <!-- TreeView -->
-    <Style x:Key="DefaultTreeViewStyle" TargetType="{x:Type TreeView}" BasedOn="{StaticResource Orc.Styles.TreeView}">
-        <Setter Property="Margin" Value="{DynamicResource Margin.Default}" />
-    </Style>
-    
     <!-- ToggleButton -->
     <Style x:Key="DefaultToggleButtonStyle" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource Orc.Styles.ToggleButton}">
         <Setter Property="Margin" Value="{DynamicResource Margin.Button}" />
         <Setter Property="Height" Value="{DynamicResource Size.Height}" />
+    </Style>
+
+    <!-- ToolTip -->
+    <Style x:Key="DefaultToolTipStyle" TargetType="{x:Type ToolTip}" BasedOn="{StaticResource Orc.Styles.ToolTip}">
+        <Setter Property="Margin" Value="{DynamicResource Margin.Default}" />
+    </Style>
+
+    <!-- TreeView -->
+    <Style x:Key="DefaultTreeViewStyle" TargetType="{x:Type TreeView}" BasedOn="{StaticResource Orc.Styles.TreeView}">
+        <Setter Property="Margin" Value="{DynamicResource Margin.Default}" />
     </Style>
 
     <!-- Window -->

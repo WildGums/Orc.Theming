@@ -67,7 +67,7 @@
         DisabledBorder = Gray5,
         DisabledBackground = AccentColor40,
         DisabledForeground = ForegroundColor,
-        DisalbedText = Text,
+        DisabledText = Text,
 
         HighlightedBorder = AccentColor60,
         HighlightedBackground = AccentColor40,

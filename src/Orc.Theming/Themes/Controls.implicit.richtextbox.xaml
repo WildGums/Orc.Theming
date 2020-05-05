@@ -1,9 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:orctheming="clr-namespace:Orc.Theming">
 
     <Style x:Key="Orc.Styles.RichTextBox" TargetType="{x:Type RichTextBox}">
-
+        <Setter Property="BorderBrush" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultBorder}" />
+        <Setter Property="Background" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultBackground}" />
+        <Setter Property="Foreground" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultForeground}" />
     </Style>
 
 </ResourceDictionary>
