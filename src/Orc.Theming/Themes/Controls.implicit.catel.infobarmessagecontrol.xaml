@@ -10,6 +10,9 @@
                 <ControlTemplate TargetType="{x:Type catel:InfoBarMessageControl}">
                     <ControlTemplate.Resources>
                         <!-- Brushes -->
+                        <SolidColorBrush x:Key="InfoBarMessageBackgroundBrush" Color="#FFC32D" />
+                        <SolidColorBrush x:Key="InfoBarMessageSeparatorBrush" Color="Black" />
+                        <SolidColorBrush x:Key="InfoBarMessageErrorTextBackgroundBrush" Color="#FFC32D" />
                         <SolidColorBrush x:Key="InfoBarMessageErrorTextColorBrush" Color="Red" />
                         <SolidColorBrush x:Key="InfoBarMessageWarningTextColorBrush" Color="Orange" />
                     </ControlTemplate.Resources>
@@ -35,14 +38,15 @@
                                         Width="{Binding ElementName=actualContent, Path=ActualWidth}">
 
                                 <!-- Internal StackPanel, otherwise the whole control will have the background brush -->
-                                <StackPanel Background="{orctheming:ThemeColorBrush ThemeColorStyle=AccentColor40}">
+                                <StackPanel Background="{StaticResource InfoBarMessageBackgroundBrush}">
                                     <!-- Actual text -->
                                     <TextBlock Padding="4,2,4,2" 
+                                               Foreground="Black"
                                                Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type catel:InfoBarMessageControl}}, Path=InfoMessage}" />
 
                                     <!-- Line -->
                                     <Line Name="infoBarSeparator" Margin="0" 
-                                          Stroke="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultForeground}" 
+                                          Stroke="{StaticResource InfoBarMessageSeparatorBrush}" 
                                           X1="0" X2="1" Stretch="UniformToFill" />
                                 </StackPanel>
 
@@ -55,7 +59,7 @@
                                Placement="Bottom" 
 							   Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualWidth}"
                                AllowsTransparency="True" PopupAnimation="Fade">
-                            <Grid Background="{orctheming:ThemeColorBrush ThemeColorStyle=AccentColor40}"
+                            <Grid Background="{StaticResource InfoBarMessageErrorTextBackgroundBrush}"
 								  DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type catel:InfoBarMessageControl}}}">
 
                                 <!-- Column definitions -->
@@ -84,7 +88,9 @@
 
                                                 <!-- Content -->
                                                 <Image Grid.Column="0" Source="/Catel.MVVM;component/Resources/Images/Error.png" Margin="2,2,4,2" Width="16" Height="16"/>
-                                                <TextBlock Grid.Column="1" Foreground="{StaticResource InfoBarMessageErrorTextColorBrush}" Text="{Binding}" TextWrapping="Wrap" />
+                                                <TextBlock Grid.Column="1" 
+                                                           Foreground="{StaticResource InfoBarMessageErrorTextColorBrush}" 
+                                                           Text="{Binding}" TextWrapping="Wrap" />
                                             </Grid>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
@@ -104,7 +110,9 @@
 
                                                 <!-- Content -->
                                                 <Image Grid.Column="0" Source="/Catel.MVVM;component/Resources/Images/Warning.png" Margin="2,2,4,2" Width="16" Height="16"/>
-                                                <TextBlock Grid.Column="1" Foreground="{StaticResource InfoBarMessageWarningTextColorBrush}" Text="{Binding}" TextWrapping="Wrap" />
+                                                <TextBlock Grid.Column="1" 
+                                                           Foreground="{StaticResource InfoBarMessageWarningTextColorBrush}" 
+                                                           Text="{Binding}" TextWrapping="Wrap" />
                                             </Grid>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
@@ -112,7 +120,7 @@
 
                                 <!-- Line -->
                                 <Line Grid.Row="2" Margin="0" 
-                                      Stroke="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultForeground}" 
+                                      Stroke="{StaticResource InfoBarMessageSeparatorBrush}"  
                                       X1="0" X2="1" 
                                       Stretch="UniformToFill" />
 
