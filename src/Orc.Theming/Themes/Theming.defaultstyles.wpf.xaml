@@ -14,6 +14,7 @@
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.label.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.listbox.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.listview.xaml" />
+        <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.menuitem.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.passwordbox.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.progressbar.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.radiobutton.xaml" />
@@ -152,8 +153,8 @@
     </Style>
     
     <!-- Menu item -->
-    <!--<Style x:Key="DefaultMenuItemStyle" TargetType="{x:Type MenuItem}" BasedOn="{StaticResource {x:Type MenuItem}}">
-    </Style>-->
+    <Style x:Key="DefaultMenuItemStyle" TargetType="{x:Type MenuItem}" BasedOn="{StaticResource Orc.Styles.MenuItem}">
+    </Style>
 
     <!-- PasswordBox -->
     <Style x:Key="DefaultPasswordBoxStyle" TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource Orc.Styles.PasswordBox}">
