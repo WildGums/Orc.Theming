@@ -59,5 +59,23 @@ namespace Orc.Theming.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select accent color.
+        /// </summary>
+        internal static string AccentColorSwitcherView_SelectAccentColor {
+            get {
+                return ResourceManager.GetString("AccentColorSwitcherView_SelectAccentColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select base color scheme.
+        /// </summary>
+        internal static string BaseColorSchemeSwitcherView_SelectBaseColorScheme {
+            get {
+                return ResourceManager.GetString("BaseColorSchemeSwitcherView_SelectBaseColorScheme", resourceCulture);
+            }
+        }
     }
 }

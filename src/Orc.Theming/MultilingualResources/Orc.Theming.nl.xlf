@@ -5,7 +5,16 @@
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6900.0" tool-company="Microsoft" />
     </header>
     <body>
-      <group id="ORC.THEMING/PROPERTIES/RESOURCES.RESX"></group>
+      <group id="ORC.THEMING/PROPERTIES/RESOURCES.RESX">
+        <trans-unit id="AccentColorSwitcherView_SelectAccentColor" translate="yes" xml:space="preserve">
+          <source>Select accent color</source>
+          <target state="new">Select accent color</target>
+        </trans-unit>
+        <trans-unit id="BaseColorSchemeSwitcherView_SelectBaseColorScheme" translate="yes" xml:space="preserve">
+          <source>Select base color scheme</source>
+          <target state="new">Select base color scheme</target>
+        </trans-unit>
+      </group>
     </body>
   </file>
 </xliff>

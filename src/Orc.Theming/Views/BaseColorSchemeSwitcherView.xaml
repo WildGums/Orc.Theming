@@ -4,7 +4,7 @@
                    xmlns:catel="http://schemas.catelproject.com">
 
     <StackPanel Grid.Column="1" Orientation="Horizontal">
-        <Label Content="Select the base color" />
+        <Label Content="{catel:LanguageBinding BaseColorSchemeSwitcherView_SelectBaseColorScheme}" />
         <ComboBox ItemsSource="{Binding BaseColorSchemes}" SelectedItem="{Binding SelectedBaseColorScheme}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>

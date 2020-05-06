@@ -117,4 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccentColorSwitcherView_SelectAccentColor" xml:space="preserve">
+    <value>Select accent color</value>
+  </data>
+  <data name="BaseColorSchemeSwitcherView_SelectBaseColorScheme" xml:space="preserve">
+    <value>Select base color scheme</value>
+  </data>
 </root>
