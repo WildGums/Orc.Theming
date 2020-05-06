@@ -1,13 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:orctheming="clr-namespace:Orc.Theming">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style x:Key="Orc.Styles.CheckBox" TargetType="{x:Type CheckBox}">
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="BorderBrush" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultBorder}" />
-        <Setter Property="Background" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultBackground}" />
-        <Setter Property="Foreground" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DefaultForeground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Default.Border}" />
+        <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.Default.Background}" />
+        <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.Default.Foreground}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type CheckBox}">
@@ -26,7 +25,7 @@
                                       Height="Auto"
                                       Width="Auto"
                                       Stretch="Fill"
-                                      Fill="{orctheming:ThemeColorBrush ThemeColorStyle=AccentColor}"
+                                      Fill="{DynamicResource Orc.Brushes.AccentColor}"
                                       Margin="1,1.007,1,1"/>
                             </Border>
                         </BulletDecorator.Bullet>
@@ -38,13 +37,13 @@
                     </BulletDecorator>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Background" TargetName="CheckBoxBorder" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DisabledBackground}"/>
-                            <Setter Property="BorderBrush" TargetName="CheckBoxBorder" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DisabledBorder}"/>
+                            <Setter Property="Background" TargetName="CheckBoxBorder" Value="{DynamicResource Orc.Brushes.Control.Disabled.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="CheckBoxBorder" Value="{DynamicResource Orc.Brushes.Control.Disabled.Border}"/>
                             <!--<Setter Property="Foreground" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DisabledForeground}"/>-->
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Background" TargetName="CheckBoxBorder" Value="{orctheming:ThemeColorBrush ThemeColorStyle=MouseOverBackground}"/>
-                            <Setter Property="BorderBrush" TargetName="CheckBoxBorder" Value="{orctheming:ThemeColorBrush ThemeColorStyle=MouseOverBorder}"/>
+                            <Setter Property="Background" TargetName="CheckBoxBorder" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="CheckBoxBorder" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Border}"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="False">
                             <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
