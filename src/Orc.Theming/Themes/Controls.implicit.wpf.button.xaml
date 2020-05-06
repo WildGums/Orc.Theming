@@ -44,8 +44,8 @@
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Background" TargetName="Filter" Value="{DynamicResource Orc.Brushes.Control.Disabled.Background}"/>
-                            <Setter Property="BorderBrush" TargetName="Chrome" Value="{DynamicResource Orc.Brushes.Control.DisabledBorder}"/>
-                            <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.DisabledForeground}"/>
+                            <Setter Property="BorderBrush" TargetName="Chrome" Value="{DynamicResource Orc.Brushes.Control.Disabled.Border}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

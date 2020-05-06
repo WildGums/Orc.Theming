@@ -39,7 +39,7 @@
                                 <Condition Property="Selector.IsSelectionActive" Value="False"/>
                                 <Condition Property="IsSelected" Value="True"/>
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource Orc.Brushes.Control.SelectionInactive.Border}"/>
+                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource Orc.Brushes.Control.SelectionInactive.Background}"/>
                             <Setter Property="BorderBrush" TargetName="Bd" Value="{DynamicResource Orc.Brushes.Control.SelectionInactive.Border}"/>
                         </MultiTrigger>
                         <MultiTrigger>
