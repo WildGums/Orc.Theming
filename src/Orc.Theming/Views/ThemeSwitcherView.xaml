@@ -1,0 +1,17 @@
+﻿<catel:UserControl x:Class="Orc.Theming.Views.ThemeSwitcherView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:catel="http://schemas.catelproject.com"
+                   xmlns:localviews="clr-namespace:Orc.Theming.Views">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <localviews:AccentColorSwitcherView Grid.Column="0" />
+        <localviews:BaseColorSchemeSwitcherView Grid.Column="1" />
+    </Grid>
+
+</catel:UserControl>

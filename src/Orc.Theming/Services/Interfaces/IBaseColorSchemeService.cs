@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Windows.Media;
 
     public interface IBaseColorSchemeService
     {
@@ -15,6 +14,6 @@
         IReadOnlyList<string> GetAvailableBaseColorSchemes();
 
         string GetBaseColorScheme();
-        bool SetBaseColorScheme(string color);
+        bool SetBaseColorScheme(string scheme);
     }
 }

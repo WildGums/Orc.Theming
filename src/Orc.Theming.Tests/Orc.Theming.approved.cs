@@ -1,6 +1,7 @@
 ﻿[assembly: System.Resources.NeutralResourcesLanguageAttribute("en-US")]
 [assembly: System.Runtime.Versioning.TargetFrameworkAttribute(".NETFramework,Version=v4.6", FrameworkDisplayName=".NET Framework 4.6")]
 [assembly: System.Windows.Markup.XmlnsDefinitionAttribute("http://schemas.wildgums.com/orc/theming", "Orc.Theming")]
+[assembly: System.Windows.Markup.XmlnsDefinitionAttribute("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Views")]
 [assembly: System.Windows.Markup.XmlnsPrefixAttribute("http://schemas.wildgums.com/orc/theming", "orctheming")]
 [assembly: System.Windows.ThemeInfoAttribute(System.Windows.ResourceDictionaryLocation.None, System.Windows.ResourceDictionaryLocation.SourceAssembly)]
 public class static LoadAssembliesOnStartup { }
@@ -16,7 +17,7 @@ namespace Orc.Theming
         public event System.EventHandler<System.EventArgs> AccentColorChanged;
         public virtual System.Windows.Media.Color GetAccentColor() { }
         protected void RaiseAccentColorChanged() { }
-        public virtual void SetAccentColor(System.Windows.Media.Color color) { }
+        public virtual bool SetAccentColor(System.Windows.Media.Color color) { }
     }
     public class BaseColorSchemeService : Orc.Theming.IBaseColorSchemeService
     {
@@ -24,7 +25,7 @@ namespace Orc.Theming
         public event System.EventHandler<System.EventArgs> BaseColorSchemeChanged;
         public virtual System.Collections.Generic.IReadOnlyList<string> GetAvailableBaseColorSchemes() { }
         public string GetBaseColorScheme() { }
-        public bool SetBaseColorScheme(string color) { }
+        public bool SetBaseColorScheme(string scheme) { }
     }
     public class static ColorExtensions
     {
@@ -50,14 +51,14 @@ namespace Orc.Theming
     {
         public event System.EventHandler<System.EventArgs> AccentColorChanged;
         System.Windows.Media.Color GetAccentColor();
-        void SetAccentColor(System.Windows.Media.Color color);
+        bool SetAccentColor(System.Windows.Media.Color color);
     }
     public interface IBaseColorSchemeService
     {
         public event System.EventHandler<System.EventArgs> BaseColorSchemeChanged;
         System.Collections.Generic.IReadOnlyList<string> GetAvailableBaseColorSchemes();
         string GetBaseColorScheme();
-        bool SetBaseColorScheme(string color);
+        bool SetBaseColorScheme(string scheme);
     }
     public interface IResourceDictionaryService
     {
@@ -203,5 +204,60 @@ namespace Orc.Theming
         public ThemeService(Orc.Theming.IAccentColorService accentColorService, Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
         public virtual Orc.Theming.ThemeInfo GetThemeInfo() { }
         public virtual bool ShouldCreateStyleForwarders() { }
+    }
+}
+namespace Orc.Theming.ViewModels
+{
+    public class AccentColorSwitcherViewModel : Catel.MVVM.ViewModelBase
+    {
+        public static readonly Catel.Data.PropertyData AccentColorsProperty;
+        public static readonly Catel.Data.PropertyData SelectedAccentColorProperty;
+        public AccentColorSwitcherViewModel(Orc.Theming.ThemeManager themeManager, Orc.Theming.IAccentColorService accentColorService) { }
+        public System.Collections.Generic.List<System.Windows.Media.Color> AccentColors { get; }
+        public System.Windows.Media.Color SelectedAccentColor { get; set; }
+        protected override System.Threading.Tasks.Task CloseAsync() { }
+        protected override System.Threading.Tasks.Task InitializeAsync() { }
+    }
+    public class BaseColorSchemeSwitcherViewModel : Catel.MVVM.ViewModelBase
+    {
+        public static readonly Catel.Data.PropertyData BaseColorSchemesProperty;
+        public static readonly Catel.Data.PropertyData SelectedBaseColorSchemeProperty;
+        public BaseColorSchemeSwitcherViewModel(Orc.Theming.ThemeManager themeManager, Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
+        public System.Collections.Generic.IReadOnlyList<string> BaseColorSchemes { get; }
+        public string SelectedBaseColorScheme { get; set; }
+        protected override System.Threading.Tasks.Task CloseAsync() { }
+        protected override System.Threading.Tasks.Task InitializeAsync() { }
+    }
+    public class ThemeSwitcherViewModel : Catel.MVVM.ViewModelBase
+    {
+        public static readonly Catel.Data.PropertyData AccentColorsProperty;
+        public static readonly Catel.Data.PropertyData BaseColorSchemesProperty;
+        public static readonly Catel.Data.PropertyData SelectedAccentColorProperty;
+        public static readonly Catel.Data.PropertyData SelectedBaseColorSchemeProperty;
+        public ThemeSwitcherViewModel(Orc.Theming.IAccentColorService accentColorService, Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
+        public System.Collections.Generic.List<System.Windows.Media.Color> AccentColors { get; }
+        public System.Collections.Generic.IReadOnlyList<string> BaseColorSchemes { get; }
+        public System.Windows.Media.Color SelectedAccentColor { get; set; }
+        public string SelectedBaseColorScheme { get; set; }
+        protected override System.Threading.Tasks.Task CloseAsync() { }
+        protected override System.Threading.Tasks.Task InitializeAsync() { }
+    }
+}
+namespace Orc.Theming.Views
+{
+    public class AccentColorSwitcherView : Catel.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
+    {
+        public AccentColorSwitcherView() { }
+        public void InitializeComponent() { }
+    }
+    public class BaseColorSchemeSwitcherView : Catel.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
+    {
+        public BaseColorSchemeSwitcherView() { }
+        public void InitializeComponent() { }
+    }
+    public class ThemeSwitcherView : Catel.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
+    {
+        public ThemeSwitcherView() { }
+        public void InitializeComponent() { }
     }
 }

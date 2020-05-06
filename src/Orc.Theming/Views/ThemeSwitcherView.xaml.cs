@@ -1,4 +1,4 @@
-﻿namespace Orc.Theming.Example.Views
+﻿namespace Orc.Theming.Views
 {
     public partial class ThemeSwitcherView
     {

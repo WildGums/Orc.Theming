@@ -3,9 +3,12 @@
     using System;
     using System.Windows;
     using System.Windows.Media;
+    using Catel.Logging;
 
     public class AccentColorService : IAccentColorService
     {
+        private static readonly ILog Log = LogManager.GetCurrentClassLogger();
+
         private Color? _accentColor;
 
         public virtual Color GetAccentColor()
@@ -23,11 +26,20 @@
             return _accentColor.Value;
         }
 
-        public virtual void SetAccentColor(Color color)
+        public virtual bool SetAccentColor(Color color)
         {
+            if ((_accentColor ?? Colors.Transparent) == color)
+            {
+                return false;
+            }
+
+            Log.Info($"Setting accent color '{color}'");
+
             _accentColor = color;
 
             RaiseAccentColorChanged();
+
+            return true;
         }
 
         public event EventHandler<EventArgs> AccentColorChanged;

@@ -4,9 +4,12 @@
     using System.Collections.Generic;
     using System.Linq;
     using Catel;
+    using Catel.Logging;
 
     public class BaseColorSchemeService : IBaseColorSchemeService
     {
+        private static readonly ILog Log = LogManager.GetCurrentClassLogger();
+
         private readonly ControlzEx.Theming.ThemeManager _themeManager;
 
         private string _baseColorScheme = null;
@@ -20,14 +23,16 @@
 
         public event EventHandler<EventArgs> BaseColorSchemeChanged;
 
-        public bool SetBaseColorScheme(string color)
+        public bool SetBaseColorScheme(string scheme)
         {
-            if (_baseColorScheme.EqualsIgnoreCase(color) || !GetAvailableBaseColorSchemes().Contains(color))
+            if (_baseColorScheme.EqualsIgnoreCase(scheme) || !GetAvailableBaseColorSchemes().Contains(scheme))
             { 
                 return false; 
             }
 
-            _baseColorScheme = color;
+            Log.Info($"Setting base color scheme '{scheme}'");
+
+            _baseColorScheme = scheme;
 
             BaseColorSchemeChanged?.Invoke(this, EventArgs.Empty);
 

@@ -1,4 +1,4 @@
-﻿namespace Orc.Theming.Example.ViewModels
+﻿namespace Orc.Theming.ViewModels
 {
     using Catel;
     using Catel.MVVM;
