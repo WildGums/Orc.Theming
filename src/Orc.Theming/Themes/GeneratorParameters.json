@@ -26,8 +26,7 @@
         "Gray8": "#FF454545",
         "Gray9": "#5EC9C9C9",
         "Gray10": "#FF2F2F2F",
-        "Orc.Colors.Text": "#FFFFFFFF",
-        "Orc.Brushes.Text": "{StaticResource BlackColor}"
+        "Orc.Colors.Text": "#FFFFFFFF"
       }
     },
     {
@@ -49,8 +48,7 @@
         "Gray8": "#FFE0E0E0",
         "Gray9": "#5EC9C9C9",
         "Gray10": "#FFF7F7F7",
-        "Orc.Colors.Text": "#FF000000",
-        "Orc.Brushes.Text": "{StaticResource WhiteColor}"
+        "Orc.Colors.Text": "#FF000000"
       }
     }
   ]

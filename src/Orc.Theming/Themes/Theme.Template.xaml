@@ -138,7 +138,7 @@
     <SolidColorBrush x:Key="Orc.Brushes.IdealForegroundColorBrush" Color="{StaticResource Orc.Colors.IdealForegroundColor}" options:Freeze="True" />
     <SolidColorBrush x:Key="Orc.Brushes.IdealForegroundDisabledBrush" Color="{StaticResource Orc.Colors.IdealForegroundColor}" Opacity="0.4" options:Freeze="True" />
     <SolidColorBrush x:Key="Orc.Brushes.DarkIdealForegroundDisabledBrush" Color="{StaticResource Orc.Colors.DarkIdealForegroundDisabledColor}" options:Freeze="True" />
-    <SolidColorBrush x:Key="Orc.Brushes.Text" Color="{{Orc.Brushes.Text}}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.Text" Color="{StaticResource Orc.Colors.Text}" options:Freeze="True" />
 
     <!-- Generic control brushes -->
     <SolidColorBrush x:Key="Orc.Brushes.Control.Border" Color="{StaticResource Orc.Colors.Control.Border}" options:Freeze="True" />

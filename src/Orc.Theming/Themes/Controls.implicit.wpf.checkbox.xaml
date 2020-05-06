@@ -39,7 +39,6 @@
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Background" TargetName="CheckBoxBorder" Value="{DynamicResource Orc.Brushes.Control.Disabled.Background}"/>
                             <Setter Property="BorderBrush" TargetName="CheckBoxBorder" Value="{DynamicResource Orc.Brushes.Control.Disabled.Border}"/>
-                            <!--<Setter Property="Foreground" Value="{orctheming:ThemeColorBrush ThemeColorStyle=DisabledForeground}"/>-->
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="Background" TargetName="CheckBoxBorder" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Background}"/>

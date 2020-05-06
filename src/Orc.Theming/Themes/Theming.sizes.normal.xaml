@@ -20,7 +20,7 @@
 	<sys:Double x:Key="MarginSize.CheckBox.X">6</sys:Double>
     <sys:Double x:Key="MarginSize.CheckBox.Y">8</sys:Double>
 	<sys:Double x:Key="MarginSize.GroupBox.X">6</sys:Double>
-	<sys:Double x:Key="MarginSize.GroupBox.Y">0</sys:Double>
+    <sys:Double x:Key="MarginSize.GroupBox.Y">4</sys:Double>
 	<sys:Double x:Key="MarginSize.Label.X">3</sys:Double>
 	<sys:Double x:Key="MarginSize.Label.Y">8</sys:Double>
 	<sys:Double x:Key="MarginSize.RadioButton.X">6</sys:Double>

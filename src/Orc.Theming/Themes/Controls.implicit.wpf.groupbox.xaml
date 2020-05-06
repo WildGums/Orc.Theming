@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style x:Key="Orc.Styles.GroupBox" TargetType="{x:Type GroupBox}">
-
+        <Setter Property="BorderThickness" Value="0.5" />
     </Style>
 
 </ResourceDictionary>
