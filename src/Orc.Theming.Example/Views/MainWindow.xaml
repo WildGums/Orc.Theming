@@ -18,6 +18,10 @@
             <TabItem Header="Main view">
                 <views:ControlsView />
             </TabItem>
+
+            <TabItem Header="CheckBox">
+                <views:CheckBoxView />
+            </TabItem>
         </TabControl>
         
     </Grid>
