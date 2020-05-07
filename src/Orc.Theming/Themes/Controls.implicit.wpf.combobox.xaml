@@ -4,8 +4,8 @@
     <Style x:Key="Orc.Styles.ComboBox" TargetType="{x:Type ComboBox}">
         <Style.Resources>
             <ControlTemplate x:Key="ComboBoxTextBox" TargetType="TextBox">
-                <Border x:Name="PART_ContentHost" Focusable="False" 
-                        Background="{DynamicResource Orc.Brushes.Control.Default.Background}"
+                <Border x:Name="PART_ContentHost" 
+                        Focusable="False"
                         VerticalAlignment="Center" />
             </ControlTemplate>
         </Style.Resources>

@@ -1,19 +1,30 @@
 ﻿namespace Orc.Theming.Example.ViewModels
 {
     using Catel.MVVM;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
+    using System.Windows.Documents;
 
     public class ComboBoxViewModel : ViewModelBase
     {
         public ComboBoxViewModel(/* dependency injection here */)
         {
+            Items = new List<string>(new []
+            {
+                "Item 1",
+                "Item 2",
+                "Item 3", 
+                "Item 4",
+                "Item 5"
+            });
+
+            SelectedItem = Items.FirstOrDefault();
         }
 
-        public override string Title { get { return "View model title"; } }
+        public List<string> Items { get; private set; }
 
-        // TODO: Register models with the vmpropmodel codesnippet
-        // TODO: Register view model properties with the vmprop or vmpropviewmodeltomodel codesnippets
-        // TODO: Register commands with the vmcommand or vmcommandwithcanexecute codesnippets
+        public string SelectedItem { get; set; }
 
         protected override async Task InitializeAsync()
         {

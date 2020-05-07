@@ -1,0 +1,18 @@
+﻿<catel:UserControl x:Class="Orc.Theming.Example.Views.ComboBoxView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:catel="http://schemas.catelproject.com">
+
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+        <ComboBox ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}" 
+                  IsEnabled="True" IsEditable="False" ToolTip="Enabled | Not Editable" />
+        <ComboBox ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}"
+                  IsEnabled="True" IsEditable="True" ToolTip="Enabled | Editable" />
+
+        <ComboBox ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}"
+                  IsEnabled="False" IsEditable="False" ToolTip="Disabled | Not Editable" />
+        <ComboBox ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}"
+                  IsEnabled="False" IsEditable="True" ToolTip="Disabled | Editable" />
+    </StackPanel>
+
+</catel:UserControl>
