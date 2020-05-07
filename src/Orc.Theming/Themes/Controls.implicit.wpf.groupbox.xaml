@@ -2,14 +2,15 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style x:Key="Orc.Styles.GroupBox" TargetType="{x:Type GroupBox}">
-        <Style.Resources>
-            <BorderGapMaskConverter x:Key="BorderGapMaskConverter"/>
-        </Style.Resources>
         <Setter Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Default.Border}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type GroupBox}">
+                    <ControlTemplate.Resources>
+                        <BorderGapMaskConverter x:Key="BorderGapMaskConverter" />
+                    </ControlTemplate.Resources>
+                    
                     <Grid SnapsToDevicePixels="true">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="6"/>
@@ -23,7 +24,7 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="6"/>
                         </Grid.RowDefinitions>
-                        <Border BorderBrush="White" 
+                        <Border BorderBrush="{DynamicResource Orc.Brushes.White}" 
                                 BorderThickness="{TemplateBinding BorderThickness}" 
                                 Grid.ColumnSpan="4" 
                                 Grid.Row="1" 
