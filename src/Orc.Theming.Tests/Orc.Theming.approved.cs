@@ -1,11 +1,11 @@
-﻿[assembly: System.Resources.NeutralResourcesLanguageAttribute("en-US")]
-[assembly: System.Runtime.Versioning.TargetFrameworkAttribute(".NETFramework,Version=v4.6", FrameworkDisplayName=".NET Framework 4.6")]
-[assembly: System.Windows.Markup.XmlnsDefinitionAttribute("http://schemas.wildgums.com/orc/theming", "Orc.Theming")]
-[assembly: System.Windows.Markup.XmlnsDefinitionAttribute("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Views")]
-[assembly: System.Windows.Markup.XmlnsPrefixAttribute("http://schemas.wildgums.com/orc/theming", "orctheming")]
-[assembly: System.Windows.ThemeInfoAttribute(System.Windows.ResourceDictionaryLocation.None, System.Windows.ResourceDictionaryLocation.SourceAssembly)]
-public class static LoadAssembliesOnStartup { }
-public class static ModuleInitializer
+﻿[assembly: System.Resources.NeutralResourcesLanguage("en-US")]
+[assembly: System.Runtime.Versioning.TargetFramework(".NETFramework,Version=v4.7", FrameworkDisplayName=".NET Framework 4.7")]
+[assembly: System.Windows.Markup.XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming")]
+[assembly: System.Windows.Markup.XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Views")]
+[assembly: System.Windows.Markup.XmlnsPrefix("http://schemas.wildgums.com/orc/theming", "orctheming")]
+[assembly: System.Windows.ThemeInfo(System.Windows.ResourceDictionaryLocation.None, System.Windows.ResourceDictionaryLocation.SourceAssembly)]
+public static class LoadAssembliesOnStartup { }
+public static class ModuleInitializer
 {
     public static void Initialize() { }
 }
@@ -27,7 +27,7 @@ namespace Orc.Theming
         public string GetBaseColorScheme() { }
         public bool SetBaseColorScheme(string scheme) { }
     }
-    public class static ColorExtensions
+    public static class ColorExtensions
     {
         public static System.Windows.Media.SolidColorBrush ToSolidColorBrush(this System.Windows.Media.Color color, double opacity = 1) { }
     }
@@ -36,26 +36,26 @@ namespace Orc.Theming
         public FontImage() { }
         public FontImage(string itemName) { }
         public System.Windows.Media.Brush Brush { get; set; }
+        public string FontFamily { get; set; }
+        [System.Windows.Markup.ConstructorArgument("itemName")]
+        public string ItemName { get; set; }
         public static System.Windows.Media.Brush DefaultBrush { get; set; }
         public static string DefaultFontFamily { get; set; }
-        public string FontFamily { get; set; }
-        [System.Windows.Markup.ConstructorArgumentAttribute("itemName")]
-        public string ItemName { get; set; }
         public System.Windows.Media.ImageSource GetImageSource() { }
+        protected override object ProvideDynamicValue(System.IServiceProvider serviceProvider) { }
         public static System.Windows.Media.FontFamily GetRegisteredFont(string name) { }
         public static System.Collections.Generic.IEnumerable<string> GetRegisteredFonts() { }
-        protected override object ProvideDynamicValue(System.IServiceProvider serviceProvider) { }
         public static void RegisterFont(string name, System.Windows.Media.FontFamily fontFamily) { }
     }
     public interface IAccentColorService
     {
-        public event System.EventHandler<System.EventArgs> AccentColorChanged;
+        event System.EventHandler<System.EventArgs> AccentColorChanged;
         System.Windows.Media.Color GetAccentColor();
         bool SetAccentColor(System.Windows.Media.Color color);
     }
     public interface IBaseColorSchemeService
     {
-        public event System.EventHandler<System.EventArgs> BaseColorSchemeChanged;
+        event System.EventHandler<System.EventArgs> BaseColorSchemeChanged;
         System.Collections.Generic.IReadOnlyList<string> GetAvailableBaseColorSchemes();
         string GetBaseColorScheme();
         bool SetBaseColorScheme(string scheme);
@@ -80,17 +80,17 @@ namespace Orc.Theming
         public ResourceDictionaryService() { }
         public virtual bool IsResourceDictionaryAvailable(string resourceDictionaryUri) { }
     }
-    public class static ScreenHelper
+    public static class ScreenHelper
     {
         public static System.Windows.Size GetDpi() { }
     }
-    public class static StyleHelper
+    public static class StyleHelper
     {
         public static bool IsStyleForwardingEnabled { get; }
         public static void CreateStyleForwardersForDefaultStyles(string defaultPrefix = "Default") { }
         public static void CreateStyleForwardersForDefaultStyles(System.Windows.ResourceDictionary sourceResources, string defaultPrefix = "Default") { }
         public static void CreateStyleForwardersForDefaultStyles(System.Windows.ResourceDictionary sourceResources, System.Windows.ResourceDictionary targetResources, string defaultPrefix = "Default") { }
-        [MethodTimer.TimeAttribute()]
+        [MethodTimer.Time]
         public static void CreateStyleForwardersForDefaultStyles(System.Windows.ResourceDictionary rootResourceDictionary, System.Windows.ResourceDictionary sourceResources, System.Windows.ResourceDictionary targetResources, string defaultPrefix = "Default") { }
         public static void EnsureApplicationResourcesAndCreateStyleForwarders(System.Uri applicationResourceDictionary, string defaultPrefix = "Default") { }
     }
@@ -121,13 +121,13 @@ namespace Orc.Theming
         AccentColor60 = 2,
         AccentColor40 = 3,
         AccentColor20 = 4,
-        [System.ObsoleteAttribute("Use `AccentColor80` instead. Will be removed in version 5.0.0.", true)]
+        [System.Obsolete("Use `AccentColor80` instead. Will be removed in version 5.0.0.", true)]
         AccentColor1 = 1,
-        [System.ObsoleteAttribute("Use `AccentColor60` instead. Will be removed in version 5.0.0.", true)]
+        [System.Obsolete("Use `AccentColor60` instead. Will be removed in version 5.0.0.", true)]
         AccentColor2 = 2,
-        [System.ObsoleteAttribute("Use `AccentColor40` instead. Will be removed in version 5.0.0.", true)]
+        [System.Obsolete("Use `AccentColor40` instead. Will be removed in version 5.0.0.", true)]
         AccentColor3 = 3,
-        [System.ObsoleteAttribute("Use `AccentColor20` instead. Will be removed in version 5.0.0.", true)]
+        [System.Obsolete("Use `AccentColor20` instead. Will be removed in version 5.0.0.", true)]
         AccentColor4 = 4,
         BorderColor = 5,
         BackgroundColor = 6,
@@ -193,10 +193,10 @@ namespace Orc.Theming
         public ThemeManager(ControlzEx.Theming.ThemeManager controlzThemeManager, Orc.Theming.IAccentColorService accentColorService, Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
         public static Orc.Theming.ThemeManager Current { get; set; }
         public System.Windows.Media.SolidColorBrush GetAccentColorBrush() { }
-        public System.Windows.Media.Color GetThemeColor(string resourceName) { }
         public System.Windows.Media.Color GetThemeColor(Orc.Theming.ThemeColorStyle colorStyle = 0) { }
-        public System.Windows.Media.SolidColorBrush GetThemeColorBrush(string resourceName) { }
+        public System.Windows.Media.Color GetThemeColor(string resourceName) { }
         public System.Windows.Media.SolidColorBrush GetThemeColorBrush(Orc.Theming.ThemeColorStyle colorStyle = 0) { }
+        public System.Windows.Media.SolidColorBrush GetThemeColorBrush(string resourceName) { }
         public virtual void SynchronizeTheme() { }
     }
     public class ThemeService : Orc.Theming.IThemeService
