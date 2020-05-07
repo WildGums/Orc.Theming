@@ -1,0 +1,18 @@
+﻿<catel:UserControl x:Class="Orc.Theming.Example.Views.ProgressBarView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:catel="http://schemas.catelproject.com">
+
+    <StackPanel Orientation="Vertical">
+        <ProgressBar Minimum="0" Maximum="100" Value="50"
+                     IsEnabled="True" IsIndeterminate="False" ToolTip="Enabled | Determinate" />
+        <ProgressBar Minimum="0" Maximum="100" Value="50"
+                     IsEnabled="True" IsIndeterminate="True" ToolTip="Enabled | Indeterminate" />
+
+        <ProgressBar Minimum="0" Maximum="100" Value="50"
+                     IsEnabled="False" IsIndeterminate="False" ToolTip="Enabled | Determinate" />
+        <ProgressBar Minimum="0" Maximum="100" Value="50"
+                     IsEnabled="False" IsIndeterminate="True" ToolTip="Enabled | Indeterminate" />
+    </StackPanel>
+    
+</catel:UserControl>
