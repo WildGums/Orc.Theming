@@ -15,9 +15,9 @@
 
         <orctheming:ThemeSwitcherView Grid.Row="0" />
 
-        <orccontrols:TabControl x:Name="TabControl" Grid.Row="1">
+        <TabControl x:Name="TabControl" Grid.Row="1">
             <!-- Tabs are added automatically -->
-        </orccontrols:TabControl>
+        </TabControl>
         
     </Grid>
 </catel:Window>
