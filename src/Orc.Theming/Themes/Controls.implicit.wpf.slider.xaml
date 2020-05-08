@@ -1,8 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <SolidColorBrush x:Key="Orc.Styles.Slider.TrackNormalBackground" Color="#D4D4D4"/>
-    <SolidColorBrush x:Key="Orc.Styles.Slider.TrackNormalBorder" Color="#D4D4D4"/>
+    <SolidColorBrush x:Key="Orc.Styles.Slider.TrackNormal.Background" Color="#D4D4D4"/>
+    <SolidColorBrush x:Key="Orc.Styles.Slider.TrackNormal.Border" Color="#D4D4D4"/>
 
     <Style x:Key="Orc.Styles.Slider.RepeatButtonStyle" TargetType="{x:Type RepeatButton}">
         <Setter Property="OverridesDefaultStyle" Value="true"/>
@@ -76,8 +76,8 @@
                                          Height="4" Placement="Top" Grid.Row="0" Visibility="Collapsed"/>
                             <TickBar x:Name="BottomTick" Fill="{TemplateBinding Foreground}"
                                          Height="4" Placement="Bottom" Grid.Row="2" Visibility="Collapsed"/>
-                            <Border x:Name="TrackBackground" BorderBrush="{StaticResource Orc.Styles.Slider.TrackNormalBorder}"
-                                        BorderThickness="1" Background="{StaticResource Orc.Styles.Slider.TrackNormalBackground}"
+                            <Border x:Name="TrackBackground" BorderBrush="{StaticResource Orc.Styles.Slider.TrackNormal.Border}"
+                                        BorderThickness="1" Background="{StaticResource Orc.Styles.Slider.TrackNormal.Background}"
                                         CornerRadius="1" Height="3.0" Margin="5,0" Grid.Row="1" VerticalAlignment="center">
                                 <Canvas Margin="-6,-1">
                                     <Rectangle x:Name="PART_SelectionRange"
@@ -150,9 +150,9 @@
 												Visibility="Collapsed"
 												Width="4"/>
                                     <Border x:Name="TrackBackground"
-												BorderBrush="{StaticResource Orc.Styles.Slider.TrackNormalBorder}"
+												BorderBrush="{StaticResource Orc.Styles.Slider.TrackNormal.Border}"
 												BorderThickness="1"
-												Background="{StaticResource Orc.Styles.Slider.TrackNormalBackground}"
+												Background="{StaticResource Orc.Styles.Slider.TrackNormal.Background}"
 												Grid.Column="1" CornerRadius="1" HorizontalAlignment="center"
 												Margin="0,5" Width="3.0">
                                         <Canvas Margin="-1,-6">
