@@ -3,14 +3,26 @@
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                    xmlns:catel="http://schemas.catelproject.com">
 
-    <Grid>
+    <Grid FocusManager.FocusedElement="{Binding ElementName=FocusTextBox}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        
-        <Label Grid.Row="0" Content="{Binding Title}" />
-        <Label Grid.Row="1" Content="Here goes your real content" />
+
+        <TextBox Text="Default state"/>
+        <TextBox x:Name="FocusTextBox"
+                 Grid.Row="1" 
+                 Text="Focused state + text selection" 
+                 Loaded="TextBox_Loaded"/>
+        <TextBox Grid.Row="2" 
+                 IsInactiveSelectionHighlightEnabled="True"
+                 Text="Inactive text selection" 
+                 Loaded="TextBox_Loaded"/>
+        <TextBox Grid.Row="3"
+                 Text="Disabled" 
+                 IsEnabled="False"/>
     </Grid>
     
 </catel:UserControl>
