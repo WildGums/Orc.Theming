@@ -154,7 +154,7 @@
     <SolidColorBrush x:Key="Orc.Brushes.Control.Default.Foreground" Color="{StaticResource Orc.Colors.Foreground}" options:Freeze="True" />
 
     <SolidColorBrush x:Key="Orc.Brushes.Control.Disabled.Border" Color="{StaticResource Orc.Colors.Control.Disabled.Border}" options:Freeze="True" />
-    <SolidColorBrush x:Key="Orc.Brushes.Control.Disabled.Background" Color="{StaticResource Orc.Colors.AccentColor40}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.Control.Disabled.Background" Color="{StaticResource Orc.Colors.AccentColor20}" options:Freeze="True" />
     <SolidColorBrush x:Key="Orc.Brushes.Control.Disabled.Foreground" Color="{StaticResource Orc.Colors.Foreground}" options:Freeze="True" />
 
     <SolidColorBrush x:Key="Orc.Brushes.Control.Checked.Border" Color="{StaticResource Orc.Colors.HighlightColor}" options:Freeze="True" />
