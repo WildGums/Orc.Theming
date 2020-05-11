@@ -28,7 +28,7 @@
             }
 
             AccentColors = accentColors;
-            SelectedAccentColor = themeManager.GetThemeColor();
+            SelectedAccentColor = currentAccentColor;
         }
 
         public List<Color> AccentColors { get; private set; }
