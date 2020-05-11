@@ -19,7 +19,15 @@
 
             _accentColorService = accentColorService;
 
-            AccentColors = typeof(Colors).GetPropertiesEx(true, true).Where(x => x.PropertyType.IsAssignableFromEx(typeof(Color))).Select(x => (Color)x.GetValue(null)).ToList();
+            var accentColors = typeof(Colors).GetPropertiesEx(true, true).Where(x => x.PropertyType.IsAssignableFromEx(typeof(Color))).Select(x => (Color)x.GetValue(null)).ToList();
+
+            var currentAccentColor = themeManager.GetAccentColorBrush()?.Color ?? Colors.Transparent;
+            if (!accentColors.Contains(currentAccentColor))
+            {
+                accentColors.Insert(0, currentAccentColor);
+            }
+
+            AccentColors = accentColors;
             SelectedAccentColor = themeManager.GetThemeColor();
         }
 
