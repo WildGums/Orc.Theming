@@ -3,7 +3,7 @@
 
     <Style x:Key="Orc.Styles.Window" TargetType="Window" BasedOn="{StaticResource {x:Type Window}}">
         <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.Default.Background}" />
-        <Setter Property="Template">
+        <!--<Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Window}">
                     <Grid Background="{TemplateBinding Background}">
@@ -11,12 +11,12 @@
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         
-                        <!-- This ContentPresenter automatically binds to the Content of the Window -->
+                        --><!-- This ContentPresenter automatically binds to the Content of the Window --><!--
                         <ContentPresenter />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
-        </Setter>
+        </Setter>-->
     </Style>
 
 </ResourceDictionary>
