@@ -4,13 +4,14 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.textbox.xaml" />
     </ResourceDictionary.MergedDictionaries>
+
     <Style x:Key="Orc.Styles.ComboBox" TargetType="{x:Type ComboBox}">
         <Style.Resources>
-            <ControlTemplate x:Key="ComboBoxTextBox" TargetType="TextBox">
+            <ControlTemplate x:Key="ComboBoxTextBox" TargetType="{x:Type TextBox}">
                 <ScrollViewer x:Name="PART_ContentHost" 
-                                      Focusable="false" 
-                                      HorizontalScrollBarVisibility="Hidden" 
-                                      VerticalScrollBarVisibility="Hidden"/>
+                              Focusable="false" 
+                              HorizontalScrollBarVisibility="Hidden" 
+                              VerticalScrollBarVisibility="Hidden"/>
             </ControlTemplate>
         </Style.Resources>
 
