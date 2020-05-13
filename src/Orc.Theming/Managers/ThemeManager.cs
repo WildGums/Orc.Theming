@@ -27,6 +27,9 @@
         private SolidColorBrush _accentColorBrushCache;
 
         private Theme _currentTheme;
+
+        // Note: must be lazy because we don't want the static ctor to be invoked whenever we resolve this class correctly via DI
+        private static readonly Lazy<ThemeManager> CurrentLazy = new Lazy<ThemeManager>(() => ServiceLocator.Default.ResolveType<ThemeManager>());
         #endregion
 
         #region Constructors
@@ -44,14 +47,9 @@
             _accentColorService.AccentColorChanged += OnAccentColorChanged;
             _baseColorSchemeService.BaseColorSchemeChanged += OnBaseColorSchemeChanged;
         }
-
-        static ThemeManager()
-        {
-            Current = ServiceLocator.Default.ResolveType<ThemeManager>();
-        }
         #endregion
 
-        public static ThemeManager Current { get; set; }
+        public static ThemeManager Current { get { return CurrentLazy.Value; } }
 
         #region Methods
         public Color GetThemeColor(string resourceName)
