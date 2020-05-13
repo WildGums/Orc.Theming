@@ -25,8 +25,7 @@
                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                                 <Grid x:Name="Filter" 
-                                      Background="Transparent" 
-                                      Opacity="0.7" />
+                                      Background="Transparent"/>
                             </Grid>
                         </Border>
                     </Grid>
