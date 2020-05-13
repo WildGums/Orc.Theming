@@ -191,7 +191,7 @@ namespace Orc.Theming
     public class ThemeManager
     {
         public ThemeManager(ControlzEx.Theming.ThemeManager controlzThemeManager, Orc.Theming.IAccentColorService accentColorService, Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
-        public static Orc.Theming.ThemeManager Current { get; set; }
+        public static Orc.Theming.ThemeManager Current { get; }
         public System.Windows.Media.SolidColorBrush GetAccentColorBrush() { }
         public System.Windows.Media.Color GetThemeColor(Orc.Theming.ThemeColorStyle colorStyle = 0) { }
         public System.Windows.Media.Color GetThemeColor(string resourceName) { }
