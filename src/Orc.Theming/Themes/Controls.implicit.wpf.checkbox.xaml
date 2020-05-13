@@ -14,20 +14,23 @@
                                      VerticalAlignment="{TemplateBinding VerticalAlignment}"
                                      HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
                         <BulletDecorator.Bullet>
-                            <Border x:Name="CheckBoxBorder"
+                            <Grid x:Name="ChromeGrid"
+                                    Background="{TemplateBinding Background}">
+                                <Border x:Name="CheckBoxBorder"
                                     Height="14"
                                     Width="14"
 									BorderThickness="{TemplateBinding BorderThickness}"
 									BorderBrush="{TemplateBinding BorderBrush}" 
 									Background="{TemplateBinding Background}">
-                                <Path x:Name="CheckMark"
+                                    <Path x:Name="CheckMark"
                                       Data="M7.2,5 L5.5,7.16 4.16,6.3 3.5,6.7 5.5,8.4 8.6,5.25 C8.6,5.25 8,4.7 7.22,5"
                                       Height="Auto"
                                       Width="Auto"
                                       Stretch="Fill"
                                       Fill="{DynamicResource Orc.Brushes.AccentColor}"
                                       Margin="1,1.007,1,1"/>
-                            </Border>
+                                </Border>
+                            </Grid>
                         </BulletDecorator.Bullet>
                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           Margin="{TemplateBinding Padding}"

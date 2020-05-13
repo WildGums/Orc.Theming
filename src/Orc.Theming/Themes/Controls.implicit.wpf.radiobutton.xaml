@@ -19,37 +19,48 @@
         <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.Default.Background}" />
         <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.Default.Foreground}" />
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RadioButton}">
-                    <BulletDecorator Background="Transparent"
-                                     VerticalAlignment="{TemplateBinding VerticalAlignment}"
-                                     HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
-                        <BulletDecorator.Bullet>
-                            <Border x:Name="RadioButtonBorder"
-                                    Width="14"
-									Height="14"
-									CornerRadius="6" 
-									BorderThickness="{TemplateBinding BorderThickness}"
-									BorderBrush="{TemplateBinding BorderBrush}" 
-									Background="{TemplateBinding Background}">
-                                <Border x:Name="RadioMark"
-                                        Width="6" 
-                                        Height="6"
-                                        CornerRadius="6"
-                                        BorderBrush="Transparent"
-                                        Background="{DynamicResource Orc.Brushes.AccentColor}"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center" />
+                    <Grid x:Name="TemplateRoot" 
+                          Background="Transparent" 
+                          SnapsToDevicePixels="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid x:Name="ChromeGrid" 
+                              Background="{TemplateBinding Background}">
+                            <Border x:Name="RadioButtonBorder" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}" 
+                                CornerRadius="100" 
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <Grid x:Name="markGrid" Margin="3">
+                                    <Ellipse x:Name="RadioMark" 
+                                         Fill="{DynamicResource Orc.Brushes.AccentColor}" 
+                                         Width="6" Height="6"/>
+                                </Grid>
                             </Border>
-                        </BulletDecorator.Bullet>
-                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        </Grid>
+                        
+                        <ContentPresenter x:Name="contentPresenter"
+                                          Grid.Column="1" 
+                                          Focusable="False"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           Margin="{TemplateBinding Padding}" 
-                                          RecognizesAccessKey="True"
-                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                    </BulletDecorator>
+                                          RecognizesAccessKey="True" 
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                            <ContentPresenter.Resources>
+                                <Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                    <Setter Property="Margin" Value="0"/>
+                                </Style>
+                            </ContentPresenter.Resources>
+                        </ContentPresenter>
+                    </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="HasContent" Value="true">
                             <Setter Property="FocusVisualStyle" Value="{StaticResource Orc.Styles.RadioButton.FocusVisual}"/>
@@ -63,7 +74,7 @@
                             <Setter Property="BorderBrush" TargetName="RadioButtonBorder" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Border}"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="false">
-                            <Setter TargetName="RadioMark" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="RadioMark" Property="Opacity" Value="0"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
