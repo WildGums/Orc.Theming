@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style x:Key="Orc.Styles.Button" TargetType="{x:Type Button}">
+        <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Default.Border}" />
         <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.Default.Background}" />
         <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.Default.Foreground}" />
@@ -11,24 +12,24 @@
                 <ControlTemplate TargetType="{x:Type ButtonBase}">
                     <Grid x:Name="ChromeGrid" Background="{TemplateBinding Background}">
                         <Border x:Name="Chrome" 
-                                BorderThickness="1" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
                                 BorderBrush="{TemplateBinding BorderBrush}" 
                                 Background="{TemplateBinding Background}"
                                 SnapsToDevicePixels="True">
-                            <Grid>
-                                <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" 
-                                                  Content="{TemplateBinding Content}"
-                                                  ContentStringFormat="{TemplateBinding ContentStringFormat}"
-                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                  Margin="{TemplateBinding Padding}"
-                                                  RecognizesAccessKey="True"
-                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
-                                    <ContentPresenter.Resources>
-                                        <Style TargetType="{x:Type TextBlock}" BasedOn="{x:Null}"/>
-                                    </ContentPresenter.Resources>
-                                </ContentPresenter>
-                            </Grid>
+
+                            <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                              Content="{TemplateBinding Content}"
+                                              ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              Margin="{TemplateBinding Padding}"
+                                              RecognizesAccessKey="True"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <ContentPresenter.Resources>
+                                    <Style TargetType="{x:Type TextBlock}" BasedOn="{x:Null}"/>
+                                </ContentPresenter.Resources>
+                            </ContentPresenter>
+
                         </Border>
                     </Grid>
                 </ControlTemplate>

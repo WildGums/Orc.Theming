@@ -30,7 +30,9 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Disabled.Border}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}"/>
+                            <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.Disabled.Background}"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Border}"/>
