@@ -47,8 +47,8 @@
                 <PasswordBox Width="100" ToolTip="PasswordBox" Password="123" />
                 <ProgressBar Minimum="0" Maximum="100" Value="50" Width="100" ToolTip="ProgressBar" />
                 <RadioButton Content="RadioButton" ToolTip="RadioButton" />
-                <RepeatButton ToolTip="RepeatButton" Width="16" />
-                <ToggleButton ToolTip="ToggleButton" Width="16"/>
+                <RepeatButton ToolTip="RepeatButton" MinWidth="16" Content="RepeatButton"/>
+                <ToggleButton ToolTip="ToggleButton" MinWidth="16" Content="ToggleButton"/>
                 <RichTextBox ToolTip="RichTextBox" />
                 <Slider Minimum="0" Maximum="100" Value="50" Width="100" ToolTip="Slider" />
                 <TextBlock Text="TextBlock" ToolTip="TextBlock" />

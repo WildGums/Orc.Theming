@@ -55,6 +55,8 @@
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Orc.Brushes.Control.Disabled.Border}"/>
+                            <Setter Property="Background" TargetName="border" Value="{DynamicResource Orc.Brushes.Control.Disabled.Background}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
