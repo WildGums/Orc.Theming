@@ -71,7 +71,6 @@ namespace Orc.Theming
     }
     public class LibraryThemeProvider : ControlzEx.Theming.LibraryThemeProvider
     {
-        public static readonly ControlzEx.Theming.LibraryThemeProvider DefaultInstance;
         public LibraryThemeProvider() { }
         public override void FillColorSchemeValues(System.Collections.Generic.Dictionary<string, string> values, ControlzEx.Theming.RuntimeThemeColorValues colorValues) { }
     }
