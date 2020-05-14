@@ -20,7 +20,7 @@ public static class ModuleInitializer
         serviceLocator.RegisterTypeIfNotYetRegistered<IThemeService, ThemeService>();
 
         var themeManager = ControlzEx.Theming.ThemeManager.Current;
-        themeManager.RegisterLibraryThemeProvider(LibraryThemeProvider.DefaultInstance);
+        themeManager.RegisterLibraryThemeProvider(new LibraryThemeProvider());
         serviceLocator.RegisterInstance(themeManager);
         serviceLocator.RegisterType<ThemeManager>();
 

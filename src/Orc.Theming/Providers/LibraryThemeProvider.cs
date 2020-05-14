@@ -5,8 +5,6 @@
 
     public class LibraryThemeProvider : ControlzEx.Theming.LibraryThemeProvider
     {
-        public static readonly ControlzEx.Theming.LibraryThemeProvider DefaultInstance = new LibraryThemeProvider();
-
         public LibraryThemeProvider()
             : base(true)
         {
