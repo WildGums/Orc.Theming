@@ -8,6 +8,7 @@
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.catel.infobarmessagecontrol.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.focusvisual.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.button.xaml" />
+        <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.calendar.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.checkbox.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.combobox.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.gridsplitter.xaml" />
@@ -66,6 +67,10 @@
             </Setter.Value>
         </Setter>-->
     </Style>
+
+    <!-- Calendar -->
+    <Style x:Key="DefaultCalendarStyle" TargetType="{x:Type Calendar}"
+           BasedOn="{StaticResource Orc.Styles.Calendar}"/>
 
     <!-- CheckBox -->
     <Style x:Key="DefaultCheckBoxStyle" TargetType="{x:Type CheckBox}" BasedOn="{StaticResource Orc.Styles.CheckBox}">
