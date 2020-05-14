@@ -138,6 +138,30 @@
     <SolidColorBrush x:Key="TransparentWhiteBrush" Color="{StaticResource TransparentWhiteColor}" options:Freeze="True" />
     <SolidColorBrush x:Key="HighTransparentWhiteBrush" Color="{StaticResource Orc.Colors.HighTransparentWhiteColor}" options:Freeze="True" />
 
+    <SolidColorBrush x:Key="Orc.Brushes.White" Color="{StaticResource WhiteColor}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.White20" Color="{StaticResource WhiteColor20}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.WhiteBrush" Color="{StaticResource WhiteColor}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.WhiteBrush20" Color="{StaticResource WhiteColor20}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.Black" Color="{StaticResource BlackColor}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.Black20" Color="{StaticResource BlackColor20}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.BlackBrush" Color="{StaticResource BlackColor}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.BlackBrush20" Color="{StaticResource BlackColor20}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.GrayBrush1" Color="{StaticResource Gray1}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.GrayBrush2" Color="{StaticResource Gray2}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.GrayBrush3" Color="{StaticResource Gray3}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.GrayBrush4" Color="{StaticResource Gray4}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.GrayBrush5" Color="{StaticResource Gray5}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.GrayBrush6" Color="{StaticResource Gray6}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.GrayBrush7" Color="{StaticResource Gray7}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.GrayBrush8" Color="{StaticResource Gray8}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.GrayBrush9" Color="{StaticResource Gray9}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.GrayBrush10" Color="{StaticResource Gray10}" options:Freeze="True" />
+    
+    <SolidColorBrush x:Key="Orc.Brushes.BackgroundBrush" Color="{StaticResource BackgroundColor}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.ForegroundBrush" Color="{StaticResource ForegroundColor}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.TransparentWhiteBrush" Color="{StaticResource TransparentWhiteColor}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Orc.Brushes.HighTransparentWhiteBrush" Color="{StaticResource Orc.Colors.HighTransparentWhiteColor}" options:Freeze="True" />
+
     <!-- Foreground -->
     <SolidColorBrush x:Key="Orc.Brushes.IdealForegroundColorBrush" Color="{StaticResource Orc.Colors.IdealForegroundColor}" options:Freeze="True" />
     <SolidColorBrush x:Key="Orc.Brushes.IdealForegroundDisabledBrush" Color="{StaticResource Orc.Colors.IdealForegroundColor}" Opacity="0.56" options:Freeze="True" />
