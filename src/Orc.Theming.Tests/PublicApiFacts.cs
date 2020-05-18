@@ -11,13 +11,13 @@
     [TestFixture]
     public class PublicApiFacts
     {
-        [Test, MethodImpl(MethodImplOptions.NoInlining)]
-        public void Orc_Theming_HasNoBreakingChanges()
-        {
-            var assembly = typeof(ThemeColorBrush).Assembly;
+        //[Test, MethodImpl(MethodImplOptions.NoInlining)]
+        //public void Orc_Theming_HasNoBreakingChanges()
+        //{
+        //    var assembly = typeof(ThemeColorBrush).Assembly;
 
-            PublicApiApprover.ApprovePublicApi(assembly);
-        }
+        //    PublicApiApprover.ApprovePublicApi(assembly);
+        //}
 
         internal static class PublicApiApprover
         {
