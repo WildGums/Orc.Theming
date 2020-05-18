@@ -74,6 +74,12 @@ namespace Orc.Theming
         public LibraryThemeProvider() { }
         public override void FillColorSchemeValues(System.Collections.Generic.Dictionary<string, string> values, ControlzEx.Theming.RuntimeThemeColorValues colorValues) { }
     }
+    [System.Windows.Markup.MarkupExtensionReturnType(typeof(System.Windows.Style))]
+    public class MultipleStyleExtension : System.Windows.Markup.MarkupExtension
+    {
+        public MultipleStyleExtension(string resourceKeys) { }
+        public override object ProvideValue(System.IServiceProvider serviceProvider) { }
+    }
     public class ResourceDictionaryService : Orc.Theming.IResourceDictionaryService
     {
         public ResourceDictionaryService() { }
@@ -258,5 +264,17 @@ namespace Orc.Theming.Views
     {
         public ThemeSwitcherView() { }
         public void InitializeComponent() { }
+    }
+}
+namespace XamlGeneratedNamespace
+{
+    public sealed class GeneratedInternalTypeHelper : System.Windows.Markup.InternalTypeHelper
+    {
+        public GeneratedInternalTypeHelper() { }
+        protected override void AddEventHandler(System.Reflection.EventInfo eventInfo, object target, System.Delegate handler) { }
+        protected override System.Delegate CreateDelegate(System.Type delegateType, object target, string handler) { }
+        protected override object CreateInstance(System.Type type, System.Globalization.CultureInfo culture) { }
+        protected override object GetPropertyValue(System.Reflection.PropertyInfo propertyInfo, object target, System.Globalization.CultureInfo culture) { }
+        protected override void SetPropertyValue(System.Reflection.PropertyInfo propertyInfo, object target, object value, System.Globalization.CultureInfo culture) { }
     }
 }
