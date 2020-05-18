@@ -1,10 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Style x:Key="Orc.Styles.TreeView" TargetType="TreeView">
-        <Setter Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Default.Border}" />
-        <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.Default.Background}" />
-        <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.Default.Foreground}" />
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.control.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="Orc.Styles.TreeView" TargetType="TreeView"
+           BasedOn="{StaticResource Orc.Controls.Control}">
     </Style>
     
 </ResourceDictionary>

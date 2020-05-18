@@ -74,11 +74,9 @@
 
     <!-- CheckBox -->
     <Style x:Key="DefaultCheckBoxStyle" TargetType="{x:Type CheckBox}" BasedOn="{StaticResource Orc.Styles.CheckBox}">
-        <Setter Property="FocusVisualStyle" Value="{StaticResource Orc.Styles.Control.Outside.FocusVisual}"/>
 
         <Setter Property="Margin" Value="{DynamicResource Margin.CheckBox}" />
         <Setter Property="Height" Value="{DynamicResource Size.Height}" />
-        <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Width" Value="Auto" />
         <Setter Property="HorizontalAlignment" Value="Left" />
 

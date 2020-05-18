@@ -4,11 +4,11 @@
                    xmlns:catel="http://schemas.catelproject.com">
 
     <StackPanel Orientation="Vertical">
-        <RadioButton Content="Unchecked state" IsChecked="False" />
-        <RadioButton Content="Unchecked &amp; disabled state" IsEnabled="False" IsChecked="False" />
-        
-        <RadioButton Content="Checked state" IsChecked="True" />
-        <RadioButton Content="Checked &amp; disabled state" IsEnabled="False" IsChecked="True" />
+        <RadioButton Content="Unchecked state" IsChecked="False"  GroupName="1" />
+        <RadioButton Content="Unchecked &amp; disabled state" IsEnabled="False" IsChecked="False"  GroupName="2"  />
+
+        <RadioButton Content="Checked state" IsChecked="True"  GroupName="1" />
+        <RadioButton Content="Checked &amp; disabled state" IsEnabled="False" IsChecked="True"  GroupName="2" />
     </StackPanel>
     
 </catel:UserControl>

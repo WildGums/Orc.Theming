@@ -1,9 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Style x:Key="Orc.Styles.ListBox" TargetType="{x:Type ListBox}">
-        <Setter Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Default.Border}" />
-        <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.Default.Background}" />
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.control.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="Orc.Styles.ListBox" TargetType="{x:Type ListBox}"
+           BasedOn="{StaticResource Orc.Controls.Control}">
     </Style>
 
     <Style x:Key="Orc.Styles.ListBoxItem" TargetType="{x:Type ListBoxItem}">
