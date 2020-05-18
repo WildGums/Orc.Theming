@@ -74,12 +74,6 @@ namespace Orc.Theming
         public LibraryThemeProvider() { }
         public override void FillColorSchemeValues(System.Collections.Generic.Dictionary<string, string> values, ControlzEx.Theming.RuntimeThemeColorValues colorValues) { }
     }
-    [System.Windows.Markup.MarkupExtensionReturnType(typeof(System.Windows.Style))]
-    public class MultipleStyleExtension : System.Windows.Markup.MarkupExtension
-    {
-        public MultipleStyleExtension(string resourceKeys) { }
-        public override object ProvideValue(System.IServiceProvider serviceProvider) { }
-    }
     public class ResourceDictionaryService : Orc.Theming.IResourceDictionaryService
     {
         public ResourceDictionaryService() { }
