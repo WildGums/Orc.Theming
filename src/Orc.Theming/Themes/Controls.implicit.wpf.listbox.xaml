@@ -6,7 +6,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="Orc.Styles.ListBox" TargetType="{x:Type ListBox}"
-           BasedOn="{StaticResource Orc.Controls.Control}">
+           BasedOn="{StaticResource Orc.Styles.Control}">
     </Style>
 
     <Style x:Key="Orc.Styles.ListBoxItem" TargetType="{x:Type ListBoxItem}">

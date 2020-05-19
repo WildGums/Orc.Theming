@@ -6,7 +6,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="Orc.Styles.MenuItem" TargetType="{x:Type MenuItem}"
-           BasedOn="{StaticResource Orc.Controls.Control}">
+           BasedOn="{StaticResource Orc.Styles.Control}">
     </Style>
     
 </ResourceDictionary>

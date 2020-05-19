@@ -6,7 +6,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="Orc.Styles.RichTextBox" TargetType="{x:Type RichTextBox}"
-           BasedOn="{StaticResource Orc.Controls.TextBoxBase}">
+           BasedOn="{StaticResource Orc.Styles.TextBoxBase}">
 
         <Setter Property="Template">
             <Setter.Value>

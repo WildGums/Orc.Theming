@@ -6,7 +6,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="Orc.Styles.ToggleButton" TargetType="{x:Type ToggleButton}"
-           BasedOn="{StaticResource Orc.Controls.ButtonBase}">
+           BasedOn="{StaticResource Orc.Styles.ButtonBase}">
 
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>

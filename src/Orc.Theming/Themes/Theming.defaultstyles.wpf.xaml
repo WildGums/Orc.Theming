@@ -37,9 +37,9 @@
     <catel:BooleanToHidingVisibilityConverter x:Key="BooleanToHidingVisibilityConverter" />
     <catel:GetFirstValidationErrorConverter x:Key="GetFirstValidationErrorConverter" />
 
-    <Style x:Key="{x:Type TextBoxBase}" BasedOn="{StaticResource Orc.Controls.TextBoxBase}"/>
-    <Style x:Key="{x:Type ButtonBase}" BasedOn="{StaticResource Orc.Controls.ButtonBase}"/>
-    <Style x:Key="{x:Type Control}" BasedOn="{StaticResource Orc.Controls.Control}"/>
+    <Style x:Key="{x:Type TextBoxBase}" BasedOn="{StaticResource Orc.Styles.TextBoxBase}"/>
+    <Style x:Key="{x:Type ButtonBase}" BasedOn="{StaticResource Orc.Styles.ButtonBase}"/>
+    <Style x:Key="{x:Type Control}" BasedOn="{StaticResource Orc.Styles.Control}"/>
 
     <!-- Buttons -->
     <Style x:Key="DefaultButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource Orc.Styles.Button}">

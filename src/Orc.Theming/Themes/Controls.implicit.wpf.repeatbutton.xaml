@@ -6,7 +6,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="Orc.Styles.RepeatButton" TargetType="{x:Type RepeatButton}"
-           BasedOn="{StaticResource Orc.Controls.ButtonBase}">
+           BasedOn="{StaticResource Orc.Styles.ButtonBase}">
 
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>

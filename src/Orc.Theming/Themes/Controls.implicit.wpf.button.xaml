@@ -6,7 +6,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="Orc.Styles.Button" TargetType="{x:Type Button}"
-           BasedOn="{StaticResource Orc.Controls.ButtonBase}">
+           BasedOn="{StaticResource Orc.Styles.ButtonBase}">
 
         <Setter Property="Template">
             <Setter.Value>

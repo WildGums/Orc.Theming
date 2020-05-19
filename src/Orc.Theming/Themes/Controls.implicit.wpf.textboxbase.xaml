@@ -8,7 +8,7 @@
     <SolidColorBrush x:Key="Orc.Styles.TextBox.Selection.Highlight" Color="#0078D7"/>
     <SolidColorBrush x:Key="Orc.Styles.TextBox.Selection.HighlightInactive" Color="#B9B9B9"/>
 
-    <Style x:Key="Orc.Controls.TextBoxBase" BasedOn="{StaticResource Orc.Controls.Control}">
+    <Style x:Key="Orc.Styles.TextBoxBase" BasedOn="{StaticResource Orc.Styles.Control}">
 
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
         <Setter Property="Control.HorizontalContentAlignment" Value="Left"/>

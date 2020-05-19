@@ -7,7 +7,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="Orc.Styles.CheckBox" TargetType="{x:Type CheckBox}"
-           BasedOn="{StaticResource Orc.Controls.Control}">
+           BasedOn="{StaticResource Orc.Styles.Control}">
 
         <Setter Property="FocusVisualStyle" Value="{StaticResource Orc.Styles.Control.Outside.FocusVisual}"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
