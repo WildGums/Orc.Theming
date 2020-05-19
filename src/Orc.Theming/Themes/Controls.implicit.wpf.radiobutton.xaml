@@ -9,6 +9,8 @@
     <Style x:Key="Orc.Styles.RadioButton" TargetType="{x:Type RadioButton}"
            BasedOn="{StaticResource Orc.Styles.Control}">
 
+        <Setter Property="FocusVisualStyle" Value="{StaticResource Orc.Styles.Control.Outside.FocusVisual}"/>
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RadioButton}">
@@ -44,7 +46,6 @@
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
-
             </Setter.Value>
         </Setter>
 
