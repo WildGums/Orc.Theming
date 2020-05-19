@@ -47,6 +47,13 @@ namespace Orc.Theming
         public static System.Collections.Generic.IEnumerable<string> GetRegisteredFonts() { }
         public static void RegisterFont(string name, System.Windows.Media.FontFamily fontFamily) { }
     }
+    public static class FrameworkElementExtensions
+    {
+        public static TBehavior AttachBehavior<TBehavior>(this System.Windows.FrameworkElement frameworkElement)
+            where TBehavior : Microsoft.Xaml.Behaviors.Behavior { }
+        public static void DetachBehavior<TBehavior>(this System.Windows.FrameworkElement frameworkElement)
+            where TBehavior : Microsoft.Xaml.Behaviors.Behavior { }
+    }
     public interface IAccentColorService
     {
         event System.EventHandler<System.EventArgs> AccentColorChanged;
@@ -258,17 +265,5 @@ namespace Orc.Theming.Views
     {
         public ThemeSwitcherView() { }
         public void InitializeComponent() { }
-    }
-}
-namespace XamlGeneratedNamespace
-{
-    public sealed class GeneratedInternalTypeHelper : System.Windows.Markup.InternalTypeHelper
-    {
-        public GeneratedInternalTypeHelper() { }
-        protected override void AddEventHandler(System.Reflection.EventInfo eventInfo, object target, System.Delegate handler) { }
-        protected override System.Delegate CreateDelegate(System.Type delegateType, object target, string handler) { }
-        protected override object CreateInstance(System.Type type, System.Globalization.CultureInfo culture) { }
-        protected override object GetPropertyValue(System.Reflection.PropertyInfo propertyInfo, object target, System.Globalization.CultureInfo culture) { }
-        protected override void SetPropertyValue(System.Reflection.PropertyInfo propertyInfo, object target, object value, System.Globalization.CultureInfo culture) { }
     }
 }
