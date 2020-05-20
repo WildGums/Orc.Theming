@@ -37,8 +37,8 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Checked.Background}"/>
-                <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.Pressed.Foreground}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Checked.Border}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.Checked.Foreground}"/>
             </Trigger>
         </Style.Triggers>
 
