@@ -9,6 +9,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <TextBox Text="Default state"/>
@@ -23,6 +24,10 @@
         <TextBox Grid.Row="3"
                  Text="Disabled" 
                  IsEnabled="False"/>
+
+        <TextBox Grid.Row="4"
+                 Text="Stretched" 
+                 VerticalAlignment="Stretch"/>
     </Grid>
     
 </catel:UserControl>

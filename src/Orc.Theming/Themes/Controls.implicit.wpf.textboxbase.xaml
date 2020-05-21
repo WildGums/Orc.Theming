@@ -38,6 +38,10 @@
 
                 <Setter Property="TextBoxBase.SelectionBrush" Value="{DynamicResource Orc.Styles.TextBox.Selection.HighlightInactive}"/>
             </MultiTrigger>
+
+            <Trigger Property="TextBoxBase.VerticalAlignment" Value="Stretch">
+                <Setter Property="TextBoxBase.Height" Value="Auto"/>
+            </Trigger>
         </Style.Triggers>
     </Style>
 
