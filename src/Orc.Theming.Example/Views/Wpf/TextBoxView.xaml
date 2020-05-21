@@ -9,8 +9,12 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
         <TextBox Text="Default state"/>
         <TextBox x:Name="FocusTextBox"
@@ -24,10 +28,14 @@
         <TextBox Grid.Row="3"
                  Text="Disabled" 
                  IsEnabled="False"/>
-
-        <TextBox Grid.Row="4"
-                 Text="Stretched" 
+        <TextBox Grid.Row="4" Grid.ColumnSpan="2"
+                 Text="Horizontal Stretch"
+                 HorizontalAlignment="Stretch"/>
+        <TextBox Grid.Column="1" Grid.RowSpan="4" Height="Auto"
+                 Text="Vetical Stretch and multiline"
+                 TextWrapping="Wrap"
+                 AcceptsReturn="True"
                  VerticalAlignment="Stretch"/>
     </Grid>
-    
+
 </catel:UserControl>
