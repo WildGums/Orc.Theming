@@ -37,7 +37,7 @@
                                         Width="{Binding ElementName=actualContent, Path=ActualWidth}">
 
                                 <!-- Internal StackPanel, otherwise the whole control will have the background brush -->
-                                <StackPanel Background="{StaticResource InfoBarMessageBackgroundBrush}">
+                                <StackPanel Background="{DynamicResource InfoBarMessageBackgroundBrush}">
                                     <!-- Actual text -->
                                     <TextBlock Padding="4,2,4,2" 
                                                Foreground="Black"
@@ -45,7 +45,7 @@
 
                                     <!-- Line -->
                                     <Line Name="infoBarSeparator" Margin="0" 
-                                          Stroke="{StaticResource InfoBarMessageSeparatorBrush}" 
+                                          Stroke="{DynamicResource InfoBarMessageSeparatorBrush}" 
                                           X1="0" X2="1" Stretch="UniformToFill" />
                                 </StackPanel>
 
@@ -58,7 +58,7 @@
                                Placement="Bottom" 
 							   Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualWidth}"
                                AllowsTransparency="True" PopupAnimation="Fade">
-                            <Grid Background="{StaticResource InfoBarMessageErrorTextBackgroundBrush}"
+                            <Grid Background="{DynamicResource InfoBarMessageErrorTextBackgroundBrush}"
 								  DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type catel:InfoBarMessageControl}}}">
 
                                 <!-- Column definitions -->
@@ -88,7 +88,7 @@
                                                 <!-- Content -->
                                                 <Image Grid.Column="0" Source="/Catel.MVVM;component/Resources/Images/Error.png" Margin="2,2,4,2" Width="16" Height="16"/>
                                                 <TextBlock Grid.Column="1" 
-                                                           Foreground="{StaticResource InfoBarMessageErrorTextColorBrush}" 
+                                                           Foreground="{DynamicResource InfoBarMessageErrorTextColorBrush}" 
                                                            Text="{Binding}" TextWrapping="Wrap" />
                                             </Grid>
                                         </DataTemplate>
@@ -110,7 +110,7 @@
                                                 <!-- Content -->
                                                 <Image Grid.Column="0" Source="/Catel.MVVM;component/Resources/Images/Warning.png" Margin="2,2,4,2" Width="16" Height="16"/>
                                                 <TextBlock Grid.Column="1" 
-                                                           Foreground="{StaticResource InfoBarMessageWarningTextColorBrush}" 
+                                                           Foreground="{DynamicResource InfoBarMessageWarningTextColorBrush}" 
                                                            Text="{Binding}" TextWrapping="Wrap" />
                                             </Grid>
                                         </DataTemplate>
@@ -119,7 +119,7 @@
 
                                 <!-- Line -->
                                 <Line Grid.Row="2" Margin="0" 
-                                      Stroke="{StaticResource InfoBarMessageSeparatorBrush}"  
+                                      Stroke="{DynamicResource InfoBarMessageSeparatorBrush}"  
                                       X1="0" X2="1" 
                                       Stretch="UniformToFill" />
 

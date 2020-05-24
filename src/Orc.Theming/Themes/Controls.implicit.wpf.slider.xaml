@@ -32,8 +32,8 @@
                     <Grid>
                         <Ellipse x:Name="BackEllipse" 
                                  Width="13" Height="13" 
-                                 Stroke="White"
-                                 Fill="White"
+                                 Stroke="{DynamicResource Orc.Brushes.White}"
+                                 Fill="{DynamicResource Orc.Brushes.White}"
                                  StrokeThickness="1"/>
 
                         <Ellipse x:Name="ThumbEllipse"

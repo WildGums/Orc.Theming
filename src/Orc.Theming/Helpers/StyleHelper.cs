@@ -231,7 +231,7 @@
                 }
                 catch (Exception ex)
                 {
-                    Log.Warning(ex, "Failed to add a default style ('{0}') definition to the list of styles", key);
+                    Log.Warning(ex, $"Failed to add a default style ('{key}') definition to the list of styles");
                 }
             }
 
