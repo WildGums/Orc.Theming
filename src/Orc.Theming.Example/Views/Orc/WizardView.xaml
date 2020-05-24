@@ -1,0 +1,10 @@
+﻿<catel:UserControl x:Class="Orc.Theming.Example.Views.WizardView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:catel="http://schemas.catelproject.com">
+
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+        <Button Content="Show wizard..." Command="{Binding ShowWizard}" />
+    </StackPanel>
+    
+</catel:UserControl>
