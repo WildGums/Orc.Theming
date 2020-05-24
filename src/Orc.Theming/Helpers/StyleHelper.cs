@@ -143,20 +143,20 @@
 
             var foundDefaultStyles = FindDefaultStyles(sourceResources, defaultPrefix).ToList();
 
-            // Important: invert order and skip duplicates
-            var defaultStylesDictionary = new Dictionary<string, StyleInfo>();
+            // Important: invert order and skip duplicates (but based on Type, not on string key)
+            var defaultStylesDictionary = new Dictionary<Type, StyleInfo>();
 
             for (var i = foundDefaultStyles.Count - 1; i >= 0; i--)
             {
                 var styleInfo = foundDefaultStyles[i];
 
-                if (defaultStylesDictionary.TryGetValue(styleInfo.SourceKey, out var existingStyleInfo))
+                if (defaultStylesDictionary.TryGetValue(styleInfo.TargetType, out var existingStyleInfo))
                 {
                     Log.Debug($"Default style for '{styleInfo.TargetType.Name}' already coming from '{existingStyleInfo.SourceDictionary}', ignoring registration from '{styleInfo.SourceDictionary}'");
                     continue;
                 }
 
-                defaultStylesDictionary[styleInfo.SourceKey] = styleInfo;
+                defaultStylesDictionary[styleInfo.TargetType] = styleInfo;
             }
 
             // Important note: Styles are coming from Orchestra.Core (implicit) by default. In some cases (such as MahApps, or any other UI lib) 
