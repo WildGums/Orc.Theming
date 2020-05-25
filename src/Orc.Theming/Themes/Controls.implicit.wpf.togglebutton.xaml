@@ -5,14 +5,14 @@
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.buttonbase.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="Orc.Styles.ToggleButton" TargetType="{x:Type ToggleButton}"
+    <Style x:Key="Orc.Styles.ToggleButton"
            BasedOn="{StaticResource Orc.Styles.ButtonBase}">
 
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="1"/>
+        <Setter Property="ToggleButton.HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="ToggleButton.VerticalContentAlignment" Value="Center"/>
+        <Setter Property="ToggleButton.Padding" Value="1"/>
 
-        <Setter Property="Template">
+        <Setter Property="ToggleButton.Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                     <Grid x:Name="ChromeGrid"
@@ -37,9 +37,9 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <Trigger Property="IsChecked" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Checked.Border}"/>
-                <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.Checked.Foreground}"/>
+            <Trigger Property="ToggleButton.IsChecked" Value="True">
+                <Setter Property="ToggleButton.BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Checked.Border}"/>
+                <Setter Property="ToggleButton.Foreground" Value="{DynamicResource Orc.Brushes.Control.Checked.Foreground}"/>
             </Trigger>
         </Style.Triggers>
 
