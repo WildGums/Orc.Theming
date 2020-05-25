@@ -18,19 +18,28 @@
                                      VerticalAlignment="{TemplateBinding VerticalAlignment}"
                                      HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
                         <BulletDecorator.Bullet>
-                            <Border x:Name="RadioButtonBorder"
-                                    Height="14"
-                                    Width="14"
-                                    CornerRadius="100" 
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    BorderBrush="{TemplateBinding BorderBrush}" 
-                                    Background="{TemplateBinding Background}">
+                            <Grid>
+                                <Border x:Name="Chrome"
+                                        Height="14"
+                                        Width="14"
+                                        CornerRadius="100" 
+                                        BorderThickness="0"
+                                        Background="{DynamicResource Orc.Brushes.Control.Background}"/>
 
-                                <Ellipse x:Name="RadioMark" 
+                                <Border x:Name="RadioButtonBorder"
+                                        Height="14"
+                                        Width="14"
+                                        CornerRadius="100" 
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        BorderBrush="{TemplateBinding BorderBrush}" 
+                                        Background="{TemplateBinding Background}">
+
+                                    <Ellipse x:Name="RadioMark" 
                                          Margin="3"
                                          Fill="{DynamicResource Orc.Brushes.AccentColor}" 
                                          Width="6" Height="6"/>
-                            </Border>
+                                </Border>
+                            </Grid>
                         </BulletDecorator.Bullet>
 
                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -41,7 +50,7 @@
                     </BulletDecorator>
 
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsChecked" Value="false">
+                        <Trigger Property="IsChecked" Value="False">
                             <Setter TargetName="RadioMark" Property="Visibility" Value="Hidden"/>
                         </Trigger>
                     </ControlTemplate.Triggers>

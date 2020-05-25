@@ -15,7 +15,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
-                    <Grid x:Name="ChromeGrid" Background="{TemplateBinding Background}">
+                    <Grid x:Name="ChromeGrid"
+                          Background="{DynamicResource Orc.Brushes.Control.Background}">
 
                         <Border x:Name="border" 
                                 BorderBrush="{TemplateBinding BorderBrush}" 

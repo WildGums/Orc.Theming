@@ -17,7 +17,8 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ButtonBase}">
                     <Grid x:Name="ChromeGrid"
-                          Background="{TemplateBinding Background}">
+                          Background="{DynamicResource Orc.Brushes.Control.Background}">
+
                         <Border x:Name="border" 
                                 BorderBrush="{TemplateBinding BorderBrush}" 
                                 BorderThickness="{TemplateBinding BorderThickness}" 
