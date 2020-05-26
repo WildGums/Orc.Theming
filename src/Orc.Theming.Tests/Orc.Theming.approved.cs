@@ -29,7 +29,7 @@ namespace Orc.Theming
     }
     public static class ColorExtensions
     {
-        public static System.Windows.Media.Color ConvertToNonAlphaColor(System.Windows.Media.Color backgroundColor, System.Windows.Media.Color accentColor) { }
+        public static System.Windows.Media.Color ConvertToNonAlphaColor(this System.Windows.Media.Color backgroundColor, System.Windows.Media.Color accentColor) { }
         public static System.Windows.Media.SolidColorBrush ToSolidColorBrush(this System.Windows.Media.Color color, double opacity = 1) { }
     }
     public class FontImage : Catel.Windows.Markup.UpdatableMarkupExtension
@@ -43,6 +43,8 @@ namespace Orc.Theming
         public static System.Windows.Media.Brush DefaultBrush { get; set; }
         public static string DefaultFontFamily { get; set; }
         public System.Windows.Media.ImageSource GetImageSource() { }
+        protected override void OnTargetObjectLoaded() { }
+        protected override void OnTargetObjectUnloaded() { }
         protected override object ProvideDynamicValue(System.IServiceProvider serviceProvider) { }
         public static System.Windows.Media.FontFamily GetRegisteredFont(string name) { }
         public static System.Collections.Generic.IEnumerable<string> GetRegisteredFonts() { }
@@ -199,6 +201,7 @@ namespace Orc.Theming
     {
         public ThemeManager(ControlzEx.Theming.ThemeManager controlzThemeManager, Orc.Theming.IAccentColorService accentColorService, Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
         public static Orc.Theming.ThemeManager Current { get; }
+        public event System.EventHandler<System.EventArgs> ThemeChanged;
         public System.Windows.Media.SolidColorBrush GetAccentColorBrush() { }
         public System.Windows.Media.Color GetThemeColor(Orc.Theming.ThemeColorStyle colorStyle = 0) { }
         public System.Windows.Media.Color GetThemeColor(string resourceName) { }
