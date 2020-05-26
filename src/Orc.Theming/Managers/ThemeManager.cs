@@ -12,6 +12,27 @@
 
     public class ThemeManager
     {
+        #region Constructors
+        public ThemeManager(ControlzEx.Theming.ThemeManager controlzThemeManager, IAccentColorService accentColorService, IBaseColorSchemeService baseColorSchemeService)
+        {
+            Argument.IsNotNull(() => controlzThemeManager);
+            Argument.IsNotNull(() => accentColorService);
+            Argument.IsNotNull(() => baseColorSchemeService);
+
+            _accentColorService = accentColorService;
+            _baseColorSchemeService = baseColorSchemeService;
+            _controlzThemeManager = controlzThemeManager;
+
+            _controlzThemeManager.ThemeChanged += OnThemeManagerThemeChanged;
+            _accentColorService.AccentColorChanged += OnAccentColorChanged;
+            _baseColorSchemeService.BaseColorSchemeChanged += OnBaseColorSchemeChanged;
+        }
+        #endregion
+
+        public static ThemeManager Current { get { return CurrentLazy.Value; } }
+
+        public event EventHandler<EventArgs> ThemeChanged;
+
         #region Fields
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
 
@@ -31,25 +52,6 @@
         // Note: must be lazy because we don't want the static ctor to be invoked whenever we resolve this class correctly via DI
         private static readonly Lazy<ThemeManager> CurrentLazy = new Lazy<ThemeManager>(() => ServiceLocator.Default.ResolveType<ThemeManager>());
         #endregion
-
-        #region Constructors
-        public ThemeManager(ControlzEx.Theming.ThemeManager controlzThemeManager, IAccentColorService accentColorService, IBaseColorSchemeService baseColorSchemeService)
-        {
-            Argument.IsNotNull(() => controlzThemeManager);
-            Argument.IsNotNull(() => accentColorService);
-            Argument.IsNotNull(() => baseColorSchemeService);
-
-            _accentColorService = accentColorService;
-            _baseColorSchemeService = baseColorSchemeService;
-            _controlzThemeManager = controlzThemeManager;
-
-            _controlzThemeManager.ThemeChanged += OnThemeManagerThemeChanged;
-            _accentColorService.AccentColorChanged += OnAccentColorChanged;
-            _baseColorSchemeService.BaseColorSchemeChanged += OnBaseColorSchemeChanged;
-        }
-        #endregion
-
-        public static ThemeManager Current { get { return CurrentLazy.Value; } }
 
         #region Methods
         public Color GetThemeColor(string resourceName)
@@ -201,12 +203,12 @@
         {
             Log.Debug("Synchronizing theme");
 
-            var themeGenerator = ControlzEx.Theming.RuntimeThemeGenerator.Current;
+            var themeGenerator = RuntimeThemeGenerator.Current;
 
             var generatedTheme = themeGenerator.GenerateRuntimeTheme(_baseColorSchemeService.GetBaseColorScheme(), _accentColorService.GetAccentColor());
             if (generatedTheme is null)
             {
-                throw Log.ErrorAndCreateException<InvalidOperationException>($"Failed to generate runtime theme");
+                throw Log.ErrorAndCreateException<InvalidOperationException>("Failed to generate runtime theme");
             }
 
             ChangeTheme(generatedTheme);
@@ -216,6 +218,8 @@
         private void ChangeTheme(Theme generatedTheme)
         {
             _controlzThemeManager.ChangeTheme(Application.Current, generatedTheme);
+
+            ThemeChanged?.Invoke(this, EventArgs.Empty);
         }
         #endregion
     }

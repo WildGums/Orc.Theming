@@ -19,6 +19,10 @@
     public class FontImage : UpdatableMarkupExtension
     {
         #region Constants
+        private const string DefaultThemeManagerColorName = "Gray1";
+        #endregion
+
+        #region Fields
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
 
         private static readonly Dictionary<string, FontFamily> RegisteredFontFamilies = new Dictionary<string, FontFamily>();
@@ -43,7 +47,6 @@
         {
             AllowUpdatableStyleSetters = true;
             FontFamily = DefaultFontFamily;
-            Brush = DefaultBrush;
         }
 
         /// <summary>
@@ -199,6 +202,52 @@
 
             return RegisteredFontFamilies.ContainsKey(name) ? RegisteredFontFamilies[name] : null;
         }
+
+        private void UpdateBrush()
+        {
+            var currentThemeManager = ThemeManager.Current;
+            if (currentThemeManager is null)
+            {
+                return;
+            }
+
+            Brush = currentThemeManager.GetThemeColorBrush(DefaultThemeManagerColorName) ?? DefaultBrush;
+
+            UpdateValue();
+        }
+        protected override void OnTargetObjectLoaded()
+        {
+            base.OnTargetObjectLoaded();
+
+            var currentThemeManager = ThemeManager.Current;
+            if (currentThemeManager is null)
+            {
+                return;
+            }
+
+            currentThemeManager.ThemeChanged += OnThemeChanged;
+
+            UpdateBrush();
+        }
+
+        protected override void OnTargetObjectUnloaded()
+        {
+            base.OnTargetObjectUnloaded();
+
+            var currentThemeManager = ThemeManager.Current;
+            if (currentThemeManager is null)
+            {
+                return;
+            }
+
+            currentThemeManager.ThemeChanged -= OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            UpdateBrush();
+        }
+
         #endregion
     }
 }
