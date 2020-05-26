@@ -195,21 +195,21 @@
 
                                             <!-- Start: Previous button content -->
                                             <Button x:Name="PART_PreviousButton"
-                                            Grid.Row="0" Grid.Column="0"
-                                            Template="{StaticResource &#214;}"
-                                            Height="20" Width="28"
-                                            HorizontalAlignment="Left"
-                                            Focusable="False"
+                                                    Grid.Row="0" Grid.Column="0"
+                                                    Template="{StaticResource &#214;}"
+                                                    Height="20" Width="28"
+                                                    HorizontalAlignment="Left"
+                                                    Focusable="False"
                                             />
                                             <!-- End: Previous button content -->
 
                                             <!-- Start: Header button content -->
                                             <Button x:Name="PART_HeaderButton"
-                                            Grid.Row="0" Grid.Column="1"
-                                            Template="{StaticResource &#216;}"
-                                            HorizontalAlignment="Center" VerticalAlignment="Center"
-                                            FontWeight="Bold" FontSize="10.5"
-                                            Focusable="False"
+                                                    Grid.Row="0" Grid.Column="1"
+                                                    Template="{StaticResource &#216;}"
+                                                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                    FontWeight="Bold" FontSize="10.5"
+                                                    Focusable="False"
                                             />
                                             <!-- End: Header button content -->
 

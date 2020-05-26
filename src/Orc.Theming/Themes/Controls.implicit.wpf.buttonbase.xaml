@@ -8,13 +8,13 @@
 
     <Style x:Key="Orc.Styles.ButtonBase" BasedOn="{StaticResource Orc.Styles.Control}">
 
-        <Setter Property="ButtonBase.FocusVisualStyle" Value="{StaticResource Orc.Styles.Control.Inside.FocusVisual}"/>
+        <Setter Property="Control.FocusVisualStyle" Value="{StaticResource Orc.Styles.Control.Inside.FocusVisual}"/>
 
         <Style.Triggers>
-            <Trigger Property="ButtonBase.IsMouseOver" Value="True">
-                <Setter Property="ButtonBase.Background" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Background}"/>
-                <Setter Property="ButtonBase.BorderBrush"  Value="{DynamicResource Orc.Brushes.Control.MouseOver.Border}"/>
-                <Setter Property="ButtonBase.Foreground" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Foreground}"/>
+            <Trigger Property="Control.IsMouseOver" Value="True">
+                <Setter Property="Control.Background" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Background}"/>
+                <Setter Property="Control.BorderBrush"  Value="{DynamicResource Orc.Brushes.Control.MouseOver.Border}"/>
+                <Setter Property="Control.Foreground" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Foreground}"/>
             </Trigger>
 
             <Trigger Property="ButtonBase.IsPressed" Value="True">
@@ -23,10 +23,10 @@
                 <Setter Property="ButtonBase.Foreground" Value="{DynamicResource Orc.Brushes.Control.Pressed.Foreground}"/>
             </Trigger>
 
-            <Trigger Property="ButtonBase.IsEnabled" Value="False">
-                <Setter Property="ButtonBase.Background" Value="{DynamicResource Orc.Brushes.Control.Disabled.Background}"/>
-                <Setter Property="ButtonBase.BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Disabled.Border}"/>
-                <Setter Property="ButtonBase.Foreground" Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}"/>
+            <Trigger Property="Control.IsEnabled" Value="False">
+                <Setter Property="Control.Background" Value="{DynamicResource Orc.Brushes.Control.Disabled.Background}"/>
+                <Setter Property="Control.BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Disabled.Border}"/>
+                <Setter Property="Control.Foreground" Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}"/>
             </Trigger>
         </Style.Triggers>
     </Style>

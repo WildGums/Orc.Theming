@@ -4,7 +4,19 @@
                    xmlns:catel="http://schemas.catelproject.com">
 
     <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-        <Button Content="Enabled" />
+        <Button Content="Enabled" >
+            <Button.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Test menu item 1">
+                        <MenuItem Header="test_1"/>
+                        <MenuItem Header="test_2"/>
+                        <MenuItem Header="test_3"/>
+                    </MenuItem>
+                    <MenuItem Header="Test menu item 2"/>
+                    <MenuItem Header="Test menu item 3"/>
+                </ContextMenu>
+            </Button.ContextMenu>
+        </Button>
         <Button Content="Disabled" IsEnabled="False" />
     </StackPanel>
     
