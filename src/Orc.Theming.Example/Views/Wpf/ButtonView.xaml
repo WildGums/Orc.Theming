@@ -10,8 +10,10 @@
                     <MenuItem Header="Test menu item 1">
                         <MenuItem Header="test_1"/>
                         <MenuItem Header="test_2"/>
+                        <Separator/>
                         <MenuItem Header="test_3"/>
                     </MenuItem>
+                    <Separator/>
                     <MenuItem Header="Test menu item 2"/>
                     <MenuItem Header="Test menu item 3"/>
                 </ContextMenu>
