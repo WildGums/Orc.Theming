@@ -16,7 +16,7 @@
             return brush;
         }
 
-        public static Color ConvertToNonAlphaColor(Color backgroundColor, Color accentColor)
+        public static Color ConvertToNonAlphaColor(this Color backgroundColor, Color accentColor)
         {
             var alphaNormalized = accentColor.A / (double)255;
 
