@@ -29,6 +29,7 @@ namespace Orc.Theming
     }
     public static class ColorExtensions
     {
+        public static System.Windows.Media.Color ConvertToNonAlphaColor(System.Windows.Media.Color backgroundColor, System.Windows.Media.Color accentColor) { }
         public static System.Windows.Media.SolidColorBrush ToSolidColorBrush(this System.Windows.Media.Color color, double opacity = 1) { }
     }
     public class FontImage : Catel.Windows.Markup.UpdatableMarkupExtension
