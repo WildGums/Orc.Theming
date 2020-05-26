@@ -199,7 +199,7 @@
     </Style>
 
     <ControlTemplate x:Key="{ComponentResourceKey ResourceId=TopLevelHeaderTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}"
-                             TargetType="{x:Type MenuItem}">
+                     TargetType="{x:Type MenuItem}">
         <Grid SnapsToDevicePixels="true">
             <Rectangle x:Name="Bg"
                                Fill="{TemplateBinding Background}"
@@ -216,30 +216,30 @@
                            PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}"
                            VerticalOffset="-1">
                 <Border x:Name="Shdw"
-                                Background="Transparent">
+                       Background="Transparent">
                     <Border x:Name="SubMenuBorder"
-                                    BorderBrush="{DynamicResource Orc.Brushes.Control.Default.Border}"
-                                    BorderThickness="1"
-                                    Background="{DynamicResource Orc.Brushes.Control.Default.Background}">
+                            BorderBrush="{DynamicResource Orc.Brushes.Control.Default.Border}"
+                            BorderThickness="1"
+                            Background="{DynamicResource Orc.Brushes.Control.Default.Background}">
                         <ScrollViewer x:Name="SubMenuScrollViewer"
-                                              Margin="1,0"
-                                              Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
+                                      Margin="1,0"
+                                      Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
                             <Grid RenderOptions.ClearTypeHint="Enabled">
                                 <Canvas HorizontalAlignment="Left"
-                                                Height="0"
-                                                VerticalAlignment="Top"
-                                                Width="0">
+                                        Height="0"
+                                        VerticalAlignment="Top"
+                                        Width="0">
                                     <Rectangle x:Name="OpaqueRect"
-                                                       Fill="{DynamicResource Orc.Brushes.Control.Default.Background}"
-                                                       Height="{Binding ActualHeight, ElementName=SubMenuBorder}"
-                                                       Width="{Binding ActualWidth, ElementName=SubMenuBorder}" />
+                                               Fill="{DynamicResource Orc.Brushes.Control.Default.Background}"
+                                               Height="{Binding ActualHeight, ElementName=SubMenuBorder}"
+                                               Width="{Binding ActualWidth, ElementName=SubMenuBorder}" />
                                 </Canvas>
                                 <ItemsPresenter x:Name="ItemsPresenter"
-                                                        KeyboardNavigation.DirectionalNavigation="Cycle"
-                                                        Grid.IsSharedSizeScope="true"
-                                                        Margin="2"
-                                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                        KeyboardNavigation.TabNavigation="Cycle" />
+                                                KeyboardNavigation.DirectionalNavigation="Cycle"
+                                                Grid.IsSharedSizeScope="true"
+                                                Margin="2"
+                                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                KeyboardNavigation.TabNavigation="Cycle" />
                             </Grid>
                         </ScrollViewer>
                     </Border>
@@ -247,86 +247,51 @@
             </Popup>
         </Grid>
         <ControlTemplate.Triggers>
-            <Trigger Property="IsSuspendingPopupAnimation"
-                             Value="true">
-                <Setter Property="PopupAnimation"
-                                TargetName="PART_Popup"
-                                Value="None" />
+            <Trigger Property="IsSuspendingPopupAnimation" Value="true">
+                <Setter Property="PopupAnimation" TargetName="PART_Popup" Value="None" />
             </Trigger>
-            <Trigger Property="HasDropShadow"
-                             SourceName="PART_Popup"
-                             Value="true">
-                <Setter Property="Margin"
-                                TargetName="Shdw"
-                                Value="0,0,5,5" />
-                <Setter Property="Background"
-                                TargetName="Shdw"
-                                Value="#71000000" />
+            <Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="true">
+                <Setter Property="Margin" TargetName="Shdw" Value="0,0,5,5" />
+                <Setter Property="Background" TargetName="Shdw" Value="#71000000" />
             </Trigger>
-            <Trigger Property="IsHighlighted"
-                             Value="true">
-                <Setter Property="Fill"
-                                TargetName="Bg"
-                                Value="{DynamicResource Orc.Brushes.Control.Pressed.Background}" />
-                <Setter Property="TextBlock.Foreground"
-                                TargetName="Content"
-                                Value="{DynamicResource Orc.Brushes.Control.MouseOver.Foreground}" />
+            <Trigger Property="IsHighlighted" Value="true">
+                <Setter Property="Fill" TargetName="Bg" Value="{DynamicResource Orc.Brushes.Control.Pressed.Background}" />
+                <Setter Property="TextBlock.Foreground" TargetName="Content" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Foreground}" />
             </Trigger>
-            <Trigger Property="IsKeyboardFocused"
-                             Value="true">
-                <Setter Property="Fill"
-                                TargetName="Bg"
-                                Value="{DynamicResource Orc.Brushes.Control.Pressed.Background}" />
+            <Trigger Property="IsKeyboardFocused" Value="true">
+                <Setter Property="Fill" TargetName="Bg" Value="{DynamicResource Orc.Brushes.Control.Pressed.Background}" />
             </Trigger>
-            <Trigger Property="IsSubmenuOpen"
-                             Value="true">
-                <Setter Property="Fill"
-                                TargetName="Bg"
-                                Value="{DynamicResource Orc.Brushes.Control.Pressed.Background}" />
+            <Trigger Property="IsSubmenuOpen" Value="true">
+                <Setter Property="Fill" TargetName="Bg" Value="{DynamicResource Orc.Brushes.Control.Pressed.Background}" />
             </Trigger>
-            <Trigger Property="IsEnabled"
-                             Value="false">
-                <Setter Property="Foreground"
-                                Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}" />
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}" />
             </Trigger>
-            <Trigger Property="ScrollViewer.CanContentScroll"
-                             SourceName="SubMenuScrollViewer"
-                             Value="false">
-                <Setter Property="Canvas.Top"
-                                TargetName="OpaqueRect"
-                                Value="{Binding VerticalOffset, ElementName=SubMenuScrollViewer}" />
-                <Setter Property="Canvas.Left"
-                                TargetName="OpaqueRect"
-                                Value="{Binding HorizontalOffset, ElementName=SubMenuScrollViewer}" />
+            <Trigger Property="ScrollViewer.CanContentScroll" SourceName="SubMenuScrollViewer" Value="false">
+                <Setter Property="Canvas.Top" TargetName="OpaqueRect" Value="{Binding VerticalOffset, ElementName=SubMenuScrollViewer}" />
+                <Setter Property="Canvas.Left" TargetName="OpaqueRect" Value="{Binding HorizontalOffset, ElementName=SubMenuScrollViewer}" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <ControlTemplate x:Key="{ComponentResourceKey ResourceId=TopLevelItemTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}"
-                             TargetType="{x:Type MenuItem}">
+                     TargetType="{x:Type MenuItem}">
         <Grid SnapsToDevicePixels="true">
             <Rectangle x:Name="Bg"
-                               Fill="{TemplateBinding Background}"
-                               Margin="1" />
+                       Fill="{TemplateBinding Background}"
+                       Margin="1" />
             <ContentPresenter ContentSource="Header"
-                                      Margin="{TemplateBinding Padding}"
-                                      RecognizesAccessKey="True"
-                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                              Margin="{TemplateBinding Padding}"
+                              RecognizesAccessKey="True"
+                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
         </Grid>
         <ControlTemplate.Triggers>
-            <Trigger Property="IsHighlighted"
-                             Value="true">
-                <Setter Property="Fill"
-                                TargetName="Bg"
-                                Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Background}" />
-                <Setter Property="TextBlock.Foreground"
-                                Value="{DynamicResource Orc.Brushes.Control.MouseOver.Foreground}" />
+            <Trigger Property="IsHighlighted" Value="true">
+                <Setter Property="Fill" TargetName="Bg" Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Background}" />
+                <Setter Property="TextBlock.Foreground" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Foreground}" />
             </Trigger>
-            <Trigger Property="IsKeyboardFocused"
-                             Value="true">
-                <Setter Property="Fill"
-                                TargetName="Bg"
-                                Value="{DynamicResource Orc.Brushes.Control.Pressed.Background}" />
+            <Trigger Property="IsKeyboardFocused" Value="true">
+                <Setter Property="Fill" TargetName="Bg" Value="{DynamicResource Orc.Brushes.Control.Pressed.Background}" />
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}" />
@@ -335,70 +300,69 @@
     </ControlTemplate>
 
     <ControlTemplate x:Key="{ComponentResourceKey ResourceId=SubmenuHeaderTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}"
-                             TargetType="{x:Type MenuItem}">
+                     TargetType="{x:Type MenuItem}">
         <Grid SnapsToDevicePixels="true">
             <Rectangle x:Name="Bg"
-                               Fill="{TemplateBinding Background}"
-                               Stroke="{TemplateBinding BorderBrush}"
-                               StrokeThickness="1" />
+                       Fill="{TemplateBinding Background}"
+                       Stroke="{TemplateBinding BorderBrush}"
+                       StrokeThickness="1" />
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition SharedSizeGroup="MenuItemIGTColumnGroup"
-                                              Width="Auto" />
+                    <ColumnDefinition SharedSizeGroup="MenuItemIGTColumnGroup" Width="Auto" />
                     <ColumnDefinition Width="17" />
                 </Grid.ColumnDefinitions>
 
                 <ContentPresenter x:Name="Content"
-                                          Grid.Column="0"
-                                          ContentSource="Header"
-                                          Margin="{TemplateBinding Padding}"
-                                          RecognizesAccessKey="True"
-                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                  Grid.Column="0"
+                                  ContentSource="Header"
+                                  Margin="{TemplateBinding Padding}"
+                                  RecognizesAccessKey="True"
+                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                 <TextBlock Grid.Column="1"
-                                   Margin="{TemplateBinding Padding}"
-                                   Text="{TemplateBinding InputGestureText}"
-                                   Visibility="Collapsed" />
+                           Margin="{TemplateBinding Padding}"
+                           Text="{TemplateBinding InputGestureText}"
+                           Visibility="Collapsed" />
                 <Path x:Name="RightArrowPath"
-                              Grid.Column="2"
-                              Data="{StaticResource RightArrow}"
-                              Fill="{DynamicResource Orc.Brushes.Control.Foreground}"
-                              Margin="4,0,0,0"
-                              VerticalAlignment="Center" />
+                      Grid.Column="2"
+                      Data="{StaticResource RightArrow}"
+                      Fill="{DynamicResource Orc.Brushes.Control.Foreground}"
+                      Margin="4,0,0,0"
+                      VerticalAlignment="Center" />
             </Grid>
             <Popup x:Name="PART_Popup"
-                           AllowsTransparency="true"
-                           Focusable="false"
-                           HorizontalOffset="-2"
-                           IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
-                           PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}"
-                           Placement="Right"
-                           VerticalOffset="-3">
+                   AllowsTransparency="true"
+                   Focusable="false"
+                   HorizontalOffset="-2"
+                   IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                   PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}"
+                   Placement="Right"
+                   VerticalOffset="-3">
                 <Border x:Name="Shdw"
-                                Background="Transparent">
+                        Background="Transparent">
                     <Border x:Name="SubMenuBorder"
-                                    BorderBrush="{DynamicResource Orc.Brushes.Control.Default.Border}"
-                                    BorderThickness="1"
-                                    Background="{DynamicResource Orc.Brushes.Control.Default.Background}">
+                            BorderBrush="{DynamicResource Orc.Brushes.Control.Default.Border}"
+                            BorderThickness="1"
+                            Background="{DynamicResource Orc.Brushes.Control.Default.Background}">
                         <ScrollViewer x:Name="SubMenuScrollViewer"
-                                              Margin="1,0"
-                                              Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
+                                      Margin="1,0"
+                                      Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
                             <Grid RenderOptions.ClearTypeHint="Enabled">
                                 <Canvas HorizontalAlignment="Left"
-                                                Height="0"
-                                                VerticalAlignment="Top"
-                                                Width="0">
+                                        Height="0"
+                                        VerticalAlignment="Top"
+                                        Width="0">
                                     <Rectangle x:Name="OpaqueRect"
-                                                       Fill="{DynamicResource Orc.Brushes.Control.Default.Background}"
-                                                       Height="{Binding ActualHeight, ElementName=SubMenuBorder}"
-                                                       Width="{Binding ActualWidth, ElementName=SubMenuBorder}" />
+                                               Fill="{DynamicResource Orc.Brushes.Control.Default.Background}"
+                                               Height="{Binding ActualHeight, ElementName=SubMenuBorder}"
+                                               Width="{Binding ActualWidth, ElementName=SubMenuBorder}" />
                                 </Canvas>
                                 <ItemsPresenter x:Name="ItemsPresenter"
-                                                        KeyboardNavigation.DirectionalNavigation="Cycle"
-                                                        Grid.IsSharedSizeScope="true"
-                                                        Margin="2"
-                                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                        KeyboardNavigation.TabNavigation="Cycle" />
+                                                KeyboardNavigation.DirectionalNavigation="Cycle"
+                                                Grid.IsSharedSizeScope="true"
+                                                Margin="2"
+                                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                KeyboardNavigation.TabNavigation="Cycle" />
                             </Grid>
                         </ScrollViewer>
                     </Border>
@@ -407,51 +371,35 @@
         </Grid>
 
         <ControlTemplate.Triggers>
-            <Trigger Property="IsSuspendingPopupAnimation"
-                             Value="true">
-                <Setter Property="PopupAnimation"
-                                TargetName="PART_Popup"
-                                Value="None" />
+            <Trigger Property="IsSuspendingPopupAnimation" Value="true">
+                <Setter Property="PopupAnimation" TargetName="PART_Popup" Value="None" />
             </Trigger>
-            <Trigger Property="HasDropShadow"
-                             SourceName="PART_Popup"
-                             Value="true">
-                <Setter Property="Margin"
-                                TargetName="Shdw"
-                                Value="0,0,5,5" />
-                <Setter Property="Background"
-                                TargetName="Shdw"
-                                Value="#71000000" />
+            <Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="true">
+                <Setter Property="Margin" TargetName="Shdw" Value="0,0,5,5" />
+                <Setter Property="Background" TargetName="Shdw" Value="#71000000" />
             </Trigger>
-            <Trigger Property="IsHighlighted"
-                             Value="true">
-                <Setter Property="Fill"
-                                TargetName="Bg"
-                                Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Background}" />
-                <Setter Property="TextBlock.Foreground"
-                                TargetName="Content"
-                                Value="{DynamicResource Orc.Brushes.Control.MouseOver.Foreground}" />
-                <Setter Property="Fill"
-                                TargetName="RightArrowPath"
-                                Value="{DynamicResource Orc.Brushes.Control.MouseOver.Foreground}" />
+            <Trigger Property="IsHighlighted" Value="true">
+                <Setter Property="Fill" TargetName="Bg"
+                        Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Background}" />
+                <Setter Property="TextBlock.Foreground" TargetName="Content"
+                        Value="{DynamicResource Orc.Brushes.Control.MouseOver.Foreground}" />
+                <Setter Property="Fill" TargetName="RightArrowPath"
+                        Value="{DynamicResource Orc.Brushes.Control.MouseOver.Foreground}" />
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}" />
             </Trigger>
-            <Trigger Property="ScrollViewer.CanContentScroll"
-                             SourceName="SubMenuScrollViewer"
-                             Value="False">
-                <Setter Property="Canvas.Top"
-                                TargetName="OpaqueRect"
-                                Value="{Binding VerticalOffset, ElementName=SubMenuScrollViewer}" />
-                <Setter Property="Canvas.Left"
-                                TargetName="OpaqueRect"
-                                Value="{Binding HorizontalOffset, ElementName=SubMenuScrollViewer}" />
+            <Trigger Property="ScrollViewer.CanContentScroll" SourceName="SubMenuScrollViewer"
+                     Value="False">
+                <Setter Property="Canvas.Top" TargetName="OpaqueRect"
+                        Value="{Binding VerticalOffset, ElementName=SubMenuScrollViewer}" />
+                <Setter Property="Canvas.Left" TargetName="OpaqueRect"
+                        Value="{Binding HorizontalOffset, ElementName=SubMenuScrollViewer}" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <Style x:Key="Orc.Styles.MenuItem"  TargetType="{x:Type MenuItem}">
+    <Style x:Key="Orc.Styles.MenuItem" TargetType="{x:Type MenuItem}">
         <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.Default.Foreground}" />
         <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.Default.Background}" />
         <Setter Property="ScrollViewer.PanningMode" Value="Both" />
@@ -461,18 +409,18 @@
         <Style.Triggers>
             <Trigger Property="Role" Value="TopLevelHeader">
                 <Setter Property="Template"
-                                Value="{DynamicResource {ComponentResourceKey ResourceId=TopLevelHeaderTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}}" />
+                        Value="{DynamicResource {ComponentResourceKey ResourceId=TopLevelHeaderTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}}" />
             </Trigger>
             <Trigger Property="Role" Value="TopLevelItem">
                 <Setter Property="Template"
-                                Value="{DynamicResource {ComponentResourceKey ResourceId=TopLevelItemTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}}" />
+                        Value="{DynamicResource {ComponentResourceKey ResourceId=TopLevelItemTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}}" />
             </Trigger>
             <Trigger Property="Role" Value="SubmenuHeader">
                 <Setter Property="Template" Value="{DynamicResource {ComponentResourceKey ResourceId=SubmenuHeaderTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}}" />
             </Trigger>
             <Trigger Property="Role" Value="SubmenuItem">
                 <Setter Property="Template"
-                                Value="{DynamicResource {ComponentResourceKey ResourceId=SubmenuItemTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}}" />
+                        Value="{DynamicResource {ComponentResourceKey ResourceId=SubmenuItemTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}}" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -483,13 +431,15 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Separator}">
-                    <Grid Margin="3,2,3,2" SnapsToDevicePixels="true" UseLayoutRounding="False">
-                        <Rectangle Fill="{DynamicResource Orc.Brushes.Control.SelectionInactive.Border}" Height="1" />
+                    <Grid Margin="3,2,3,2" 
+                          SnapsToDevicePixels="true"
+                          UseLayoutRounding="False">
+                        <Rectangle Fill="{DynamicResource Orc.Brushes.Control.SelectionInactive.Border}"
+                                   Height="1" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-
 
 </ResourceDictionary>
