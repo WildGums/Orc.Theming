@@ -2,8 +2,11 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Linq;
+    using System.Reflection;
     using System.Windows;
+    using System.Windows.Data;
     using System.Windows.Markup;
     using System.Windows.Media;
     using Catel;
@@ -27,6 +30,10 @@
 
         private static readonly Dictionary<string, FontFamily> RegisteredFontFamilies = new Dictionary<string, FontFamily>();
         private static readonly double RenderingEmSize;
+
+        private static HashSet<FontImage> RegisteredFontImages = new HashSet<FontImage>();
+        private readonly Dictionary<FrameworkElement, HashSet<DependencyProperty>> _registeredTargetProperties
+            = new Dictionary<FrameworkElement, HashSet<DependencyProperty>>();
         #endregion
 
         #region Constructors
@@ -47,6 +54,8 @@
         {
             AllowUpdatableStyleSetters = true;
             FontFamily = DefaultFontFamily;
+
+            RegisteredFontImages.Add(this);
         }
 
         /// <summary>
@@ -96,6 +105,8 @@
         #region Methods
         protected override object ProvideDynamicValue(IServiceProvider serviceProvider)
         {
+            RegisterTargetProperty();
+
             return GetImageSource();
         }
 
@@ -122,6 +133,69 @@
             // TODO: Consider caching
             var glyph = CreateGlyph(ItemName, family, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal, Brush);
             return glyph;
+        }
+
+        private void RegisterTargetProperty()
+        {
+            if (!(TargetObject is FrameworkElement targetElement))
+            {
+                return;
+            }
+
+            if (!(TargetProperty is DependencyProperty targetProperty))
+            {
+                return;
+            }
+
+            if (!_registeredTargetProperties.TryGetValue(targetElement, out var targetProperties))
+            {
+                targetProperties = new HashSet<DependencyProperty>();
+                _registeredTargetProperties[targetElement] = targetProperties;
+
+                targetElement.Unloaded += OnTargetElementUnloaded;
+            }
+
+            targetProperties.Add(targetProperty);
+        }
+
+        private void OnTargetElementUnloaded(object sender, RoutedEventArgs e)
+        {
+            if (!(sender is FrameworkElement frameworkElement))
+            {
+                return;
+            }
+
+            if (_registeredTargetProperties.ContainsKey(frameworkElement))
+            {
+                _registeredTargetProperties.Remove(frameworkElement);
+            }
+
+            frameworkElement.Unloaded -= OnTargetElementUnloaded;
+        }
+
+        private void UnregisterTargetProperties()
+        {
+            foreach (var registeredTargetProperty in _registeredTargetProperties)
+            {
+                var frameworkElement = registeredTargetProperty.Key;
+                frameworkElement.Unloaded -= OnTargetElementUnloaded;
+            }
+
+            _registeredTargetProperties.Clear();
+        }
+
+        private void UpdateAllValues()
+        {
+            foreach (var registeredTargetProperties in _registeredTargetProperties)
+            {
+                var target = registeredTargetProperties.Key;
+                var properties = registeredTargetProperties.Value;
+
+                foreach (var property  in properties)
+                {
+                    target.SetCurrentValue(property, Value);
+                }
+            }
         }
 
         private static ImageSource CreateGlyph(string text, FontFamily fontFamily, FontStyle fontStyle, FontWeight fontWeight, FontStretch fontStretch, Brush foreBrush)
@@ -213,7 +287,7 @@
 
             Brush = currentThemeManager.GetThemeColorBrush(DefaultThemeManagerColorName) ?? DefaultBrush;
 
-            UpdateValue();
+            UpdateAllValues();
         }
         protected override void OnTargetObjectLoaded()
         {
@@ -232,22 +306,22 @@
 
         protected override void OnTargetObjectUnloaded()
         {
-            base.OnTargetObjectUnloaded();
-
             var currentThemeManager = ThemeManager.Current;
             if (currentThemeManager is null)
             {
                 return;
             }
 
+            UnregisterTargetProperties();
+
             currentThemeManager.ThemeChanged -= OnThemeChanged;
+            base.OnTargetObjectUnloaded();
         }
 
         private void OnThemeChanged(object sender, EventArgs e)
         {
             UpdateBrush();
         }
-
         #endregion
     }
 }
