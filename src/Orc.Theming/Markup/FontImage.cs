@@ -175,9 +175,8 @@
 
         private void UnregisterTargetProperties()
         {
-            foreach (var registeredTargetProperty in _registeredTargetProperties)
+            foreach (var frameworkElement in _registeredTargetProperties.Select(registeredTargetProperty => registeredTargetProperty.Key))
             {
-                var frameworkElement = registeredTargetProperty.Key;
                 frameworkElement.Unloaded -= OnTargetElementUnloaded;
             }
 
@@ -186,11 +185,8 @@
 
         private void UpdateAllValues()
         {
-            foreach (var registeredTargetProperties in _registeredTargetProperties)
+            foreach (var (target, properties) in _registeredTargetProperties)
             {
-                var target = registeredTargetProperties.Key;
-                var properties = registeredTargetProperties.Value;
-
                 foreach (var property  in properties)
                 {
                     target.SetCurrentValue(property, Value);
