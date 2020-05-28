@@ -33,7 +33,7 @@
 
         private static HashSet<FontImage> RegisteredFontImages = new HashSet<FontImage>();
         private readonly Dictionary<FrameworkElement, HashSet<DependencyProperty>> _registeredTargetProperties
-            = new Dictionary<FrameworkElement, HashSet<DependencyProperty>>();
+    = new Dictionary<FrameworkElement, HashSet<DependencyProperty>>();
         #endregion
 
         #region Constructors
@@ -175,8 +175,9 @@
 
         private void UnregisterTargetProperties()
         {
-            foreach (var frameworkElement in _registeredTargetProperties.Select(registeredTargetProperty => registeredTargetProperty.Key))
+            foreach (var registeredTargetProperty in _registeredTargetProperties)
             {
+                var frameworkElement = registeredTargetProperty.Key;
                 frameworkElement.Unloaded -= OnTargetElementUnloaded;
             }
 
@@ -185,8 +186,11 @@
 
         private void UpdateAllValues()
         {
-            foreach (var (target, properties) in _registeredTargetProperties)
+            foreach (var registeredTargetProperties in _registeredTargetProperties)
             {
+                var target = registeredTargetProperties.Key;
+                var properties = registeredTargetProperties.Value;
+
                 foreach (var property  in properties)
                 {
                     target.SetCurrentValue(property, Value);
