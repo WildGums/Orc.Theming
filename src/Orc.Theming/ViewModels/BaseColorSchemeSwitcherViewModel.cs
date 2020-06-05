@@ -2,13 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
-    using System.Windows.Media;
     using Catel;
     using Catel.MVVM;
-    using Catel.Reflection;
 
     public class BaseColorSchemeSwitcherViewModel : ViewModelBase
     {
@@ -21,7 +17,7 @@
             _baseColorSchemeService = baseColorSchemeService;
 
             BaseColorSchemes = _baseColorSchemeService.GetAvailableBaseColorSchemes();
-            SelectedBaseColorScheme = BaseColorSchemes[0];
+            SelectedBaseColorScheme = _baseColorSchemeService.GetBaseColorScheme() ?? BaseColorSchemes[0];
         }
 
         public IReadOnlyList<string> BaseColorSchemes { get; private set; }
