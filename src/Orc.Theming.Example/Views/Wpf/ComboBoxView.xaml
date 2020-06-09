@@ -12,7 +12,8 @@
         <ComboBox ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}"
                   IsEnabled="False" IsEditable="False" ToolTip="Disabled | Not Editable" />
         <ComboBox ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}"
-                  IsEnabled="False" IsEditable="True" ToolTip="Disabled | Editable" />
+                  IsEnabled="False" IsEditable="True" ToolTip="Disabled | Editable" 
+                  SelectionChanged="Selector_OnSelectionChanged"/>
     </StackPanel>
 
 </catel:UserControl>

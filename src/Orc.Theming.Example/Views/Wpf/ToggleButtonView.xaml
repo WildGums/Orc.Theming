@@ -7,6 +7,12 @@
         <ToggleButton Content="Default" />
         <ToggleButton Content="Pressed" IsChecked="True"/>
         <ToggleButton Content="Disabled" IsEnabled="False" />
+        <ToggleButton ToolTip="Compare all"
+                      VerticalAlignment="Center"
+                      HorizontalContentAlignment="Center"
+                      VerticalContentAlignment="Center"
+                      Content="&#8800;"
+                      FontSize="28"/>
     </StackPanel>
     
 </catel:UserControl>

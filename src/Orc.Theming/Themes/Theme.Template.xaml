@@ -113,7 +113,7 @@
     <SolidColorBrush x:Key="Orc.Brushes.ExtremeHighlightBrush" Color="{StaticResource Orc.Colors.ExtremeHighlightColor}" options:Freeze="True" />
     <SolidColorBrush x:Key="Orc.Brushes.DarkExtremeHighlightBrush" Color="{StaticResource Orc.Colors.DarkExtremeHighlightColor}" options:Freeze="True" />
 
-    <!-- Base brushes -->
+    <!-- Base brushes -->   
     <SolidColorBrush x:Key="White" Color="{StaticResource WhiteColor}" options:Freeze="True" />
     <SolidColorBrush x:Key="White20" Color="{StaticResource WhiteColor20}" options:Freeze="True" />
     <SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource WhiteColor}" options:Freeze="True" />

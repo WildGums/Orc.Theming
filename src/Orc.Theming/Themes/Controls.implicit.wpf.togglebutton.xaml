@@ -30,7 +30,11 @@
                                                   Margin="{TemplateBinding Padding}" 
                                                   RecognizesAccessKey="True" 
                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
-                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                    <ContentPresenter.Resources>
+                                        <Style TargetType="{x:Type TextBlock}" BasedOn="{x:Null}"/>
+                                    </ContentPresenter.Resources>
+                                </ContentPresenter>
                         </Border>
                     </Grid>
                 </ControlTemplate>
