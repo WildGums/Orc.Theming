@@ -84,6 +84,22 @@ namespace Orc.Theming
         public LibraryThemeProvider() { }
         public override void FillColorSchemeValues(System.Collections.Generic.Dictionary<string, string> values, ControlzEx.Theming.RuntimeThemeColorValues colorValues) { }
     }
+    public class Margin : System.Windows.DependencyObject
+    {
+        public static readonly System.Windows.DependencyProperty BottomProperty;
+        public static readonly System.Windows.DependencyProperty LeftProperty;
+        public static readonly System.Windows.DependencyProperty RightProperty;
+        public static readonly System.Windows.DependencyProperty TopProperty;
+        public Margin() { }
+        public static double GetBottom(System.Windows.DependencyObject d) { }
+        public static double GetLeft(System.Windows.DependencyObject d) { }
+        public static double GetRight(System.Windows.DependencyObject d) { }
+        public static double GetTop(System.Windows.DependencyObject d) { }
+        public static void SetBottom(System.Windows.DependencyObject d, double value) { }
+        public static void SetLeft(System.Windows.DependencyObject d, double value) { }
+        public static void SetRight(System.Windows.DependencyObject d, double value) { }
+        public static void SetTop(System.Windows.DependencyObject d, double value) { }
+    }
     public class ResourceDictionaryService : Orc.Theming.IResourceDictionaryService
     {
         public ResourceDictionaryService() { }
