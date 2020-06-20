@@ -21,17 +21,13 @@
     /// </remarks>
     public class FontImage : UpdatableMarkupExtension
     {
-        #region Constants
-        private const string DefaultThemeManagerColorName = "Gray1";
-        #endregion
-
         #region Fields
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
 
         private static readonly Dictionary<string, FontFamily> RegisteredFontFamilies = new Dictionary<string, FontFamily>();
         private static readonly double RenderingEmSize;
 
-        private static HashSet<FontImage> RegisteredFontImages = new HashSet<FontImage>();
+        private static readonly HashSet<FontImage> RegisteredFontImages = new HashSet<FontImage>();
         private readonly Dictionary<FrameworkElement, HashSet<DependencyProperty>> _registeredTargetProperties
     = new Dictionary<FrameworkElement, HashSet<DependencyProperty>>();
         #endregion
@@ -41,6 +37,7 @@
         {
             RegisterFont("Segoe UI Symbol", new FontFamily("Segoe UI Symbol"));
             DefaultFontFamily = "Segoe UI Symbol";
+            DefaultBrushKey = "Gray1";
             DefaultBrush = Brushes.Black;
 
             var dpi = ScreenHelper.GetDpi().Width;
@@ -83,6 +80,11 @@
         public static Brush DefaultBrush { get; set; }
 
         /// <summary>
+        /// Gets or sets the default brush key that will be used to determine the brush based on the current theme.
+        /// </summary>
+        public static string DefaultBrushKey { get; set; }
+
+        /// <summary>
         /// Gets the font family.
         /// </summary>
         /// <value>The font family.</value>
@@ -93,6 +95,11 @@
         /// </summary>
         /// <value>The brush.</value>
         public Brush Brush { get; set; }
+
+        /// <summary>
+        /// Gets or sets the brush key that will be used to determine the brush based on the current theme.
+        /// </summary>
+        public string BrushKey { get; set; }
 
         /// <summary>
         /// Gets or sets the font item name.
@@ -118,7 +125,7 @@
             }
 
             var fontFamily = FontFamily;
-            if (fontFamily == null)
+            if (fontFamily is null)
             {
                 throw Log.ErrorAndCreateException<InvalidOperationException>("FontFamily cannot be null, make sure to set it or use the DefaultFontFamily");
             }
@@ -129,10 +136,50 @@
             }
 
             var family = RegisteredFontFamilies[fontFamily];
+            var brush = GetBrush();
 
             // TODO: Consider caching
-            var glyph = CreateGlyph(ItemName, family, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal, Brush);
+            var glyph = CreateGlyph(ItemName, family, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal, brush);
             return glyph;
+        }
+
+        protected virtual Brush GetBrush()
+        {
+            // Step 1: specific brush always wins
+            var brush = Brush;
+            if (brush is null == false)
+            {
+                return brush;
+            }
+
+            var currentThemeManager = ThemeManager.Current;
+            if (currentThemeManager is null == false)
+            {
+                // Step 2: respect key
+                var brushKey = BrushKey;
+                if (!string.IsNullOrWhiteSpace(brushKey))
+                {
+                    brush = currentThemeManager.GetThemeColorBrush(brushKey);
+                    if (brush is null == false)
+                    {
+                        return brush;
+                    }
+                }
+
+                // Step 3: use DefaultBrushKey and search again
+                brushKey = DefaultBrushKey;
+                if (!string.IsNullOrWhiteSpace(brushKey))
+                {
+                    brush = currentThemeManager.GetThemeColorBrush(brushKey);
+                    if (brush is null == false)
+                    {
+                        return brush;
+                    }
+                }
+            }
+
+            // Final result: if we can't find anything, resolve the default brush
+            return DefaultBrush;
         }
 
         private void RegisterTargetProperty()
@@ -285,10 +332,9 @@
                 return;
             }
 
-            Brush = currentThemeManager.GetThemeColorBrush(DefaultThemeManagerColorName) ?? DefaultBrush;
-
             UpdateAllValues();
         }
+
         protected override void OnTargetObjectLoaded()
         {
             base.OnTargetObjectLoaded();
@@ -315,6 +361,7 @@
             UnregisterTargetProperties();
 
             currentThemeManager.ThemeChanged -= OnThemeChanged;
+
             base.OnTargetObjectUnloaded();
         }
 
