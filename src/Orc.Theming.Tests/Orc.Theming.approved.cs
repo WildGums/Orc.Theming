@@ -37,11 +37,14 @@ namespace Orc.Theming
         public FontImage() { }
         public FontImage(string itemName) { }
         public System.Windows.Media.Brush Brush { get; set; }
+        public string BrushKey { get; set; }
         public string FontFamily { get; set; }
         [System.Windows.Markup.ConstructorArgument("itemName")]
         public string ItemName { get; set; }
         public static System.Windows.Media.Brush DefaultBrush { get; set; }
+        public static string DefaultBrushKey { get; set; }
         public static string DefaultFontFamily { get; set; }
+        protected virtual System.Windows.Media.Brush GetBrush() { }
         public System.Windows.Media.ImageSource GetImageSource() { }
         protected override void OnTargetObjectLoaded() { }
         protected override void OnTargetObjectUnloaded() { }
