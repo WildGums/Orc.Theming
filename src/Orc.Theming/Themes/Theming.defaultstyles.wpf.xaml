@@ -11,6 +11,7 @@
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.calendar.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.checkbox.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.combobox.xaml" />
+        <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.datagrid.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.gridsplitter.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.groupbox.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.label.xaml" />
@@ -136,6 +137,13 @@
                 <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors), Converter={catel:GetFirstValidationErrorConverter}}" />
             </Trigger>
         </Style.Triggers>
+    </Style>
+
+    <!-- ComboBox -->
+    <Style x:Key="DefaultDataGridStyle" TargetType="{x:Type DataGrid}" BasedOn="{StaticResource {x:Type DataGrid}}">
+
+        <Setter Property="Margin" Value="{DynamicResource Margin.Default}" />
+
     </Style>
 
     <!-- GroupBox -->
