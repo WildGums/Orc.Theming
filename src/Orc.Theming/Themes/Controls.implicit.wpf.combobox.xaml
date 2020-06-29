@@ -120,7 +120,8 @@
                                 <Border x:Name="DropDownBorder" 
                                         BorderThickness="1"
                                         BorderBrush="{TemplateBinding BorderBrush}" 
-                                        Background="{TemplateBinding Background}">
+                                        Background="{TemplateBinding Background}"
+                                        Padding="1">
                                     <ScrollViewer x:Name="DropDownScrollViewer">
                                         <Grid RenderOptions.ClearTypeHint="Enabled">
                                             <Canvas HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
