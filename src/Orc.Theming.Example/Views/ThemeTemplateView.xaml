@@ -12,7 +12,8 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
        
-        <Grid Margin="2">
+        <Grid Margin="2"
+              Background="White">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -49,7 +50,8 @@
         </Grid >
 
         <Grid Grid.Column="1"
-              Margin="2">
+              Margin="2"
+              Background="White">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
