@@ -93,10 +93,10 @@
 
                             <ControlTemplate.Triggers>
                                 <Trigger SourceName="Chrome" Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="Chrome" Property="Background" Value="{DynamicResource Orc.Brushes.GrayBrush2}"/>
+                                    <Setter TargetName="Chrome" Property="Background" Value="{DynamicResource Orc.Brushes.GrayBrush4}"/>
                                 </Trigger>
                                 <Trigger Property="IsDragging" Value="True">
-                                    <Setter TargetName="Chrome" Property="Background" Value="{DynamicResource Orc.Brushes.GrayBrush1}"/>
+                                    <Setter TargetName="Chrome" Property="Background" Value="{DynamicResource Orc.Brushes.GrayBrush2}"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -114,7 +114,7 @@
                     </Grid.RowDefinitions>
 
                     <Border Grid.RowSpan="3"
-                            Background="{DynamicResource Orc.Brushes.Control.Default.Background}" />
+                            Background="{DynamicResource Orc.Brushes.GrayBrush10}" />
 
                     <RepeatButton Grid.Row="0"
                                   Style="{StaticResource ScrollBarLineButton}"
@@ -158,7 +158,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Border Grid.ColumnSpan="3"
-                            Background="{DynamicResource Orc.Brushes.Control.Default.Background}" />
+                            Background="{DynamicResource Orc.Brushes.GrayBrush10}" />
 
                     <RepeatButton Grid.Column="0"
                                   Style="{StaticResource ScrollBarLineButton}"
