@@ -3,18 +3,9 @@
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                    xmlns:catel="http://schemas.catelproject.com">
 
-    <StackPanel Orientation="Horizontal">
-        <ListView Height="200" Width="200" 
-                  ItemsSource="{Binding Items}"
-                  SelectedItem="{Binding SelectedItem}"
-                  IsEnabled="True"
-                  ToolTip="Enabled" />
-
-        <ListView Height="200" Width="200" 
-                  ItemsSource="{Binding Items}"
-                  SelectedItem="{Binding SelectedItem}"
-                  IsEnabled="False"
-                  ToolTip="Disalbed" />
-    </StackPanel>
+    <ListView ItemsSource="{Binding Items}"
+              SelectedItem="{Binding SelectedItem}"
+              IsEnabled="True"
+              ToolTip="Enabled" />
 
 </catel:UserControl>

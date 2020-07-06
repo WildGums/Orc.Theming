@@ -31,6 +31,7 @@
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.tooltip.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.treeview.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.window.xaml" />
+        <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.scrollbar.xaml" />
     </ResourceDictionary.MergedDictionaries>
     
     <!-- Converters -->
