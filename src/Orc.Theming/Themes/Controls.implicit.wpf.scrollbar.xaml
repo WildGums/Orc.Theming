@@ -93,7 +93,7 @@
 
                             <ControlTemplate.Triggers>
                                 <Trigger SourceName="Chrome" Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="Chrome" Property="Background" Value="{DynamicResource Orc.Brushes.GrayBrush4}"/>
+                                    <Setter TargetName="Chrome" Property="Background" Value="{DynamicResource Orc.Brushes.GrayBrush3}"/>
                                 </Trigger>
                                 <Trigger Property="IsDragging" Value="True">
                                     <Setter TargetName="Chrome" Property="Background" Value="{DynamicResource Orc.Brushes.GrayBrush2}"/>
@@ -130,7 +130,7 @@
                         </Track.DecreaseRepeatButton>
                         <Track.Thumb>
                             <Thumb Style="{StaticResource ScrollBarThumb}"
-                                   Background="{DynamicResource Orc.Brushes.GrayBrush6}"
+                                   Background="{DynamicResource Orc.Brushes.GrayBrush7}"
                                    Margin="1,0,1,0">
                             </Thumb>
                         </Track.Thumb>
@@ -158,7 +158,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Border Grid.ColumnSpan="3"
-                            Background="{DynamicResource Orc.Brushes.GrayBrush10}" />
+                            Background="{DynamicResource Orc.Brushes.GrayBrush7}" />
 
                     <RepeatButton Grid.Column="0"
                                   Style="{StaticResource ScrollBarLineButton}"

@@ -12,20 +12,22 @@
       "Values": {
         "BlackColor": "#FFFFFFFF",
         "BlackColor20": "#51FFFFFF",
-        "WhiteColor": "#FF252525",
-        "WhiteColor20": "#51252525",
+        "WhiteColor": "#FF363636",
+        "WhiteColor20": "#51363636",
         "BackgroundColor": "#363636",
         "ForegroundColor": "#FFFFFFFF",
-        "Gray10": "#FF333333",
-        "Gray9": "#FF7F7F7F",
-        "Gray8": "#FF9D9D9D",
-        "Gray7": "#FFABABAB",
-        "Gray6": "#FFB9B9B9",
-        "Gray5": "#FFCCCCCC",
-        "Gray4": "#FFD8D8D9",
-        "Gray3": "#FFE0E0E0",
-        "Gray2": "#5EC9C9C9",
+
+        "Gray10": "#FF3E3E3E",
+        "Gray9": "#FF555555",
+        "Gray8": "#FF646464",
+        "Gray7": "#FF6C6C6C",
+        "Gray6": "#FF787878",
+        "Gray5": "#FF8B8B8B",
+        "Gray4": "#FF999999",
+        "Gray3": "#FFA7A7A7",
+        "Gray2": "#FFC5C5C5",
         "Gray1": "#FFF7F7F7",
+
         "Orc.Colors.Text": "#FFFFFFFF"
       }
     },
@@ -46,7 +48,7 @@
         "Gray6": "#FFCCCCCC",
         "Gray7": "#FFD8D8D9",
         "Gray8": "#FFE0E0E0",
-        "Gray9": "#5EC9C9C9",
+        "Gray9": "#FFEFEFEF",
         "Gray10": "#FFF7F7F7",
         "Orc.Colors.Text": "#FF000000"
       }
