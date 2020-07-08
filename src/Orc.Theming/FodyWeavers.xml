@@ -9,6 +9,7 @@
       <!-- Add excluded assemblies here -->
     </ExcludeAssemblies>
   </LoadAssembliesOnStartup>
+  <MethodTimer />
   <ModuleInit />
   <Obsolete />
   <Catel />
