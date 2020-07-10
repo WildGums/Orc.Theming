@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Security.RightsManagement;
     using System.Windows;
     using Catel;
     using Catel.Logging;
@@ -40,6 +41,7 @@
         /// <param name="defaultPrefix">The default prefix, uses to determine the styles as base for other styles.</param>
         /// <exception cref="ArgumentNullException">The <paramref name="applicationResourceDictionary"/> is <c>null</c>.</exception>
         /// <exception cref="ArgumentException">The <paramref name="defaultPrefix"/> is <c>null</c> or whitespace.</exception>
+        [Time]
         public static void EnsureApplicationResourcesAndCreateStyleForwarders(Uri applicationResourceDictionary, string defaultPrefix = DefaultKeyPrefix)
         {
             Argument.IsNotNull("applicationResourceDictionary", applicationResourceDictionary);
@@ -79,6 +81,7 @@
         /// </summary>
         /// <param name="defaultPrefix">The default prefix, uses to determine the styles as base for other styles.</param>
         /// <exception cref="ArgumentException">The <paramref name="defaultPrefix"/> is <c>null</c> or whitespace.</exception>
+        [Time("{defaultPrefix}")]
         public static void CreateStyleForwardersForDefaultStyles(string defaultPrefix = DefaultKeyPrefix)
         {
             CreateStyleForwardersForDefaultStyles(Application.Current.Resources, defaultPrefix);
@@ -141,7 +144,7 @@
             Argument.IsNotNull("targetResources", targetResources);
             Argument.IsNotNullOrWhitespace("defaultPrefix", defaultPrefix);
 
-            var foundDefaultStyles = FindDefaultStyles(sourceResources, defaultPrefix).ToList();
+            var foundDefaultStyles = FindDefaultStyles(sourceResources, defaultPrefix);
 
             // Important: invert order and skip duplicates (but based on Type, not on string key)
             var defaultStylesDictionary = new Dictionary<Type, StyleInfo>();
@@ -152,7 +155,7 @@
 
                 if (defaultStylesDictionary.TryGetValue(styleInfo.TargetType, out var existingStyleInfo))
                 {
-                    Log.Debug($"Default style for '{styleInfo.TargetType.Name}' already coming from '{existingStyleInfo.SourceDictionary}', ignoring registration from '{styleInfo.SourceDictionary}'");
+                    //Log.Debug($"Default style for '{styleInfo.TargetType.Name}' already coming from '{existingStyleInfo.SourceDictionary}', ignoring registration from '{styleInfo.SourceDictionary}'");
                     continue;
                 }
 
@@ -191,20 +194,32 @@
             IsStyleForwardingEnabled = true;
         }
 
-        /// <summary>
-        /// Finds all the the default styles definitions
-        /// </summary>
-        /// <param name="sourceResources">The source resources.</param>
-        /// <param name="defaultPrefix">The default prefix.</param>
-        /// <returns>An enumerable of default styles.</returns>
-        /// <exception cref="ArgumentNullException">The <paramref name="sourceResources"/> is <c>null</c>.</exception>
-        /// <exception cref="ArgumentException">The <paramref name="defaultPrefix"/> is <c>null</c> or whitespace.</exception>
-        private static IEnumerable<StyleInfo> FindDefaultStyles(ResourceDictionary sourceResources, string defaultPrefix)
+        [Time]
+        private static List<StyleInfo> FindDefaultStyles(ResourceDictionary sourceResources, string defaultPrefix)
         {
-            Argument.IsNotNull("sourceResources", sourceResources);
-            Argument.IsNotNullOrWhitespace("defaultPrefix", defaultPrefix);
+            var context = new DefaultStylesContext();
 
-            var styles = new List<StyleInfo>();
+            FindDefaultStyles(context, sourceResources, defaultPrefix);
+
+            return context.Styles;
+        }
+
+        private static void FindDefaultStyles(DefaultStylesContext context, ResourceDictionary sourceResources, string defaultPrefix)
+        {
+            var uri = sourceResources.Source;
+            if (uri is null == false)
+            {
+                var uriName = uri.ToString();
+                if (!string.IsNullOrWhiteSpace(uriName))
+                {
+                    if (context.ParsedDictionaries.Contains(uriName))
+                    {
+                        return;
+                    }
+
+                    context.ParsedDictionaries.Add(uriName);
+                }
+            }
 
             var keys = (from key in sourceResources.Keys as ICollection<object>
                         let stringKey = key as string
@@ -220,7 +235,7 @@
                     var style = sourceResources[key] as Style;
                     if (style != null)
                     {
-                        styles.Add(new StyleInfo
+                        context.Styles.Add(new StyleInfo
                         {
                             Style = style,
                             SourceDictionary = sourceResources,
@@ -237,47 +252,8 @@
 
             foreach (var resourceDictionary in sourceResources.MergedDictionaries)
             {
-                styles.AddRange(FindDefaultStyles(resourceDictionary, defaultPrefix));
+                FindDefaultStyles(context, resourceDictionary, defaultPrefix);
             }
-
-            return styles;
-        }
-
-        /// <summary>
-        /// Clones a style when the style is based on a control.
-        /// </summary>
-        /// <param name="rootResourceDictionary">The root resource dictionary.</param>
-        /// <param name="style">The style.</param>
-        /// <param name="basedOnType">Type which the style is based on.</param>
-        /// <returns><see cref="Style"/>.</returns>
-        /// <exception cref="ArgumentNullException">The <paramref name="rootResourceDictionary"/> is <c>null</c>.</exception>
-        /// <exception cref="ArgumentNullException">The <paramref name="style"/> is <c>null</c>.</exception>
-        /// <exception cref="ArgumentNullException">The <paramref name="basedOnType"/> is <c>null</c>.</exception>
-        /// <remarks>
-        /// This method is introduced due to the lack of the ability to use DynamicResource for the BasedOn property when
-        /// defining styles inside a derived theme.
-        /// <para />
-        /// Should be used in combination with the <c>RecreateDefaultStylesBasedOnTheme</c> method.
-        /// </remarks>
-        private static Style CloneStyleIfBasedOnControl(ResourceDictionary rootResourceDictionary, Style style, Type basedOnType)
-        {
-            Argument.IsNotNull("rootResourceDictionary", rootResourceDictionary);
-            Argument.IsNotNull("style", style);
-            Argument.IsNotNull("basedOnType", basedOnType);
-
-            var newStyle = new Style(style.TargetType, rootResourceDictionary[basedOnType] as Style);
-
-            foreach (var setter in style.Setters)
-            {
-                newStyle.Setters.Add(setter);
-            }
-
-            foreach (var trigger in style.Triggers)
-            {
-                newStyle.Triggers.Add(trigger);
-            }
-
-            return newStyle;
         }
         #endregion
 
@@ -292,6 +268,13 @@
         /// </summary>
         private const string DefaultKeyPostfix = "Style";
         #endregion
+
+        private class DefaultStylesContext
+        {
+            public HashSet<string> ParsedDictionaries { get; } = new HashSet<string>(StringComparer.CurrentCultureIgnoreCase);
+
+            public List<StyleInfo> Styles { get; } = new List<StyleInfo>();
+        }
 
         private class StyleInfo : IEquatable<StyleInfo>
         {
