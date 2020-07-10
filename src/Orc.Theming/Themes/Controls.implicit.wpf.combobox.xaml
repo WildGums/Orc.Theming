@@ -10,14 +10,13 @@
            BasedOn="{StaticResource Orc.Styles.Control}">
         <Style.Resources>
             <ControlTemplate x:Key="ComboBoxTextBox" TargetType="{x:Type TextBox}">
-                <ScrollViewer x:Name="PART_ContentHost" 
-                              Focusable="false" 
-                              HorizontalScrollBarVisibility="Hidden" 
+                <ScrollViewer x:Name="PART_ContentHost"
+                              Focusable="False"
+                              HorizontalScrollBarVisibility="Hidden"
                               VerticalScrollBarVisibility="Hidden"/>
             </ControlTemplate>
 
-            <Style x:Key="ComboboxToggleButton"
-                   TargetType="{x:Type ToggleButton}"
+            <Style x:Key="ComboboxToggleButton" TargetType="{x:Type ToggleButton}"
                    BasedOn="{StaticResource Orc.Styles.Control}">
                 <Setter Property="OverridesDefaultStyle" Value="True"/>
                 <Setter Property="IsTabStop" Value="False"/>
