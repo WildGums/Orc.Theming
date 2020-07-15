@@ -8,6 +8,7 @@
 
     <Style x:Key="Orc.Styles.ItemsControl" TargetType="{x:Type ItemsControl}"
            BasedOn="{StaticResource Orc.Styles.Control}">
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="FocusVisualStyle" Value="{StaticResource Orc.Styles.Control.Outside.FocusVisual}"/>
     </Style>
 
