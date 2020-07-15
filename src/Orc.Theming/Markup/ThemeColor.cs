@@ -6,8 +6,6 @@
 
     public class ThemeColor : UpdatableMarkupExtension
     {
-        private static readonly ILog Log = LogManager.GetCurrentClassLogger();
-
         private readonly ControlzEx.Theming.ThemeManager _controlzThemeManager;
         private readonly ThemeManager _themeManager;
 

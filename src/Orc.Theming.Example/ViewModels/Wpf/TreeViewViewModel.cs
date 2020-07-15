@@ -7,7 +7,9 @@
     public class TreeNode
     {
         public string Name { get; set; }
+#pragma warning disable CA2227 // Collection properties should be read only
         public List<TreeNode> ChildNodes { get; set; }
+#pragma warning restore CA2227 // Collection properties should be read only
     }
 
     public class TreeViewViewModel : ViewModelBase
@@ -69,7 +71,9 @@
 
         public override string Title => "View model title";
 
+#pragma warning disable CA2227 // Collection properties should be read only
         public IList<TreeNode> TreeNodes { get; set; }
+#pragma warning restore CA2227 // Collection properties should be read only
 
         // TODO: Register models with the vmpropmodel codesnippet
         // TODO: Register view model properties with the vmprop or vmpropviewmodeltomodel codesnippets

@@ -94,7 +94,9 @@
         /// Gets or sets the brush.
         /// </summary>
         /// <value>The brush.</value>
+#pragma warning disable CA1721 // Property names should not match get methods
         public Brush Brush { get; set; }
+#pragma warning restore CA1721 // Property names should not match get methods
 
         /// <summary>
         /// Gets or sets the brush key that will be used to determine the brush based on the current theme.

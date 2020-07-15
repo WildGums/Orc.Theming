@@ -44,15 +44,15 @@
         [Time]
         public static void EnsureApplicationResourcesAndCreateStyleForwarders(Uri applicationResourceDictionary, string defaultPrefix = DefaultKeyPrefix)
         {
-            Argument.IsNotNull("applicationResourceDictionary", applicationResourceDictionary);
-            Argument.IsNotNullOrWhitespace("defaultPrefix", defaultPrefix);
+            Argument.IsNotNull(nameof(applicationResourceDictionary), applicationResourceDictionary);
+            Argument.IsNotNullOrWhitespace(nameof(defaultPrefix), defaultPrefix);
 
             if (Application.Current is null)
             {
                 try
                 {
                     // Ensure we have an application
-                    new Application();
+                    _ = new Application();
 
                     var resourceDictionary = Application.LoadComponent(applicationResourceDictionary) as ResourceDictionary;
                     if (resourceDictionary != null)
@@ -139,10 +139,10 @@
         public static void CreateStyleForwardersForDefaultStyles(ResourceDictionary rootResourceDictionary, ResourceDictionary sourceResources,
             ResourceDictionary targetResources, string defaultPrefix = DefaultKeyPrefix)
         {
-            Argument.IsNotNull("rootResourceDictionary", rootResourceDictionary);
-            Argument.IsNotNull("sourceResources", sourceResources);
-            Argument.IsNotNull("targetResources", targetResources);
-            Argument.IsNotNullOrWhitespace("defaultPrefix", defaultPrefix);
+            Argument.IsNotNull(nameof(rootResourceDictionary), rootResourceDictionary);
+            Argument.IsNotNull(nameof(sourceResources), sourceResources);
+            Argument.IsNotNull(nameof(targetResources), targetResources);
+            Argument.IsNotNullOrWhitespace(nameof(defaultPrefix), defaultPrefix);
 
             var foundDefaultStyles = FindDefaultStyles(sourceResources, defaultPrefix);
 

@@ -559,10 +559,14 @@
 
         private static string GetCharacter(string unicode)
         {
+#pragma warning disable CA1307 // Specify StringComparison
             unicode = unicode.Replace("&#x", string.Empty);
+#pragma warning restore CA1307 // Specify StringComparison
             unicode = unicode.TrimEnd(';');
 
+#pragma warning disable CA1305 // Specify IFormatProvider
             var code = int.Parse(unicode, NumberStyles.AllowHexSpecifier);
+#pragma warning restore CA1305 // Specify IFormatProvider
             return ((char)code).ToString();
         }
     }

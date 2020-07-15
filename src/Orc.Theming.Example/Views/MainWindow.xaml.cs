@@ -38,7 +38,7 @@
                 var tabItem = new TabItem();
 
                 var header = viewToAdd.Name;
-                var lastIndex = header.LastIndexOf("View");
+                var lastIndex = header.LastIndexOf("View", StringComparison.OrdinalIgnoreCase);
                 if (lastIndex > 0)
                 {
                     header = header.Substring(0, lastIndex);

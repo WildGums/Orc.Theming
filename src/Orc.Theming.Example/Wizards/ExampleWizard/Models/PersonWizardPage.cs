@@ -19,7 +19,7 @@
             return new SummaryItem
             {
                 Title = "Person",
-                Summary = string.Format("{0} {1}", FirstName, LastName)
+                Summary = $"{FirstName} {LastName}"
             };
         }
     }

@@ -172,11 +172,6 @@
             return _accentColorBrushCache;
         }
 
-        private Color CreateColor(int alpha, Color color)
-        {
-            return Color.FromArgb((byte)alpha, color.R, color.G, color.B);
-        }
-
         private void OnThemeManagerThemeChanged(object sender, ThemeChangedEventArgs e)
         {
             Log.Debug("Theme has changed, clearing current cache");

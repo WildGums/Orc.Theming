@@ -21,7 +21,9 @@
             if (expectedResourceNames.Length == 2)
             {
                 // Part 1 is assembly
+#pragma warning disable CA1307 // Specify StringComparison
                 var assemblyName = expectedResourceNames[0].Replace("/", string.Empty);
+#pragma warning restore CA1307 // Specify StringComparison
                 var assembly = (from x in AppDomain.CurrentDomain.GetAssemblies()
                                 where x.GetName().Name.EqualsIgnoreCase(assemblyName)
                                 select x).FirstOrDefault();
@@ -38,7 +40,9 @@
                             return false;
                         }
 
+#pragma warning disable CA1307 // Specify StringComparison
                         var relativeResourceName = expectedResourceNames[1].Replace(".xaml", ".baml");
+#pragma warning restore CA1307 // Specify StringComparison
 
                         using (var reader = new System.Resources.ResourceReader(resourceStream))
                         {

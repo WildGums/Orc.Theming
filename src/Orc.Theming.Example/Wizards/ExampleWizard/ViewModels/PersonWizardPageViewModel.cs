@@ -24,12 +24,12 @@
 
             if (string.IsNullOrWhiteSpace(FirstName))
             {
-                validationResults.Add(FieldValidationResult.CreateError("FirstName", "First name is required"));
+                validationResults.Add(FieldValidationResult.CreateError(nameof(FirstName), "First name is required"));
             }
 
             if (string.IsNullOrWhiteSpace(LastName))
             {
-                validationResults.Add(FieldValidationResult.CreateError("LastName", "Last name is required"));
+                validationResults.Add(FieldValidationResult.CreateError(nameof(LastName), "Last name is required"));
             }
         }
     }

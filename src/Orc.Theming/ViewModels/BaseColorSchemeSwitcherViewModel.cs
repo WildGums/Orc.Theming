@@ -10,7 +10,9 @@
     {
         private readonly IBaseColorSchemeService _baseColorSchemeService;
 
+#pragma warning disable CA1801 // Review unused parameters
         public BaseColorSchemeSwitcherViewModel(ThemeManager themeManager, IBaseColorSchemeService baseColorSchemeService)
+#pragma warning restore CA1801 // Review unused parameters
         {
             Argument.IsNotNull(() => baseColorSchemeService);
 
