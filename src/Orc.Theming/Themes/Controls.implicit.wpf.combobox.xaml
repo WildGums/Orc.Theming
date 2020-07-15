@@ -3,6 +3,7 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.textbox.xaml" />
+        <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.focusvisual.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="Orc.Styles.ComboBox"
@@ -64,6 +65,8 @@
                 </Setter>
             </Style>
         </Style.Resources>
+
+        <Setter Property="FocusVisualStyle" Value="{StaticResource Orc.Styles.Control.Inside.FocusVisual}"/>
 
         <Setter Property="Template">
             <Setter.Value>

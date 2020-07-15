@@ -14,6 +14,7 @@
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.datagrid.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.gridsplitter.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.groupbox.xaml" />
+        <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.itemscontrol.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.label.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.listbox.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.listview.xaml" />
@@ -45,8 +46,6 @@
 
     <!-- Buttons -->
     <Style x:Key="DefaultButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource Orc.Styles.Button}">
-
-        <Setter Property="FocusVisualStyle" Value="{StaticResource Orc.Styles.Control.Inside.FocusVisual}"/>
 
         <Setter Property="Margin" Value="{DynamicResource Margin.Button}" />
         <Setter Property="Height" Value="{DynamicResource Size.Height}" />
@@ -110,8 +109,7 @@
 
     <!-- ComboBox -->
     <Style x:Key="DefaultComboBoxStyle" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource Orc.Styles.ComboBox}">
-        <Setter Property="FocusVisualStyle" Value="{StaticResource Orc.Styles.Control.Inside.FocusVisual}"/>
-
+        
         <Setter Property="Margin" Value="{DynamicResource Margin.Default}" />
         <Setter Property="Height" Value="{DynamicResource Size.Height}" />
         <Setter Property="VerticalAlignment" Value="Center" />
@@ -160,6 +158,11 @@
 
     <!-- ListBox -->
     <Style x:Key="DefaultListBoxStyle" TargetType="{x:Type ListBox}" BasedOn="{StaticResource Orc.Styles.ListBox}">
+        <Setter Property="Margin" Value="{DynamicResource Margin.Default}" />
+    </Style>  
+    
+    <!-- ItemsControl -->
+    <Style x:Key="DefaultItemsControlStyle" TargetType="{x:Type ItemsControl}" BasedOn="{StaticResource Orc.Styles.ItemsControl}">
         <Setter Property="Margin" Value="{DynamicResource Margin.Default}" />
     </Style>
 
@@ -316,7 +319,6 @@
 
     <!-- ToggleButton -->
     <Style x:Key="DefaultToggleButtonStyle" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource Orc.Styles.ToggleButton}">
-        <Setter Property="FocusVisualStyle" Value="{StaticResource Orc.Styles.Control.Inside.FocusVisual}"/>
         <Setter Property="Margin" Value="{DynamicResource Margin.Button}" />
         <Setter Property="Height" Value="{DynamicResource Size.Height}" />
     </Style>
