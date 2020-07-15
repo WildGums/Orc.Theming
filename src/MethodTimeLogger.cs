@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using Catel.Logging;
 using System;
 using System.Globalization;
