@@ -12,7 +12,9 @@
     public class PublicApiFacts
     {
         [Test, MethodImpl(MethodImplOptions.NoInlining)]
+#pragma warning disable CA1707 // Identifiers should not contain underscores
         public void Orc_Theming_HasNoBreakingChanges()
+#pragma warning restore CA1707 // Identifiers should not contain underscores
         {
             var assembly = typeof(ThemeColorBrush).Assembly;
 
