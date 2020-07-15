@@ -1,0 +1,16 @@
+﻿<catel:UserControl x:Class="Orc.Theming.Example.Views.SliderView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:catel="http://schemas.catelproject.com">
+
+    <StackPanel Orientation="Vertical">
+        <Slider Width="200" 
+                Minimum="0" Maximum="100" Value="50"
+                IsEnabled="True" ToolTip="Enabled" />
+
+        <Slider Width="200" 
+                Minimum="0" Maximum="100" Value="50"
+                IsEnabled="False" ToolTip="Disabled" />
+    </StackPanel>
+    
+</catel:UserControl>

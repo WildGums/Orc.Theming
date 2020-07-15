@@ -1,0 +1,41 @@
+﻿<catel:UserControl x:Class="Orc.Theming.Example.Views.TextBoxView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:catel="http://schemas.catelproject.com">
+
+    <Grid FocusManager.FocusedElement="{Binding ElementName=FocusTextBox}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBox Text="Default state"/>
+        <TextBox x:Name="FocusTextBox"
+                 Grid.Row="1" 
+                 Text="Focused state + text selection" 
+                 Loaded="TextBox_Loaded"/>
+        <TextBox Grid.Row="2" 
+                 IsInactiveSelectionHighlightEnabled="True"
+                 Text="Inactive text selection" 
+                 Loaded="TextBox_Loaded"/>
+        <TextBox Grid.Row="3"
+                 Text="Disabled" 
+                 IsEnabled="False"/>
+        <TextBox Grid.Row="4" Grid.ColumnSpan="2"
+                 Text="Horizontal Stretch"
+                 HorizontalAlignment="Stretch"/>
+        <TextBox Grid.Column="1" Grid.RowSpan="4" Height="Auto"
+                 Text="Vetical Stretch and multiline"
+                 TextWrapping="Wrap"
+                 AcceptsReturn="True"
+                 VerticalAlignment="Stretch"/>
+    </Grid>
+
+</catel:UserControl>

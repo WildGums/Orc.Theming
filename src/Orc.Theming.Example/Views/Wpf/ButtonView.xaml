@@ -1,0 +1,30 @@
+﻿<catel:UserControl x:Class="Orc.Theming.Example.Views.ButtonView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:catel="http://schemas.catelproject.com"
+                   xmlns:ribbon="clr-namespace:Orc.Theming.Example"
+                   xmlns:orctheming="http://schemas.wildgums.com/orc/theming">
+
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+        <Button Height="100">
+            <Button.Content>
+                <Image Source="{orctheming:FontImage {x:Static ribbon:FontAwesome.MailReply}}"/>
+            </Button.Content>
+            <Button.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Test menu item 1">
+                        <MenuItem Header="test_1"/>
+                        <MenuItem Header="test_2"/>
+                        <Separator/>
+                        <MenuItem Header="test_3"/>
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem Header="Test menu item 2"/>
+                    <MenuItem Header="Test menu item 3"/>
+                </ContextMenu>
+            </Button.ContextMenu>
+        </Button>
+        <Button Content="Disabled" IsEnabled="False" />
+    </StackPanel>
+    
+</catel:UserControl>

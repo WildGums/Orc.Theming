@@ -1,0 +1,40 @@
+﻿<catel:UserControl x:Class="Orc.Theming.Example.Views.RichTextBoxView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:catel="http://schemas.catelproject.com">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <RichTextBox x:Name="ExampleRichTextBox">
+            <RichTextBox.Resources>
+                <Style TargetType="{x:Type Hyperlink}">
+                    <Setter Property="Cursor" Value="Hand" />
+                    <EventSetter Event="MouseLeftButtonDown" Handler="OnHyperlinkMouseLeftButtonDown"/>
+                </Style>
+            </RichTextBox.Resources>
+            <FlowDocument>
+                <Paragraph>
+                    This is flow content and you can <Bold>edit me!</Bold>
+                </Paragraph>
+                <Paragraph>
+                    <Hyperlink MouseLeftButtonDown="OnHyperlinkMouseLeftButtonDown" 
+                               NavigateUri="https://github.com/WildGums/Orc.Theming">https://github.com/WildGums/Orc.Theming</Hyperlink>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+
+        <WrapPanel Grid.Column="1">
+            <CheckBox IsChecked="False" Checked="OnSpellCheckCheckBoxChecked">Enable spell checking</CheckBox>
+            <CheckBox IsChecked="{Binding ElementName=ExampleRichTextBox, Path=IsEnabled}">Is enabled</CheckBox>
+        </WrapPanel>
+    </Grid>
+    
+</catel:UserControl>

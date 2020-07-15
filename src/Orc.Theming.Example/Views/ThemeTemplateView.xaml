@@ -1,0 +1,85 @@
+﻿<catel:UserControl x:Class="Orc.Theming.Example.Views.ThemeTemplateView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:catel="http://schemas.catelproject.com"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+       
+        <Grid Margin="2"
+              Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Rectangle Grid.Row="0" Fill="{DynamicResource Orc.Brushes.GrayBrush1}"/>
+            <Rectangle Grid.Row="1" Fill="{DynamicResource Orc.Brushes.GrayBrush2}"/>
+            <Rectangle Grid.Row="2" Fill="{DynamicResource Orc.Brushes.GrayBrush3}"/>
+            <Rectangle Grid.Row="3" Fill="{DynamicResource Orc.Brushes.GrayBrush4}"/>
+            <Rectangle Grid.Row="4" Fill="{DynamicResource Orc.Brushes.GrayBrush5}"/>
+            <Rectangle Grid.Row="5" Fill="{DynamicResource Orc.Brushes.GrayBrush6}"/>
+            <Rectangle Grid.Row="6" Fill="{DynamicResource Orc.Brushes.GrayBrush7}"/>
+            <Rectangle Grid.Row="7" Fill="{DynamicResource Orc.Brushes.GrayBrush8}"/>
+            <Rectangle Grid.Row="8" Fill="{DynamicResource Orc.Brushes.GrayBrush9}"/>
+            <Rectangle Grid.Row="9" Fill="{DynamicResource Orc.Brushes.GrayBrush10}"/>
+
+            <TextBlock Text="GrayBrush1" Grid.Row="0" Foreground="{DynamicResource Orc.Brushes.GrayBrush10}"/>
+            <TextBlock Text="GrayBrush2" Grid.Row="1" Foreground="{DynamicResource Orc.Brushes.GrayBrush9}"/>
+            <TextBlock Text="GrayBrush3" Grid.Row="2" Foreground="{DynamicResource Orc.Brushes.GrayBrush8}"/>
+            <TextBlock Text="GrayBrush4" Grid.Row="3" Foreground="{DynamicResource Orc.Brushes.GrayBrush7}"/>
+            <TextBlock Text="GrayBrush5" Grid.Row="4" Foreground="{DynamicResource Orc.Brushes.GrayBrush6}"/>
+            <TextBlock Text="GrayBrush6" Grid.Row="5" Foreground="{DynamicResource Orc.Brushes.GrayBrush5}"/>
+            <TextBlock Text="GrayBrush7" Grid.Row="6" Foreground="{DynamicResource Orc.Brushes.GrayBrush4}"/>
+            <TextBlock Text="GrayBrush8" Grid.Row="7" Foreground="{DynamicResource Orc.Brushes.GrayBrush3}"/>
+            <TextBlock Text="GrayBrush9" Grid.Row="8" Foreground="{DynamicResource Orc.Brushes.GrayBrush2}"/>
+            <TextBlock Text="GrayBrush10" Grid.Row="9" Foreground="{DynamicResource Orc.Brushes.GrayBrush1}"/>
+        </Grid >
+
+        <Grid Grid.Column="1"
+              Margin="2"
+              Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Rectangle Grid.Row="0" Fill="{DynamicResource AccentBaseColorBrush}"/>
+            <Rectangle Grid.Row="1" Fill="{DynamicResource AccentColorBrush}"/>
+            <Rectangle Grid.Row="2" Fill="{DynamicResource AccentColorBrush1}"/>
+            <Rectangle Grid.Row="3" Fill="{DynamicResource AccentColorBrush2}"/>
+            <Rectangle Grid.Row="4" Fill="{DynamicResource AccentColorBrush3}"/>
+            <Rectangle Grid.Row="5" Fill="{DynamicResource AccentColorBrush4}"/>
+            <Rectangle Grid.Row="6" Fill="{DynamicResource AccentColorBrush5}"/>
+
+            <TextBlock Text="AccentBaseColorBrush" Grid.Row="0" Foreground="{DynamicResource Orc.Brushes.Control.Foreground}"/>
+            <TextBlock Text="AccentColorBrush" Grid.Row="1" Foreground="{DynamicResource Orc.Brushes.Control.Foreground}"/>
+            <TextBlock Text="AccentColorBrush1" Grid.Row="2" Foreground="{DynamicResource Orc.Brushes.Control.Foreground}"/>
+            <TextBlock Text="AccentColorBrush2" Grid.Row="3" Foreground="{DynamicResource Orc.Brushes.Control.Foreground}"/>
+            <TextBlock Text="AccentColorBrush3" Grid.Row="4" Foreground="{DynamicResource Orc.Brushes.Control.Foreground}"/>
+            <TextBlock Text="AccentColorBrush4" Grid.Row="5" Foreground="{DynamicResource Orc.Brushes.Control.Foreground}"/>
+            <TextBlock Text="AccentColorBrush5" Grid.Row="6" Foreground="{DynamicResource Orc.Brushes.Control.Foreground}"/>
+        </Grid>
+    </Grid>
+</catel:UserControl>

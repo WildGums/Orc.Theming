@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:catel="http://schemas.catelproject.com">
+
+    <ResourceDictionary.MergedDictionaries>
+        <!-- Normal size by default, we could introduce a "none" as well for defaults -->
+        <ResourceDictionary Source="/Orc.Theming;component/Themes/Theming.normal.xaml" />
+
+        <!-- Styles -->
+        <ResourceDictionary Source="/Orc.Theming;component/Themes/Theming.defaultstyles.catel.xaml" />
+        <ResourceDictionary Source="/Orc.Theming;component/Themes/Theming.defaultstyles.wpf.xaml" />
+        <ResourceDictionary Source="/Orc.Theming;component/Themes/Styles.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>
