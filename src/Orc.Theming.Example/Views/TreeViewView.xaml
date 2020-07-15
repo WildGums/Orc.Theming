@@ -6,11 +6,19 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         
         <Label Grid.Row="0" Content="{Binding Title}" />
-        <Label Grid.Row="1" Content="Here goes your real content" />
+
+        <TreeView Grid.Row="1" 
+                  ItemsSource="{Binding TreeNodes}">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding ChildNodes}">
+                    <TextBlock Text="{Binding Name}"/>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
     </Grid>
     
 </catel:UserControl>
