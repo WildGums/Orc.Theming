@@ -159,7 +159,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Border Grid.ColumnSpan="3"
-                            Background="{DynamicResource Orc.Brushes.GrayBrush7}" />
+                            Background="{DynamicResource Orc.Brushes.GrayBrush10}" />
 
                     <RepeatButton Grid.Column="0"
                                   Style="{StaticResource ScrollBarLineButton}"
@@ -177,7 +177,7 @@
                         <Track.Thumb>
                             <Thumb Style="{StaticResource ScrollBarThumb}"
                                    Margin="0,1,0,1"
-                                   Background="{DynamicResource Orc.Brushes.GrayBrush6}"/>
+                                   Background="{DynamicResource Orc.Brushes.GrayBrush7}"/>
                         </Track.Thumb>
                         <Track.IncreaseRepeatButton>
                             <RepeatButton Style="{StaticResource ScrollBarPageButton}"
