@@ -162,9 +162,7 @@
     </Style>  
     
     <!-- ItemsControl -->
-    <Style x:Key="DefaultItemsControlStyle" TargetType="{x:Type ItemsControl}" BasedOn="{StaticResource Orc.Styles.ItemsControl}">
-        <Setter Property="Margin" Value="{DynamicResource Margin.Default}" />
-    </Style>
+    <!-- DON'T STYLE THE ITEMSCONTROL, IT HS TOO MUCH IMPACT ON OTHER CONTROLS, STYLE CONTAINERS INSTEAD -->
 
     <!-- ListBox item -->
     <Style x:Key="DefaultListBoxItemStyle" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource Orc.Styles.ListBoxItem}">
