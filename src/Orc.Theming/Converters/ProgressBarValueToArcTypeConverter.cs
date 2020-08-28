@@ -12,7 +12,7 @@
     /// <summary>
     /// Converts current progress double value to boolean ArcSegment.IsLargeArc
     /// </summary>
-    public class ProgressBarValueToArcTypeConverter : IMultiValueConverter
+    internal class ProgressBarValueToArcTypeConverter : IMultiValueConverter
     {
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
 
