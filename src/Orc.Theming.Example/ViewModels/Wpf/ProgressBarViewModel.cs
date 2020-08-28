@@ -2,14 +2,19 @@
 {
     using Catel.MVVM;
     using System.Threading.Tasks;
+    using System.Timers;
 
     public class ProgressBarViewModel : ViewModelBase
     {
+        private readonly Timer _timer = new Timer();
+
         public ProgressBarViewModel(/* dependency injection here */)
         {
         }
 
         public override string Title { get { return "View model title"; } }
+
+        public int Value { get; set; } = 0;
 
         // TODO: Register models with the vmpropmodel codesnippet
         // TODO: Register view model properties with the vmprop or vmpropviewmodeltomodel codesnippets
@@ -19,7 +24,19 @@
         {
             await base.InitializeAsync();
 
+            _timer.Interval = 500;
+            _timer.Elapsed += OnTimerElapsed;
+            _timer.Start();
             // TODO: subscribe to events here
+        }
+
+        private void OnTimerElapsed(object sender, ElapsedEventArgs e)
+        {
+            Value += 5;
+            if (Value == 100)
+            {
+                _timer.Stop();
+            }
         }
 
         protected override async Task CloseAsync()

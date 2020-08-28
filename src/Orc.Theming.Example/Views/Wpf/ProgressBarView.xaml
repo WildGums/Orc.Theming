@@ -34,6 +34,12 @@
                          Height="180" Width="180"
                          BorderThickness="15"
                          Minimum="0" Maximum="100" Value="75"/>
+
+            <ProgressBar Style="{StaticResource Orc.Styles.ProgressBar.Circular}"
+                         IsEnabled="True" IsIndeterminate="False" ToolTip="Circular bar 3"
+                         Height="180" Width="180"
+                         BorderThickness="15"
+                         Minimum="0" Maximum="100" Value="{Binding Value}"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal">
