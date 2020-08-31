@@ -20,9 +20,9 @@
         {
             try
             {
-                if (values.Count() != 3)
+                if (values.Count() < 3)
                 {
-                    Log.ErrorAndCreateException<InvalidOperationException>("Wrong argument count passed to converter");
+                    throw Log.ErrorAndCreateException<InvalidOperationException>("Wrong argument count passed to converter");
                 }
 
                 var strokeThickness = (Thickness)values[0];

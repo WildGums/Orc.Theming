@@ -16,9 +16,9 @@
 
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            if (values.Count() != 6)
+            if (values.Count() < 5)
             {
-                Log.ErrorAndCreateException<InvalidOperationException>("Wrong argument count passed to converter");
+                throw Log.ErrorAndCreateException<InvalidOperationException>("Wrong argument count passed to converter");
             }
 
             var progressValue = (double)values[0];

@@ -19,9 +19,9 @@
 
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            if (values.Count() != 2)
+            if (values.Count() < 2)
             {
-                Log.ErrorAndCreateException<InvalidOperationException>("Wrong argument count passed to converter");
+                throw Log.ErrorAndCreateException<InvalidOperationException>("Wrong argument count passed to converter");
             }
 
             var trackPath = values[0] as double?;
@@ -29,7 +29,7 @@
 
             if (trackPath is null || trackGeometry is null)
             {
-                Log.ErrorAndCreateException<InvalidOperationException>("Wrong argument type");
+                throw Log.ErrorAndCreateException<InvalidOperationException>("Wrong argument type");
             }
 
             var propertyPath = parameter.ToString();
