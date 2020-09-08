@@ -40,10 +40,32 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
         <Style.Triggers>
-            <Trigger Property="ToggleButton.IsChecked" Value="True">
-                <Setter Property="ToggleButton.BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Checked.Border}"/>
-                <Setter Property="ToggleButton.Foreground" Value="{DynamicResource Orc.Brushes.Control.Checked.Foreground}"/>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="ToggleButton.IsChecked" Value="True"/>
+                    <Condition Property="ToggleButton.IsMouseOver" Value="False"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="ToggleButton.BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Pressed.Border}"/>
+                <Setter Property="ToggleButton.Background" Value="{DynamicResource Orc.Brushes.Control.Pressed.Background}"/>
+                <Setter Property="ToggleButton.Foreground" Value="{DynamicResource Orc.Brushes.Control.Pressed.Foreground}"/>
+            </MultiTrigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="ToggleButton.IsChecked" Value="True"/>
+                    <Condition Property="ToggleButton.IsMouseOver" Value="True"/>
+                </MultiTrigger.Conditions>
+                    <Setter Property="ToggleButton.BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Pressed.Border}"/>
+                    <Setter Property="ToggleButton.Background" Value="{DynamicResource Orc.Brushes.Control.CheckedMouseOver.Background}"/>
+                    <Setter Property="ToggleButton.Foreground" Value="{DynamicResource Orc.Brushes.Control.Pressed.Foreground}"/>
+            </MultiTrigger>
+
+            <Trigger Property="ToggleButton.IsPressed" Value="True">
+                <Setter Property="ToggleButton.BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Pressed.Border}"/>
+                <Setter Property="ToggleButton.Background" Value="{DynamicResource Orc.Brushes.Control.Pressed.Background}"/>
+                <Setter Property="ToggleButton.Foreground" Value="{DynamicResource Orc.Brushes.Control.Pressed.Foreground}"/>
             </Trigger>
         </Style.Triggers>
 
