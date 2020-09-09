@@ -10,25 +10,75 @@
 
         <Setter Property="Control.FocusVisualStyle" Value="{StaticResource Orc.Styles.Control.Inside.FocusVisual}"/>
 
-        <Style.Triggers>
-            <Trigger Property="Control.IsMouseOver" Value="True">
-                <Setter Property="Control.Background" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Background}"/>
-                <Setter Property="Control.BorderBrush"  Value="{DynamicResource Orc.Brushes.Control.MouseOver.Border}"/>
-                <Setter Property="Control.Foreground" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Foreground}"/>
-            </Trigger>
+        <Setter Property="Control.HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Control.VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Control.Padding" Value="1"/>
 
-            <Trigger Property="ButtonBase.IsPressed" Value="True">
-                <Setter Property="ButtonBase.Background" Value="{DynamicResource Orc.Brushes.Control.Pressed.Background}"/>
-                <Setter Property="ButtonBase.BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Pressed.Border}"/>
-                <Setter Property="ButtonBase.Foreground" Value="{DynamicResource Orc.Brushes.Control.Pressed.Foreground}"/>
-            </Trigger>
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ButtonBase}">
 
-            <Trigger Property="Control.IsEnabled" Value="False">
-                <Setter Property="Control.Background" Value="{DynamicResource Orc.Brushes.Control.Disabled.Background}"/>
-                <Setter Property="Control.BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Disabled.Border}"/>
-                <Setter Property="Control.Foreground" Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}"/>
-            </Trigger>
-        </Style.Triggers>
+                    <Border x:Name="Chrome" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            Background="{TemplateBinding Background}"
+                            SnapsToDevicePixels="True">
+
+                        <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                          Content="{TemplateBinding Content}"
+                                          ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}"
+                                          RecognizesAccessKey="True"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <ContentPresenter.Resources>
+                                <Style TargetType="{x:Type TextBlock}" BasedOn="{x:Null}"/>
+                            </ContentPresenter.Resources>
+                        </ContentPresenter>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Control.IsMouseOver" Value="True">
+                            <Setter TargetName="Chrome" Property="Control.Background" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Background}"/>
+                            <Setter TargetName="Chrome" Property="Control.BorderBrush" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Border}"/>
+                            <Setter Property="Control.Foreground" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Foreground}"/>
+                        </Trigger>
+
+                        <Trigger Property="ButtonBase.IsPressed" Value="True">
+                            <Setter TargetName="Chrome" Property="ButtonBase.Background" Value="{DynamicResource Orc.Brushes.Control.Pressed.Background}"/>
+                            <Setter TargetName="Chrome" Property="ButtonBase.BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Pressed.Border}"/>
+                            <Setter Property="Control.Foreground" Value="{DynamicResource Orc.Brushes.Control.Pressed.Foreground}"/>
+                        </Trigger>
+
+                        <Trigger Property="Control.IsEnabled" Value="False">
+                            <Setter TargetName="Chrome" Property="Control.Background" Value="{DynamicResource Orc.Brushes.Control.Disabled.Background}"/>
+                            <Setter TargetName="Chrome" Property="Control.BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Disabled.Border}"/>
+                            <Setter Property="Control.Foreground" Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}"/>
+                        </Trigger>
+
+
+                        <Trigger Property="ToggleButton.IsChecked" Value="True">
+                            <Setter TargetName="Chrome" Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Checked.Border}"/>
+                            <Setter TargetName="Chrome" Property="Background" Value="{DynamicResource Orc.Brushes.Control.Checked.Background}"/>
+                            <Setter Property="Control.Foreground" Value="{DynamicResource Orc.Brushes.Control.Checked.Foreground}"/>
+                        </Trigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="ToggleButton.IsChecked" Value="True"/>
+                                <Condition Property="ToggleButton.IsMouseOver" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Chrome" Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.CheckedMouseOver.Border}"/>
+                            <Setter TargetName="Chrome" Property="Background" Value="{DynamicResource Orc.Brushes.Control.CheckedMouseOver.Background}"/>
+                            <Setter Property="Control.Foreground" Value="{DynamicResource Orc.Brushes.Control.CheckedMouseOver.Foreground}"/>
+                        </MultiTrigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
 </ResourceDictionary>

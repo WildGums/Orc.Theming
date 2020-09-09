@@ -8,67 +8,6 @@
     <Style x:Key="Orc.Styles.ToggleButton"
            BasedOn="{StaticResource Orc.Styles.ButtonBase}">
 
-        <Setter Property="ToggleButton.HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="ToggleButton.VerticalContentAlignment" Value="Center"/>
-        <Setter Property="ToggleButton.Padding" Value="1"/>
-
-        <Setter Property="ToggleButton.Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ToggleButton}">
-                    <Grid x:Name="ChromeGrid"
-                          Background="{DynamicResource Orc.Brushes.Control.Background}">
-
-                        <Border x:Name="border" 
-                                BorderBrush="{TemplateBinding BorderBrush}" 
-                                BorderThickness="{TemplateBinding BorderThickness}" 
-                                Background="{TemplateBinding Background}" 
-                                SnapsToDevicePixels="true">
-
-                                <ContentPresenter x:Name="contentPresenter" 
-                                                  Focusable="False" 
-                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                                                  Margin="{TemplateBinding Padding}" 
-                                                  RecognizesAccessKey="True" 
-                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
-                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
-                                    <ContentPresenter.Resources>
-                                        <Style TargetType="{x:Type TextBlock}" BasedOn="{x:Null}"/>
-                                    </ContentPresenter.Resources>
-                                </ContentPresenter>
-                        </Border>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-
-        <Style.Triggers>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="ToggleButton.IsChecked" Value="True"/>
-                    <Condition Property="ToggleButton.IsMouseOver" Value="False"/>
-                </MultiTrigger.Conditions>
-                <Setter Property="ToggleButton.BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Pressed.Border}"/>
-                <Setter Property="ToggleButton.Background" Value="{DynamicResource Orc.Brushes.Control.Pressed.Background}"/>
-                <Setter Property="ToggleButton.Foreground" Value="{DynamicResource Orc.Brushes.Control.Pressed.Foreground}"/>
-            </MultiTrigger>
-
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="ToggleButton.IsChecked" Value="True"/>
-                    <Condition Property="ToggleButton.IsMouseOver" Value="True"/>
-                </MultiTrigger.Conditions>
-                    <Setter Property="ToggleButton.BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Pressed.Border}"/>
-                    <Setter Property="ToggleButton.Background" Value="{DynamicResource Orc.Brushes.Control.CheckedMouseOver.Background}"/>
-                    <Setter Property="ToggleButton.Foreground" Value="{DynamicResource Orc.Brushes.Control.Pressed.Foreground}"/>
-            </MultiTrigger>
-
-            <Trigger Property="ToggleButton.IsPressed" Value="True">
-                <Setter Property="ToggleButton.BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Pressed.Border}"/>
-                <Setter Property="ToggleButton.Background" Value="{DynamicResource Orc.Brushes.Control.Pressed.Background}"/>
-                <Setter Property="ToggleButton.Foreground" Value="{DynamicResource Orc.Brushes.Control.Pressed.Foreground}"/>
-            </Trigger>
-        </Style.Triggers>
-
     </Style>
 
 </ResourceDictionary>
