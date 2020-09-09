@@ -13,6 +13,54 @@
                      IsEnabled="False" IsIndeterminate="False" ToolTip="Enabled | Determinate" />
         <ProgressBar Minimum="0" Maximum="100" Value="50"
                      IsEnabled="False" IsIndeterminate="True" ToolTip="Enabled | Indeterminate" />
+
+        <TextBlock Text="Circular progress bars" />
+
+        <StackPanel Orientation="Horizontal">
+            <ProgressBar Style="{StaticResource Orc.Styles.ProgressBar.Circular}"
+                         IsEnabled="True" IsIndeterminate="False" ToolTip="Circular bar 1"
+                         Height="60" Width="60"
+                         Minimum="0" Maximum="100" Value="25"
+                         BorderThickness="5" />
+
+            <ProgressBar Style="{StaticResource Orc.Styles.ProgressBar.Circular}"
+                         IsEnabled="True" IsIndeterminate="False" ToolTip="Circular bar 2"
+                         Height="120" Width="120"
+                         BorderThickness="10"
+                         Minimum="0" Maximum="100" Value="50"/>
+
+            <ProgressBar Style="{StaticResource Orc.Styles.ProgressBar.Circular}"
+                         IsEnabled="True" IsIndeterminate="False" ToolTip="Circular bar 3"
+                         Height="180" Width="180"
+                         BorderThickness="15"
+                         Minimum="0" Maximum="100" Value="75"/>
+
+            <ProgressBar Style="{StaticResource Orc.Styles.ProgressBar.Circular}"
+                         IsEnabled="True" IsIndeterminate="False" ToolTip="Circular bar 3"
+                         Height="180" Width="180"
+                         BorderThickness="15"
+                         Minimum="0" Maximum="100" Value="{Binding Value}"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <ProgressBar Style="{StaticResource Orc.Styles.ProgressBar.Circular}"
+                         IsEnabled="True" IsIndeterminate="True" ToolTip="Circular bar 1"
+                         Height="60" Width="60"
+                         Minimum="0" Maximum="100" Value="25"
+                         BorderThickness="5" />
+
+            <ProgressBar Style="{StaticResource Orc.Styles.ProgressBar.Circular}"
+                         IsEnabled="True" IsIndeterminate="True" ToolTip="Circular bar 2"
+                         Height="120" Width="120"
+                         BorderThickness="10"
+                         Minimum="0" Maximum="100" Value="50"/>
+
+            <ProgressBar Style="{StaticResource Orc.Styles.ProgressBar.Circular}"
+                         IsEnabled="True" IsIndeterminate="True" ToolTip="Circular bar 3"
+                         Height="180" Width="180"
+                         BorderThickness="15"
+                         Minimum="0" Maximum="100" Value="75"/>
+        </StackPanel>
     </StackPanel>
-    
+
 </catel:UserControl>

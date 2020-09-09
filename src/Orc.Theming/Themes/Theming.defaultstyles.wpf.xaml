@@ -4,6 +4,7 @@
 
     <ResourceDictionary.MergedDictionaries>
         <!-- All wpf controls restyled with accent colors -->
+        <ResourceDictionary Source="/Orc.Theming;component/Themes/Controls.explicit.wpf.progressbar.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/Themes/Controls.implicit.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.catel.infobarmessagecontrol.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.focusvisual.xaml" />
