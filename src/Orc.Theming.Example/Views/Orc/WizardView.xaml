@@ -5,6 +5,7 @@
 
     <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
         <Button Content="Show wizard..." Command="{Binding ShowWizard}" />
+        <Button Content="Show separate window..." Command="{Binding ShowSeparateWindow}" />
     </StackPanel>
     
 </catel:UserControl>
