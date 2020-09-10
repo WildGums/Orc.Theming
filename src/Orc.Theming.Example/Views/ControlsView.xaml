@@ -48,7 +48,7 @@
                         MouseMove="btnActiveGradient_MouseMove"
                         MouseLeave="btnActiveGradient_MouseLeave" >
                     <Button.Background>
-                        <RadialGradientBrush x:Name="gradRadial" RadiusY="0.85" RadiusX="0.85" >
+                        <RadialGradientBrush x:Name="gradRadial" RadiusY="0.15" RadiusX="0.15" >
                             <GradientStop Color="{DynamicResource Orc.Colors.AccentColor40}" Offset="1"/>
                             <GradientStop Color="{DynamicResource Orc.Colors.AccentColor20}" Offset="0"/>
                         </RadialGradientBrush>
