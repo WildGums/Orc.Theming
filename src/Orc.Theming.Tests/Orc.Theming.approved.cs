@@ -19,6 +19,14 @@ namespace Orc.Theming
         protected void RaiseAccentColorChanged() { }
         public virtual bool SetAccentColor(System.Windows.Media.Color color) { }
     }
+    public static class AlphaBlendingHelper
+    {
+        public const byte FullyOpaqueAlpha = 255;
+        public const byte FullyTransparentAlpha = 0;
+        public static int ApplyFilter(int dstPixel) { }
+        public static int ApplyFilter(int dstPixel, int depth) { }
+        public static int BlendPixels(int dstPixel, int srcPixel) { }
+    }
     public class BaseColorSchemeService : Orc.Theming.IBaseColorSchemeService
     {
         public BaseColorSchemeService() { }
@@ -29,13 +37,36 @@ namespace Orc.Theming
     }
     public static class ColorExtensions
     {
+        public static int AlphaBlend(this System.Windows.Media.Color source, int dest) { }
         public static System.Windows.Media.Color FindContrast(this System.Windows.Media.Color color) { }
         public static float GetPerceptiveLuminance(this System.Windows.Media.Color color) { }
+        public static System.Windows.Media.Color GrayColor(this System.Windows.Media.Color color) { }
+        public static System.Windows.Media.Color HSBToRGB(double h, double s, double b) { }
         public static System.Windows.Media.Color InterpolateToColor(this System.Windows.Media.Color color, float mix, System.Windows.Media.Color destColor) { }
+        public static bool IsDarkColor(this System.Windows.Media.Color color) { }
+        public static System.Windows.Media.Color MakeColorMoreSaturated(this System.Windows.Media.Color color, double coefficient) { }
+        public static Orc.Theming.Coloring.ColorHsb RGBToHSB(int red, int green, int blue) { }
         public static System.Windows.Media.Color RemoveAlpha(this System.Windows.Media.Color foreground) { }
         public static System.Windows.Media.Color SetBrightness(this System.Windows.Media.Color color, float brightness) { }
+        public static System.Windows.Media.Color ToColor(this int colorAsInt) { }
+        public static double ToGrayScale(this System.Windows.Media.Color color) { }
+        public static int ToInt(this System.Windows.Media.Color color, Orc.Theming.Coloring.ColorShade colorShade = 0) { }
         public static System.Windows.Media.SolidColorBrush ToSolidColorBrush(this System.Windows.Media.Color color, double opacity = 1) { }
         public static System.Windows.Media.Color[] TransformPalette(this System.Collections.Generic.IReadOnlyList<System.Windows.Media.Color> palette, int count) { }
+    }
+    public class Crc32 : System.Security.Cryptography.HashAlgorithm
+    {
+        public const uint DefaultPolynomial = 3988292384u;
+        public const uint DefaultSeed = 4294967295u;
+        public Crc32() { }
+        public Crc32(uint polynomial, uint seed) { }
+        public override int HashSize { get; }
+        protected override void HashCore(byte[] array, int ibStart, int cbSize) { }
+        protected override byte[] HashFinal() { }
+        public override void Initialize() { }
+        public static uint Compute(byte[] buffer) { }
+        public static uint Compute(uint seed, byte[] buffer) { }
+        public static uint Compute(uint polynomial, uint seed, byte[] buffer) { }
     }
     public class FontImage : Catel.Windows.Markup.UpdatableMarkupExtension
     {
@@ -237,6 +268,58 @@ namespace Orc.Theming
         public ThemeService(Orc.Theming.IAccentColorService accentColorService, Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
         public virtual Orc.Theming.ThemeInfo GetThemeInfo() { }
         public virtual bool ShouldCreateStyleForwarders() { }
+    }
+}
+namespace Orc.Theming.Coloring
+{
+    public class ColorGenerator : Orc.Theming.Coloring.IColorGenerator
+    {
+        public const string DefaultFalseValue = "false";
+        public const string DefaultNullValue = "null";
+        public const string DefaultTrueValue = "true";
+        public ColorGenerator() { }
+        public ColorGenerator(string trueValue, string falseValue, string nullValue) { }
+        protected virtual System.Windows.Media.Color ColorFromStringHash(string strValue, string salt) { }
+        protected virtual string ConvertToStringValue(object value) { }
+        public virtual System.Windows.Media.Color Generate(object value, string salt = null) { }
+        protected virtual bool IsFalse(string strValue) { }
+        protected virtual bool IsTrue(string strValue) { }
+    }
+    public struct ColorHsb
+    {
+        public static readonly Orc.Theming.Coloring.ColorHsb Empty;
+        public ColorHsb(double h, double s, double b) { }
+        public double Brightness { get; set; }
+        public double Hue { get; set; }
+        public double Saturation { get; set; }
+        public override bool Equals(object obj) { }
+        public override int GetHashCode() { }
+        public static bool operator !=(Orc.Theming.Coloring.ColorHsb item1, Orc.Theming.Coloring.ColorHsb item2) { }
+        public static bool operator ==(Orc.Theming.Coloring.ColorHsb item1, Orc.Theming.Coloring.ColorHsb item2) { }
+    }
+    public enum ColorShade
+    {
+        Light = 0,
+        Medium = 1,
+        Dark = 2,
+    }
+    public interface IColorGenerator
+    {
+        System.Windows.Media.Color Generate(object value, string salt = null);
+    }
+    public static class IntColors
+    {
+        public static readonly int Black;
+        public static readonly int Blue;
+        public static readonly int DarkGray;
+        public static readonly int Gold;
+        public static readonly int LightGray;
+        public static readonly int MediumGray;
+        public static readonly int Red;
+        public static readonly int SoftGray;
+        public static readonly int TransparentSoftGray;
+        public static readonly int White;
+        public static readonly int Yellow;
     }
 }
 namespace Orc.Theming.ViewModels
