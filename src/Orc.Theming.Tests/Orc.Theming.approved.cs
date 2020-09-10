@@ -322,6 +322,19 @@ namespace Orc.Theming.Coloring
         public static readonly int Yellow;
     }
 }
+namespace Orc.Theming.Converters
+{
+    public class ColorToContrastColorValueConverter : Catel.MVVM.Converters.ValueConverterBase
+    {
+        public ColorToContrastColorValueConverter() { }
+        protected override object Convert(object value, System.Type targetType, object parameter) { }
+    }
+    public class ColorToOpaqueColorConverter : Catel.MVVM.Converters.ValueConverterBase
+    {
+        public ColorToOpaqueColorConverter() { }
+        protected override object Convert(object value, System.Type targetType, object parameter) { }
+    }
+}
 namespace Orc.Theming.ViewModels
 {
     public class AccentColorSwitcherViewModel : Catel.MVVM.ViewModelBase
