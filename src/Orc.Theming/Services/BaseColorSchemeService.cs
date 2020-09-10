@@ -19,7 +19,7 @@
             _themeManager = ControlzEx.Theming.ThemeManager.Current;
         }
 
-        public string GetBaseColorScheme() => _baseColorScheme ?? (_baseColorScheme = GetAvailableBaseColorSchemes()[0]);
+        public string GetBaseColorScheme() => _baseColorScheme ??= GetAvailableBaseColorSchemes()[0];
 
         public event EventHandler<EventArgs> BaseColorSchemeChanged;
 
