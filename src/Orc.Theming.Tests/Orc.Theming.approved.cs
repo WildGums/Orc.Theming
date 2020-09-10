@@ -29,8 +29,13 @@ namespace Orc.Theming
     }
     public static class ColorExtensions
     {
-        public static System.Windows.Media.Color ConvertToNonAlphaColor(this System.Windows.Media.Color backgroundColor, System.Windows.Media.Color accentColor) { }
+        public static System.Windows.Media.Color FindContrast(this System.Windows.Media.Color color) { }
+        public static float GetPerceptiveLuminance(this System.Windows.Media.Color color) { }
+        public static System.Windows.Media.Color InterpolateToColor(this System.Windows.Media.Color color, float mix, System.Windows.Media.Color destColor) { }
+        public static System.Windows.Media.Color RemoveAlpha(this System.Windows.Media.Color foreground) { }
+        public static System.Windows.Media.Color SetBrightness(this System.Windows.Media.Color color, float brightness) { }
         public static System.Windows.Media.SolidColorBrush ToSolidColorBrush(this System.Windows.Media.Color color, double opacity = 1) { }
+        public static System.Windows.Media.Color[] TransformPalette(this System.Collections.Generic.IReadOnlyList<System.Windows.Media.Color> palette, int count) { }
     }
     public class FontImage : Catel.Windows.Markup.UpdatableMarkupExtension
     {
