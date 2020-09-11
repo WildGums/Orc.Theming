@@ -5,7 +5,6 @@
     using Catel.Reflection;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Net.Mime;
     using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Media;
@@ -23,11 +22,13 @@
             _accentColorService = accentColorService;
             _baseColorSchemeService = baseColorSchemeService;
 
-            AccentColors = typeof(Colors).GetPropertiesEx(true, true).Where(x => x.PropertyType.IsAssignableFromEx(typeof(Color))).Select(x => (Color)x.GetValue(null)).ToList();
-            SelectedAccentColor = (Application.Current.TryFindResource("AccentColorBrush") as SolidColorBrush)?.Color ?? Colors.Orange;
+            AccentColors = typeof(Colors).GetPropertiesEx(true, true)
+                .Where(x => x.PropertyType.IsAssignableFromEx(typeof(Color)))
+                .Select(x => (Color)x.GetValue(null))
+                .ToList();
 
             BaseColorSchemes = _baseColorSchemeService.GetAvailableBaseColorSchemes();
-            SelectedBaseColorScheme = BaseColorSchemes[0];
+            SelectedBaseColorScheme = _baseColorSchemeService.GetBaseColorScheme() ?? BaseColorSchemes[0];
         }
 
         public List<Color> AccentColors { get; private set; }
