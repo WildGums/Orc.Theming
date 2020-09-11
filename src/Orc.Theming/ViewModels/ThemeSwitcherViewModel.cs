@@ -5,7 +5,9 @@
     using Catel.Reflection;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Net.Mime;
     using System.Threading.Tasks;
+    using System.Windows;
     using System.Windows.Media;
 
     public class ThemeSwitcherViewModel : ViewModelBase
@@ -22,7 +24,7 @@
             _baseColorSchemeService = baseColorSchemeService;
 
             AccentColors = typeof(Colors).GetPropertiesEx(true, true).Where(x => x.PropertyType.IsAssignableFromEx(typeof(Color))).Select(x => (Color)x.GetValue(null)).ToList();
-            SelectedAccentColor = Colors.Orange;
+            SelectedAccentColor = (Application.Current.TryFindResource("AccentColorBrush") as SolidColorBrush)?.Color ?? Colors.Orange;
 
             BaseColorSchemes = _baseColorSchemeService.GetAvailableBaseColorSchemes();
             SelectedBaseColorScheme = BaseColorSchemes[0];
