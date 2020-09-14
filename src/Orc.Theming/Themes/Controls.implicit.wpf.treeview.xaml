@@ -6,9 +6,25 @@
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.togglebutton.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="Orc.Styles.TreeView" TargetType="TreeView"
-           BasedOn="{StaticResource Orc.Styles.Control}">
+    <Style x:Key="{x:Type TreeViewItem}" TargetType="{x:Type TreeViewItem}"
+                   BasedOn="{StaticResource Orc.Styles.Control}">
         <Style.Resources>
+            <Style x:Key="TreeViewItemFocusVisual">
+                <Setter Property="Control.Template">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <Border>
+                                <Rectangle Margin="0,0,0,0"
+                                           StrokeThickness="5"
+                                           Stroke="{DynamicResource Orc.Brushes.Control.Default.Foreground}"
+                                           StrokeDashArray="1 2"
+                                           Opacity="0" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
             <Style x:Key="ExpandCollapseToggleStyle" TargetType="ToggleButton"
                    BasedOn="{StaticResource Orc.Styles.ToggleButton}">
                 <Setter Property="Focusable" Value="False" />
@@ -52,7 +68,7 @@
                                       Data="M 0 4 L 8 4 L 4 8 Z"
                                       Visibility="Hidden"
                                       Fill="{TemplateBinding Foreground}"/>
-                                
+
                             </Grid>
                         </ControlTemplate>
                     </Setter.Value>
@@ -68,140 +84,131 @@
                 </Style.Triggers>
             </Style>
 
-            <Style x:Key="TreeViewItemFocusVisual">
-                <Setter Property="Control.Template">
-                    <Setter.Value>
-                        <ControlTemplate>
-                            <Border>
-                                <Rectangle Margin="0,0,0,0"
-                                           StrokeThickness="5"
-                                           Stroke="{DynamicResource Orc.Brushes.Control.Default.Foreground}"
-                                           StrokeDashArray="1 2"
-                                           Opacity="0" />
-                            </Border>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
+        </Style.Resources>
 
-            <Style x:Key="{x:Type TreeViewItem}" TargetType="{x:Type TreeViewItem}"
-                   BasedOn="{StaticResource Orc.Styles.Control}">
-                <Setter Property="Background" Value="Transparent" />
-                <Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-                <Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-                <Setter Property="Padding" Value="1,0,0,0" />
-                <Setter Property="FocusVisualStyle" Value="{StaticResource TreeViewItemFocusVisual}" />
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type TreeViewItem}">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition MinWidth="19"
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="Padding" Value="1,0,0,0" />
+        <Setter Property="FocusVisualStyle" Value="{StaticResource TreeViewItemFocusVisual}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TreeViewItem}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition MinWidth="19"
                                                       Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition />
-                                </Grid.RowDefinitions>
-                                <VisualStateManager.VisualStateGroups>
-                                    <VisualStateGroup x:Name="ExpansionStates">
-                                        <VisualState x:Name="Expanded">
-                                            <Storyboard>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="ExpansionStates">
+                                <VisualState x:Name="Expanded">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
                                                                                Storyboard.TargetName="ItemsHost">
-                                                    <DiscreteObjectKeyFrame KeyTime="0"
+                                            <DiscreteObjectKeyFrame KeyTime="0"
                                                                             Value="{x:Static Visibility.Visible}" />
-                                                </ObjectAnimationUsingKeyFrames>
-                                            </Storyboard>
-                                        </VisualState>
-                                        <VisualState x:Name="Collapsed" />
-                                    </VisualStateGroup>
-                                </VisualStateManager.VisualStateGroups>
-                                <ToggleButton x:Name="Expander"
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Collapsed" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <ToggleButton x:Name="Expander"
                                               Style="{StaticResource ExpandCollapseToggleStyle}"
                                               ClickMode="Press"
                                               IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                <Border x:Name="Bd"
+                        <Border x:Name="Bd"
                                         Grid.Column="1"
                                         Background="{TemplateBinding Background}"
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="0"
                                         Padding="{TemplateBinding Padding}">
-                                    <ContentPresenter x:Name="PART_Header"
+                            <ContentPresenter x:Name="PART_Header"
                                                       ContentSource="Header"
                                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
-                                </Border>
-                                <ItemsPresenter x:Name="ItemsHost"
+                        </Border>
+                        <ItemsPresenter x:Name="ItemsHost"
                                                 Grid.Row="1"
                                                 Grid.Column="1"
                                                 Grid.ColumnSpan="2"
                                                 Visibility="Collapsed" />
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="HasItems" Value="False">
-                                    <Setter TargetName="Expander"
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HasItems" Value="False">
+                            <Setter TargetName="Expander"
                                             Property="Visibility"
                                             Value="Hidden" />
-                                </Trigger>
-                                <MultiTrigger>
-                                    <MultiTrigger.Conditions>
-                                        <Condition Property="HasHeader" Value="false" />
-                                        <Condition Property="Width" Value="Auto" />
-                                    </MultiTrigger.Conditions>
-                                    <Setter TargetName="PART_Header"
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="HasHeader" Value="false" />
+                                <Condition Property="Width" Value="Auto" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_Header"
                                             Property="MinWidth"
                                             Value="75" />
-                                </MultiTrigger>
-                                <MultiTrigger>
-                                    <MultiTrigger.Conditions>
-                                        <Condition Property="HasHeader" Value="false" />
-                                        <Condition Property="Height" Value="Auto" />
-                                    </MultiTrigger.Conditions>
-                                    <Setter TargetName="PART_Header" Property="MinHeight" Value="19" />
-                                </MultiTrigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="HasHeader" Value="false" />
+                                <Condition Property="Height" Value="Auto" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_Header" Property="MinHeight" Value="19" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
 
-                <Style.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Background}"/>
-                        <Setter Property="BorderBrush"  Value="{DynamicResource Orc.Brushes.Control.MouseOver.Border}"/>
-                        <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Foreground}"/>
-                    </Trigger>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Background}"/>
+                <Setter Property="BorderBrush"  Value="{DynamicResource Orc.Brushes.Control.MouseOver.Border}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Foreground}"/>
+            </Trigger>
 
-                    <MultiTrigger>
-                        <MultiTrigger.Conditions>
-                            <Condition Property="IsSelected" Value="True"/>
-                            <Condition Property="IsFocused" Value="True"/>
-                        </MultiTrigger.Conditions>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsSelected" Value="True"/>
+                    <Condition Property="IsFocused" Value="True"/>
+                </MultiTrigger.Conditions>
 
-                        <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Background}"/>
-                        <Setter Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Border}"/>
-                        <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Foreground}"/>
-                    </MultiTrigger>
+                <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Background}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Border}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Foreground}"/>
+            </MultiTrigger>
 
-                    <MultiTrigger>
-                        <MultiTrigger.Conditions>
-                            <Condition Property="IsSelected" Value="True"/>
-                            <Condition Property="IsFocused" Value="False"/>
-                        </MultiTrigger.Conditions>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsSelected" Value="True"/>
+                    <Condition Property="IsFocused" Value="False"/>
+                </MultiTrigger.Conditions>
 
-                        <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.SelectionInactive.Background}"/>
-                        <Setter Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.SelectionInactive.Border}"/>
-                        <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.SelectionInactive.Foreground}"/>
-                    </MultiTrigger>
+                <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.SelectionInactive.Background}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.SelectionInactive.Border}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.SelectionInactive.Foreground}"/>
+            </MultiTrigger>
 
-                    <Trigger Property="IsEnabled" Value="False">
-                        <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.Disabled.Background}"/>
-                        <Setter Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Disabled.Border}"/>
-                        <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}"/>
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.Disabled.Background}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Disabled.Border}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="Orc.Styles.TreeView" TargetType="TreeView"
+           BasedOn="{StaticResource Orc.Styles.Control}">
+        <Style.Resources>
+
+
+
         </Style.Resources>
 
         <Setter Property="OverridesDefaultStyle" Value="True" />
