@@ -40,23 +40,7 @@
 
         <GroupBox Header="WPF controls">
             <WrapPanel Orientation="Horizontal">
-                <Button x:Name="btnActiveGradient" 
-                        Content="Click Me"
-                        Width="120"
-                        Height="30" 
-                        Margin="30"
-                        MouseMove="btnActiveGradient_MouseMove"
-                        MouseLeave="btnActiveGradient_MouseLeave" >
-                    <Button.Background>
-                        <RadialGradientBrush x:Name="gradRadial" RadiusY="0.15" RadiusX="0.15" >
-                            <GradientStop Color="{DynamicResource Orc.Colors.AccentColor40}" Offset="1"/>
-                            <GradientStop Color="{DynamicResource Orc.Colors.AccentColor20}" Offset="0"/>
-                        </RadialGradientBrush>
-                    </Button.Background>
-                </Button>
-
-                <Button Content="Button" ToolTip="Button" Background="Red"/>
-
+                <Button Content="Button" ToolTip="Button" />
                 <CheckBox Content="CheckBox" ToolTip="CheckBox" />
                 <ComboBox Text="ComboBox" IsEditable="true" ToolTip="ComboBox" />
                 <Label Content="Label" ToolTip="Label" />
