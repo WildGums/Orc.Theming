@@ -185,7 +185,6 @@
 
     <!-- PasswordBox -->
     <Style x:Key="DefaultPasswordBoxStyle" TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource Orc.Styles.PasswordBox}">
-        <Setter Property="Height" Value="{DynamicResource Size.Height}" />
         <Setter Property="Padding" Value="{DynamicResource Padding.TextBox}" />
         <Setter Property="Margin" Value="{DynamicResource Margin.TextBox}" />
 
