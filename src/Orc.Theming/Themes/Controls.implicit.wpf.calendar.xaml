@@ -17,13 +17,13 @@
                                 <!-- Start: Data template for header button -->
                                 <DataTemplate x:Key="{x:Static CalendarItem.DayTitleTemplateResourceKey}">
                                     <TextBlock FontWeight="Bold"
-                                       FontFamily="Verdana"
-                                       FontSize="9.5"
-                                       Foreground="{DynamicResource Orc.Brushes.Control.Default.Foreground}"
-                                       HorizontalAlignment="Center"
-                                       Text="{Binding}"
-                                       Margin="0,6,0,6"
-                                       VerticalAlignment="Center"/>
+                                               FontFamily="Verdana"
+                                               FontSize="9.5"
+                                               Foreground="{DynamicResource Orc.Brushes.Control.Default.Foreground}"
+                                               HorizontalAlignment="Center"
+                                               Text="{Binding}"
+                                               Margin="0,6,0,6"
+                                               VerticalAlignment="Center"/>
                                 </DataTemplate>
                                 <!-- End: Data template for header button -->
                             </ControlTemplate.Resources>

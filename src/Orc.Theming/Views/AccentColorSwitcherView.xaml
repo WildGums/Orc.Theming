@@ -14,10 +14,12 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                        <Rectangle Grid.Column="0" Width="20" Height="12" VerticalAlignment="Center" Margin="4,2,8,2">
-                            <Rectangle.Fill>
-                                <SolidColorBrush Color="{Binding }" />
-                            </Rectangle.Fill>
+                        <Rectangle Grid.Column="0" 
+                                   Width="20"
+                                   Height="12"
+                                   VerticalAlignment="Center"
+                                   Margin="4,2,8,2"
+                                   Fill ="{Binding Converter={catel:ColorToBrushConverter}}">
                         </Rectangle>
 
                         <TextBlock Grid.Column="1" Text="{Binding }" VerticalAlignment="Center" />

@@ -8,7 +8,7 @@
                    xmlns:orccontrols="http://schemas.wildgums.com/orc/controls"
                    d:DesignHeight="300"
                    d:DesignWidth="400">
-
+   
     <orccontrols:StackGrid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

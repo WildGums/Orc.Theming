@@ -39,6 +39,8 @@
 	<sys:Double x:Key="PaddingSize.Label.Y">2</sys:Double>
     <sys:Double x:Key="PaddingSize.TextBox.X">2</sys:Double>
     <sys:Double x:Key="PaddingSize.TextBox.Y">4</sys:Double>
+    <sys:Double x:Key="PaddingSize.Combobox.X">2</sys:Double>
+    <sys:Double x:Key="PaddingSize.Combobox.Y">3</sys:Double>
 	
 	<!-- 
 	
@@ -72,5 +74,6 @@
 
     <Thickness x:Key="Padding.Label" Left="{StaticResource PaddingSize.Label.X}" Top="{StaticResource PaddingSize.Label.Y}" Right="{StaticResource PaddingSize.Label.X}" Bottom="{StaticResource PaddingSize.Label.Y}" />
     <Thickness x:Key="Padding.TextBox" Left="{StaticResource PaddingSize.TextBox.X}" Top="{StaticResource PaddingSize.TextBox.Y}" Right="{StaticResource PaddingSize.TextBox.X}" Bottom="{StaticResource PaddingSize.TextBox.Y}" />
+    <Thickness x:Key="Padding.Combobox" Left="{StaticResource PaddingSize.Combobox.X}" Top="{StaticResource PaddingSize.Combobox.Y}" Right="{StaticResource PaddingSize.Combobox.X}" Bottom="{StaticResource PaddingSize.Combobox.Y}" />
 
 </ResourceDictionary>

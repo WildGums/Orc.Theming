@@ -199,6 +199,7 @@
             Log.Debug("Synchronizing theme");
 
             var themeGenerator = RuntimeThemeGenerator.Current;
+            themeGenerator.Options.UseHSL = false;
 
             var generatedTheme = themeGenerator.GenerateRuntimeTheme(_baseColorSchemeService.GetBaseColorScheme(), _accentColorService.GetAccentColor());
             if (generatedTheme is null)

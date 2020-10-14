@@ -21,11 +21,13 @@
             _accentColorService = accentColorService;
             _baseColorSchemeService = baseColorSchemeService;
 
-            AccentColors = typeof(Colors).GetPropertiesEx(true, true).Where(x => x.PropertyType.IsAssignableFromEx(typeof(Color))).Select(x => (Color)x.GetValue(null)).ToList();
-            SelectedAccentColor = Colors.Orange;
+            AccentColors = typeof(Colors).GetPropertiesEx(true, true)
+                .Where(x => x.PropertyType.IsAssignableFromEx(typeof(Color)))
+                .Select(x => (Color)x.GetValue(null))
+                .ToList();
 
             BaseColorSchemes = _baseColorSchemeService.GetAvailableBaseColorSchemes();
-            SelectedBaseColorScheme = BaseColorSchemes[0];
+            SelectedBaseColorScheme = _baseColorSchemeService.GetBaseColorScheme() ?? BaseColorSchemes[0];
         }
 
         public List<Color> AccentColors { get; private set; }
