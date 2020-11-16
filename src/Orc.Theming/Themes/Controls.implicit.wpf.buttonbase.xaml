@@ -69,7 +69,7 @@
                                 <Condition Property="ToggleButton.IsChecked" Value="True"/>
                                 <Condition Property="ToggleButton.IsMouseOver" Value="True"/>
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="Chrome" Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.CheckedMouseOver.Border}"/>
+                            <Setter TargetName="Chrome" Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Checked.Background}"/>
                             <Setter TargetName="Chrome" Property="Background" Value="{DynamicResource Orc.Brushes.AccentColor40}"/>
                             <Setter Property="Control.Foreground" Value="{DynamicResource Orc.Brushes.Control.CheckedMouseOver.Foreground}"/>
                         </MultiTrigger>
