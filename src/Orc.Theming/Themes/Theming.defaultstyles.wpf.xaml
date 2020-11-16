@@ -30,6 +30,7 @@
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.textblock.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.textbox.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.togglebutton.xaml" />
+        <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.toolbar.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.tooltip.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.treeview.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.window.xaml" />
@@ -324,6 +325,15 @@
     <Style x:Key="DefaultToggleButtonStyle" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource Orc.Styles.ToggleButton}">
         <Setter Property="Margin" Value="{DynamicResource Margin.Button}" />
         <Setter Property="Height" Value="{DynamicResource Size.Height}" />
+    </Style>
+    
+    <!-- ToolBar -->
+    <Style x:Key="DefaultToolBarTrayStyle" TargetType="{x:Type ToolBarTray}" BasedOn="{StaticResource Orc.Styles.ToolBarTray}">
+        <!--<Setter Property="Margin" Value="{DynamicResource Margin.Default}" />-->
+    </Style>
+
+    <Style x:Key="DefaultToolBarStyle" TargetType="{x:Type ToolBar}" BasedOn="{StaticResource Orc.Styles.ToolBar}">
+        <!--<Setter Property="Margin" Value="{DynamicResource Margin.Default}" />-->
     </Style>
 
     <!-- ToolTip -->
