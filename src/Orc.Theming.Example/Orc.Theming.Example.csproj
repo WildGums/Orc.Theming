@@ -1,6 +1,6 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;net5.0-windows</TargetFrameworks>
     <AssemblyName>Orc.Theming.Example</AssemblyName>
     <RootNamespace>Orc.Theming.Example</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
@@ -25,6 +25,8 @@
     <PackageReference Include="Orc.Controls" Version="4.1.1" />
     <PackageReference Include="Orc.Wizard" Version="4.2.0" />
     <PackageReference Include="Orchestra.Core" Version="6.1.1" />
+    <PackageReference Include="System.Security.Permissions" Version="5.0.0" PrivateAssets="all" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
