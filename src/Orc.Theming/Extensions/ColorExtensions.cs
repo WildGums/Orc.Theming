@@ -271,7 +271,7 @@
             {
                 var contrastLuminance = contrastColor.GetPerceptiveLuminance();
                 var delta = Math.Abs(luminance - contrastLuminance);
-                if (!(delta > maxDelta))
+                if (delta <= maxDelta)
                 {
                     continue;
                 }

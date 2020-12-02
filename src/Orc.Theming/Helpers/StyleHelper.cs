@@ -205,7 +205,7 @@
         private static void FindDefaultStyles(DefaultStylesContext context, ResourceDictionary sourceResources, string defaultPrefix)
         {
             var uri = sourceResources.Source;
-            if (uri is null == false)
+            if (uri != null)
             {
                 var uriName = uri.ToString();
                 if (!string.IsNullOrWhiteSpace(uriName))
