@@ -28,8 +28,8 @@
             languageService.PreferredCulture = CultureInfo.CurrentCulture;
             languageService.FallbackCulture = new CultureInfo("en-US");
 
-            Orc.Theming.FontImage.RegisterFont("FontAwesome", new FontFamily(new Uri("pack://application:,,,/Orc.Theming.Example;component/Resources/Fonts/", UriKind.RelativeOrAbsolute), "./#FontAwesome"));
-            Orc.Theming.FontImage.DefaultFontFamily = "FontAwesome";
+            FontImage.RegisterFont("FontAwesome", new FontFamily(new Uri("pack://application:,,,/Orc.Theming.Example;component/Resources/Fonts/", UriKind.RelativeOrAbsolute), "./#FontAwesome"));
+            FontImage.DefaultFontFamily = "FontAwesome";
 
             // This shows the StyleHelper, but uses a *copy* of the Orchestra themes. The default margins for controls are not defined in
             // Orc.Theming since it's a low-level library. The final default styles should be in the shell (thus Orchestra makes sense)

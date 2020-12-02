@@ -164,12 +164,9 @@
 
         public SolidColorBrush GetAccentColorBrush()
         {
-            if (_accentColorBrushCache is null)
-            {
-                _accentColorBrushCache = _currentTheme?.PrimaryAccentColor.ToSolidColorBrush() ?? Application.Current?.TryFindResource("AccentColorBrush") as SolidColorBrush ?? Brushes.Green;
-            }
-
-            return _accentColorBrushCache;
+            return _accentColorBrushCache ??= _currentTheme?.PrimaryAccentColor.ToSolidColorBrush() 
+                                              ?? Application.Current?.TryFindResource("AccentColorBrush") as SolidColorBrush 
+                                              ?? Brushes.Green;
         }
 
         private void OnThemeManagerThemeChanged(object sender, ThemeChangedEventArgs e)

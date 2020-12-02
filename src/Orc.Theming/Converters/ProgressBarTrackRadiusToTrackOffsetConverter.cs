@@ -1,17 +1,11 @@
 ﻿namespace Orc.Theming.Converters
 {
     using System;
-    using System.Collections.Generic;
     using System.Globalization;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Data;
     using System.Windows.Media;
-    using System.Windows.Shapes;
-    using Catel.Logging;
-    using Catel.MVVM.Converters;
+    using Catel.Logging;    
 
     internal class ProgressBarTrackRadiusToTrackOffsetConverter : IMultiValueConverter
     {
@@ -19,38 +13,29 @@
 
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            if (values.Count() < 2)
+            if (values.Length < 2)
             {
                 throw Log.ErrorAndCreateException<InvalidOperationException>("Wrong argument count passed to converter");
             }
 
-            var trackPath = values[0] as double?;
-            var trackGeometry = values[1] as EllipseGeometry;
-
-            if (trackPath is null || trackGeometry is null)
+            if (!(values[0] is double trackPath) || !(values[1] is EllipseGeometry trackGeometry))
             {
                 throw Log.ErrorAndCreateException<InvalidOperationException>("Wrong argument type");
             }
 
             var propertyPath = parameter.ToString();
 
-            switch (propertyPath)
+            return propertyPath switch
             {
-                case nameof(EllipseGeometry.RadiusX):
-
-                    return trackGeometry.RadiusX + trackPath;
-
-                case nameof(EllipseGeometry.RadiusY):
-                    return trackGeometry.RadiusY + trackPath;
-
-                default:
-                    return DependencyProperty.UnsetValue;
-            }
+                nameof(EllipseGeometry.RadiusX) => trackGeometry.RadiusX + (double?)trackPath,
+                nameof(EllipseGeometry.RadiusY) => trackGeometry.RadiusY + (double?)trackPath,
+                _ => DependencyProperty.UnsetValue
+            };
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
-            return new object[] { value };
+            return new[] { value };
         }
     }
 }

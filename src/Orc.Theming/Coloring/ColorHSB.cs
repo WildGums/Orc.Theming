@@ -39,9 +39,33 @@ namespace Orc.Theming.Coloring
         /// <param name="b">Brightness value.</param>
         public ColorHsb(double h, double s, double b)
         {
-            _hue = (h > 360) ? 360 : ((h < 0) ? 0 : h);
-            _saturation = (s > 1) ? 1 : ((s < 0) ? 0 : s);
-            _brightness = (b > 1) ? 1 : ((b < 0) ? 0 : b);
+            if (h > 360)
+            {
+                _hue = 360;
+            }
+            else
+            {
+                _hue = h >= 0 ? h : 0;
+            }
+
+            if (s > 1)
+            {
+                _saturation = 1;
+            }
+            else
+            {
+                _saturation = s >= 0 ? s : 0;
+            }
+
+            if (b > 1)
+            {
+                _brightness = 1;
+            }
+            else
+            {
+                _brightness = b >= 0 ? b : 0;
+            }
+
         }
         #endregion
 
@@ -52,7 +76,17 @@ namespace Orc.Theming.Coloring
         public double Brightness
         {
             get { return _brightness; }
-            set { _brightness = (value > 1) ? 1 : ((value < 0) ? 0 : value); }
+            set
+            {
+                if (value > 1)
+                {
+                    _brightness = 1;
+                }
+                else
+                {
+                    _brightness = value >= 0 ? value : 0;
+                }
+            }
         }
 
         /// <summary>
@@ -61,7 +95,17 @@ namespace Orc.Theming.Coloring
         public double Hue
         {
             get { return _hue; }
-            set { _hue = (value > 360) ? 360 : ((value < 0) ? 0 : value); }
+            set
+            {
+                if (value > 360)
+                {
+                    _hue = 360;
+                }
+                else
+                {
+                    _hue = value >= 0 ? value : 0;
+                }
+            }
         }
 
         /// <summary>
@@ -70,7 +114,17 @@ namespace Orc.Theming.Coloring
         public double Saturation
         {
             get { return _saturation; }
-            set { _saturation = (value > 1) ? 1 : ((value < 0) ? 0 : value); }
+            set
+            {
+                if (value > 1)
+                {
+                    _saturation = 1;
+                }
+                else
+                {
+                    _saturation = value >= 0 ? value : 0;
+                }
+            }
         }
         #endregion
 
@@ -83,11 +137,9 @@ namespace Orc.Theming.Coloring
         /// <returns></returns>
         public static bool operator !=(ColorHsb item1, ColorHsb item2)
         {
-            return (
-                item1.Hue != item2.Hue
-                || item1.Saturation != item2.Saturation
-                || item1.Brightness != item2.Brightness
-                );
+            return item1.Hue != item2.Hue
+                   || item1.Saturation != item2.Saturation
+                   || item1.Brightness != item2.Brightness;
         }
 
         /// <summary>
@@ -98,11 +150,9 @@ namespace Orc.Theming.Coloring
         /// <returns></returns>
         public static bool operator ==(ColorHsb item1, ColorHsb item2)
         {
-            return (
-                item1.Hue == item2.Hue
-                && item1.Saturation == item2.Saturation
-                && item1.Brightness == item2.Brightness
-                );
+            return item1.Hue == item2.Hue
+                   && item1.Saturation == item2.Saturation
+                   && item1.Brightness == item2.Brightness;
         }
 
         /// <summary>
@@ -110,7 +160,7 @@ namespace Orc.Theming.Coloring
         /// </summary>
         /// <param name="obj">Second color object.</param>
         /// <returns></returns>
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             if (obj is null || GetType() != obj.GetType())
             {

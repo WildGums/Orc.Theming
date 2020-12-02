@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Security.RightsManagement;
     using System.Windows;
     using Catel;
     using Catel.Logging;
@@ -47,29 +46,29 @@
             Argument.IsNotNull(nameof(applicationResourceDictionary), applicationResourceDictionary);
             Argument.IsNotNullOrWhitespace(nameof(defaultPrefix), defaultPrefix);
 
-            if (Application.Current is null)
+            if (Application.Current == null)
             {
-                try
+                return;
+            }
+
+            try
+            {
+                // Ensure we have an application
+                _ = new Application();
+
+                if (Application.LoadComponent(applicationResourceDictionary) is ResourceDictionary resourceDictionary)
                 {
-                    // Ensure we have an application
-                    _ = new Application();
-
-                    var resourceDictionary = Application.LoadComponent(applicationResourceDictionary) as ResourceDictionary;
-                    if (resourceDictionary != null)
-                    {
-                        Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
-                    }
-
-                    CreateStyleForwardersForDefaultStyles(Application.Current.Resources, defaultPrefix);
-
-                    // Create an invisible dummy window to make sure that this is the main window
-                    var dummyMainWindow = new Window();
-                    dummyMainWindow.Visibility = Visibility.Hidden;
+                    Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
                 }
-                catch (Exception ex)
-                {
-                    Log.Error(ex, "Failed to ensure application resources");
-                }
+
+                CreateStyleForwardersForDefaultStyles(Application.Current.Resources, defaultPrefix);
+
+                // Create an invisible dummy window to make sure that this is the main window
+                var dummyMainWindow = new Window {Visibility = Visibility.Hidden};
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Failed to ensure application resources");
             }
         }
 
@@ -153,9 +152,8 @@
             {
                 var styleInfo = foundDefaultStyles[i];
 
-                if (defaultStylesDictionary.TryGetValue(styleInfo.TargetType, out var existingStyleInfo))
+                if (defaultStylesDictionary.TryGetValue(styleInfo.TargetType, out _))
                 {
-                    //Log.Debug($"Default style for '{styleInfo.TargetType.Name}' already coming from '{existingStyleInfo.SourceDictionary}', ignoring registration from '{styleInfo.SourceDictionary}'");
                     continue;
                 }
 
@@ -232,14 +230,12 @@
             {
                 try
                 {
-                    var style = sourceResources[key] as Style;
-                    if (style != null)
+                    if (sourceResources[key] is Style style)
                     {
-                        context.Styles.Add(new StyleInfo
+                        context.Styles.Add(new StyleInfo(key)
                         {
                             Style = style,
                             SourceDictionary = sourceResources,
-                            SourceKey = key,
                             TargetType = style.TargetType,
                         });
                     }
@@ -278,18 +274,16 @@
 
         private class StyleInfo : IEquatable<StyleInfo>
         {
-            public StyleInfo()
+            public StyleInfo(string sourceKey)
             {
-                //Order = UniqueIdentifierHelper.GetUniqueIdentifier(typeof(StyleInfo));
+                SourceKey = sourceKey;
             }
-
-            //public int Order { get; private set; }
 
             public Type TargetType { get; set; }
 
             public ResourceDictionary SourceDictionary { get; set; }
 
-            public string SourceKey { get; set; }
+            public string SourceKey { get; }
 
             public Style Style { get; set; }
 
