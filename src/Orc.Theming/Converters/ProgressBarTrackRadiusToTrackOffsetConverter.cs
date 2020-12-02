@@ -5,7 +5,7 @@
     using System.Windows;
     using System.Windows.Data;
     using System.Windows.Media;
-    using Catel.Logging;    
+    using Catel.Logging;
 
     internal class ProgressBarTrackRadiusToTrackOffsetConverter : IMultiValueConverter
     {
@@ -35,7 +35,7 @@
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
-            return new[] { value };
+            return new[] {value};
         }
     }
 }

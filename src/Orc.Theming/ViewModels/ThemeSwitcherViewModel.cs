@@ -1,12 +1,11 @@
 ﻿namespace Orc.Theming.ViewModels
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Windows.Media;
     using Catel;
     using Catel.MVVM;
     using Catel.Reflection;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using System.Windows.Media;
 
     public class ThemeSwitcherViewModel : ViewModelBase
     {
@@ -30,26 +29,11 @@
             SelectedBaseColorScheme = _baseColorSchemeService.GetBaseColorScheme() ?? BaseColorSchemes[0];
         }
 
-        public List<Color> AccentColors { get; private set; }
-        public IReadOnlyList<string> BaseColorSchemes { get; private set; }
+        public List<Color> AccentColors { get; }
+        public IReadOnlyList<string> BaseColorSchemes { get; }
 
         public Color SelectedAccentColor { get; set; }
         public string SelectedBaseColorScheme { get; set; }
-
-
-        protected override async Task InitializeAsync()
-        {
-            await base.InitializeAsync();
-
-            // TODO: subscribe to events here
-        }
-
-        protected override async Task CloseAsync()
-        {
-            // TODO: unsubscribe from events here
-
-            await base.CloseAsync();
-        }
 
         private void OnSelectedAccentColorChanged()
         {

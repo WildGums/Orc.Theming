@@ -1,6 +1,5 @@
 ﻿namespace Orc.Theming
 {
-    using System;
     using System.Linq;
     using System.Windows;
     using Catel;
@@ -10,7 +9,7 @@
     public static class FrameworkElementExtensions
     {
         public static TBehavior AttachBehavior<TBehavior>(this FrameworkElement frameworkElement)
-            where TBehavior : Microsoft.Xaml.Behaviors.Behavior
+            where TBehavior : Behavior
         {
             Argument.IsNotNull(() => frameworkElement);
 
@@ -29,7 +28,7 @@
         }
 
         public static void DetachBehavior<TBehavior>(this FrameworkElement frameworkElement)
-            where TBehavior : Microsoft.Xaml.Behaviors.Behavior
+            where TBehavior : Behavior
         {
             Argument.IsNotNull(() => frameworkElement);
 

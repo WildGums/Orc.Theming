@@ -9,17 +9,12 @@
     {
         protected override object Convert(object value, Type targetType, object parameter)
         {
-            if (value is Color color)
+            return value switch
             {
-                return color.RemoveAlpha();
-            }
-
-            if (value is SolidColorBrush solidColorBrush)
-            {
-                return new SolidColorBrush(solidColorBrush.Color.RemoveAlpha());
-            }
-
-            return DependencyProperty.UnsetValue;
+                Color color => color.RemoveAlpha(),
+                SolidColorBrush solidColorBrush => new SolidColorBrush(solidColorBrush.Color.RemoveAlpha()),
+                _ => DependencyProperty.UnsetValue
+            };
         }
     }
 
@@ -28,17 +23,12 @@
     {
         protected override object Convert(object value, Type targetType, object parameter)
         {
-            if (value is Color color)
+            return value switch
             {
-                return color.FindContrast();
-            }
-
-            if (value is SolidColorBrush solidColorBrush)
-            {
-                return new SolidColorBrush(solidColorBrush.Color.FindContrast());
-            }
-
-            return DependencyProperty.UnsetValue;
+                Color color => color.FindContrast(),
+                SolidColorBrush solidColorBrush => new SolidColorBrush(solidColorBrush.Color.FindContrast()),
+                _ => DependencyProperty.UnsetValue
+            };
         }
     }
 }

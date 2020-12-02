@@ -9,14 +9,15 @@
 
     internal class ProgressBarSizeToTrackRadiusConverter : IMultiValueConverter
     {
-        private static readonly ILog Log = LogManager.GetCurrentClassLogger();
         private const double DefaultRadius = 10;
+
+        private static readonly ILog Log = LogManager.GetCurrentClassLogger();
 
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             try
             {
-                if (values.Count() < 3)
+                if (values.Length < 3)
                 {
                     throw Log.ErrorAndCreateException<InvalidOperationException>("Wrong argument count passed to converter");
                 }
@@ -43,7 +44,7 @@
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
-            return new object[] { value };
+            return new[] {value};
         }
     }
 }

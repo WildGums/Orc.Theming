@@ -1,7 +1,6 @@
 ﻿namespace Orc.Theming
 {
     using System;
-    using Catel.Logging;
     using Catel.Windows.Markup;
 
     public class ThemeColorBrush : UpdatableMarkupExtension

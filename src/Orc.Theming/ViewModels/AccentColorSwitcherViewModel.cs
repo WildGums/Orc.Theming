@@ -31,7 +31,7 @@
             SelectedAccentColor = currentAccentColor;
         }
 
-        public List<Color> AccentColors { get; private set; }
+        public List<Color> AccentColors { get; }
 
         public Color SelectedAccentColor { get; set; }
 

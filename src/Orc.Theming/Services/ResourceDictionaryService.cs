@@ -3,6 +3,7 @@
     using System;
     using System.Collections;
     using System.Linq;
+    using System.Resources;
     using Catel;
     using Catel.Logging;
 
@@ -11,13 +12,13 @@
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
 
         /// <summary>
-        /// Checks whether the specified resource dictionary is available as resource.
+        ///     Checks whether the specified resource dictionary is available as resource.
         /// </summary>
         /// <param name="resourceDictionaryUri">The resource dictionary uri.</param>
         /// <returns></returns>
         public virtual bool IsResourceDictionaryAvailable(string resourceDictionaryUri)
         {
-            var expectedResourceNames = resourceDictionaryUri.Split(new[] { ";component/" }, StringSplitOptions.RemoveEmptyEntries);
+            var expectedResourceNames = resourceDictionaryUri.Split(new[] {";component/"}, StringSplitOptions.RemoveEmptyEntries);
             if (expectedResourceNames.Length == 2)
             {
                 // Part 1 is assembly
@@ -25,8 +26,8 @@
                 var assemblyName = expectedResourceNames[0].Replace("/", string.Empty);
 #pragma warning restore CA1307 // Specify StringComparison
                 var assembly = (from x in AppDomain.CurrentDomain.GetAssemblies()
-                                where x.GetName().Name.EqualsIgnoreCase(assemblyName)
-                                select x).FirstOrDefault();
+                    where x.GetName().Name.EqualsIgnoreCase(assemblyName)
+                    select x).FirstOrDefault();
                 if (assembly != null)
                 {
                     // Orchestra.Core.g.resources
@@ -44,11 +45,11 @@
                         var relativeResourceName = expectedResourceNames[1].Replace(".xaml", ".baml");
 #pragma warning restore CA1307 // Specify StringComparison
 
-                        using (var reader = new System.Resources.ResourceReader(resourceStream))
+                        using (var reader = new ResourceReader(resourceStream))
                         {
                             var exists = (from x in reader.Cast<DictionaryEntry>()
-                                          where ((string)x.Key).EqualsIgnoreCase(relativeResourceName)
-                                          select x).Any();
+                                where ((string)x.Key).EqualsIgnoreCase(relativeResourceName)
+                                select x).Any();
                             if (exists)
                             {
                                 Log.Debug($"Resource '{resourceDictionaryUri}' exists");

@@ -27,7 +27,7 @@
 
             var themeInfo = new ThemeInfo
             {
-                BaseColorScheme = _baseColorSchemeService.GetBaseColorScheme(),
+                BaseColorScheme = _baseColorSchemeService.GetBaseColorScheme(), 
                 AccentBaseColor = accentColor,
                 HighlightColor = accentColor
             };
