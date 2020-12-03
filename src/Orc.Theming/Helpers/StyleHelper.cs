@@ -46,29 +46,27 @@
             Argument.IsNotNull(nameof(applicationResourceDictionary), applicationResourceDictionary);
             Argument.IsNotNullOrWhitespace(nameof(defaultPrefix), defaultPrefix);
 
-            if (Application.Current == null)
+            if (Application.Current is null)
             {
-                return;
-            }
-
-            try
-            {
-                // Ensure we have an application
-                _ = new Application();
-
-                if (Application.LoadComponent(applicationResourceDictionary) is ResourceDictionary resourceDictionary)
+                try
                 {
-                    Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
+                    // Ensure we have an application
+                    _ = new Application();
+
+                    if (Application.LoadComponent(applicationResourceDictionary) is ResourceDictionary resourceDictionary)
+                    {
+                        Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
+                    }
+
+                    CreateStyleForwardersForDefaultStyles(Application.Current.Resources, defaultPrefix);
+
+                    // Create an invisible dummy window to make sure that this is the main window
+                    var dummyMainWindow = new Window { Visibility = Visibility.Hidden };
                 }
-
-                CreateStyleForwardersForDefaultStyles(Application.Current.Resources, defaultPrefix);
-
-                // Create an invisible dummy window to make sure that this is the main window
-                var dummyMainWindow = new Window {Visibility = Visibility.Hidden};
-            }
-            catch (Exception ex)
-            {
-                Log.Error(ex, "Failed to ensure application resources");
+                catch (Exception ex)
+                {
+                    Log.Error(ex, "Failed to ensure application resources");
+                }
             }
         }
 
