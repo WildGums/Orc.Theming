@@ -144,7 +144,7 @@
         {
             // Step 1: specific brush always wins
             var brush = Brush;
-            if (brush is null == false)
+            if (brush != null)
             {
                 return brush;
             }
