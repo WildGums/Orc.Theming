@@ -1,16 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ColorHelper.cs" company="WildGums">
-//   Copyright (c) 2008 - 2016 WildGums. All rights reserved.
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
-
-
-namespace Orc.Theming
+﻿namespace Orc.Theming
 {
 #if NETFX_CORE
     using Windows.UI;
 #else
     using System.Windows.Media;
+
 #endif
 
     internal static class ColorHelper

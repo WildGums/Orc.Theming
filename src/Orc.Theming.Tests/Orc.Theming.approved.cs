@@ -1,5 +1,5 @@
 ﻿[assembly: System.Resources.NeutralResourcesLanguage("en-US")]
-[assembly: System.Runtime.Versioning.TargetFramework(".NETCoreApp,Version=v3.1", FrameworkDisplayName="")]
+[assembly: System.Runtime.Versioning.TargetFramework(".NETCoreApp,Version=v5.0", FrameworkDisplayName="")]
 [assembly: System.Windows.Markup.XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming")]
 [assembly: System.Windows.Markup.XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Views")]
 [assembly: System.Windows.Markup.XmlnsPrefix("http://schemas.wildgums.com/orc/theming", "orctheming")]
@@ -339,7 +339,6 @@ namespace Orc.Theming.ViewModels
 {
     public class AccentColorSwitcherViewModel : Catel.MVVM.ViewModelBase
     {
-        public static readonly Catel.Data.PropertyData AccentColorsProperty;
         public static readonly Catel.Data.PropertyData SelectedAccentColorProperty;
         public AccentColorSwitcherViewModel(Orc.Theming.ThemeManager themeManager, Orc.Theming.IAccentColorService accentColorService) { }
         public System.Collections.Generic.List<System.Windows.Media.Color> AccentColors { get; }
@@ -349,9 +348,8 @@ namespace Orc.Theming.ViewModels
     }
     public class BaseColorSchemeSwitcherViewModel : Catel.MVVM.ViewModelBase
     {
-        public static readonly Catel.Data.PropertyData BaseColorSchemesProperty;
         public static readonly Catel.Data.PropertyData SelectedBaseColorSchemeProperty;
-        public BaseColorSchemeSwitcherViewModel(Orc.Theming.ThemeManager themeManager, Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
+        public BaseColorSchemeSwitcherViewModel(Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
         public System.Collections.Generic.IReadOnlyList<string> BaseColorSchemes { get; }
         public string SelectedBaseColorScheme { get; set; }
         protected override System.Threading.Tasks.Task CloseAsync() { }
@@ -359,8 +357,6 @@ namespace Orc.Theming.ViewModels
     }
     public class ThemeSwitcherViewModel : Catel.MVVM.ViewModelBase
     {
-        public static readonly Catel.Data.PropertyData AccentColorsProperty;
-        public static readonly Catel.Data.PropertyData BaseColorSchemesProperty;
         public static readonly Catel.Data.PropertyData SelectedAccentColorProperty;
         public static readonly Catel.Data.PropertyData SelectedBaseColorSchemeProperty;
         public ThemeSwitcherViewModel(Orc.Theming.IAccentColorService accentColorService, Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
@@ -368,8 +364,6 @@ namespace Orc.Theming.ViewModels
         public System.Collections.Generic.IReadOnlyList<string> BaseColorSchemes { get; }
         public System.Windows.Media.Color SelectedAccentColor { get; set; }
         public string SelectedBaseColorScheme { get; set; }
-        protected override System.Threading.Tasks.Task CloseAsync() { }
-        protected override System.Threading.Tasks.Task InitializeAsync() { }
     }
 }
 namespace Orc.Theming.Views

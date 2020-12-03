@@ -55,7 +55,7 @@ namespace Orc.Theming
                 var dstAG = destPixel & 0xff00ff00;
 
                 // calculate alpha blend
-                dstRB = (invAlpha*dstRB >> 8) & 0x00ff00ff;
+                dstRB = (invAlpha * dstRB >> 8) & 0x00ff00ff;
                 dstAG = HighlightFilterColor + (invAlpha*(dstAG >> 8)) & 0xff00ff00;
 
                 // create new pixel

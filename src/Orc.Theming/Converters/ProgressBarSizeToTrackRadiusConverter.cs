@@ -1,26 +1,22 @@
 ﻿namespace Orc.Theming.Converters
 {
     using System;
-    using System.Collections.Generic;
     using System.Globalization;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Data;
     using Catel.Logging;
 
     internal class ProgressBarSizeToTrackRadiusConverter : IMultiValueConverter
     {
-        private static readonly ILog Log = LogManager.GetCurrentClassLogger();
         private const double DefaultRadius = 10;
-        private const double DefaultStrokeThickness = 5;
+
+        private static readonly ILog Log = LogManager.GetCurrentClassLogger();
 
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             try
             {
-                if (values.Count() < 3)
+                if (values.Length < 3)
                 {
                     throw Log.ErrorAndCreateException<InvalidOperationException>("Wrong argument count passed to converter");
                 }
@@ -29,7 +25,7 @@
                 var size1 = values[1] as double?;
                 var size2 = values[2] as double?;
 
-                if ((!size1.HasValue || Double.IsNaN(size1.Value)) && (!size2.HasValue || Double.IsNaN(size2.Value)))
+                if ((!size1.HasValue || double.IsNaN(size1.Value)) && (!size2.HasValue || double.IsNaN(size2.Value)))
                 {
                     return DefaultRadius;
                 }
@@ -47,7 +43,7 @@
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
-            return new object[] { value };
+            return new[] {value};
         }
     }
 }

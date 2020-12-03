@@ -65,15 +65,6 @@
             return Colors.Transparent;
         }
 
-        public SolidColorBrush GetThemeColorBrush(string resourceName)
-        {
-            return _resourceBrushesCache.GetFromCacheOrFetch(resourceName, () =>
-            {
-                var color = GetThemeColor(resourceName);
-                return color.ToSolidColorBrush();
-            });
-        }
-
         public Color GetThemeColor(ThemeColorStyle colorStyle = ThemeColorStyle.AccentColor)
         {
             return _themeColorsCache.GetFromCacheOrFetch(colorStyle, () =>
@@ -153,6 +144,15 @@
             });
         }
 
+        public SolidColorBrush GetThemeColorBrush(string resourceName)
+        {
+            return _resourceBrushesCache.GetFromCacheOrFetch(resourceName, () =>
+            {
+                var color = GetThemeColor(resourceName);
+                return color.ToSolidColorBrush();
+            });
+        }
+
         public SolidColorBrush GetThemeColorBrush(ThemeColorStyle colorStyle = ThemeColorStyle.AccentColor)
         {
             return _themeColorBrushesCache.GetFromCacheOrFetch(colorStyle, () =>
@@ -164,12 +164,9 @@
 
         public SolidColorBrush GetAccentColorBrush()
         {
-            if (_accentColorBrushCache is null)
-            {
-                _accentColorBrushCache = _currentTheme?.PrimaryAccentColor.ToSolidColorBrush() ?? Application.Current?.TryFindResource("AccentColorBrush") as SolidColorBrush ?? Brushes.Green;
-            }
-
-            return _accentColorBrushCache;
+            return _accentColorBrushCache ??= _currentTheme?.PrimaryAccentColor.ToSolidColorBrush() 
+                                              ?? Application.Current?.TryFindResource("AccentColorBrush") as SolidColorBrush 
+                                              ?? Brushes.Green;
         }
 
         private void OnThemeManagerThemeChanged(object sender, ThemeChangedEventArgs e)

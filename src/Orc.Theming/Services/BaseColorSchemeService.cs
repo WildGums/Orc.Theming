@@ -12,22 +12,25 @@
 
         private readonly ControlzEx.Theming.ThemeManager _themeManager;
 
-        private string _baseColorScheme = null;
+        private string _baseColorScheme;
 
         public BaseColorSchemeService()
         {
             _themeManager = ControlzEx.Theming.ThemeManager.Current;
         }
 
-        public string GetBaseColorScheme() => _baseColorScheme ??= GetAvailableBaseColorSchemes()[0];
+        public string GetBaseColorScheme()
+        {
+            return _baseColorScheme ??= GetAvailableBaseColorSchemes()[0];
+        }
 
         public event EventHandler<EventArgs> BaseColorSchemeChanged;
 
         public bool SetBaseColorScheme(string scheme)
         {
             if (_baseColorScheme.EqualsIgnoreCase(scheme) || !GetAvailableBaseColorSchemes().Contains(scheme))
-            { 
-                return false; 
+            {
+                return false;
             }
 
             Log.Info($"Setting base color scheme '{scheme}'");
@@ -47,7 +50,7 @@
                 return baseColors;
             }
 
-            return new[] { "Light", "Dark" }; 
+            return new[] {"Light", "Dark"};
         }
     }
 }

@@ -2,11 +2,8 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Linq;
-    using System.Reflection;
     using System.Windows;
-    using System.Windows.Data;
     using System.Windows.Markup;
     using System.Windows.Media;
     using Catel;
@@ -14,10 +11,10 @@
     using Catel.Windows.Markup;
 
     /// <summary>
-    /// Markup extension that can show a font as image.
+    ///     Markup extension that can show a font as image.
     /// </summary>
     /// <remarks>
-    /// Original idea comes from http://www.codeproject.com/Tips/634540/Using-Font-Icons
+    ///     Original idea comes from http://www.codeproject.com/Tips/634540/Using-Font-Icons
     /// </remarks>
     public class FontImage : UpdatableMarkupExtension
     {
@@ -28,24 +25,22 @@
         private static readonly double RenderingEmSize;
 
         private static readonly HashSet<FontImage> RegisteredFontImages = new HashSet<FontImage>();
+
         private readonly Dictionary<FrameworkElement, HashSet<DependencyProperty>> _registeredTargetProperties
-    = new Dictionary<FrameworkElement, HashSet<DependencyProperty>>();
+            = new Dictionary<FrameworkElement, HashSet<DependencyProperty>>();
         #endregion
 
         #region Constructors
         static FontImage()
         {
             RegisterFont("Segoe UI Symbol", new FontFamily("Segoe UI Symbol"));
-            DefaultFontFamily = "Segoe UI Symbol";
-            DefaultBrushKey = "Gray1";
-            DefaultBrush = Brushes.Black;
 
             var dpi = ScreenHelper.GetDpi().Width;
             RenderingEmSize = dpi / 96d;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FontImage"/> class.
+        ///     Initializes a new instance of the <see cref="FontImage" /> class.
         /// </summary>
         public FontImage()
         {
@@ -56,7 +51,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FontImage" /> class.
+        ///     Initializes a new instance of the <see cref="FontImage" /> class.
         /// </summary>
         /// <param name="itemName">Name of the resource.</param>
         public FontImage(string itemName)
@@ -68,30 +63,30 @@
 
         #region Properties
         /// <summary>
-        /// Gets or sets the default name of the font.
+        ///     Gets or sets the default name of the font.
         /// </summary>
         /// <value>The default name of the font.</value>
-        public static string DefaultFontFamily { get; set; }
+        public static string DefaultFontFamily { get; set; } = "Segoe UI Symbol";
 
         /// <summary>
-        /// Gets or sets the default brush.
+        ///     Gets or sets the default brush.
         /// </summary>
         /// <value>The default brush.</value>
-        public static Brush DefaultBrush { get; set; }
+        public static Brush DefaultBrush { get; set; } = Brushes.Black;
 
         /// <summary>
-        /// Gets or sets the default brush key that will be used to determine the brush based on the current theme.
+        ///     Gets or sets the default brush key that will be used to determine the brush based on the current theme.
         /// </summary>
-        public static string DefaultBrushKey { get; set; }
+        public static string DefaultBrushKey { get; set; } = "Gray1";
 
         /// <summary>
-        /// Gets the font family.
+        ///     Gets the font family.
         /// </summary>
         /// <value>The font family.</value>
         public string FontFamily { get; set; }
 
         /// <summary>
-        /// Gets or sets the brush.
+        ///     Gets or sets the brush.
         /// </summary>
         /// <value>The brush.</value>
 #pragma warning disable CA1721 // Property names should not match get methods
@@ -99,12 +94,12 @@
 #pragma warning restore CA1721 // Property names should not match get methods
 
         /// <summary>
-        /// Gets or sets the brush key that will be used to determine the brush based on the current theme.
+        ///     Gets or sets the brush key that will be used to determine the brush based on the current theme.
         /// </summary>
         public string BrushKey { get; set; }
 
         /// <summary>
-        /// Gets or sets the font item name.
+        ///     Gets or sets the font item name.
         /// </summary>
         /// <value>The font item name.</value>
         [ConstructorArgument("itemName")]
@@ -149,39 +144,37 @@
         {
             // Step 1: specific brush always wins
             var brush = Brush;
-            if (brush is null == false)
+            if (brush != null)
             {
                 return brush;
             }
 
             var currentThemeManager = ThemeManager.Current;
-            if (currentThemeManager is null == false)
+            if (currentThemeManager == null)
             {
-                // Step 2: respect key
-                var brushKey = BrushKey;
-                if (!string.IsNullOrWhiteSpace(brushKey))
-                {
-                    brush = currentThemeManager.GetThemeColorBrush(brushKey);
-                    if (brush is null == false)
-                    {
-                        return brush;
-                    }
-                }
+                return DefaultBrush;
+            }
 
-                // Step 3: use DefaultBrushKey and search again
-                brushKey = DefaultBrushKey;
-                if (!string.IsNullOrWhiteSpace(brushKey))
+            // Step 2: respect key
+            var brushKey = BrushKey;
+            if (!string.IsNullOrWhiteSpace(brushKey))
+            {
+                brush = currentThemeManager.GetThemeColorBrush(brushKey);
+                if (brush != null)
                 {
-                    brush = currentThemeManager.GetThemeColorBrush(brushKey);
-                    if (brush is null == false)
-                    {
-                        return brush;
-                    }
+                    return brush;
                 }
             }
 
-            // Final result: if we can't find anything, resolve the default brush
-            return DefaultBrush;
+            // Step 3: use DefaultBrushKey and search again
+            brushKey = DefaultBrushKey;
+            if (string.IsNullOrWhiteSpace(brushKey))
+            {
+                return DefaultBrush;
+            }
+
+            brush = currentThemeManager.GetThemeColorBrush(brushKey);
+            return brush ?? DefaultBrush;
         }
 
         private void RegisterTargetProperty()
@@ -235,14 +228,11 @@
 
         private void UpdateAllValues()
         {
-            foreach (var registeredTargetProperties in _registeredTargetProperties)
+            foreach (var (frameworkElement, properties) in _registeredTargetProperties)
             {
-                var target = registeredTargetProperties.Key;
-                var properties = registeredTargetProperties.Value;
-
-                foreach (var property  in properties)
+                foreach (var property in properties)
                 {
-                    target.SetCurrentValue(property, Value);
+                    frameworkElement.SetCurrentValue(property, Value);
                 }
             }
         }

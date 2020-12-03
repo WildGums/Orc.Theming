@@ -1,11 +1,7 @@
 ﻿namespace Orc.Theming.Converters
 {
     using System;
-    using System.Collections.Generic;
     using System.Globalization;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Data;
     using Catel.Logging;
@@ -16,7 +12,7 @@
 
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            if (values.Count() < 5)
+            if (values.Length < 5)
             {
                 throw Log.ErrorAndCreateException<InvalidOperationException>("Wrong argument count passed to converter");
             }
@@ -29,7 +25,7 @@
             var radiusY = (double)values[4];
 
             var cx = radiusX;
-            var cy = 0;
+            const int cy = 0;
 
             var arcStartPoint = new Point(cx, -1 * radiusY);
 
@@ -43,7 +39,7 @@
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
-            return new object[] { value };
+            return new[] {value};
         }
     }
 }

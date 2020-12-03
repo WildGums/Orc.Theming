@@ -18,6 +18,7 @@
             if (string.IsNullOrEmpty(Text))
             {
                 validationResults.Add(new FieldValidationResult(nameof(Text), ValidationResultType.Error, "Text cannot be empty"));
+                validationResults.Add(new FieldValidationResult(nameof(Text), ValidationResultType.Warning, "Text cannot be empty"));
             }
 
             base.ValidateFields(validationResults);

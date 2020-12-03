@@ -11,7 +11,7 @@
         private readonly IBaseColorSchemeService _baseColorSchemeService;
 
 #pragma warning disable CA1801 // Review unused parameters
-        public BaseColorSchemeSwitcherViewModel(ThemeManager themeManager, IBaseColorSchemeService baseColorSchemeService)
+        public BaseColorSchemeSwitcherViewModel(IBaseColorSchemeService baseColorSchemeService)
 #pragma warning restore CA1801 // Review unused parameters
         {
             Argument.IsNotNull(() => baseColorSchemeService);
@@ -22,7 +22,7 @@
             SelectedBaseColorScheme = _baseColorSchemeService.GetBaseColorScheme() ?? BaseColorSchemes[0];
         }
 
-        public IReadOnlyList<string> BaseColorSchemes { get; private set; }
+        public IReadOnlyList<string> BaseColorSchemes { get; }
 
         public string SelectedBaseColorScheme { get; set; }
 
