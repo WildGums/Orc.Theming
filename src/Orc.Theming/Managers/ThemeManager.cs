@@ -65,15 +65,6 @@
             return Colors.Transparent;
         }
 
-        public SolidColorBrush GetThemeColorBrush(string resourceName)
-        {
-            return _resourceBrushesCache.GetFromCacheOrFetch(resourceName, () =>
-            {
-                var color = GetThemeColor(resourceName);
-                return color.ToSolidColorBrush();
-            });
-        }
-
         public Color GetThemeColor(ThemeColorStyle colorStyle = ThemeColorStyle.AccentColor)
         {
             return _themeColorsCache.GetFromCacheOrFetch(colorStyle, () =>
@@ -150,6 +141,15 @@
                     default:
                         throw new ArgumentOutOfRangeException(nameof(colorStyle));
                 }
+            });
+        }
+
+        public SolidColorBrush GetThemeColorBrush(string resourceName)
+        {
+            return _resourceBrushesCache.GetFromCacheOrFetch(resourceName, () =>
+            {
+                var color = GetThemeColor(resourceName);
+                return color.ToSolidColorBrush();
             });
         }
 

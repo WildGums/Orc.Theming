@@ -34,9 +34,6 @@
         static FontImage()
         {
             RegisterFont("Segoe UI Symbol", new FontFamily("Segoe UI Symbol"));
-            DefaultFontFamily = "Segoe UI Symbol";
-            DefaultBrushKey = "Gray1";
-            DefaultBrush = Brushes.Black;
 
             var dpi = ScreenHelper.GetDpi().Width;
             RenderingEmSize = dpi / 96d;
@@ -69,18 +66,18 @@
         ///     Gets or sets the default name of the font.
         /// </summary>
         /// <value>The default name of the font.</value>
-        public static string DefaultFontFamily { get; set; }
+        public static string DefaultFontFamily { get; set; } = "Segoe UI Symbol";
 
         /// <summary>
         ///     Gets or sets the default brush.
         /// </summary>
         /// <value>The default brush.</value>
-        public static Brush DefaultBrush { get; set; }
+        public static Brush DefaultBrush { get; set; } = Brushes.Black;
 
         /// <summary>
         ///     Gets or sets the default brush key that will be used to determine the brush based on the current theme.
         /// </summary>
-        public static string DefaultBrushKey { get; set; }
+        public static string DefaultBrushKey { get; set; } = "Gray1";
 
         /// <summary>
         ///     Gets the font family.
@@ -153,33 +150,31 @@
             }
 
             var currentThemeManager = ThemeManager.Current;
-            if (currentThemeManager is null == false)
+            if (currentThemeManager == null)
             {
-                // Step 2: respect key
-                var brushKey = BrushKey;
-                if (!string.IsNullOrWhiteSpace(brushKey))
-                {
-                    brush = currentThemeManager.GetThemeColorBrush(brushKey);
-                    if (brush is null == false)
-                    {
-                        return brush;
-                    }
-                }
+                return DefaultBrush;
+            }
 
-                // Step 3: use DefaultBrushKey and search again
-                brushKey = DefaultBrushKey;
-                if (!string.IsNullOrWhiteSpace(brushKey))
+            // Step 2: respect key
+            var brushKey = BrushKey;
+            if (!string.IsNullOrWhiteSpace(brushKey))
+            {
+                brush = currentThemeManager.GetThemeColorBrush(brushKey);
+                if (brush != null)
                 {
-                    brush = currentThemeManager.GetThemeColorBrush(brushKey);
-                    if (brush is null == false)
-                    {
-                        return brush;
-                    }
+                    return brush;
                 }
             }
 
-            // Final result: if we can't find anything, resolve the default brush
-            return DefaultBrush;
+            // Step 3: use DefaultBrushKey and search again
+            brushKey = DefaultBrushKey;
+            if (string.IsNullOrWhiteSpace(brushKey))
+            {
+                return DefaultBrush;
+            }
+
+            brush = currentThemeManager.GetThemeColorBrush(brushKey);
+            return brush ?? DefaultBrush;
         }
 
         private void RegisterTargetProperty()
