@@ -22,13 +22,7 @@
         }
 
         public static readonly DependencyProperty OffsetProperty =
-            DependencyProperty.RegisterAttached("Offset", typeof(Thickness), typeof(MandatoryFieldBehavior), new PropertyMetadata(new Thickness(0, 0, 0, 0), (sender, e) => OnOffsetChanged(sender, e)));
-
-        private static void OnOffsetChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
-        {
-            var associatedObject = (FrameworkElement)sender;
-            DrawAdorner(associatedObject);
-        }
+            DependencyProperty.RegisterAttached("Offset", typeof(Thickness), typeof(MandatoryFieldBehavior), new PropertyMetadata(new Thickness(0, 0, 0, 0), (sender, e) => DrawAdorner(((FrameworkElement)sender))));
 
         public static void SetIsMandatory(DependencyObject element, bool value)
         {
@@ -41,13 +35,7 @@
         }
 
         public static readonly DependencyProperty IsMandatoryProperty =
-            DependencyProperty.RegisterAttached("IsMandatory", typeof(bool), typeof(MandatoryFieldBehavior), new PropertyMetadata(false, (sender, e) => OnIsMandatoryChanged(sender, e)));
-
-        private static void OnIsMandatoryChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
-        {
-            var associatedObject = (FrameworkElement)sender;
-            DrawAdorner(associatedObject);
-        }
+            DependencyProperty.RegisterAttached("IsMandatory", typeof(bool), typeof(MandatoryFieldBehavior), new PropertyMetadata(false, (sender, e) => DrawAdorner(((FrameworkElement)sender))));
 
         private static void DrawAdorner(FrameworkElement element)
         {
