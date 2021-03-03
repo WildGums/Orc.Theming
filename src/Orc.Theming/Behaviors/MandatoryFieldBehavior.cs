@@ -2,10 +2,13 @@
 {
     using System.Windows;
     using System.Windows.Documents;
+    using Catel.Logging;
     using Catel.Windows.Interactivity;
 
     public class MandatoryFieldBehavior : BehaviorBase<FrameworkElement>
     {
+        private static readonly ILog Log = LogManager.GetCurrentClassLogger();
+
         public MandatoryFieldBehavior()
         {
         }
@@ -27,6 +30,12 @@
         {
             var associatedObject = (FrameworkElement)sender;
             var myAdornerLayer = AdornerLayer.GetAdornerLayer(associatedObject);
+
+            if (myAdornerLayer is null)
+            {
+                Log.Warning($"FrameworkElement {associatedObject} doesn't have adorner layer in the visual tree");
+            }
+
             myAdornerLayer.Add(new AsterixAdorner(associatedObject, new Thickness(0, 2, 4, 0)));
         }
     }
