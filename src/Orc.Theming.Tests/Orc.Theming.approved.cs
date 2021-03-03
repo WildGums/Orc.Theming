@@ -27,6 +27,11 @@ namespace Orc.Theming
         public static int ApplyFilter(int dstPixel, int depth) { }
         public static int BlendPixels(int dstPixel, int srcPixel) { }
     }
+    public class AsterixAdorner : System.Windows.Documents.Adorner
+    {
+        public AsterixAdorner(System.Windows.UIElement adornedElement, System.Windows.Thickness padding) { }
+        protected override void OnRender(System.Windows.Media.DrawingContext drawingContext) { }
+    }
     public class BaseColorSchemeService : Orc.Theming.IBaseColorSchemeService
     {
         public BaseColorSchemeService() { }
@@ -122,6 +127,16 @@ namespace Orc.Theming
     {
         public LibraryThemeProvider() { }
         public override void FillColorSchemeValues(System.Collections.Generic.Dictionary<string, string> values, ControlzEx.Theming.RuntimeThemeColorValues colorValues) { }
+    }
+    public class MandatoryFieldBehavior : Catel.Windows.Interactivity.BehaviorBase<System.Windows.FrameworkElement>
+    {
+        public static readonly System.Windows.DependencyProperty IsMandatoryProperty;
+        public static readonly System.Windows.DependencyProperty OffsetProperty;
+        public MandatoryFieldBehavior() { }
+        public static bool GetIsMandatory(System.Windows.DependencyObject element) { }
+        public static System.Windows.Thickness GetOffset(System.Windows.DependencyObject element) { }
+        public static void SetIsMandatory(System.Windows.DependencyObject element, bool value) { }
+        public static void SetOffset(System.Windows.DependencyObject element, System.Windows.Thickness value) { }
     }
     public class Margin : System.Windows.DependencyObject
     {
