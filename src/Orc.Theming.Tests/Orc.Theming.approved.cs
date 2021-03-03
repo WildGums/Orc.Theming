@@ -29,7 +29,7 @@ namespace Orc.Theming
     }
     public class AsterixAdorner : System.Windows.Documents.Adorner
     {
-        public AsterixAdorner(System.Windows.UIElement adornedElement) { }
+        public AsterixAdorner(System.Windows.UIElement adornedElement, System.Windows.Thickness padding) { }
         protected override void OnRender(System.Windows.Media.DrawingContext drawingContext) { }
     }
     public class BaseColorSchemeService : Orc.Theming.IBaseColorSchemeService
@@ -131,9 +131,12 @@ namespace Orc.Theming
     public class MandatoryFieldBehavior : Catel.Windows.Interactivity.BehaviorBase<System.Windows.FrameworkElement>
     {
         public static readonly System.Windows.DependencyProperty IsMandatoryProperty;
+        public static readonly System.Windows.DependencyProperty OffsetProperty;
         public MandatoryFieldBehavior() { }
         public static bool GetIsMandatory(System.Windows.DependencyObject element) { }
+        public static System.Windows.Thickness GetOffset(System.Windows.DependencyObject element) { }
         public static void SetIsMandatory(System.Windows.DependencyObject element, bool value) { }
+        public static void SetOffset(System.Windows.DependencyObject element, System.Windows.Thickness value) { }
     }
     public class Margin : System.Windows.DependencyObject
     {

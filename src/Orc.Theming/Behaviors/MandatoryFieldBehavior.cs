@@ -46,6 +46,7 @@
                 if (myAdornerLayer is null)
                 {
                     Log.Warning($"FrameworkElement {element} doesn't have adorner layer in the visual tree");
+                    return;
                 }
 
                 var offset = GetOffset(element);
