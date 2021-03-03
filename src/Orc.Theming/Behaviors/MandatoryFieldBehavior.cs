@@ -27,7 +27,7 @@
         {
             var associatedObject = (FrameworkElement)sender;
             var myAdornerLayer = AdornerLayer.GetAdornerLayer(associatedObject);
-            myAdornerLayer.Add(new AsterixAdorner(associatedObject));
+            myAdornerLayer.Add(new AsterixAdorner(associatedObject, new Thickness(0, 2, 4, 0)));
         }
     }
 }

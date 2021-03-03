@@ -7,12 +7,14 @@
 
     public class AsterixAdorner : Adorner
     {
+        private readonly Thickness _padding;
         private double? _lastDpiUpdate;
         private FormattedText _cachedformattedText;
 
-        public AsterixAdorner(UIElement adornedElement)
+        public AsterixAdorner(UIElement adornedElement, Thickness padding)
           : base(adornedElement)
         {
+            _padding = padding;
         }
 
         protected override void OnRender(DrawingContext drawingContext)
@@ -36,7 +38,7 @@
             }
 
             // Note: drawingContext.DrawGlyphRun can be used for better performance
-            drawingContext.DrawText(_cachedformattedText, drawRect.TopRight);
+            drawingContext.DrawText(_cachedformattedText, new Point(drawRect.TopRight.X - _padding.Right, drawRect.TopRight.Y - _padding.Top));
         }
     }
 }
