@@ -1,5 +1,6 @@
 ﻿namespace Orc.Theming
 {
+    using System;
     using System.Globalization;
     using System.Windows;
     using System.Windows.Documents;
@@ -38,7 +39,7 @@
             }
 
             // Note: drawingContext.DrawGlyphRun can be used for better performance
-            drawingContext.DrawText(_cachedformattedText, new Point(drawRect.TopRight.X - _padding.Right, drawRect.TopRight.Y - _padding.Top));
+            drawingContext.DrawText(_cachedformattedText, new Point(drawRect.TopRight.X - _padding.Right, drawRect.TopRight.Y + _padding.Top));
         }
     }
 }

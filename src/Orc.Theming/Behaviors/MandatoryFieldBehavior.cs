@@ -1,5 +1,7 @@
 ﻿namespace Orc.Theming
 {
+    using System;
+    using System.Linq;
     using System.Windows;
     using System.Windows.Documents;
     using Catel.Logging;
@@ -11,6 +13,25 @@
 
         public MandatoryFieldBehavior()
         {
+        }
+
+        public static void SetOffset(DependencyObject element, Thickness value)
+        {
+            element.SetValue(OffsetProperty, value);
+        }
+
+        public static Thickness GetOffset(DependencyObject element)
+        {
+            return (Thickness)element.GetValue(OffsetProperty);
+        }
+
+        public static readonly DependencyProperty OffsetProperty =
+            DependencyProperty.RegisterAttached("Offset", typeof(Thickness), typeof(MandatoryFieldBehavior), new PropertyMetadata(new Thickness(0, 0, 0, 0), (sender, e) => OnOffsetChanged(sender, e)));
+
+        private static void OnOffsetChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            var associatedObject = (FrameworkElement)sender;
+            DrawAdorner(associatedObject);
         }
 
         public static void SetIsMandatory(DependencyObject element, bool value)
@@ -29,14 +50,39 @@
         private static void OnIsMandatoryChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             var associatedObject = (FrameworkElement)sender;
-            var myAdornerLayer = AdornerLayer.GetAdornerLayer(associatedObject);
+            DrawAdorner(associatedObject);
+        }
 
-            if (myAdornerLayer is null)
+        private static void DrawAdorner(FrameworkElement element)
+        {
+            try
             {
-                Log.Warning($"FrameworkElement {associatedObject} doesn't have adorner layer in the visual tree");
-            }
+                var myAdornerLayer = AdornerLayer.GetAdornerLayer(element);
 
-            myAdornerLayer.Add(new AsterixAdorner(associatedObject, new Thickness(0, 2, 4, 0)));
+                if (myAdornerLayer is null)
+                {
+                    Log.Warning($"FrameworkElement {element} doesn't have adorner layer in the visual tree");
+                }
+
+                var offset = GetOffset(element);
+                var isVisible = GetIsMandatory(element);
+
+                var toRemove = myAdornerLayer.GetAdorners(element)?.OfType<AsterixAdorner>() ?? Enumerable.Empty<AsterixAdorner>();
+
+                foreach (var adorner in toRemove)
+                {
+                    myAdornerLayer.Remove(adorner);
+                }
+
+                if (isVisible)
+                {
+                    myAdornerLayer.Add(new AsterixAdorner(element, offset));
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex);
+            }
         }
     }
 }

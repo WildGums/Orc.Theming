@@ -80,10 +80,11 @@
                     <AdornerDecorator>
                         <TextBlock Text="TextBlock"
                                    ToolTip="TextBlock"
-                                   theming:MandatoryFieldBehavior.IsMandatory="True">
-                       <behaviors:Interaction.Behaviors>
-                           <theming:MandatoryFieldBehavior />
-                       </behaviors:Interaction.Behaviors>
+                                   theming:MandatoryFieldBehavior.IsMandatory="True"
+                                   theming:MandatoryFieldBehavior.Offset="0 0 4 0">
+                           <behaviors:Interaction.Behaviors>
+                               <theming:MandatoryFieldBehavior />
+                           </behaviors:Interaction.Behaviors>
                         </TextBlock>
                     </AdornerDecorator>
                     <TextBox Text="{Binding Text, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
