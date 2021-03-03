@@ -11,10 +11,6 @@
     {
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
 
-        public MandatoryFieldBehavior()
-        {
-        }
-
         public static void SetOffset(DependencyObject element, Thickness value)
         {
             element.SetValue(OffsetProperty, value);
