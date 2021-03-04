@@ -21,8 +21,6 @@
 
         protected override void OnRender(DrawingContext drawingContext)
         {
-            
-
             var currentDpi = VisualTreeHelper.GetDpi(this).PixelsPerDip;
 
             if (_cachedformattedText is null ||
@@ -57,7 +55,7 @@
                     drawingContext.DrawText(_cachedformattedText, new Point(drawRect.TopRight.X - _padding.Right, drawRect.TopRight.Y + _padding.Top));
                     break;
                 case PositionCorner.BottomLeft:
-                    drawingContext.DrawText(_cachedformattedText, new Point(drawRect.BottomLeft.X - _padding.Right, drawRect.BottomLeft.Y + _padding.Bottom));
+                    drawingContext.DrawText(_cachedformattedText, new Point(drawRect.BottomLeft.X + _padding.Left, drawRect.BottomLeft.Y - _padding.Bottom));
                     break;
                 default:
                     drawingContext.DrawText(_cachedformattedText, new Point(drawRect.TopRight.X - _padding.Right, drawRect.TopRight.Y + _padding.Top));
