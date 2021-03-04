@@ -8,18 +8,20 @@
     public class AsterixAdorner : Adorner
     {
         private readonly Thickness _padding;
+        private readonly PositionCorner _positionCorner;
         private double? _lastDpiUpdate;
         private FormattedText _cachedformattedText;
 
-        public AsterixAdorner(UIElement adornedElement, Thickness padding)
+        public AsterixAdorner(UIElement adornedElement, Thickness padding, PositionCorner positionCorner)
           : base(adornedElement)
         {
             _padding = padding;
+            _positionCorner = positionCorner;
         }
 
         protected override void OnRender(DrawingContext drawingContext)
         {
-            var drawRect = new Rect(AdornedElement.DesiredSize);
+            
 
             var currentDpi = VisualTreeHelper.GetDpi(this).PixelsPerDip;
 
@@ -36,9 +38,31 @@
                       18, Brushes.Red, currentDpi
                    );
             }
-
+            DrawTextOnPosition(drawingContext);
+        }
+        private void DrawTextOnPosition(DrawingContext drawingContext)
+        {
             // Note: drawingContext.DrawGlyphRun can be used for better performance
-            drawingContext.DrawText(_cachedformattedText, new Point(drawRect.TopRight.X - _padding.Right, drawRect.TopRight.Y + _padding.Top));
+            var drawRect = new Rect(AdornedElement.DesiredSize);
+
+            switch (_positionCorner)
+            {
+                case PositionCorner.TopLeft:
+                    drawingContext.DrawText(_cachedformattedText, new Point(drawRect.TopLeft.X + _padding.Left, drawRect.TopLeft.Y + _padding.Top));
+                    break;
+                case PositionCorner.BottomRight:
+                    drawingContext.DrawText(_cachedformattedText, new Point(drawRect.BottomRight.X - _padding.Right, drawRect.BottomRight.Y - _padding.Bottom));
+                    break;
+                case PositionCorner.TopRight:
+                    drawingContext.DrawText(_cachedformattedText, new Point(drawRect.TopRight.X - _padding.Right, drawRect.TopRight.Y + _padding.Top));
+                    break;
+                case PositionCorner.BottomLeft:
+                    drawingContext.DrawText(_cachedformattedText, new Point(drawRect.BottomLeft.X - _padding.Right, drawRect.BottomLeft.Y + _padding.Bottom));
+                    break;
+                default:
+                    drawingContext.DrawText(_cachedformattedText, new Point(drawRect.TopRight.X - _padding.Right, drawRect.TopRight.Y + _padding.Top));
+                    break;
+            }
         }
     }
 }
