@@ -42,6 +42,9 @@
             return true;
         }
 
+        private IReadOnlyList<string> getDefaultColors()
+            => new[] { "Light", "Dark" };
+
         public virtual IReadOnlyList<string> GetAvailableBaseColorSchemes()
         {
             var baseColors = _themeManager.BaseColors;
@@ -50,7 +53,34 @@
                 return baseColors;
             }
 
-            return new[] {"Light", "Dark"};
+            return getDefaultColors();
+        }
+
+        public virtual IReadOnlyList<KeyValuePair<string, string>> GetAvailableBaseColorSchemeUris()
+        {
+            IEnumerable<string> baseColors = _themeManager.BaseColors;
+            if (baseColors.Count() == 0)
+                baseColors = getDefaultColors();
+
+            var baseColorUris = new List<KeyValuePair<string, string>>();
+
+            var dir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            var imgDir = System.IO.Path.Combine(dir, "Resources", "Images");
+            foreach (var baseColor in baseColors)
+            {
+                var correspondingUri = "";
+                foreach (var filename in System.IO.Directory.GetFiles(imgDir, "*.png"))
+                {
+                    if (filename.ContainsIgnoreCase(baseColor))
+                    {
+                        correspondingUri = filename;
+                        break;
+                    }
+                }
+                baseColorUris.Add(new KeyValuePair<string, string>(baseColor, correspondingUri));
+            }
+
+            return baseColorUris;
         }
     }
 }
