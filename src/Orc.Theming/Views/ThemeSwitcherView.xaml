@@ -11,7 +11,7 @@
         </Grid.ColumnDefinitions>
 
         <localviews:AccentColorSwitcherView Grid.Column="0" />
-        <localviews:BaseColorSchemeSwitcherWithIconView Grid.Column="1" />
+        <localviews:BaseColorSchemeSwitcherView Grid.Column="1" />
     </Grid>
 
 </catel:UserControl>

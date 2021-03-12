@@ -5,21 +5,83 @@
 
     <StackPanel Grid.Column="1" Orientation="Horizontal">
         <Label VerticalAlignment="Center" Content="{catel:LanguageBinding BaseColorSchemeSwitcherView_SelectBaseColorScheme}" />
-        <ListView ItemsSource="{Binding BaseColorSchemeUris}" SelectedItem="{Binding SelectedBaseColorSchemeUri}" >
-            <ListView.ItemsPanel>
+
+        <ListBox ItemsSource="{Binding BaseColorSchemes}" 
+                 SelectedItem="{Binding SelectedBaseColorScheme}"
+                 SelectionMode="Single"
+                 BorderThickness="0">
+            <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal" />
                 </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-            <ListView.ItemTemplate>
+            </ListBox.ItemsPanel>
+
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="IsSelected" 
+                            Value="{Binding Content.IsSelected, Mode=TwoWay, RelativeSource={RelativeSource Self}}" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                <Grid Margin="4,0,4,0">
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup x:Name="SelectionStates">
+                                            <VisualState x:Name="Unselected">
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" 
+                                                                     Storyboard.TargetName="SelectionRectangle"
+                                                                     To="0"
+                                                                     Duration="0:0:0.125" />
+                                                </Storyboard>
+                                            </VisualState>
+                                            <VisualState x:Name="Selected">
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" 
+                                                                     Storyboard.TargetName="SelectionRectangle"
+                                                                     To="1"
+                                                                     Duration="0:0:0.125" />
+                                                </Storyboard>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <ContentPresenter Grid.Row="0" />
+                                    <Rectangle Grid.Row="1" 
+                                               x:Name="SelectionRectangle"
+                                               HorizontalAlignment="Stretch"
+                                               Fill="{DynamicResource Orc.Brushes.AccentBaseColorBrush}"
+                                               Height="6" />
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+
+            <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Vertical">
-                        <Image Source="{Binding Value}" VerticalAlignment="Center" />
-                        <Label Content="{Binding Key}" VerticalAlignment="Center" />
+                    <StackPanel Orientation="Vertical"
+                                Cursor="Hand">
+                        <Border BorderBrush="{DynamicResource Orc.Brushes.GrayBrush3}"
+                                BorderThickness="1">
+                            <Image Source="{Binding ImageUri}" 
+                                   VerticalAlignment="Center"
+                                   Width="200"
+                                   Height="125" />
+                        </Border>
+
+                        <Label Content="{Binding Name}" 
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center" />
                     </StackPanel>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </StackPanel>
 
 </catel:UserControl>

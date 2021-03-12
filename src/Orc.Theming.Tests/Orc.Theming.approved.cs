@@ -32,6 +32,12 @@ namespace Orc.Theming
         public AsterixAdorner(System.Windows.UIElement adornedElement, System.Windows.Thickness padding) { }
         protected override void OnRender(System.Windows.Media.DrawingContext drawingContext) { }
     }
+    public class BaseColorScheme
+    {
+        public BaseColorScheme() { }
+        public string ImageUri { get; set; }
+        public string Name { get; set; }
+    }
     public class BaseColorSchemeService : Orc.Theming.IBaseColorSchemeService
     {
         public BaseColorSchemeService() { }
@@ -370,6 +376,15 @@ namespace Orc.Theming.ViewModels
         protected override System.Threading.Tasks.Task CloseAsync() { }
         protected override System.Threading.Tasks.Task InitializeAsync() { }
     }
+    public class BaseColorSchemeSwitcherWithIconViewModel : Catel.MVVM.ViewModelBase
+    {
+        public static readonly Catel.Data.PropertyData SelectedBaseColorSchemeProperty;
+        public BaseColorSchemeSwitcherWithIconViewModel(Catel.IoC.IServiceLocator serviceLocator, Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
+        public System.Collections.Generic.IReadOnlyList<Orc.Theming.BaseColorScheme> BaseColorSchemes { get; }
+        public Orc.Theming.BaseColorScheme SelectedBaseColorScheme { get; set; }
+        protected override System.Threading.Tasks.Task CloseAsync() { }
+        protected override System.Threading.Tasks.Task InitializeAsync() { }
+    }
     public class ThemeSwitcherViewModel : Catel.MVVM.ViewModelBase
     {
         public static readonly Catel.Data.PropertyData SelectedAccentColorProperty;
@@ -391,6 +406,11 @@ namespace Orc.Theming.Views
     public class BaseColorSchemeSwitcherView : Catel.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
     {
         public BaseColorSchemeSwitcherView() { }
+        public void InitializeComponent() { }
+    }
+    public class BaseColorSchemeSwitcherWithIconView : Catel.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
+    {
+        public BaseColorSchemeSwitcherWithIconView() { }
         public void InitializeComponent() { }
     }
     public class ThemeSwitcherView : Catel.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector

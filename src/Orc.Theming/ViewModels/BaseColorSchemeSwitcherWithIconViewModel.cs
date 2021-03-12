@@ -2,13 +2,11 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
-    using System.Windows;
     using Catel;
     using Catel.IoC;
     using Catel.MVVM;
-    using Catel.MVVM.Views;
-    using Orc.Theming.Views;
 
     public class BaseColorSchemeSwitcherWithIconViewModel : ViewModelBase
     {
@@ -25,24 +23,29 @@
             _serviceLocator = serviceLocator;
             _baseColorSchemeService = baseColorSchemeService;
 
-            BaseColorSchemes = _baseColorSchemeService.GetAvailableBaseColorSchemes();
-            BaseColorSchemeUris = _baseColorSchemeService.GetAvailableBaseColorSchemeUris();
+            var baseColorSchemes = new List<BaseColorScheme>();
 
-            SelectedBaseColorScheme = _baseColorSchemeService.GetBaseColorScheme() ?? BaseColorSchemes[0];
-            updateSelectedBaseColorUri();
+            foreach (var baseColorSchemeFromService in _baseColorSchemeService.GetAvailableBaseColorSchemes())
+            {
+                var baseColorScheme = new BaseColorScheme
+                {
+                    Name = baseColorSchemeFromService,
+                    ImageUri = $"/Orc.Theming;component/Resources/Images/BaseColor_{baseColorSchemeFromService}.png"
+                };
+
+                baseColorSchemes.Add(baseColorScheme);
+            }
+
+            BaseColorSchemes = baseColorSchemes;
+
+            var selected = _baseColorSchemeService.GetBaseColorScheme() ?? BaseColorSchemes[0].Name;
+
+            SelectedBaseColorScheme = BaseColorSchemes.FirstOrDefault(x => x.Name == selected);
         }
 
-        public IReadOnlyList<string> BaseColorSchemes { get; }
+        public IReadOnlyList<BaseColorScheme> BaseColorSchemes { get; }
 
-        public IReadOnlyList<KeyValuePair<string, string>> BaseColorSchemeUris { get; }
-
-        public string SelectedBaseColorScheme { get; set; }
-
-        public KeyValuePair<string, string> SelectedBaseColorSchemeUri { get; set; }
-
-        public Visibility ShowImages { get; set; }
-
-        public Visibility ShowText { get; set; }
+        public BaseColorScheme SelectedBaseColorScheme { get; set; }
 
         protected override async Task InitializeAsync()
         {
@@ -60,33 +63,23 @@
 
         private void OnBaseColorSchemeServiceBaseColorSchemeChanged(object sender, EventArgs e)
         {
-            SelectedBaseColorScheme = _baseColorSchemeService.GetBaseColorScheme();
+            var newlySelected = _baseColorSchemeService.GetBaseColorScheme();
+
+            SelectedBaseColorScheme = BaseColorSchemes.FirstOrDefault(x => x.Name == newlySelected);
         }
 
-        private void OnSelectedBaseColorSchemeChanged()
+        private async void OnSelectedBaseColorSchemeChanged()
         {
-            updateSelectedBaseColorUri();
-            _baseColorSchemeService.SetBaseColorScheme(SelectedBaseColorScheme);
-        }
+            var selected = SelectedBaseColorScheme;
+            if (selected is null)
+            {
+                return;
+            }
 
-        private void OnSelectedBaseColorSchemeUriChanged()
-        {
-            updateSelectedBaseColor();
-            _baseColorSchemeService.SetBaseColorScheme(SelectedBaseColorScheme);
-        }
+            // Note: short delay to allow some animation
+            await Task.Delay(200);
 
-        private void updateSelectedBaseColorUri()
-        {
-            for (var i = 0; i < BaseColorSchemes.Count; i++)
-                if (SelectedBaseColorScheme == BaseColorSchemes[i])
-                    SelectedBaseColorSchemeUri = BaseColorSchemeUris[i];
-        }
-
-        private void updateSelectedBaseColor()
-        {
-            for (var i = 0; i < BaseColorSchemeUris.Count; i++)
-                if (SelectedBaseColorSchemeUri.Equals(BaseColorSchemeUris[i]))
-                    SelectedBaseColorScheme = BaseColorSchemes[i];
+            _baseColorSchemeService.SetBaseColorScheme(selected.Name);
         }
     }
 }
