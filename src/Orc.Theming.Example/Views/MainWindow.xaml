@@ -14,7 +14,12 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <orctheming:ThemeSwitcherView Grid.Row="0" />
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal">
+            <orctheming:BaseColorSchemeSwitcherView />
+            <orctheming:BaseColorSchemeSwitcherWithIconView />
+            <orctheming:AccentColorSwitcherView />
+        </StackPanel>
 
         <TabControl x:Name="TabControl" Grid.Row="1">
             <!-- Tabs are added automatically -->
