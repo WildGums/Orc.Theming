@@ -22,7 +22,7 @@
         }
 
         public static readonly DependencyProperty OffsetProperty =
-            DependencyProperty.RegisterAttached("Offset", typeof(Thickness), typeof(MandatoryFieldBehavior), new PropertyMetadata(new Thickness(0, 0, 0, 0), (sender, e) => DrawAdorner(((FrameworkElement)sender))));
+            DependencyProperty.RegisterAttached("Offset", typeof(Thickness), typeof(MandatoryFieldBehavior), new PropertyMetadata(new Thickness(0, 0, 0, 0), (sender, e) => DrawAdorner((FrameworkElement)sender)));
 
         public static void SetPosition(DependencyObject element, PositionCorner value)
         {
@@ -35,7 +35,7 @@
         }
 
         public static readonly DependencyProperty PositionProperty =
-            DependencyProperty.RegisterAttached("Position", typeof(PositionCorner), typeof(MandatoryFieldBehavior), new PropertyMetadata(PositionCorner.TopRight, (sender, e) => DrawAdorner(((FrameworkElement)sender))));
+            DependencyProperty.RegisterAttached("Position", typeof(PositionCorner), typeof(MandatoryFieldBehavior), new PropertyMetadata(PositionCorner.TopRight, (sender, e) => DrawAdorner((FrameworkElement)sender)));
 
         public static void SetIsMandatory(DependencyObject element, bool value)
         {
@@ -48,7 +48,7 @@
         }
 
         public static readonly DependencyProperty IsMandatoryProperty =
-            DependencyProperty.RegisterAttached("IsMandatory", typeof(bool), typeof(MandatoryFieldBehavior), new PropertyMetadata(false, (sender, e) => DrawAdorner(((FrameworkElement)sender))));
+            DependencyProperty.RegisterAttached("IsMandatory", typeof(bool), typeof(MandatoryFieldBehavior), new PropertyMetadata(false, (sender, e) => DrawAdorner((FrameworkElement)sender)));
 
         private static void DrawAdorner(FrameworkElement element)
         {
