@@ -36,8 +36,10 @@
                       18, Brushes.Red, currentDpi
                    );
             }
+            
             DrawTextOnPosition(drawingContext);
         }
+        
         private void DrawTextOnPosition(DrawingContext drawingContext)
         {
             // Note: drawingContext.DrawGlyphRun can be used for better performance
@@ -48,15 +50,19 @@
                 case ArrangePosition.TopLeft:
                     drawingContext.DrawText(_cachedformattedText, new Point(drawRect.TopLeft.X + _padding.Left, drawRect.TopLeft.Y + _padding.Top));
                     break;
+                    
                 case ArrangePosition.BottomRight:
                     drawingContext.DrawText(_cachedformattedText, new Point(drawRect.BottomRight.X - _padding.Right, drawRect.BottomRight.Y - _padding.Bottom));
                     break;
+                    
                 case ArrangePosition.TopRight:
                     drawingContext.DrawText(_cachedformattedText, new Point(drawRect.TopRight.X - _padding.Right, drawRect.TopRight.Y + _padding.Top));
                     break;
+                    
                 case ArrangePosition.BottomLeft:
                     drawingContext.DrawText(_cachedformattedText, new Point(drawRect.BottomLeft.X + _padding.Left, drawRect.BottomLeft.Y - _padding.Bottom));
                     break;
+                    
                 default:
                     drawingContext.DrawText(_cachedformattedText, new Point(drawRect.TopRight.X - _padding.Right, drawRect.TopRight.Y + _padding.Top));
                     break;
