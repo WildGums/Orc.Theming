@@ -4,7 +4,7 @@
                    xmlns:catel="http://schemas.catelproject.com">
 
     <StackPanel Orientation="Horizontal">
-        <Label Content="{catel:LanguageBinding AccentColorSwitcherView_SelectAccentColor}" />
+        <Label VerticalAlignment="Center" Content="{catel:LanguageBinding AccentColorSwitcherView_SelectAccentColor}" />
         <ComboBox ItemsSource="{Binding AccentColors}" SelectedItem="{Binding SelectedAccentColor}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
