@@ -1,6 +1,6 @@
 ﻿namespace Orc.Theming
 {
-    public enum PositionCorner
+    public enum ArrangePosition
     {
         TopLeft,
         TopRight,

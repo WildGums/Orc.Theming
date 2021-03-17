@@ -8,11 +8,11 @@
     public class AsterixAdorner : Adorner
     {
         private readonly Thickness _padding;
-        private readonly PositionCorner _positionCorner;
+        private readonly ArrangePosition _positionCorner;
         private double? _lastDpiUpdate;
         private FormattedText _cachedformattedText;
 
-        public AsterixAdorner(UIElement adornedElement, Thickness padding, PositionCorner positionCorner)
+        public AsterixAdorner(UIElement adornedElement, Thickness padding, ArrangePosition positionCorner)
           : base(adornedElement)
         {
             _padding = padding;
@@ -45,16 +45,16 @@
 
             switch (_positionCorner)
             {
-                case PositionCorner.TopLeft:
+                case ArrangePosition.TopLeft:
                     drawingContext.DrawText(_cachedformattedText, new Point(drawRect.TopLeft.X + _padding.Left, drawRect.TopLeft.Y + _padding.Top));
                     break;
-                case PositionCorner.BottomRight:
+                case ArrangePosition.BottomRight:
                     drawingContext.DrawText(_cachedformattedText, new Point(drawRect.BottomRight.X - _padding.Right, drawRect.BottomRight.Y - _padding.Bottom));
                     break;
-                case PositionCorner.TopRight:
+                case ArrangePosition.TopRight:
                     drawingContext.DrawText(_cachedformattedText, new Point(drawRect.TopRight.X - _padding.Right, drawRect.TopRight.Y + _padding.Top));
                     break;
-                case PositionCorner.BottomLeft:
+                case ArrangePosition.BottomLeft:
                     drawingContext.DrawText(_cachedformattedText, new Point(drawRect.BottomLeft.X + _padding.Left, drawRect.BottomLeft.Y - _padding.Bottom));
                     break;
                 default:
