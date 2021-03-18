@@ -141,12 +141,13 @@ namespace Orc.Theming
         public LibraryThemeProvider() { }
         public override void FillColorSchemeValues(System.Collections.Generic.Dictionary<string, string> values, ControlzEx.Theming.RuntimeThemeColorValues colorValues) { }
     }
-    public class MandatoryFieldBehavior : Catel.Windows.Interactivity.BehaviorBase<System.Windows.FrameworkElement>
+    public class MandatoryField : Catel.Windows.Interactivity.BehaviorBase<System.Windows.FrameworkElement>
     {
         public static readonly System.Windows.DependencyProperty IsMandatoryProperty;
         public static readonly System.Windows.DependencyProperty OffsetProperty;
         public static readonly System.Windows.DependencyProperty PositionProperty;
-        public MandatoryFieldBehavior() { }
+        public MandatoryField() { }
+        protected override void OnAssociatedObjectLoaded() { }
         public static bool GetIsMandatory(System.Windows.DependencyObject element) { }
         public static System.Windows.Thickness GetOffset(System.Windows.DependencyObject element) { }
         public static Orc.Theming.ArrangePosition GetPosition(System.Windows.DependencyObject element) { }

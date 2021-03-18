@@ -7,7 +7,7 @@
     using Catel.Logging;
     using Catel.Windows.Interactivity;
 
-    public class MandatoryFieldBehavior : BehaviorBase<FrameworkElement>
+    public class MandatoryField : BehaviorBase<FrameworkElement>
     {
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
 
@@ -22,7 +22,8 @@
         }
 
         public static readonly DependencyProperty OffsetProperty =
-            DependencyProperty.RegisterAttached("Offset", typeof(Thickness), typeof(MandatoryFieldBehavior), new PropertyMetadata(new Thickness(0, 0, 0, 0), (sender, e) => DrawAdorner((FrameworkElement)sender)));
+            DependencyProperty.RegisterAttached("Offset", typeof(Thickness), typeof(MandatoryField), new PropertyMetadata(new Thickness(0, 0, 2, 2), (sender, e) => DrawAdorner((FrameworkElement)sender)));
+
 
         public static void SetPosition(DependencyObject element, ArrangePosition value)
         {
@@ -35,7 +36,8 @@
         }
 
         public static readonly DependencyProperty PositionProperty =
-            DependencyProperty.RegisterAttached("Position", typeof(ArrangePosition), typeof(MandatoryFieldBehavior), new PropertyMetadata(ArrangePosition.TopRight, (sender, e) => DrawAdorner((FrameworkElement)sender)));
+            DependencyProperty.RegisterAttached("Position", typeof(ArrangePosition), typeof(MandatoryField), new PropertyMetadata(ArrangePosition.TopRight, (sender, e) => DrawAdorner((FrameworkElement)sender)));
+
 
         public static void SetIsMandatory(DependencyObject element, bool value)
         {
@@ -48,14 +50,14 @@
         }
 
         public static readonly DependencyProperty IsMandatoryProperty =
-            DependencyProperty.RegisterAttached("IsMandatory", typeof(bool), typeof(MandatoryFieldBehavior), new PropertyMetadata(false, (sender, e) => DrawAdorner((FrameworkElement)sender)));
+            DependencyProperty.RegisterAttached("IsMandatory", typeof(bool), typeof(MandatoryField), new PropertyMetadata(true, (sender, e) => DrawAdorner((FrameworkElement)sender)));
+
 
         private static void DrawAdorner(FrameworkElement element)
         {
             try
             {
                 var myAdornerLayer = AdornerLayer.GetAdornerLayer(element);
-
                 if (myAdornerLayer is null)
                 {
                     Log.Warning($"FrameworkElement {element} doesn't have adorner layer in the visual tree");
@@ -82,6 +84,13 @@
             {
                 Log.Error(ex);
             }
+        }
+
+        protected override void OnAssociatedObjectLoaded()
+        {
+            base.OnAssociatedObjectLoaded();
+
+            DrawAdorner(AssociatedObject);
         }
     }
 }
