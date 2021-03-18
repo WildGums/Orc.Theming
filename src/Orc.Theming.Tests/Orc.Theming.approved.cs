@@ -27,9 +27,16 @@ namespace Orc.Theming
         public static int ApplyFilter(int dstPixel, int depth) { }
         public static int BlendPixels(int dstPixel, int srcPixel) { }
     }
+    public enum ArrangePosition
+    {
+        TopLeft = 0,
+        TopRight = 1,
+        BottomRight = 2,
+        BottomLeft = 3,
+    }
     public class AsterixAdorner : System.Windows.Documents.Adorner
     {
-        public AsterixAdorner(System.Windows.UIElement adornedElement, System.Windows.Thickness padding) { }
+        public AsterixAdorner(System.Windows.UIElement adornedElement, System.Windows.Thickness padding, Orc.Theming.ArrangePosition positionCorner) { }
         protected override void OnRender(System.Windows.Media.DrawingContext drawingContext) { }
     }
     public class BaseColorScheme
@@ -138,11 +145,14 @@ namespace Orc.Theming
     {
         public static readonly System.Windows.DependencyProperty IsMandatoryProperty;
         public static readonly System.Windows.DependencyProperty OffsetProperty;
+        public static readonly System.Windows.DependencyProperty PositionProperty;
         public MandatoryFieldBehavior() { }
         public static bool GetIsMandatory(System.Windows.DependencyObject element) { }
         public static System.Windows.Thickness GetOffset(System.Windows.DependencyObject element) { }
+        public static Orc.Theming.ArrangePosition GetPosition(System.Windows.DependencyObject element) { }
         public static void SetIsMandatory(System.Windows.DependencyObject element, bool value) { }
         public static void SetOffset(System.Windows.DependencyObject element, System.Windows.Thickness value) { }
+        public static void SetPosition(System.Windows.DependencyObject element, Orc.Theming.ArrangePosition value) { }
     }
     public class Margin : System.Windows.DependencyObject
     {

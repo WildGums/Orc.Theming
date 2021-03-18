@@ -22,7 +22,20 @@
         }
 
         public static readonly DependencyProperty OffsetProperty =
-            DependencyProperty.RegisterAttached("Offset", typeof(Thickness), typeof(MandatoryFieldBehavior), new PropertyMetadata(new Thickness(0, 0, 0, 0), (sender, e) => DrawAdorner(((FrameworkElement)sender))));
+            DependencyProperty.RegisterAttached("Offset", typeof(Thickness), typeof(MandatoryFieldBehavior), new PropertyMetadata(new Thickness(0, 0, 0, 0), (sender, e) => DrawAdorner((FrameworkElement)sender)));
+
+        public static void SetPosition(DependencyObject element, ArrangePosition value)
+        {
+            element.SetValue(PositionProperty, value);
+        }
+
+        public static ArrangePosition GetPosition(DependencyObject element)
+        {
+            return (ArrangePosition)element.GetValue(PositionProperty);
+        }
+
+        public static readonly DependencyProperty PositionProperty =
+            DependencyProperty.RegisterAttached("Position", typeof(ArrangePosition), typeof(MandatoryFieldBehavior), new PropertyMetadata(ArrangePosition.TopRight, (sender, e) => DrawAdorner((FrameworkElement)sender)));
 
         public static void SetIsMandatory(DependencyObject element, bool value)
         {
@@ -35,7 +48,7 @@
         }
 
         public static readonly DependencyProperty IsMandatoryProperty =
-            DependencyProperty.RegisterAttached("IsMandatory", typeof(bool), typeof(MandatoryFieldBehavior), new PropertyMetadata(false, (sender, e) => DrawAdorner(((FrameworkElement)sender))));
+            DependencyProperty.RegisterAttached("IsMandatory", typeof(bool), typeof(MandatoryFieldBehavior), new PropertyMetadata(false, (sender, e) => DrawAdorner((FrameworkElement)sender)));
 
         private static void DrawAdorner(FrameworkElement element)
         {
@@ -51,6 +64,7 @@
 
                 var offset = GetOffset(element);
                 var isVisible = GetIsMandatory(element);
+                var positionCorner = GetPosition(element);
 
                 var toRemove = myAdornerLayer.GetAdorners(element)?.OfType<AsterixAdorner>() ?? Enumerable.Empty<AsterixAdorner>();
 
@@ -61,7 +75,7 @@
 
                 if (isVisible)
                 {
-                    myAdornerLayer.Add(new AsterixAdorner(element, offset));
+                    myAdornerLayer.Add(new AsterixAdorner(element, offset, positionCorner));
                 }
             }
             catch (Exception ex)
