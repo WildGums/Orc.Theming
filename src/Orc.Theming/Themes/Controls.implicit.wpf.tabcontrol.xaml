@@ -48,6 +48,7 @@
                         <Trigger Property="IsSelected" Value="true">
                             <Setter Property="Panel.ZIndex" Value="1"/>
                             <Setter Property="Background" TargetName="Bd" Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Background}"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Border}"/>
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
