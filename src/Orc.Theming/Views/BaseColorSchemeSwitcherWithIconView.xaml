@@ -4,8 +4,6 @@
                    xmlns:catel="http://schemas.catelproject.com">
 
     <StackPanel Grid.Column="1" Orientation="Horizontal">
-        <Label VerticalAlignment="Center" Content="{catel:LanguageBinding BaseColorSchemeSwitcherView_SelectBaseColorScheme}" />
-
         <ListBox ItemsSource="{Binding BaseColorSchemes}" 
                  SelectedItem="{Binding SelectedBaseColorScheme}"
                  SelectionMode="Single"
