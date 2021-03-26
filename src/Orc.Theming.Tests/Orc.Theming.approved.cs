@@ -72,6 +72,14 @@ namespace Orc.Theming
         public static System.Windows.Media.SolidColorBrush ToSolidColorBrush(this System.Windows.Media.Color color, double opacity = 1) { }
         public static System.Windows.Media.Color[] TransformPalette(this System.Collections.Generic.IReadOnlyList<System.Windows.Media.Color> palette, int count) { }
     }
+    public class CorrectPopupWidthBehavior : Catel.Windows.Interactivity.BehaviorBase<System.Windows.Controls.Primitives.Popup>
+    {
+        public static readonly System.Windows.DependencyProperty ParentElementProperty;
+        public CorrectPopupWidthBehavior() { }
+        public System.Windows.FrameworkElement ParentElement { get; set; }
+        protected override void OnAssociatedObjectLoaded() { }
+        protected override void OnAssociatedObjectUnloaded() { }
+    }
     public class Crc32 : System.Security.Cryptography.HashAlgorithm
     {
         public const uint DefaultPolynomial = 3988292384u;
@@ -179,6 +187,7 @@ namespace Orc.Theming
     public static class ScreenHelper
     {
         public static System.Windows.Size GetDpi() { }
+        public static System.Drawing.Rectangle GetScreenBounds(System.Windows.Window window) { }
     }
     public static class StyleHelper
     {
