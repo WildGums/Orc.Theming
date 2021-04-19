@@ -144,13 +144,13 @@
         {
             // Step 1: specific brush always wins
             var brush = Brush;
-            if (brush != null)
+            if (brush is not null)
             {
                 return brush;
             }
 
             var currentThemeManager = ThemeManager.Current;
-            if (currentThemeManager == null)
+            if (currentThemeManager is null)
             {
                 return DefaultBrush;
             }
@@ -160,7 +160,7 @@
             if (!string.IsNullOrWhiteSpace(brushKey))
             {
                 brush = currentThemeManager.GetThemeColorBrush(brushKey);
-                if (brush != null)
+                if (brush is not null)
                 {
                     return brush;
                 }
@@ -239,7 +239,7 @@
 
         private static ImageSource CreateGlyph(string text, FontFamily fontFamily, FontStyle fontStyle, FontWeight fontWeight, FontStretch fontStretch, Brush foreBrush)
         {
-            if (fontFamily == null || string.IsNullOrEmpty(text))
+            if (fontFamily is null || string.IsNullOrEmpty(text))
             {
                 return null;
             }

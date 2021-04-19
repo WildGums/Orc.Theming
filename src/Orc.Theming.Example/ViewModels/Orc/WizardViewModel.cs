@@ -21,7 +21,7 @@
             _uiVisualizerService = uiVisualizerService;
 
             ShowWizard = new TaskCommand(OnShowWizardExecuteAsync);
-            ShowSeparateWindow = new TaskCommand(OnShowSeparateWindow);
+            ShowSeparateWindow = new TaskCommand(OnShowSeparateWindowAsync);
         }
         
         public TaskCommand ShowWizard { get; private set; }
@@ -32,7 +32,7 @@
             await _wizardService.ShowWizardAsync<ExampleWizard>();
         }
 
-        private async Task OnShowSeparateWindow()
+        private async Task OnShowSeparateWindowAsync()
         {
             await _uiVisualizerService.ShowDialogAsync<SeparateWindowViewModel>();
         }
