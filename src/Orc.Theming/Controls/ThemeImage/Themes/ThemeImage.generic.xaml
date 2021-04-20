@@ -14,7 +14,7 @@
                 <ControlTemplate TargetType="{x:Type controls:ThemeImage}">
                     <Image x:Name="PART_Image" 
                            Stretch="{TemplateBinding Stretch}"
-                           StretchDirection="{TemplateBinding Stretch}" />
+                           StretchDirection="{TemplateBinding StretchDirection}" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
