@@ -7,19 +7,22 @@
     using System.Windows.Media.Imaging;
     using Catel;
     using Catel.IoC;
+    using Catel.Logging;
 
-    public partial class ThemeImage : UserControl
+    [TemplatePart(Name = "PART_Image", Type = typeof(Image))]
+    public class ThemeImage : Control
     {
         private const string BaseColorScheme = "{basecolorscheme}";
+
+        private static readonly ILog Log = LogManager.GetCurrentClassLogger();
 
         private readonly IBaseColorSchemeService _baseColorSchemeService;
 
         private bool _isSubscribed;
+        private Image _image;
 
         public ThemeImage()
         {
-            InitializeComponent();
-
             var serviceLocator = ServiceLocator.Default;
 
             _baseColorSchemeService = serviceLocator.TryResolveType<IBaseColorSchemeService>();
@@ -34,7 +37,7 @@
             set { SetValue(SourceProperty, value); }
         }
 
-        public static readonly DependencyProperty SourceProperty = DependencyProperty.Register(nameof(Source), 
+        public static readonly DependencyProperty SourceProperty = DependencyProperty.Register(nameof(Source),
             typeof(string), typeof(ThemeImage), new PropertyMetadata(null, (sender, e) => ((ThemeImage)sender).OnSourceChanged()));
 
 
@@ -44,7 +47,7 @@
             set { SetValue(StretchProperty, value); }
         }
 
-        public static readonly DependencyProperty StretchProperty = DependencyProperty.Register(nameof(Stretch), 
+        public static readonly DependencyProperty StretchProperty = DependencyProperty.Register(nameof(Stretch),
             typeof(Stretch), typeof(ThemeImage), new PropertyMetadata(Stretch.None));
 
 
@@ -54,9 +57,19 @@
             set { SetValue(StretchDirectionProperty, value); }
         }
 
-        public static readonly DependencyProperty StretchDirectionProperty = DependencyProperty.Register(nameof(StretchDirection), 
+        public static readonly DependencyProperty StretchDirectionProperty = DependencyProperty.Register(nameof(StretchDirection),
             typeof(StretchDirection), typeof(ThemeImage), new PropertyMetadata(StretchDirection.Both));
 
+        public override void OnApplyTemplate()
+        {
+            _image = GetTemplateChild("PART_Image") as Image;
+            if (_image is null)
+            {
+                throw Log.ErrorAndCreateException<InvalidOperationException>("Can't find template part 'PART_Image'");
+            }
+
+            UpdateSource();
+        }
 
         private void OnSourceChanged()
         {
@@ -65,27 +78,31 @@
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            if (!_isSubscribed)
+            if (_isSubscribed)
             {
-                _isSubscribed = true;
+                return;
+            }
 
-                if (_baseColorSchemeService is not null)
-                {
-                    _baseColorSchemeService.BaseColorSchemeChanged += OnBaseColorSchemeServiceBaseColorSchemeChanged;
-                }
+            _isSubscribed = true;
+
+            if (_baseColorSchemeService is not null)
+            {
+                _baseColorSchemeService.BaseColorSchemeChanged += OnBaseColorSchemeServiceBaseColorSchemeChanged;
             }
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
-            if (_isSubscribed)
+            if (!_isSubscribed)
             {
-                _isSubscribed = false;
+                return;
+            }
 
-                if (_baseColorSchemeService is not null)
-                {
-                    _baseColorSchemeService.BaseColorSchemeChanged -= OnBaseColorSchemeServiceBaseColorSchemeChanged;
-                }
+            _isSubscribed = false;
+
+            if (_baseColorSchemeService is not null)
+            {
+                _baseColorSchemeService.BaseColorSchemeChanged -= OnBaseColorSchemeServiceBaseColorSchemeChanged;
             }
         }
 
@@ -96,6 +113,11 @@
 
         private void UpdateSource()
         {
+            if (_image is null)
+            {
+                return;
+            }
+
             var finalSource = Source;
             if (finalSource is not null)
             {
@@ -124,13 +146,12 @@
             }
 
             ImageSource imageSource = null;
-
             if (finalSource is not null)
             {
                 imageSource = new BitmapImage(new Uri(finalSource, UriKind.RelativeOrAbsolute));
             }
 
-            Image.SetCurrentValue(Image.SourceProperty, imageSource);
+            _image.SetCurrentValue(Image.SourceProperty, imageSource);
         }
     }
 }
