@@ -366,7 +366,8 @@ namespace Orc.Theming.Coloring
 }
 namespace Orc.Theming.Controls
 {
-    public class ThemeImage : System.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
+    [System.Windows.TemplatePart(Name="PART_Image", Type=typeof(System.Windows.Controls.Image))]
+    public class ThemeImage : System.Windows.Controls.Control
     {
         public static readonly System.Windows.DependencyProperty SourceProperty;
         public static readonly System.Windows.DependencyProperty StretchDirectionProperty;
@@ -375,7 +376,7 @@ namespace Orc.Theming.Controls
         public string Source { get; set; }
         public System.Windows.Media.Stretch Stretch { get; set; }
         public System.Windows.Controls.StretchDirection StretchDirection { get; set; }
-        public void InitializeComponent() { }
+        public override void OnApplyTemplate() { }
     }
 }
 namespace Orc.Theming.Converters
