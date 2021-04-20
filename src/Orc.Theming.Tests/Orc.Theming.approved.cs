@@ -1,6 +1,7 @@
 ﻿[assembly: System.Resources.NeutralResourcesLanguage("en-US")]
 [assembly: System.Runtime.Versioning.TargetFramework(".NETCoreApp,Version=v5.0", FrameworkDisplayName="")]
 [assembly: System.Windows.Markup.XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming")]
+[assembly: System.Windows.Markup.XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Controls")]
 [assembly: System.Windows.Markup.XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Views")]
 [assembly: System.Windows.Markup.XmlnsPrefix("http://schemas.wildgums.com/orc/theming", "orctheming")]
 [assembly: System.Windows.ThemeInfo(System.Windows.ResourceDictionaryLocation.None, System.Windows.ResourceDictionaryLocation.SourceAssembly)]
@@ -361,6 +362,20 @@ namespace Orc.Theming.Coloring
         public static readonly int TransparentSoftGray;
         public static readonly int White;
         public static readonly int Yellow;
+    }
+}
+namespace Orc.Theming.Controls
+{
+    public class ThemeImage : System.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
+    {
+        public static readonly System.Windows.DependencyProperty SourceProperty;
+        public static readonly System.Windows.DependencyProperty StretchDirectionProperty;
+        public static readonly System.Windows.DependencyProperty StretchProperty;
+        public ThemeImage() { }
+        public string Source { get; set; }
+        public System.Windows.Media.Stretch Stretch { get; set; }
+        public System.Windows.Controls.StretchDirection StretchDirection { get; set; }
+        public void InitializeComponent() { }
     }
 }
 namespace Orc.Theming.Converters

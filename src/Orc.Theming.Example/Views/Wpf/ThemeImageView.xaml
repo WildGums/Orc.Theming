@@ -1,0 +1,23 @@
+﻿<catel:UserControl x:Class="Orc.Theming.Example.Views.ThemeImageView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:catel="http://schemas.catelproject.com" 
+                   xmlns:orctheming="http://schemas.wildgums.com/orc/theming" 
+                   xmlns:orccontrols="http://schemas.wildgums.com/orc/controls">
+
+    <orccontrols:StackGrid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <GroupBox Header="Image with placeholder">
+            <orctheming:ThemeImage Source="/Resources/Images/email.{basecolorscheme}.png" />
+        </GroupBox>
+
+        <GroupBox Header="Image with auto replacement">
+            <orctheming:ThemeImage Source="/Resources/Images/email.png" />
+        </GroupBox>
+    </orccontrols:StackGrid>
+    
+</catel:UserControl>
