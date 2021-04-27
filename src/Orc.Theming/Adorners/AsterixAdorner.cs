@@ -2,6 +2,7 @@
 {
     using System.Globalization;
     using System.Windows;
+    using System.Windows.Data;
     using System.Windows.Documents;
     using System.Windows.Media;
 
@@ -17,6 +18,11 @@
         {
             _padding = padding;
             _positionCorner = positionCorner;
+
+            // Bind to element's Visibility
+            Binding binding = new Binding("Visibility");
+            binding.Source = adornedElement;
+            SetBinding(VisibilityProperty, binding);
         }
 
         protected override void OnRender(DrawingContext drawingContext)
