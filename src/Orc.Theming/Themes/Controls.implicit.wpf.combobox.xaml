@@ -157,7 +157,14 @@
                                           IsHitTestVisible="False" 
                                           Margin="{TemplateBinding Padding}"
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <ContentPresenter.Resources>
+                                <Style TargetType="{x:Type TextBlock}"
+                                       BasedOn="{StaticResource {x:Type TextBlock}}">
+                                    <Setter Property="Margin" Value="2 0 2 0"/>
+                                </Style>
+                            </ContentPresenter.Resources>
+                        </ContentPresenter>
 
                         <TextBox x:Name="PART_EditableTextBox"
                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"

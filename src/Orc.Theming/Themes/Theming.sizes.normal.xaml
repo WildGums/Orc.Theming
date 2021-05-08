@@ -40,7 +40,7 @@
     <sys:Double x:Key="PaddingSize.TextBox.X">2</sys:Double>
     <sys:Double x:Key="PaddingSize.TextBox.Y">4</sys:Double>
     <sys:Double x:Key="PaddingSize.Combobox.X">2</sys:Double>
-    <sys:Double x:Key="PaddingSize.Combobox.Y">3</sys:Double>
+    <sys:Double x:Key="PaddingSize.Combobox.Y">4</sys:Double>
 	
 	<!-- 
 	

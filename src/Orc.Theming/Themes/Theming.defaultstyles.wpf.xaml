@@ -114,8 +114,6 @@
         
         <Setter Property="Margin" Value="{DynamicResource Margin.Default}" />
         <Setter Property="Height" Value="{DynamicResource Size.Height}" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="MinWidth" Value="120" />
         <Setter Property="Padding" Value="{DynamicResource Padding.Combobox}" />
 
