@@ -16,7 +16,7 @@
             var behaviors = Interaction.GetBehaviors(frameworkElement);
 
             var existingBehaviorOfType = behaviors.OfType<TBehavior>().FirstOrDefault();
-            if (existingBehaviorOfType != null)
+            if (existingBehaviorOfType is not null)
             {
                 return existingBehaviorOfType;
             }

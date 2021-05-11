@@ -1,6 +1,7 @@
 ﻿[assembly: System.Resources.NeutralResourcesLanguage("en-US")]
 [assembly: System.Runtime.Versioning.TargetFramework(".NETCoreApp,Version=v5.0", FrameworkDisplayName="")]
 [assembly: System.Windows.Markup.XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming")]
+[assembly: System.Windows.Markup.XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Controls")]
 [assembly: System.Windows.Markup.XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Views")]
 [assembly: System.Windows.Markup.XmlnsPrefix("http://schemas.wildgums.com/orc/theming", "orctheming")]
 [assembly: System.Windows.ThemeInfo(System.Windows.ResourceDictionaryLocation.None, System.Windows.ResourceDictionaryLocation.SourceAssembly)]
@@ -26,6 +27,24 @@ namespace Orc.Theming
         public static int ApplyFilter(int dstPixel) { }
         public static int ApplyFilter(int dstPixel, int depth) { }
         public static int BlendPixels(int dstPixel, int srcPixel) { }
+    }
+    public enum ArrangePosition
+    {
+        TopLeft = 0,
+        TopRight = 1,
+        BottomRight = 2,
+        BottomLeft = 3,
+    }
+    public class AsterixAdorner : System.Windows.Documents.Adorner
+    {
+        public AsterixAdorner(System.Windows.UIElement adornedElement, System.Windows.Thickness padding, Orc.Theming.ArrangePosition positionCorner) { }
+        protected override void OnRender(System.Windows.Media.DrawingContext drawingContext) { }
+    }
+    public class BaseColorScheme
+    {
+        public BaseColorScheme() { }
+        public string ImageUri { get; set; }
+        public string Name { get; set; }
     }
     public class BaseColorSchemeService : Orc.Theming.IBaseColorSchemeService
     {
@@ -53,6 +72,14 @@ namespace Orc.Theming
         public static int ToInt(this System.Windows.Media.Color color, Orc.Theming.Coloring.ColorShade colorShade = 0) { }
         public static System.Windows.Media.SolidColorBrush ToSolidColorBrush(this System.Windows.Media.Color color, double opacity = 1) { }
         public static System.Windows.Media.Color[] TransformPalette(this System.Collections.Generic.IReadOnlyList<System.Windows.Media.Color> palette, int count) { }
+    }
+    public class CorrectPopupWidthBehavior : Catel.Windows.Interactivity.BehaviorBase<System.Windows.Controls.Primitives.Popup>
+    {
+        public static readonly System.Windows.DependencyProperty ParentElementProperty;
+        public CorrectPopupWidthBehavior() { }
+        public System.Windows.FrameworkElement ParentElement { get; set; }
+        protected override void OnAssociatedObjectLoaded() { }
+        protected override void OnAssociatedObjectUnloaded() { }
     }
     public class Crc32 : System.Security.Cryptography.HashAlgorithm
     {
@@ -123,6 +150,20 @@ namespace Orc.Theming
         public LibraryThemeProvider() { }
         public override void FillColorSchemeValues(System.Collections.Generic.Dictionary<string, string> values, ControlzEx.Theming.RuntimeThemeColorValues colorValues) { }
     }
+    public class MandatoryField : Catel.Windows.Interactivity.BehaviorBase<System.Windows.FrameworkElement>
+    {
+        public static readonly System.Windows.DependencyProperty IsMandatoryProperty;
+        public static readonly System.Windows.DependencyProperty OffsetProperty;
+        public static readonly System.Windows.DependencyProperty PositionProperty;
+        public MandatoryField() { }
+        protected override void OnAssociatedObjectLoaded() { }
+        public static bool GetIsMandatory(System.Windows.DependencyObject element) { }
+        public static System.Windows.Thickness GetOffset(System.Windows.DependencyObject element) { }
+        public static Orc.Theming.ArrangePosition GetPosition(System.Windows.DependencyObject element) { }
+        public static void SetIsMandatory(System.Windows.DependencyObject element, bool value) { }
+        public static void SetOffset(System.Windows.DependencyObject element, System.Windows.Thickness value) { }
+        public static void SetPosition(System.Windows.DependencyObject element, Orc.Theming.ArrangePosition value) { }
+    }
     public class Margin : System.Windows.DependencyObject
     {
         public static readonly System.Windows.DependencyProperty BottomProperty;
@@ -147,6 +188,7 @@ namespace Orc.Theming
     public static class ScreenHelper
     {
         public static System.Windows.Size GetDpi() { }
+        public static System.Drawing.Rectangle GetScreenBounds(System.Windows.Window window) { }
     }
     public static class StyleHelper
     {
@@ -322,6 +364,21 @@ namespace Orc.Theming.Coloring
         public static readonly int Yellow;
     }
 }
+namespace Orc.Theming.Controls
+{
+    [System.Windows.TemplatePart(Name="PART_Image", Type=typeof(System.Windows.Controls.Image))]
+    public class ThemeImage : System.Windows.Controls.Control
+    {
+        public static readonly System.Windows.DependencyProperty SourceProperty;
+        public static readonly System.Windows.DependencyProperty StretchDirectionProperty;
+        public static readonly System.Windows.DependencyProperty StretchProperty;
+        public ThemeImage() { }
+        public string Source { get; set; }
+        public System.Windows.Media.Stretch Stretch { get; set; }
+        public System.Windows.Controls.StretchDirection StretchDirection { get; set; }
+        public override void OnApplyTemplate() { }
+    }
+}
 namespace Orc.Theming.Converters
 {
     public class ColorToContrastColorValueConverter : Catel.MVVM.Converters.ValueConverterBase
@@ -355,6 +412,15 @@ namespace Orc.Theming.ViewModels
         protected override System.Threading.Tasks.Task CloseAsync() { }
         protected override System.Threading.Tasks.Task InitializeAsync() { }
     }
+    public class BaseColorSchemeSwitcherWithIconViewModel : Catel.MVVM.ViewModelBase
+    {
+        public static readonly Catel.Data.PropertyData SelectedBaseColorSchemeProperty;
+        public BaseColorSchemeSwitcherWithIconViewModel(Catel.IoC.IServiceLocator serviceLocator, Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
+        public System.Collections.Generic.IReadOnlyList<Orc.Theming.BaseColorScheme> BaseColorSchemes { get; }
+        public Orc.Theming.BaseColorScheme SelectedBaseColorScheme { get; set; }
+        protected override System.Threading.Tasks.Task CloseAsync() { }
+        protected override System.Threading.Tasks.Task InitializeAsync() { }
+    }
     public class ThemeSwitcherViewModel : Catel.MVVM.ViewModelBase
     {
         public static readonly Catel.Data.PropertyData SelectedAccentColorProperty;
@@ -376,6 +442,11 @@ namespace Orc.Theming.Views
     public class BaseColorSchemeSwitcherView : Catel.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
     {
         public BaseColorSchemeSwitcherView() { }
+        public void InitializeComponent() { }
+    }
+    public class BaseColorSchemeSwitcherWithIconView : Catel.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
+    {
+        public BaseColorSchemeSwitcherWithIconView() { }
         public void InitializeComponent() { }
     }
     public class ThemeSwitcherView : Catel.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector

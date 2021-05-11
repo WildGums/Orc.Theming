@@ -157,6 +157,7 @@
     <Style x:Key="DefaultLabelStyle" TargetType="{x:Type Label}" BasedOn="{StaticResource Orc.Styles.Label}">
         <Setter Property="Margin" Value="{DynamicResource Margin.Label}" />
         <Setter Property="Padding" Value="{DynamicResource Padding.Label}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
 
     <!-- ListBox -->

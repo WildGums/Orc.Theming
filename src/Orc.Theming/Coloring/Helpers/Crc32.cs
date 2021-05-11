@@ -149,7 +149,7 @@
         /// <returns>System.UInt32[][].</returns>
         private static uint[] InitializeTable(uint polynomial)
         {
-            if (polynomial == DefaultPolynomial && DefaultTable != null)
+            if (polynomial == DefaultPolynomial && DefaultTable is not null)
             {
                 return DefaultTable;
             }

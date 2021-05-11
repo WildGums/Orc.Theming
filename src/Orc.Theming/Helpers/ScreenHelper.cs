@@ -1,7 +1,11 @@
 ﻿namespace Orc.Theming
 {
+    using System.Drawing;
     using System.Reflection;
     using System.Windows;
+    using System.Windows.Forms;
+    using System.Windows.Interop;
+    using Size = System.Windows.Size;
 
     public static class ScreenHelper
     {
@@ -21,6 +25,15 @@
             DpiCache.Height = (int)dpiYProperty.GetValue(null, null);
 
             return DpiCache;
+        }
+
+        public static Rectangle GetScreenBounds(Window window)
+        {
+
+            var windowInteropHelper = new WindowInteropHelper(window);
+            var screen = Screen.FromHandle(windowInteropHelper.Handle);
+
+            return screen.Bounds;
         }
     }
 }

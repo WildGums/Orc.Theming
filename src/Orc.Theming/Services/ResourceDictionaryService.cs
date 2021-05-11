@@ -28,7 +28,7 @@
                 var assembly = (from x in AppDomain.CurrentDomain.GetAssemblies()
                     where x.GetName().Name.EqualsIgnoreCase(assemblyName)
                     select x).FirstOrDefault();
-                if (assembly != null)
+                if (assembly is not null)
                 {
                     // Orchestra.Core.g.resources
                     var generatedResourceName = $"{assembly.GetName().Name}.g.resources";

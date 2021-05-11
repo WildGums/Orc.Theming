@@ -16,8 +16,8 @@
                 <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Background}"/>
             </Trigger>
             <Trigger Property="IsDragging" Value="true">
-                <Setter Property="Background" Value="{DynamicResource AccentColorBrush}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource AccentColorBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource Orc.Brushes.AccentBaseColorBrush}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource Orc.Brushes.AccentBaseColorBrush}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
                 <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.Disabled.Background}"/>

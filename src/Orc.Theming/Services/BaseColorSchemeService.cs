@@ -50,7 +50,7 @@
                 return baseColors;
             }
 
-            return new[] {"Light", "Dark"};
+            return new[] { "Light", "Dark" };
         }
     }
 }

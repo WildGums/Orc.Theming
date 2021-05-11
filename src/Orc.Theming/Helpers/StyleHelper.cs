@@ -172,7 +172,7 @@
                 try
                 {
                     var targetType = defaultStyle.TargetType;
-                    if (targetType != null)
+                    if (targetType is not null)
                     {
                         var style = new Style(targetType, defaultStyle);
 
@@ -203,7 +203,7 @@
         private static void FindDefaultStyles(DefaultStylesContext context, ResourceDictionary sourceResources, string defaultPrefix)
         {
             var uri = sourceResources.Source;
-            if (uri != null)
+            if (uri is not null)
             {
                 var uriName = uri.ToString();
                 if (!string.IsNullOrWhiteSpace(uriName))
@@ -292,7 +292,7 @@
 
             public bool Equals(StyleInfo other)
             {
-                return other != null &&
+                return other is not null &&
                        SourceKey == other.SourceKey;
             }
 
