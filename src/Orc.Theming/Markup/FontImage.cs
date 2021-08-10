@@ -127,12 +127,11 @@
                 throw Log.ErrorAndCreateException<InvalidOperationException>("FontFamily cannot be null, make sure to set it or use the DefaultFontFamily");
             }
 
-            if (!RegisteredFontFamilies.ContainsKey(fontFamily))
+            if (!RegisteredFontFamilies.TryGetValue(fontFamily, out var family))
             {
                 throw Log.ErrorAndCreateException<InvalidOperationException>("FontFamily '{0}' is not yet registered, register it first using the RegisterFont method", fontFamily);
             }
 
-            var family = RegisteredFontFamilies[fontFamily];
             var brush = GetBrush();
 
             // TODO: Consider caching
@@ -248,40 +247,53 @@
 
             if (!typeface.TryGetGlyphTypeface(out var glyphTypeface))
             {
-                throw Log.ErrorAndCreateException<InvalidOperationException>("No glyph type face found");
+                throw Log.ErrorAndCreateException<InvalidOperationException>($"No glyph type face found for font family '{fontFamily.FamilyNames.FirstOrDefault()}'");
             }
 
-            var glyphIndexes = new ushort[text.Length];
-            var advanceWidths = new double[text.Length];
+            const int NotFoundValue = 42;
+
+            var glyphIndices = new List<ushort>();
+            var glyphValues = new List<ushort>();
+            var advanceWidths = new List<double>();
 
             for (var i = 0; i < text.Length; i++)
             {
-                ushort glyphIndex;
+                glyphIndices.Add((ushort)char.ConvertToUtf32(text, i));
+                glyphValues.Add(NotFoundValue);
+                advanceWidths.Add(1.0d);
+
+                if (char.IsHighSurrogate(text, i))
+                {
+                    i++;
+                }
+            }
+
+            // Validate / replace not found
+            for (var i = 0; i < glyphIndices.Count; i++)
+            {
+                var glyphIndex = glyphIndices[i];
 
                 try
                 {
-                    var key = text[i];
-
-                    if (!glyphTypeface.CharacterToGlyphMap.TryGetValue(key, out glyphIndex))
+                    if (!glyphTypeface.CharacterToGlyphMap.TryGetValue(glyphIndex, out var glyphValue))
                     {
-                        glyphIndex = 42;
+                        glyphValue = NotFoundValue;
                     }
+
+                    glyphValues[i] = glyphValue;
+
+                    advanceWidths[i] = glyphTypeface.AdvanceWidths[glyphValue] * 1.0;
                 }
                 catch (Exception)
                 {
-                    glyphIndex = 42;
+                    // ignore
                 }
-
-                glyphIndexes[i] = glyphIndex;
-
-                var width = glyphTypeface.AdvanceWidths[glyphIndex] * 1.0;
-                advanceWidths[i] = width;
             }
 
             try
             {
 #pragma warning disable 618
-                var glyphRun = new GlyphRun(glyphTypeface, 0, false, RenderingEmSize, glyphIndexes, new Point(0, 0), advanceWidths, null, null, null, null, null, null);
+                var glyphRun = new GlyphRun(glyphTypeface, 0, false, RenderingEmSize, glyphValues, new Point(0, 0), advanceWidths, null, null, null, null, null, null);
 #pragma warning restore 618
                 var glyphRunDrawing = new GlyphRunDrawing(foreBrush, glyphRun);
 
