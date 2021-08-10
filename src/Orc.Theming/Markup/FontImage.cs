@@ -251,21 +251,39 @@
                 throw Log.ErrorAndCreateException<InvalidOperationException>("No glyph type face found");
             }
 
-            //var glyphIndexes = new ushort[text.Length];
-            //var advanceWidths = new double[text.Length];
-
             var glyphIndexes = new List<ushort>();
-            var advanceWidths = new List<double>();
 
             for (var i = 0; i < text.Length; i++)
             {
                 glyphIndexes.Add((ushort)char.ConvertToUtf32(text, i));
-                advanceWidths.Add(glyphTypeface.AdvanceWidths[(ushort)glyphIndexes[i]] * 1.0d);
 
                 if (char.IsHighSurrogate(text, i))
                 {
                     i++;
                 }
+            }
+
+            // Validate / replace not found
+            var advanceWidths = new List<double>(glyphIndexes.Count);
+
+            for (var i = 0; i < glyphIndexes.Count; i++)
+            {
+                var glyphIndex = glyphIndexes[i];
+
+                try
+                {
+                    if (!glyphTypeface.CharacterToGlyphMap.ContainsKey(glyphIndex))
+                    {
+                        glyphIndex = 42;
+                    }
+                }
+                catch (Exception)
+                {
+                    glyphIndex = 42;
+                }
+
+                glyphIndexes[i] = glyphIndex;
+                advanceWidths[i] = glyphTypeface.AdvanceWidths[glyphIndex] * 1.0;
             }
 
             try
