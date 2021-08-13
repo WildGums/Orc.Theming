@@ -15,7 +15,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type CheckBox}">
-                    <BulletDecorator Background="Transparent" 
+                    <BulletDecorator Background="Transparent"
                                      SnapsToDevicePixels="true"
                                      VerticalAlignment="{TemplateBinding VerticalAlignment}"
                                      HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
@@ -26,7 +26,7 @@
                                         Height="14"
                                         Width="14"
 									    BorderThickness="{TemplateBinding BorderThickness}"
-									    BorderBrush="{TemplateBinding BorderBrush}" 
+									    BorderBrush="{TemplateBinding BorderBrush}"
 									    Background="{TemplateBinding Background}">
 
                                     <Path x:Name="CheckMark"
@@ -37,6 +37,10 @@
                                           Fill="{DynamicResource Orc.Brushes.AccentColor}"
                                           Margin="1,1.007,1,1"/>
                                 </Border>
+                                <Rectangle x:Name="IndeterminateMark"
+                                           Fill="{DynamicResource Orc.Brushes.AccentColor}"
+                                           Margin="2.3,2.3,2,2"
+                                           Opacity="0"/>
                             </Grid>
                         </BulletDecorator.Bullet>
 
@@ -50,6 +54,9 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="False">
                             <Setter TargetName="CheckMark" Property="Visibility" Value="Hidden"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="{x:Null}">
+                            <Setter Property="Opacity" TargetName="IndeterminateMark" Value="1"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
