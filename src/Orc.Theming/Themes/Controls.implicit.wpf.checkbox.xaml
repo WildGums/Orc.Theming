@@ -39,7 +39,7 @@
                                 </Border>
                                 <Rectangle x:Name="IndeterminateMark"
                                            Fill="{DynamicResource Orc.Brushes.AccentColor}"
-                                           Margin="2.3,2.3,2,2"
+                                           Margin="3"
                                            Opacity="0"/>
                             </Grid>
                         </BulletDecorator.Bullet>
@@ -56,7 +56,8 @@
                             <Setter TargetName="CheckMark" Property="Visibility" Value="Hidden"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="{x:Null}">
-                            <Setter Property="Opacity" TargetName="IndeterminateMark" Value="1"/>
+                            <Setter TargetName="IndeterminateMark" Property="Opacity"  Value="1"/>
+                            <Setter TargetName="CheckMark" Property="Visibility" Value="Hidden"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
