@@ -28,19 +28,22 @@
 									    BorderThickness="{TemplateBinding BorderThickness}"
 									    BorderBrush="{TemplateBinding BorderBrush}"
 									    Background="{TemplateBinding Background}">
-
-                                    <Path x:Name="CheckMark"
+                                    <Grid>
+                                        <Path x:Name="CheckMark"
                                           Data="M7.2,5 L5.5,7.16 4.16,6.3 3.5,6.7 5.5,8.4 8.6,5.25 C8.6,5.25 8,4.7 7.22,5"
                                           Height="Auto"
                                           Width="Auto"
                                           Stretch="Fill"
                                           Fill="{DynamicResource Orc.Brushes.AccentColor}"
                                           Margin="1,1.007,1,1"/>
-                                </Border>
-                                <Rectangle x:Name="IndeterminateMark"
+
+                                        <Rectangle x:Name="IndeterminateMark"
                                            Fill="{DynamicResource Orc.Brushes.AccentColor}"
-                                           Margin="3"
-                                           Opacity="0"/>
+                                           Margin="2.5,2.5,2,2"
+                                           Visibility="Collapsed"/>
+                                    </Grid>
+                                </Border>
+
                             </Grid>
                         </BulletDecorator.Bullet>
 
@@ -53,11 +56,11 @@
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="False">
-                            <Setter TargetName="CheckMark" Property="Visibility" Value="Hidden"/>
+                            <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="{x:Null}">
-                            <Setter TargetName="IndeterminateMark" Property="Opacity"  Value="1"/>
-                            <Setter TargetName="CheckMark" Property="Visibility" Value="Hidden"/>
+                            <Setter TargetName="IndeterminateMark" Property="Visibility"  Value="Visible"/>
+                            <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
