@@ -6,9 +6,9 @@
     <StackPanel Orientation="Vertical">
         <CheckBox Content="Unchecked state" IsChecked="False" />
         <CheckBox Content="Unchecked &amp; disabled state" IsEnabled="False" IsChecked="False" />
-        
+        <CheckBox Content="Three state" IsChecked="{x:Null}" IsThreeState="True"/>
         <CheckBox Content="Checked state" IsChecked="True" />
         <CheckBox Content="Checked &amp; disabled state" IsEnabled="False" IsChecked="True" />
     </StackPanel>
-    
+
 </catel:UserControl>
