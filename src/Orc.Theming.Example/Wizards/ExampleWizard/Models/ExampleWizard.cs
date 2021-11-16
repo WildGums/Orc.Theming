@@ -12,7 +12,7 @@
         public ExampleWizard(ITypeFactory typeFactory)
             : base(typeFactory)
         {
-            Title = "Orc.Wizard example"; 
+            Title = "Orc.Theming wizard example"; 
 
             this.AddPage<PersonWizardPage>();
             this.AddPage<AgeWizardPage>();
@@ -32,13 +32,6 @@
             Log.Info("Resuming wizard");
 
             await base.ResumeAsync();
-        }
-
-        public override async Task SaveAsync()
-        {
-            Log.Info("Saving wizard");
-
-            await base.SaveAsync();
         }
     }
 }
