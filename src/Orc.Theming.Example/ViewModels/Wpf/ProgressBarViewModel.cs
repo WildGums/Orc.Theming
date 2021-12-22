@@ -6,7 +6,9 @@
 
     public class ProgressBarViewModel : ViewModelBase
     {
+#pragma warning disable IDISP006 // Implement IDisposable
         private readonly Timer _timer = new Timer();
+#pragma warning restore IDISP006 // Implement IDisposable
 
         public ProgressBarViewModel(/* dependency injection here */)
         {
