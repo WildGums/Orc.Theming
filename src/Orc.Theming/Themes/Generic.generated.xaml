@@ -1,5 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:controls="clr-namespace:Orc.Theming.Controls" xmlns:converters="clr-namespace:Orc.Theming.Converters" xmlns:catel="http://schemas.catelproject.com" xmlns:b="http://schemas.microsoft.com/xaml/behaviors" xmlns:orctheming="clr-namespace:Orc.Theming" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.control.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.buttonbase.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.focusvisual.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.textbox.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.textboxbase.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.thumb.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.togglebutton.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.catel.infobarmessagecontrol.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.button.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.window.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/Controls/ThemeImage/Themes/ThemeImage.generic.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/Themes/Controls.explicit.wpf.progressbar.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/Themes/Controls.implicit.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.calendar.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.checkbox.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.combobox.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.datagrid.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.gridsplitter.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.groupbox.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.itemscontrol.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.label.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.listbox.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.listview.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.menuitem.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.passwordbox.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.progressbar.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.radiobutton.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.repeatbutton.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.richtextbox.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.slider.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.tabcontrol.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.textblock.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.toolbar.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.tooltip.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.treeview.xaml" />
+    <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.scrollbar.xaml" />
+  </ResourceDictionary.MergedDictionaries>
   <converters:ProgressBarSizeToTrackRadiusConverter x:Key="ProgressBarSizeToTrackRadiusConverter" />
   <converters:ProgressBarTrackRadiusToTrackOffsetConverter x:Key="ProgressBarTrackRadiusToTrackOffsetConverter" />
   <converters:ProgressBarTrackToIndicatorSizeConverter x:Key="ProgressBarTrackToIndicatorSizeConverter" />
