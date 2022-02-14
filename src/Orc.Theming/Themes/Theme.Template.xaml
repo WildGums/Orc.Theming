@@ -5,15 +5,18 @@
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:system="clr-namespace:System;assembly=mscorlib"
                     mc:Ignorable="options d">
-    <!-- Metadata -->
+    <!-- METADATA -->
     <system:String x:Key="Theme.Name">{{ThemeName}}</system:String>
     <system:String x:Key="Theme.Origin">Orc.Theming.Showcase</system:String>
     <system:String x:Key="Theme.DisplayName">{{ThemeDisplayName}}</system:String>
     <system:String x:Key="Theme.BaseColorScheme">{{BaseColorScheme}}</system:String>
     <system:String x:Key="Theme.ColorScheme">{{ColorScheme}}</system:String>
     <Color x:Key="Theme.PrimaryAccentColor">{{Orc.Colors.AccentBaseColor}}</Color>
-    <SolidColorBrush x:Key="Theme.ShowcaseBrush" Color="{{Orc.Colors.AccentBaseColor}}" options:Freeze="True" />
+    <Color x:Key="Theme.ShowcaseColor">{{Orc.Colors.AccentBaseColor}}</Color>
     <system:Boolean x:Key="Theme.IsHighContrast">{{IsHighContrast}}</system:Boolean>
+
+    <!-- Metadata brush  -->
+    <SolidColorBrush x:Key="Theme.ShowcaseBrush" Color="{StaticResource Theme.ShowcaseColor}" options:Freeze="True"/>
 
     <!-- COLORS -->
 
@@ -30,7 +33,7 @@
     <Color x:Key="Orc.Colors.AccentColor20">{{Orc.Colors.AccentColor20}}</Color>
 
     <Color x:Key="Orc.Colors.HighlightColor">{{Orc.Colors.HighlightColor}}</Color>
-
+    
     <!-- Backwards compatible theming for Orchestra / Orc.Controls -->
     <Color x:Key="AccentBaseColor">{{Orc.Colors.AccentBaseColor}}</Color>
     <Color x:Key="AccentColor">{{Orc.Colors.AccentColor}}</Color>
