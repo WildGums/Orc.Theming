@@ -19,8 +19,8 @@
 
   <PropertyGroup>
     <XAMLToolsPath>..\tools\XAMLTools.MSBuild\</XAMLToolsPath>
-    <XAMLColorSchemeGeneratorEnabled>True</XAMLColorSchemeGeneratorEnabled>
-    <XAMLCombineEnabled>False</XAMLCombineEnabled>
+    <XAMLColorSchemeGeneratorEnabled>False</XAMLColorSchemeGeneratorEnabled>
+    <XAMLCombineEnabled>True</XAMLCombineEnabled>
     <XAMLCombineImportMergedResourceDictionariesReferences>True</XAMLCombineImportMergedResourceDictionariesReferences>
   </PropertyGroup>
 
