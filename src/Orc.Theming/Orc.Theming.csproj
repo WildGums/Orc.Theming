@@ -18,13 +18,6 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <XAMLToolsPath>..\tools\XAMLTools.MSBuild\</XAMLToolsPath>
-    <XAMLColorSchemeGeneratorEnabled>False</XAMLColorSchemeGeneratorEnabled>
-    <XAMLCombineEnabled>True</XAMLCombineEnabled>
-    <XAMLCombineImportMergedResourceDictionariesReferences>True</XAMLCombineImportMergedResourceDictionariesReferences>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <!-- SonarQube requires a project guid -->
     <ProjectGuid>FCD588FC-6ACC-4658-893F-0ECB2D8DE620</ProjectGuid>
   </PropertyGroup>
@@ -82,7 +75,5 @@
 
   <Import Project="$(MSBuildProjectDirectory)\..\Directory.build.shared.explicit.props" Condition="Exists('$(MSBuildProjectDirectory)\..\Directory.build.shared.explicit.props')" />
   <Import Project="$(MSBuildProjectDirectory)\..\Directory.build.shared.mat.props" Condition="Exists('$(MSBuildProjectDirectory)\..\Directory.build.shared.mat.props')" />
-
-  <Import Project="..\Directory.Build.xamltools.props" />
-  <Import Project="..\Directory.Build.xamltools.targets" />
+  <Import Project="$(MSBuildProjectDirectory)\..\Directory.Build.shared.xamltools.props" Condition="Exists('$(MSBuildProjectDirectory)\..\Directory.Build.shared.xamltools.props')" />
 </Project>
