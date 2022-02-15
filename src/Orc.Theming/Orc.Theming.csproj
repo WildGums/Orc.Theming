@@ -59,7 +59,7 @@
       <TargetFile>Themes\Generic.generated.xaml</TargetFile>
       <Visible>True</Visible>
     </XAMLCombineItems>
-    <XAMLCombineItems Include="Themes\Theming.sizes*.xaml">
+    <XAMLCombineItems Include="Themes\Theming.sizes.normal.xaml">
       <TargetFile>Themes\Generic.generated.xaml</TargetFile>
       <Visible>True</Visible>
     </XAMLCombineItems>
