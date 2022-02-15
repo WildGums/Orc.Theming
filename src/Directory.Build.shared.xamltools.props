@@ -6,9 +6,9 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <!-- <XAMLToolsPath>..\tools\XAMLTools.MSBuild\</XAMLToolsPath> -->
     <XAMLColorSchemeGeneratorEnabled>False</XAMLColorSchemeGeneratorEnabled>
     <XAMLCombineEnabled>True</XAMLCombineEnabled>
-    <XAMLCombineImportMergedResourceDictionaryReferences>True</XAMLCombineImportMergedResourceDictionaryReferences>
+    <XAMLCombineImportMergedResourceDictionaryReferences>False</XAMLCombineImportMergedResourceDictionaryReferences>
+	<RemoveXAMLCombineItemsFromPages>False</RemoveXAMLCombineItemsFromPages>
   </PropertyGroup>
 </Project>
