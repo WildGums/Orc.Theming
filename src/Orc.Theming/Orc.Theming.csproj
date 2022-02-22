@@ -44,6 +44,30 @@
     <None Remove="**/GeneratorParameters.json" />
     <EmbeddedResource Include="**/GeneratorParameters.json" />
   </ItemGroup>
+  
+  <!-- Xaml -->
+  <ItemGroup>
+    <XAMLCombineItems Include="Themes\Controls.implicit*.xaml">
+      <TargetFile>Themes\Generic.generated.xaml</TargetFile>
+      <Visible>True</Visible>
+    </XAMLCombineItems>
+    <XAMLCombineItems Include="Themes\Controls.explicit*.xaml">
+      <TargetFile>Themes\Generic.generated.xaml</TargetFile>
+      <Visible>True</Visible>
+    </XAMLCombineItems>
+    <XAMLCombineItems Include="Themes\Theming.defaultstyles*.xaml">
+      <TargetFile>Themes\Generic.generated.xaml</TargetFile>
+      <Visible>True</Visible>
+    </XAMLCombineItems>
+    <XAMLCombineItems Include="Themes\Theming.sizes.normal.xaml">
+      <TargetFile>Themes\Generic.generated.xaml</TargetFile>
+      <Visible>True</Visible>
+    </XAMLCombineItems>
+    <XAMLCombineItems Include="Controls\**\*.xaml">
+      <TargetFile>Themes\Generic.generated.xaml</TargetFile>
+      <Visible>True</Visible>
+    </XAMLCombineItems>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Update="NETStandard.Library" Version="2.0.3" />
@@ -51,4 +75,5 @@
 
   <Import Project="$(MSBuildProjectDirectory)\..\Directory.build.shared.explicit.props" Condition="Exists('$(MSBuildProjectDirectory)\..\Directory.build.shared.explicit.props')" />
   <Import Project="$(MSBuildProjectDirectory)\..\Directory.build.shared.mat.props" Condition="Exists('$(MSBuildProjectDirectory)\..\Directory.build.shared.mat.props')" />
+  <Import Project="$(MSBuildProjectDirectory)\..\Directory.Build.shared.xamltools.props" Condition="Exists('$(MSBuildProjectDirectory)\..\Directory.Build.shared.xamltools.props')" />
 </Project>
