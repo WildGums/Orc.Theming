@@ -1,6 +1,6 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp3.1;net5.0-windows</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
     <AssemblyName>Orc.Theming</AssemblyName>
     <RootNamespace>Orc.Theming</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
@@ -24,16 +24,16 @@
 
   <ItemGroup>
     <PackageReference Include="Catel.Fody" Version="4.7.0" PrivateAssets="all" />
-    <PackageReference Include="Catel.MVVM" Version="5.12.18" />
+    <PackageReference Include="Catel.MVVM" Version="5.12.22" />
     <PackageReference Include="ControlzEx" Version="5.0.1" />
-    <PackageReference Include="Costura.Fody" Version="5.6.0" PrivateAssets="all" />
-    <PackageReference Include="Fody" Version="6.5.3" PrivateAssets="all">
+    <PackageReference Include="Costura.Fody" Version="5.7.0" PrivateAssets="all" />
+    <PackageReference Include="Fody" Version="6.6.0" PrivateAssets="all">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="LoadAssembliesOnStartup.Fody" Version="4.6.0" PrivateAssets="all" />
     <PackageReference Include="MethodTimer.Fody" Version="3.2.0" PrivateAssets="all" />
     <PackageReference Include="ModuleInit.Fody" Version="2.1.1" PrivateAssets="all" />
-    <PackageReference Include="Obsolete.Fody" Version="5.2.1" PrivateAssets="all" />
+    <PackageReference Include="Obsolete.Fody" Version="5.3.0" PrivateAssets="all" />
   </ItemGroup>
 
   <!-- Theming -->
@@ -44,6 +44,30 @@
     <None Remove="**/GeneratorParameters.json" />
     <EmbeddedResource Include="**/GeneratorParameters.json" />
   </ItemGroup>
+  
+  <!-- Xaml -->
+  <ItemGroup>
+    <XAMLCombineItems Include="Themes\Controls.implicit*.xaml">
+      <TargetFile>Themes\Generic.generated.xaml</TargetFile>
+      <Visible>True</Visible>
+    </XAMLCombineItems>
+    <XAMLCombineItems Include="Themes\Controls.explicit*.xaml">
+      <TargetFile>Themes\Generic.generated.xaml</TargetFile>
+      <Visible>True</Visible>
+    </XAMLCombineItems>
+    <XAMLCombineItems Include="Themes\Theming.defaultstyles*.xaml">
+      <TargetFile>Themes\Generic.generated.xaml</TargetFile>
+      <Visible>True</Visible>
+    </XAMLCombineItems>
+    <XAMLCombineItems Include="Themes\Theming.sizes.normal.xaml">
+      <TargetFile>Themes\Generic.generated.xaml</TargetFile>
+      <Visible>True</Visible>
+    </XAMLCombineItems>
+    <XAMLCombineItems Include="Controls\**\*.xaml">
+      <TargetFile>Themes\Generic.generated.xaml</TargetFile>
+      <Visible>True</Visible>
+    </XAMLCombineItems>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Update="NETStandard.Library" Version="2.0.3" />
@@ -51,4 +75,5 @@
 
   <Import Project="$(MSBuildProjectDirectory)\..\Directory.build.shared.explicit.props" Condition="Exists('$(MSBuildProjectDirectory)\..\Directory.build.shared.explicit.props')" />
   <Import Project="$(MSBuildProjectDirectory)\..\Directory.build.shared.mat.props" Condition="Exists('$(MSBuildProjectDirectory)\..\Directory.build.shared.mat.props')" />
+  <Import Project="$(MSBuildProjectDirectory)\..\Directory.Build.shared.xamltools.props" Condition="Exists('$(MSBuildProjectDirectory)\..\Directory.Build.shared.xamltools.props')" />
 </Project>

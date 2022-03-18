@@ -115,15 +115,16 @@
         /// <returns></returns>
         protected virtual Color ColorFromStringHash(string strValue, string salt)
         {
-            var crc32 = new Crc32();
+            using (var crc32 = new Crc32())
+            {
+                var bytes = salt is null ?
+                    Encoding.GetBytes(strValue) :
+                    Encoding.GetBytes(salt + strValue);
 
-            var bytes = salt is null ?
-                Encoding.GetBytes(strValue) :
-                Encoding.GetBytes(salt + strValue);
+                var hash = crc32.ComputeHash(bytes);
 
-            var hash = crc32.ComputeHash(bytes);
-
-            return Color.FromArgb(255, hash[1], hash[2], hash[3]);
+                return Color.FromArgb(255, hash[1], hash[2], hash[3]);
+            }
         }
 
         /// <summary>
