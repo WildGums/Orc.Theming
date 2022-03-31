@@ -24,7 +24,9 @@
                 UseShellExecute = true,
                 Verb = "open"
             };
+#pragma warning disable IDISP004 // Don't ignore created IDisposable
             Process.Start(ps);
+#pragma warning restore IDISP004 // Don't ignore created IDisposable
         }
     }
 }
