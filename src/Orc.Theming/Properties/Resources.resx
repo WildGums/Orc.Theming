@@ -123,4 +123,7 @@
   <data name="BaseColorSchemeSwitcherView_SelectBaseColorScheme" xml:space="preserve">
     <value>Select base color scheme</value>
   </data>
+  <data name="FontSizeSwitcherView_SelectFontSize" xml:space="preserve">
+    <value>Select font size</value>
+  </data>
 </root>

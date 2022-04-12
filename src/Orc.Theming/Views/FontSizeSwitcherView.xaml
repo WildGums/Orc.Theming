@@ -1,0 +1,32 @@
+﻿<catel:UserControl x:Class="Orc.Theming.Views.FontSizeSwitcherView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:catel="http://schemas.catelproject.com">
+
+    <StackPanel Orientation="Horizontal">
+        <Label VerticalAlignment="Center" Content="{catel:LanguageBinding FontSizeSwitcherView_SelectFontSize}" />
+        <ComboBox ItemsSource="{Binding FontSizes}" SelectedItem="{Binding SelectedFontSize}">
+            <!--<ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Rectangle Grid.Column="0" 
+                                   Width="20"
+                                   Height="12"
+                                   VerticalAlignment="Center"
+                                   Margin="4,2,8,2"
+                                   Fill ="{Binding Converter={catel:ColorToBrushConverter}}">
+                        </Rectangle>
+
+                        <TextBlock Grid.Column="1" Text="{Binding }" VerticalAlignment="Center" />
+                    </Grid>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>-->
+        </ComboBox>
+    </StackPanel>
+
+</catel:UserControl>
