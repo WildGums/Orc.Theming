@@ -19,6 +19,7 @@
             <orctheming:BaseColorSchemeSwitcherView />
             <orctheming:BaseColorSchemeSwitcherWithIconView />
             <orctheming:AccentColorSwitcherView />
+            <orctheming:FontSizeSwitcherView />
         </StackPanel>
 
         <TabControl x:Name="TabControl" Grid.Row="1">
