@@ -16,6 +16,7 @@ public static class ModuleInitializer
 
         serviceLocator.RegisterTypeIfNotYetRegistered<IAccentColorService, AccentColorService>();
         serviceLocator.RegisterTypeIfNotYetRegistered<IBaseColorSchemeService, BaseColorSchemeService>();
+        serviceLocator.RegisterTypeIfNotYetRegistered<IFontSizeService, FontSizeService>();
         serviceLocator.RegisterTypeIfNotYetRegistered<IResourceDictionaryService, ResourceDictionaryService>();
         serviceLocator.RegisterTypeIfNotYetRegistered<IThemeService, ThemeService>();
 

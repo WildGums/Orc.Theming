@@ -116,6 +116,14 @@ namespace Orc.Theming
         public static System.Collections.Generic.IEnumerable<string> GetRegisteredFonts() { }
         public static void RegisterFont(string name, System.Windows.Media.FontFamily fontFamily) { }
     }
+    public class FontSizeService : Orc.Theming.IFontSizeService
+    {
+        public FontSizeService() { }
+        public event System.EventHandler<System.EventArgs> FontSizeChanged;
+        public virtual double GetFontSize() { }
+        protected void RaiseFontSizeChanged() { }
+        public virtual bool SetFontSize(double fontSize) { }
+    }
     public static class FrameworkElementExtensions
     {
         public static TBehavior AttachBehavior<TBehavior>(this System.Windows.FrameworkElement frameworkElement)
@@ -135,6 +143,12 @@ namespace Orc.Theming
         System.Collections.Generic.IReadOnlyList<string> GetAvailableBaseColorSchemes();
         string GetBaseColorScheme();
         bool SetBaseColorScheme(string scheme);
+    }
+    public interface IFontSizeService
+    {
+        event System.EventHandler<System.EventArgs> FontSizeChanged;
+        double GetFontSize();
+        bool SetFontSize(double fontSize);
     }
     public interface IResourceDictionaryService
     {
@@ -421,6 +435,15 @@ namespace Orc.Theming.ViewModels
         protected override System.Threading.Tasks.Task CloseAsync() { }
         protected override System.Threading.Tasks.Task InitializeAsync() { }
     }
+    public class FontSizeSwitcherViewModel : Catel.MVVM.ViewModelBase
+    {
+        public static readonly Catel.Data.PropertyData SelectedFontSizeProperty;
+        public FontSizeSwitcherViewModel(Orc.Theming.IFontSizeService fontSizeService) { }
+        public System.Collections.Generic.List<double> FontSizes { get; }
+        public double SelectedFontSize { get; set; }
+        protected override System.Threading.Tasks.Task CloseAsync() { }
+        protected override System.Threading.Tasks.Task InitializeAsync() { }
+    }
     public class ThemeSwitcherViewModel : Catel.MVVM.ViewModelBase
     {
         public static readonly Catel.Data.PropertyData SelectedAccentColorProperty;
@@ -447,6 +470,11 @@ namespace Orc.Theming.Views
     public class BaseColorSchemeSwitcherWithIconView : Catel.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
     {
         public BaseColorSchemeSwitcherWithIconView() { }
+        public void InitializeComponent() { }
+    }
+    public class FontSizeSwitcherView : Catel.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
+    {
+        public FontSizeSwitcherView() { }
         public void InitializeComponent() { }
     }
     public class ThemeSwitcherView : Catel.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
