@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using Catel;
     using Catel.MVVM;
 
     public class FontSizeSwitcherViewModel : ViewModelBase
@@ -12,7 +11,7 @@
 
         public FontSizeSwitcherViewModel(IFontSizeService fontSizeService)
         {
-            Argument.IsNotNull(() => fontSizeService);
+            ArgumentNullException.ThrowIfNull(fontSizeService);
 
             _fontSizeService = fontSizeService;
 
@@ -57,7 +56,7 @@
             await base.CloseAsync();
         }
 
-        private void OnFontSizeServiceFontSizeChanged(object sender, EventArgs e)
+        private void OnFontSizeServiceFontSizeChanged(object? sender, EventArgs e)
         {
             SelectedFontSize = _fontSizeService.GetFontSize();
         }

@@ -3,18 +3,13 @@
     using System;
     using System.Text;
 
-#if NETFX_CORE
-    using Windows.UI;
-#else
     using System.Windows.Media;
-#endif
 
     /// <summary>
     /// Basic string to color generator.
     /// </summary>
     public class ColorGenerator : IColorGenerator
     {
-        #region Constants
         /// <summary>
         /// Default value of false string.
         /// </summary>
@@ -29,9 +24,7 @@
         /// Default value of true string.
         /// </summary>
         public const string DefaultTrueValue = "true";
-        #endregion
 
-        #region Fields
         /// <summary>
         /// Encoding instance for converting string to bytes.
         /// </summary>
@@ -51,9 +44,7 @@
         /// Value of true string.
         /// </summary>
         private readonly string _trueValue;
-        #endregion
 
-        #region Constructors
         /// <summary>
         /// Default constructor
         /// </summary>
@@ -75,16 +66,14 @@
             _falseValue = falseValue;
             _nullValue = nullValue;
         }
-        #endregion
 
-        #region IColorGenerator Members
         /// <summary>
         /// Generate the color from string by hashing it.
         /// </summary>
         /// <param name="value">String to convert.</param>
         /// <param name="salt">Optional salt value.</param>
         /// <returns>The color.</returns>
-        public virtual Color Generate(object value, string salt = null)
+        public virtual Color Generate(object value, string? salt = null)
         {
             var strValue = ConvertToStringValue(value);
             if (string.IsNullOrWhiteSpace(strValue))
@@ -104,16 +93,14 @@
 
             return ColorFromStringHash(strValue, salt).SetBrightness(0.8f);
         }
-        #endregion
 
-        #region Methods
         /// <summary>
         /// Computes the color from string.
         /// </summary>
         /// <param name="strValue">String to convert.</param>
         /// <param name="salt">Optional salt value.</param>
         /// <returns></returns>
-        protected virtual Color ColorFromStringHash(string strValue, string salt)
+        protected virtual Color ColorFromStringHash(string strValue, string? salt)
         {
             using (var crc32 = new Crc32())
             {
@@ -132,9 +119,16 @@
         /// </summary>
         /// <param name="value">Object value to convert.</param>
         /// <returns></returns>
-        protected virtual string ConvertToStringValue(object value)
+        protected virtual string ConvertToStringValue(object? value)
         {
-            return (value is null) ? _nullValue : value.ToString();
+            string? finalValue = null;
+            
+            if (value is not null)
+            {
+                finalValue = value.ToString();
+            }
+
+            return finalValue ?? _nullValue;
         }
 
         /// <summary>
@@ -142,7 +136,7 @@
         /// </summary>
         /// <param name="strValue">String value to check.</param>
         /// <returns></returns>
-        protected virtual bool IsFalse(string strValue)
+        protected virtual bool IsFalse(string? strValue)
         {
             return string.Equals(strValue, _falseValue, StringComparison.OrdinalIgnoreCase);
         }
@@ -152,10 +146,9 @@
         /// </summary>
         /// <param name="strValue">String value to check.</param>
         /// <returns></returns>
-        protected virtual bool IsTrue(string strValue)
+        protected virtual bool IsTrue(string? strValue)
         {
             return string.Equals(strValue, _trueValue, StringComparison.OrdinalIgnoreCase);
         }
-        #endregion
     }
 }

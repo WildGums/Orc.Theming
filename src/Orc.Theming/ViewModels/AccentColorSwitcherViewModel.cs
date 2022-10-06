@@ -5,7 +5,6 @@
     using System.Linq;
     using System.Threading.Tasks;
     using System.Windows.Media;
-    using Catel;
     using Catel.MVVM;
     using Catel.Reflection;
 
@@ -15,19 +14,23 @@
 
         public AccentColorSwitcherViewModel(ThemeManager themeManager, IAccentColorService accentColorService)
         {
-            Argument.IsNotNull(() => accentColorService);
+            ArgumentNullException.ThrowIfNull(accentColorService);
 
             _accentColorService = accentColorService;
 
-            var accentColors = typeof(Colors).GetPropertiesEx(true, true).Where(x => x.PropertyType.IsAssignableFromEx(typeof(Color))).Select(x => (Color)x.GetValue(null)).ToList();
+            AccentColors = typeof(Colors).GetPropertiesEx(true, true)
+                .Where(x => x.PropertyType.IsAssignableFromEx(typeof(Color)))
+                .Select(x => (Color?)x.GetValue(null))
+                .Where(x => x is not null)
+                .Cast<Color>()
+                .ToList();
 
             var currentAccentColor = themeManager.GetAccentColorBrush()?.Color ?? Colors.Transparent;
-            if (!accentColors.Contains(currentAccentColor))
+            if (!AccentColors.Contains(currentAccentColor))
             {
-                accentColors.Insert(0, currentAccentColor);
+                AccentColors.Insert(0, currentAccentColor);
             }
 
-            AccentColors = accentColors;
             SelectedAccentColor = currentAccentColor;
         }
 
@@ -49,7 +52,7 @@
             await base.CloseAsync();
         }
 
-        private void OnAccentColorServiceAccentColorChanged(object sender, EventArgs e)
+        private void OnAccentColorServiceAccentColorChanged(object? sender, EventArgs e)
         {
             SelectedAccentColor = _accentColorService.GetAccentColor();
         }

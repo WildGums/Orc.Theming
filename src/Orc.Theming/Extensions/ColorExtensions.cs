@@ -65,11 +65,7 @@
             var luminance = 1 - color.GetPerceptiveLuminance();
             var c = Clamp(luminance * 255);
 
-#if NETFX_CORE
-            return Color.FromArgb(255, c, c, c);
-#else
             return Color.FromRgb(c, c, c);
-#endif
         }
 
         /// <summary>

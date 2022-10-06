@@ -1,11 +1,6 @@
 ﻿namespace Orc.Theming
 {
-#if NETFX_CORE
-    using Windows.UI;
-#else
     using System.Windows.Media;
-
-#endif
 
     internal static class ColorHelper
     {

@@ -7,14 +7,11 @@
     /// </summary>
     public class Crc32 : HashAlgorithm
     {
-        #region Properties
         /// <summary>
         ///     Gets the hash size.
         /// </summary>
         public override int HashSize => 32;
-        #endregion
 
-        #region Constants
         /// <summary>
         ///     The default polynomial.
         /// </summary>
@@ -28,10 +25,8 @@
         /// <summary>
         ///     The default table.
         /// </summary>
-        private static uint[] DefaultTable;
-        #endregion
+        private static uint[]? DefaultTable;
 
-        #region Fields
         /// <summary>
         ///     The seed.
         /// </summary>
@@ -46,9 +41,7 @@
         ///     The hash.
         /// </summary>
         private uint _hash;
-        #endregion
 
-        #region Constructors
         /// <summary>
         ///     Initializes a new instance of the <see cref="Crc32" /> class.
         /// </summary>
@@ -72,9 +65,7 @@
 
             Initialize();
         }
-        #endregion
 
-        #region Methods
         /// <summary>
         ///     The compute.
         /// </summary>
@@ -135,9 +126,7 @@
         {
             var hashBuffer = UInt32ToBigEndianBytes(~_hash);
 
-#if !NETFX_CORE
             HashValue = hashBuffer;
-#endif
 
             return hashBuffer;
         }
@@ -213,6 +202,5 @@
         {
             return new[] {(byte)((x >> 24) & 0xff), (byte)((x >> 16) & 0xff), (byte)((x >> 8) & 0xff), (byte)(x & 0xff)};
         }
-        #endregion
     }
 }

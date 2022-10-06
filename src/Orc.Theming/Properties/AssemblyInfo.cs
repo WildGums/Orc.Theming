@@ -12,7 +12,7 @@ using System.Windows.Markup;
 
 [assembly: XmlnsPrefix("http://schemas.wildgums.com/orc/theming", "orctheming")]
 [assembly: XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming")]
-//[assembly: XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Behaviors")]
+[assembly: XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Behaviors")]
 [assembly: XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Controls")]
 //[assembly: XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Converters")]
 //[assembly: XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Fonts")]

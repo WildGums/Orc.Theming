@@ -1,6 +1,7 @@
 ﻿[assembly: System.Resources.NeutralResourcesLanguage("en-US")]
 [assembly: System.Runtime.Versioning.TargetFramework(".NETCoreApp,Version=v6.0", FrameworkDisplayName="")]
 [assembly: System.Windows.Markup.XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming")]
+[assembly: System.Windows.Markup.XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Behaviors")]
 [assembly: System.Windows.Markup.XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Controls")]
 [assembly: System.Windows.Markup.XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Views")]
 [assembly: System.Windows.Markup.XmlnsPrefix("http://schemas.wildgums.com/orc/theming", "orctheming")]
@@ -15,7 +16,7 @@ namespace Orc.Theming
     public class AccentColorService : Orc.Theming.IAccentColorService
     {
         public AccentColorService() { }
-        public event System.EventHandler<System.EventArgs> AccentColorChanged;
+        public event System.EventHandler<System.EventArgs>? AccentColorChanged;
         public virtual System.Windows.Media.Color GetAccentColor() { }
         protected void RaiseAccentColorChanged() { }
         public virtual bool SetAccentColor(System.Windows.Media.Color color) { }
@@ -49,7 +50,7 @@ namespace Orc.Theming
     public class BaseColorSchemeService : Orc.Theming.IBaseColorSchemeService
     {
         public BaseColorSchemeService() { }
-        public event System.EventHandler<System.EventArgs> BaseColorSchemeChanged;
+        public event System.EventHandler<System.EventArgs>? BaseColorSchemeChanged;
         public virtual System.Collections.Generic.IReadOnlyList<string> GetAvailableBaseColorSchemes() { }
         public string GetBaseColorScheme() { }
         public bool SetBaseColorScheme(string scheme) { }
@@ -73,14 +74,6 @@ namespace Orc.Theming
         public static System.Windows.Media.SolidColorBrush ToSolidColorBrush(this System.Windows.Media.Color color, double opacity = 1) { }
         public static System.Windows.Media.Color[] TransformPalette(this System.Collections.Generic.IReadOnlyList<System.Windows.Media.Color> palette, int count) { }
     }
-    public class CorrectPopupWidthBehavior : Catel.Windows.Interactivity.BehaviorBase<System.Windows.Controls.Primitives.Popup>
-    {
-        public static readonly System.Windows.DependencyProperty ParentElementProperty;
-        public CorrectPopupWidthBehavior() { }
-        public System.Windows.FrameworkElement ParentElement { get; set; }
-        protected override void OnAssociatedObjectLoaded() { }
-        protected override void OnAssociatedObjectUnloaded() { }
-    }
     public class Crc32 : System.Security.Cryptography.HashAlgorithm
     {
         public const uint DefaultPolynomial = 3988292384u;
@@ -99,27 +92,27 @@ namespace Orc.Theming
     {
         public FontImage() { }
         public FontImage(string itemName) { }
-        public System.Windows.Media.Brush Brush { get; set; }
-        public string BrushKey { get; set; }
-        public string FontFamily { get; set; }
+        public System.Windows.Media.Brush? Brush { get; set; }
+        public string? BrushKey { get; set; }
+        public string? FontFamily { get; set; }
         [System.Windows.Markup.ConstructorArgument("itemName")]
-        public string ItemName { get; set; }
+        public string? ItemName { get; set; }
         public static System.Windows.Media.Brush DefaultBrush { get; set; }
         public static string DefaultBrushKey { get; set; }
         public static string DefaultFontFamily { get; set; }
         protected virtual System.Windows.Media.Brush GetBrush() { }
-        public System.Windows.Media.ImageSource GetImageSource() { }
+        public System.Windows.Media.ImageSource? GetImageSource() { }
         protected override void OnTargetObjectLoaded() { }
         protected override void OnTargetObjectUnloaded() { }
-        protected override object ProvideDynamicValue(System.IServiceProvider serviceProvider) { }
-        public static System.Windows.Media.FontFamily GetRegisteredFont(string name) { }
+        protected override object? ProvideDynamicValue(System.IServiceProvider? serviceProvider) { }
+        public static System.Windows.Media.FontFamily? GetRegisteredFont(string name) { }
         public static System.Collections.Generic.IEnumerable<string> GetRegisteredFonts() { }
         public static void RegisterFont(string name, System.Windows.Media.FontFamily fontFamily) { }
     }
     public class FontSizeService : Orc.Theming.IFontSizeService
     {
         public FontSizeService() { }
-        public event System.EventHandler<System.EventArgs> FontSizeChanged;
+        public event System.EventHandler<System.EventArgs>? FontSizeChanged;
         public virtual double GetFontSize() { }
         protected void RaiseFontSizeChanged() { }
         public virtual bool SetFontSize(double fontSize) { }
@@ -133,20 +126,20 @@ namespace Orc.Theming
     }
     public interface IAccentColorService
     {
-        event System.EventHandler<System.EventArgs> AccentColorChanged;
+        event System.EventHandler<System.EventArgs>? AccentColorChanged;
         System.Windows.Media.Color GetAccentColor();
         bool SetAccentColor(System.Windows.Media.Color color);
     }
     public interface IBaseColorSchemeService
     {
-        event System.EventHandler<System.EventArgs> BaseColorSchemeChanged;
+        event System.EventHandler<System.EventArgs>? BaseColorSchemeChanged;
         System.Collections.Generic.IReadOnlyList<string> GetAvailableBaseColorSchemes();
         string GetBaseColorScheme();
         bool SetBaseColorScheme(string scheme);
     }
     public interface IFontSizeService
     {
-        event System.EventHandler<System.EventArgs> FontSizeChanged;
+        event System.EventHandler<System.EventArgs>? FontSizeChanged;
         double GetFontSize();
         bool SetFontSize(double fontSize);
     }
@@ -163,20 +156,6 @@ namespace Orc.Theming
     {
         public LibraryThemeProvider() { }
         public override void FillColorSchemeValues(System.Collections.Generic.Dictionary<string, string> values, ControlzEx.Theming.RuntimeThemeColorValues colorValues) { }
-    }
-    public class MandatoryField : Catel.Windows.Interactivity.BehaviorBase<System.Windows.FrameworkElement>
-    {
-        public static readonly System.Windows.DependencyProperty IsMandatoryProperty;
-        public static readonly System.Windows.DependencyProperty OffsetProperty;
-        public static readonly System.Windows.DependencyProperty PositionProperty;
-        public MandatoryField() { }
-        protected override void OnAssociatedObjectLoaded() { }
-        public static bool GetIsMandatory(System.Windows.DependencyObject element) { }
-        public static System.Windows.Thickness GetOffset(System.Windows.DependencyObject element) { }
-        public static Orc.Theming.ArrangePosition GetPosition(System.Windows.DependencyObject element) { }
-        public static void SetIsMandatory(System.Windows.DependencyObject element, bool value) { }
-        public static void SetOffset(System.Windows.DependencyObject element, System.Windows.Thickness value) { }
-        public static void SetPosition(System.Windows.DependencyObject element, Orc.Theming.ArrangePosition value) { }
     }
     public class Margin : System.Windows.DependencyObject
     {
@@ -217,21 +196,21 @@ namespace Orc.Theming
     {
         public ThemeColor() { }
         public ThemeColor(Orc.Theming.ThemeColorStyle themeColorStyle) { }
-        public string ResourceName { get; set; }
+        public string? ResourceName { get; set; }
         public Orc.Theming.ThemeColorStyle ThemeColorStyle { get; set; }
         protected override void OnTargetObjectLoaded() { }
         protected override void OnTargetObjectUnloaded() { }
-        protected override object ProvideDynamicValue(System.IServiceProvider serviceProvider) { }
+        protected override object? ProvideDynamicValue(System.IServiceProvider? serviceProvider) { }
     }
     public class ThemeColorBrush : Catel.Windows.Markup.UpdatableMarkupExtension
     {
         public ThemeColorBrush() { }
         public ThemeColorBrush(Orc.Theming.ThemeColorStyle themeColorStyle) { }
-        public string ResourceName { get; set; }
+        public string? ResourceName { get; set; }
         public Orc.Theming.ThemeColorStyle ThemeColorStyle { get; set; }
         protected override void OnTargetObjectLoaded() { }
         protected override void OnTargetObjectUnloaded() { }
-        protected override object ProvideDynamicValue(System.IServiceProvider serviceProvider) { }
+        protected override object? ProvideDynamicValue(System.IServiceProvider? serviceProvider) { }
     }
     public enum ThemeColorStyle
     {
@@ -240,14 +219,6 @@ namespace Orc.Theming
         AccentColor60 = 2,
         AccentColor40 = 3,
         AccentColor20 = 4,
-        [System.Obsolete("Use `AccentColor80` instead. Will be removed in version 5.0.0.", true)]
-        AccentColor1 = 1,
-        [System.Obsolete("Use `AccentColor60` instead. Will be removed in version 5.0.0.", true)]
-        AccentColor2 = 2,
-        [System.Obsolete("Use `AccentColor40` instead. Will be removed in version 5.0.0.", true)]
-        AccentColor3 = 3,
-        [System.Obsolete("Use `AccentColor20` instead. Will be removed in version 5.0.0.", true)]
-        AccentColor4 = 4,
         BorderColor = 5,
         BackgroundColor = 6,
         ForegroundColor = 7,
@@ -311,7 +282,7 @@ namespace Orc.Theming
     {
         public ThemeManager(ControlzEx.Theming.ThemeManager controlzThemeManager, Orc.Theming.IAccentColorService accentColorService, Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
         public static Orc.Theming.ThemeManager Current { get; }
-        public event System.EventHandler<System.EventArgs> ThemeChanged;
+        public event System.EventHandler<System.EventArgs>? ThemeChanged;
         public System.Windows.Media.SolidColorBrush GetAccentColorBrush() { }
         public System.Windows.Media.Color GetThemeColor(Orc.Theming.ThemeColorStyle colorStyle = 0) { }
         public System.Windows.Media.Color GetThemeColor(string resourceName) { }
@@ -326,6 +297,31 @@ namespace Orc.Theming
         public virtual bool ShouldCreateStyleForwarders() { }
     }
 }
+namespace Orc.Theming.Behaviors
+{
+    public class CorrectPopupWidth : Catel.Windows.Interactivity.BehaviorBase<System.Windows.Controls.Primitives.Popup>
+    {
+        public static readonly System.Windows.DependencyProperty ParentElementProperty;
+        public CorrectPopupWidth() { }
+        public System.Windows.FrameworkElement? ParentElement { get; set; }
+        protected override void OnAssociatedObjectLoaded() { }
+        protected override void OnAssociatedObjectUnloaded() { }
+    }
+    public class MandatoryField : Catel.Windows.Interactivity.BehaviorBase<System.Windows.FrameworkElement>
+    {
+        public static readonly System.Windows.DependencyProperty IsMandatoryProperty;
+        public static readonly System.Windows.DependencyProperty OffsetProperty;
+        public static readonly System.Windows.DependencyProperty PositionProperty;
+        public MandatoryField() { }
+        protected override void OnAssociatedObjectLoaded() { }
+        public static bool GetIsMandatory(System.Windows.DependencyObject element) { }
+        public static System.Windows.Thickness GetOffset(System.Windows.DependencyObject element) { }
+        public static Orc.Theming.ArrangePosition GetPosition(System.Windows.DependencyObject element) { }
+        public static void SetIsMandatory(System.Windows.DependencyObject element, bool value) { }
+        public static void SetOffset(System.Windows.DependencyObject element, System.Windows.Thickness value) { }
+        public static void SetPosition(System.Windows.DependencyObject element, Orc.Theming.ArrangePosition value) { }
+    }
+}
 namespace Orc.Theming.Coloring
 {
     public class ColorGenerator : Orc.Theming.Coloring.IColorGenerator
@@ -335,11 +331,11 @@ namespace Orc.Theming.Coloring
         public const string DefaultTrueValue = "true";
         public ColorGenerator() { }
         public ColorGenerator(string trueValue, string falseValue, string nullValue) { }
-        protected virtual System.Windows.Media.Color ColorFromStringHash(string strValue, string salt) { }
-        protected virtual string ConvertToStringValue(object value) { }
-        public virtual System.Windows.Media.Color Generate(object value, string salt = null) { }
-        protected virtual bool IsFalse(string strValue) { }
-        protected virtual bool IsTrue(string strValue) { }
+        protected virtual System.Windows.Media.Color ColorFromStringHash(string strValue, string? salt) { }
+        protected virtual string ConvertToStringValue(object? value) { }
+        public virtual System.Windows.Media.Color Generate(object value, string? salt = null) { }
+        protected virtual bool IsFalse(string? strValue) { }
+        protected virtual bool IsTrue(string? strValue) { }
     }
     public struct ColorHsb
     {
@@ -348,7 +344,7 @@ namespace Orc.Theming.Coloring
         public double Brightness { get; set; }
         public double Hue { get; set; }
         public double Saturation { get; set; }
-        public override bool Equals(object obj) { }
+        public override bool Equals(object? obj) { }
         public override int GetHashCode() { }
         public static bool operator !=(Orc.Theming.Coloring.ColorHsb item1, Orc.Theming.Coloring.ColorHsb item2) { }
         public static bool operator ==(Orc.Theming.Coloring.ColorHsb item1, Orc.Theming.Coloring.ColorHsb item2) { }
@@ -361,7 +357,7 @@ namespace Orc.Theming.Coloring
     }
     public interface IColorGenerator
     {
-        System.Windows.Media.Color Generate(object value, string salt = null);
+        System.Windows.Media.Color Generate(object value, string? salt = null);
     }
     public static class IntColors
     {
@@ -387,7 +383,7 @@ namespace Orc.Theming.Controls
         public static readonly System.Windows.DependencyProperty StretchDirectionProperty;
         public static readonly System.Windows.DependencyProperty StretchProperty;
         public ThemeImage() { }
-        public string Source { get; set; }
+        public string? Source { get; set; }
         public System.Windows.Media.Stretch Stretch { get; set; }
         public System.Windows.Controls.StretchDirection StretchDirection { get; set; }
         public override void OnApplyTemplate() { }
@@ -398,19 +394,19 @@ namespace Orc.Theming.Converters
     public class ColorToContrastColorValueConverter : Catel.MVVM.Converters.ValueConverterBase
     {
         public ColorToContrastColorValueConverter() { }
-        protected override object Convert(object value, System.Type targetType, object parameter) { }
+        protected override object? Convert(object? value, System.Type targetType, object? parameter) { }
     }
     public class ColorToOpaqueColorConverter : Catel.MVVM.Converters.ValueConverterBase
     {
         public ColorToOpaqueColorConverter() { }
-        protected override object Convert(object value, System.Type targetType, object parameter) { }
+        protected override object? Convert(object? value, System.Type targetType, object? parameter) { }
     }
 }
 namespace Orc.Theming.ViewModels
 {
     public class AccentColorSwitcherViewModel : Catel.MVVM.ViewModelBase
     {
-        public static readonly Catel.Data.PropertyData SelectedAccentColorProperty;
+        public static readonly Catel.Data.IPropertyData SelectedAccentColorProperty;
         public AccentColorSwitcherViewModel(Orc.Theming.ThemeManager themeManager, Orc.Theming.IAccentColorService accentColorService) { }
         public System.Collections.Generic.List<System.Windows.Media.Color> AccentColors { get; }
         public System.Windows.Media.Color SelectedAccentColor { get; set; }
@@ -419,7 +415,7 @@ namespace Orc.Theming.ViewModels
     }
     public class BaseColorSchemeSwitcherViewModel : Catel.MVVM.ViewModelBase
     {
-        public static readonly Catel.Data.PropertyData SelectedBaseColorSchemeProperty;
+        public static readonly Catel.Data.IPropertyData SelectedBaseColorSchemeProperty;
         public BaseColorSchemeSwitcherViewModel(Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
         public System.Collections.Generic.IReadOnlyList<string> BaseColorSchemes { get; }
         public string SelectedBaseColorScheme { get; set; }
@@ -428,16 +424,16 @@ namespace Orc.Theming.ViewModels
     }
     public class BaseColorSchemeSwitcherWithIconViewModel : Catel.MVVM.ViewModelBase
     {
-        public static readonly Catel.Data.PropertyData SelectedBaseColorSchemeProperty;
+        public static readonly Catel.Data.IPropertyData SelectedBaseColorSchemeProperty;
         public BaseColorSchemeSwitcherWithIconViewModel(Catel.IoC.IServiceLocator serviceLocator, Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
         public System.Collections.Generic.IReadOnlyList<Orc.Theming.BaseColorScheme> BaseColorSchemes { get; }
-        public Orc.Theming.BaseColorScheme SelectedBaseColorScheme { get; set; }
+        public Orc.Theming.BaseColorScheme? SelectedBaseColorScheme { get; set; }
         protected override System.Threading.Tasks.Task CloseAsync() { }
         protected override System.Threading.Tasks.Task InitializeAsync() { }
     }
     public class FontSizeSwitcherViewModel : Catel.MVVM.ViewModelBase
     {
-        public static readonly Catel.Data.PropertyData SelectedFontSizeProperty;
+        public static readonly Catel.Data.IPropertyData SelectedFontSizeProperty;
         public FontSizeSwitcherViewModel(Orc.Theming.IFontSizeService fontSizeService) { }
         public System.Collections.Generic.List<double> FontSizes { get; }
         public double SelectedFontSize { get; set; }
@@ -446,8 +442,8 @@ namespace Orc.Theming.ViewModels
     }
     public class ThemeSwitcherViewModel : Catel.MVVM.ViewModelBase
     {
-        public static readonly Catel.Data.PropertyData SelectedAccentColorProperty;
-        public static readonly Catel.Data.PropertyData SelectedBaseColorSchemeProperty;
+        public static readonly Catel.Data.IPropertyData SelectedAccentColorProperty;
+        public static readonly Catel.Data.IPropertyData SelectedBaseColorSchemeProperty;
         public ThemeSwitcherViewModel(Orc.Theming.IAccentColorService accentColorService, Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
         public System.Collections.Generic.List<System.Windows.Media.Color> AccentColors { get; }
         public System.Collections.Generic.IReadOnlyList<string> BaseColorSchemes { get; }

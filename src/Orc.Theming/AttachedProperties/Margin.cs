@@ -5,7 +5,6 @@
 
     public class Margin : DependencyObject
     {
-        #region Left
         public static readonly DependencyProperty LeftProperty = DependencyProperty.RegisterAttached(
             "Left", typeof(double), typeof(Margin), new PropertyMetadata(double.NaN, OnMarginDimensionChangedChanged));
 
@@ -17,9 +16,7 @@
         {
             d.SetValue(LeftProperty, value);
         }
-        #endregion
 
-        #region Top
         public static readonly DependencyProperty TopProperty = DependencyProperty.RegisterAttached(
             "Top", typeof(double), typeof(Margin), new PropertyMetadata(double.NaN, OnMarginDimensionChangedChanged));
 
@@ -31,9 +28,7 @@
         {
             d.SetValue(TopProperty, value);
         }
-        #endregion
 
-        #region Right
         public static readonly DependencyProperty RightProperty = DependencyProperty.RegisterAttached(
             "Right", typeof(double), typeof(Margin), new PropertyMetadata(double.NaN, OnMarginDimensionChangedChanged));
 
@@ -45,9 +40,7 @@
         {
             d.SetValue(RightProperty, value);
         }
-        #endregion
 
-        #region Bottom
         public static readonly DependencyProperty BottomProperty = DependencyProperty.RegisterAttached(
             "Bottom", typeof(double), typeof(Margin), new PropertyMetadata(double.NaN, OnMarginDimensionChangedChanged));
 
@@ -59,16 +52,18 @@
         {
             d.SetValue(BottomProperty, value);
         }
-        #endregion
 
         private static void OnMarginDimensionChangedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var frameworkElement = d as FrameworkElement;
-            frameworkElement.UnsubscribeFromDependencyProperty(nameof(FrameworkElement.Margin), OnMarginChanged);
-            frameworkElement?.SubscribeToDependencyProperty(nameof(FrameworkElement.Margin), OnMarginChanged);
+            if (frameworkElement is not null)
+            {
+                frameworkElement.UnsubscribeFromDependencyProperty(nameof(FrameworkElement.Margin), OnMarginChanged);
+                frameworkElement?.SubscribeToDependencyProperty(nameof(FrameworkElement.Margin), OnMarginChanged);
+            }
         }
 
-        private static void OnMarginChanged(object sender, DependencyPropertyValueChangedEventArgs e)
+        private static void OnMarginChanged(object? sender, DependencyPropertyValueChangedEventArgs e)
         {
             if(!(sender is FrameworkElement frameworkElement))
             {
@@ -77,18 +72,22 @@
 
             frameworkElement.UnsubscribeFromDependencyProperty(nameof(FrameworkElement.Margin), OnMarginChanged);
 
-            var currentMargin = (Thickness)e.NewValue;
-
             var left = GetLeft(frameworkElement);
             var top = GetTop(frameworkElement);
             var right = GetRight(frameworkElement);
             var bottom = GetBottom(frameworkElement);
 
-            left = double.IsNaN(left) ? currentMargin.Left : left;
-            top = double.IsNaN(top) ? currentMargin.Top : top;
-            right = double.IsNaN(right) ? currentMargin.Right : right;
-            bottom = double.IsNaN(bottom) ? currentMargin.Bottom : bottom;
-            
+            var newValue = e.NewValue as Thickness?;
+            if (newValue is not null)
+            {
+                var currentMargin = newValue.Value;
+
+                left = double.IsNaN(left) ? currentMargin.Left : left;
+                top = double.IsNaN(top) ? currentMargin.Top : top;
+                right = double.IsNaN(right) ? currentMargin.Right : right;
+                bottom = double.IsNaN(bottom) ? currentMargin.Bottom : bottom;
+            }
+
             frameworkElement.Margin = new Thickness(left, top, right, bottom);
         }
     }

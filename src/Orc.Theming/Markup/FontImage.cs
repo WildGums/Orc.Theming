@@ -18,7 +18,6 @@
     /// </remarks>
     public class FontImage : UpdatableMarkupExtension
     {
-        #region Fields
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
 
         private static readonly Dictionary<string, FontFamily> RegisteredFontFamilies = new Dictionary<string, FontFamily>();
@@ -28,9 +27,7 @@
 
         private readonly Dictionary<FrameworkElement, HashSet<DependencyProperty>> _registeredTargetProperties
             = new Dictionary<FrameworkElement, HashSet<DependencyProperty>>();
-        #endregion
 
-        #region Constructors
         static FontImage()
         {
             RegisterFont("Segoe UI Symbol", new FontFamily("Segoe UI Symbol"));
@@ -59,9 +56,7 @@
         {
             ItemName = itemName;
         }
-        #endregion
 
-        #region Properties
         /// <summary>
         ///     Gets or sets the default name of the font.
         /// </summary>
@@ -83,40 +78,42 @@
         ///     Gets the font family.
         /// </summary>
         /// <value>The font family.</value>
-        public string FontFamily { get; set; }
+        public string? FontFamily { get; set; }
 
         /// <summary>
         ///     Gets or sets the brush.
         /// </summary>
         /// <value>The brush.</value>
-#pragma warning disable CA1721 // Property names should not match get methods
-        public Brush Brush { get; set; }
-#pragma warning restore CA1721 // Property names should not match get methods
+        public Brush? Brush { get; set; }
 
         /// <summary>
         ///     Gets or sets the brush key that will be used to determine the brush based on the current theme.
         /// </summary>
-        public string BrushKey { get; set; }
+        public string? BrushKey { get; set; }
 
         /// <summary>
         ///     Gets or sets the font item name.
         /// </summary>
         /// <value>The font item name.</value>
         [ConstructorArgument("itemName")]
-        public string ItemName { get; set; }
-        #endregion
+        public string? ItemName { get; set; }
 
-        #region Methods
-        protected override object ProvideDynamicValue(IServiceProvider serviceProvider)
+        protected override object? ProvideDynamicValue(IServiceProvider? serviceProvider)
         {
             RegisterTargetProperty();
 
             return GetImageSource();
         }
 
-        public ImageSource GetImageSource()
+        public ImageSource? GetImageSource()
         {
             if (CatelEnvironment.IsInDesignMode)
+            {
+                return null;
+            }
+
+            var itemName = ItemName;
+            if (string.IsNullOrEmpty(itemName))
             {
                 return null;
             }
@@ -135,7 +132,7 @@
             var brush = GetBrush();
 
             // TODO: Consider caching
-            var glyph = CreateGlyph(ItemName, family, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal, brush);
+            var glyph = CreateGlyph(itemName, family, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal, brush);
             return glyph;
         }
 
@@ -199,7 +196,7 @@
             targetProperties.Add(targetProperty);
         }
 
-        private void OnTargetElementUnloaded(object sender, RoutedEventArgs e)
+        private void OnTargetElementUnloaded(object? sender, RoutedEventArgs e)
         {
             if (!(sender is FrameworkElement frameworkElement))
             {
@@ -236,7 +233,7 @@
             }
         }
 
-        private static ImageSource CreateGlyph(string text, FontFamily fontFamily, FontStyle fontStyle, FontWeight fontWeight, FontStretch fontStretch, Brush foreBrush)
+        private static ImageSource? CreateGlyph(string text, FontFamily fontFamily, FontStyle fontStyle, FontWeight fontWeight, FontStretch fontStretch, Brush foreBrush)
         {
             if (fontFamily is null || string.IsNullOrEmpty(text))
             {
@@ -311,7 +308,7 @@
         public static void RegisterFont(string name, FontFamily fontFamily)
         {
             Argument.IsNotNullOrWhitespace(() => name);
-            Argument.IsNotNull(() => fontFamily);
+            ArgumentNullException.ThrowIfNull(fontFamily);
 
             RegisteredFontFamilies[name] = fontFamily;
         }
@@ -321,7 +318,7 @@
             return RegisteredFontFamilies.Keys.ToList();
         }
 
-        public static FontFamily GetRegisteredFont(string name)
+        public static FontFamily? GetRegisteredFont(string name)
         {
             Argument.IsNotNullOrWhitespace(() => name);
 
@@ -369,10 +366,9 @@
             base.OnTargetObjectUnloaded();
         }
 
-        private void OnThemeChanged(object sender, EventArgs e)
+        private void OnThemeChanged(object? sender, EventArgs e)
         {
             UpdateBrush();
         }
-        #endregion
     }
 }

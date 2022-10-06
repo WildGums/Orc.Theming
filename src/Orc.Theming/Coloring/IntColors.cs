@@ -1,18 +1,12 @@
 ﻿namespace Orc.Theming.Coloring
 {
-#if NETFX_CORE
-    using Windows.UI;
-
-#else
     using System.Windows.Media;
-#endif
 
     /// <summary>
     /// The integer colors.
     /// </summary>
     public static class IntColors
     {
-        #region Constants
         /// <summary>
         /// The color white
         /// </summary>
@@ -67,9 +61,7 @@
         /// The transparent soft gray color
         /// </summary>
         public static readonly int TransparentSoftGray = 520093696;
-        #endregion
 
-        #region Methods
         /// <summary>
         /// Creates a color from RGB values with alpha = 1.
         /// </summary>
@@ -79,12 +71,7 @@
         /// <returns>New color.</returns>
         private static Color ColorFromRgb(byte r, byte g, byte b)
         {
-#if NETFX_CORE
-            return Color.FromArgb(255, r, g, b);
-#else
             return Color.FromRgb(r, g, b);
-#endif
         }
-        #endregion
     }
 }

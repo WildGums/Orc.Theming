@@ -1,14 +1,13 @@
 ﻿namespace Orc.Theming
 {
     using System;
-    using System.Windows.Media;
 
     public interface IFontSizeService
     {
+        event EventHandler<EventArgs>? FontSizeChanged;
+
         double GetFontSize();
 
         bool SetFontSize(double fontSize);
-
-        event EventHandler<EventArgs> FontSizeChanged;
     }
 }

@@ -4,7 +4,6 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using Catel;
     using Catel.IoC;
     using Catel.MVVM;
 
@@ -17,8 +16,8 @@
         public BaseColorSchemeSwitcherWithIconViewModel(IServiceLocator serviceLocator, IBaseColorSchemeService baseColorSchemeService)
 #pragma warning restore CA1801 // Review unused parameters
         {
-            Argument.IsNotNull(() => serviceLocator);
-            Argument.IsNotNull(() => baseColorSchemeService);
+            ArgumentNullException.ThrowIfNull(serviceLocator);
+            ArgumentNullException.ThrowIfNull(baseColorSchemeService);
 
             _serviceLocator = serviceLocator;
             _baseColorSchemeService = baseColorSchemeService;
@@ -45,7 +44,7 @@
 
         public IReadOnlyList<BaseColorScheme> BaseColorSchemes { get; }
 
-        public BaseColorScheme SelectedBaseColorScheme { get; set; }
+        public BaseColorScheme? SelectedBaseColorScheme { get; set; }
 
         protected override async Task InitializeAsync()
         {
@@ -61,7 +60,7 @@
             await base.CloseAsync();
         }
 
-        private void OnBaseColorSchemeServiceBaseColorSchemeChanged(object sender, EventArgs e)
+        private void OnBaseColorSchemeServiceBaseColorSchemeChanged(object? sender, EventArgs e)
         {
             var newlySelected = _baseColorSchemeService.GetBaseColorScheme();
 

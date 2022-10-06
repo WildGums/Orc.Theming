@@ -1,8 +1,8 @@
 ﻿namespace Orc.Theming
 {
+    using System;
     using System.Linq;
     using System.Windows;
-    using Catel;
     using Catel.IoC;
     using Microsoft.Xaml.Behaviors;
 
@@ -11,7 +11,7 @@
         public static TBehavior AttachBehavior<TBehavior>(this FrameworkElement frameworkElement)
             where TBehavior : Behavior
         {
-            Argument.IsNotNull(() => frameworkElement);
+            ArgumentNullException.ThrowIfNull(frameworkElement);
 
             var behaviors = Interaction.GetBehaviors(frameworkElement);
 
@@ -32,7 +32,7 @@
         public static void DetachBehavior<TBehavior>(this FrameworkElement frameworkElement)
             where TBehavior : Behavior
         {
-            Argument.IsNotNull(() => frameworkElement);
+            ArgumentNullException.ThrowIfNull(frameworkElement);
 
             var behaviors = Interaction.GetBehaviors(frameworkElement);
 

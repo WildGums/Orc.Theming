@@ -7,7 +7,7 @@
 
     public class ColorToOpaqueColorConverter : ValueConverterBase
     {
-        protected override object Convert(object value, Type targetType, object parameter)
+        protected override object? Convert(object? value, Type targetType, object? parameter)
         {
             return value switch
             {
@@ -21,7 +21,7 @@
 
     public class ColorToContrastColorValueConverter : ValueConverterBase
     {
-        protected override object Convert(object value, Type targetType, object parameter)
+        protected override object? Convert(object? value, Type targetType, object? parameter)
         {
             return value switch
             {

@@ -1,4 +1,4 @@
-﻿namespace Orc.Theming
+﻿namespace Orc.Theming.Behaviors
 {
     using System;
     using System.Linq;

@@ -11,7 +11,7 @@
         private readonly Thickness _padding;
         private readonly ArrangePosition _positionCorner;
         private double? _lastDpiUpdate;
-        private FormattedText _cachedformattedText;
+        private FormattedText? _cachedformattedText;
 
         public AsterixAdorner(UIElement adornedElement, Thickness padding, ArrangePosition positionCorner)
           : base(adornedElement)
@@ -20,8 +20,11 @@
             _positionCorner = positionCorner;
 
             // Bind to element's Visibility
-            Binding binding = new Binding("Visibility");
-            binding.Source = adornedElement;
+            var binding = new Binding("Visibility")
+            {
+                Source = adornedElement
+            };
+
             SetBinding(VisibilityProperty, binding);
         }
 

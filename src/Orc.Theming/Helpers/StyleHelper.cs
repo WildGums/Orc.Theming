@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Reflection;
     using System.Windows;
     using Catel;
     using Catel.Logging;
@@ -13,14 +14,11 @@
     /// </summary>
     public static class StyleHelper
     {
-        #region Fields
         /// <summary>
         /// The log.
         /// </summary>
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
-        #endregion
 
-        #region Properties
         /// <summary>
         /// Gets or sets a value indicating whether style forwarding is enabled. Style forwarding can be
         /// enabled by calling one of the <see cref="CreateStyleForwardersForDefaultStyles(string)"/> overloads.
@@ -29,9 +27,17 @@
         /// 	<c>true</c> if this instance is style forwarding enabled; otherwise, <c>false</c>.
         /// </value>
         public static bool IsStyleForwardingEnabled { get; private set; }
-        #endregion
 
-        #region Methods
+        /// <summary>
+        /// Prefix of a default style key.
+        /// </summary>
+        private const string DefaultKeyPrefix = "Default";
+
+        /// <summary>
+        /// Postfix of a default style key.
+        /// </summary>
+        private const string DefaultKeyPostfix = "Style";
+
         /// <summary>
         /// Ensures that an application instance exists and the styles are applied to the application. This method is extremely useful
         /// to apply when WPF is hosted (for example, when loaded as plugin of a non-WPF application).
@@ -53,12 +59,18 @@
                     // Ensure we have an application
                     _ = new Application();
 
-                    if (Application.LoadComponent(applicationResourceDictionary) is ResourceDictionary resourceDictionary)
+                    var app = Application.Current;
+                    if (app is null)
                     {
-                        Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
+                        return;
                     }
 
-                    CreateStyleForwardersForDefaultStyles(Application.Current.Resources, defaultPrefix);
+                    if (Application.LoadComponent(applicationResourceDictionary) is ResourceDictionary resourceDictionary)
+                    {
+                        app.Resources.MergedDictionaries.Add(resourceDictionary);
+                    }
+
+                    CreateStyleForwardersForDefaultStyles(app.Resources, defaultPrefix);
 
                     // Create an invisible dummy window to make sure that this is the main window
                     var dummyMainWindow = new Window { Visibility = Visibility.Hidden };
@@ -150,12 +162,18 @@
             {
                 var styleInfo = foundDefaultStyles[i];
 
-                if (defaultStylesDictionary.TryGetValue(styleInfo.TargetType, out _))
+                var targetType = styleInfo.TargetType;
+                if (targetType is null)
                 {
                     continue;
                 }
 
-                defaultStylesDictionary[styleInfo.TargetType] = styleInfo;
+                if (defaultStylesDictionary.TryGetValue(targetType, out _))
+                {
+                    continue;
+                }
+
+                defaultStylesDictionary[targetType] = styleInfo;
             }
 
             // Important note: Styles are coming from Orchestra.Core (implicit) by default. In some cases (such as MahApps, or any other UI lib) 
@@ -168,6 +186,10 @@
             foreach (var styleInfoKeyValuePair in defaultStylesDictionary)
             {
                 var defaultStyle = styleInfoKeyValuePair.Value.Style;
+                if (defaultStyle is null)
+                {
+                    continue;
+                }
 
                 try
                 {
@@ -249,19 +271,6 @@
                 FindDefaultStyles(context, resourceDictionary, defaultPrefix);
             }
         }
-        #endregion
-
-        #region Constants
-        /// <summary>
-        /// Prefix of a default style key.
-        /// </summary>
-        private const string DefaultKeyPrefix = "Default";
-
-        /// <summary>
-        /// Postfix of a default style key.
-        /// </summary>
-        private const string DefaultKeyPostfix = "Style";
-        #endregion
 
         private class DefaultStylesContext
         {
@@ -277,20 +286,20 @@
                 SourceKey = sourceKey;
             }
 
-            public Type TargetType { get; set; }
+            public Type? TargetType { get; set; }
 
-            public ResourceDictionary SourceDictionary { get; set; }
+            public ResourceDictionary? SourceDictionary { get; set; }
 
             public string SourceKey { get; }
 
-            public Style Style { get; set; }
+            public Style? Style { get; set; }
 
-            public override bool Equals(object obj)
+            public override bool Equals(object? obj)
             {
                 return Equals(obj as StyleInfo);
             }
 
-            public bool Equals(StyleInfo other)
+            public bool Equals(StyleInfo? other)
             {
                 return other is not null &&
                        SourceKey == other.SourceKey;
@@ -303,7 +312,7 @@
 
             public override string ToString()
             {
-                return $"{TargetType} ({SourceKey} @ {SourceDictionary.Source})";
+                return $"{TargetType} ({SourceKey} @ {SourceDictionary?.Source})";
             }
 
             public static bool operator ==(StyleInfo left, StyleInfo right)
