@@ -21,7 +21,9 @@
                 return existingBehaviorOfType;
             }
 
-            var behavior = frameworkElement.GetTypeFactory().CreateInstanceWithParametersAndAutoCompletion<TBehavior>();
+#pragma warning disable IDISP004 // Don't ignore created IDisposable
+            var behavior = frameworkElement.GetTypeFactory().CreateRequiredInstanceWithParametersAndAutoCompletion<TBehavior>();
+#pragma warning restore IDISP004 // Don't ignore created IDisposable
             behaviors.Add(behavior);
 
             return behavior;

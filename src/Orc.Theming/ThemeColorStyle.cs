@@ -8,16 +8,6 @@
         AccentColor40 = 3,
         AccentColor20 = 4,
 
-        // Backwards compatibility
-        [ObsoleteEx(ReplacementTypeOrMember = "AccentColor80", TreatAsErrorFromVersion = "4.0", RemoveInVersion = "5.0")]
-        AccentColor1 = AccentColor80,
-        [ObsoleteEx(ReplacementTypeOrMember = "AccentColor60", TreatAsErrorFromVersion = "4.0", RemoveInVersion = "5.0")]
-        AccentColor2 = AccentColor60,
-        [ObsoleteEx(ReplacementTypeOrMember = "AccentColor40", TreatAsErrorFromVersion = "4.0", RemoveInVersion = "5.0")]
-        AccentColor3 = AccentColor40,
-        [ObsoleteEx(ReplacementTypeOrMember = "AccentColor20", TreatAsErrorFromVersion = "4.0", RemoveInVersion = "5.0")]
-        AccentColor4 = AccentColor20,
-
         BorderColor = 5,
 
         BackgroundColor = 6,

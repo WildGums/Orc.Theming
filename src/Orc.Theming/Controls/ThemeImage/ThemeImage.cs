@@ -25,7 +25,7 @@
         {
             var serviceLocator = ServiceLocator.Default;
 
-            _baseColorSchemeService = serviceLocator.TryResolveType<IBaseColorSchemeService>();
+            _baseColorSchemeService = serviceLocator.ResolveType<IBaseColorSchemeService>();
 
             Loaded += OnLoaded;
             Unloaded += OnUnloaded;
