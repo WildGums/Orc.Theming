@@ -19,21 +19,21 @@
         private readonly IBaseColorSchemeService _baseColorSchemeService;
 
         private bool _isSubscribed;
-        private Image _image;
+        private Image? _image;
 
         public ThemeImage()
         {
             var serviceLocator = ServiceLocator.Default;
 
-            _baseColorSchemeService = serviceLocator.TryResolveType<IBaseColorSchemeService>();
+            _baseColorSchemeService = serviceLocator.ResolveRequiredType<IBaseColorSchemeService>();
 
             Loaded += OnLoaded;
             Unloaded += OnUnloaded;
         }
 
-        public string Source
+        public string? Source
         {
-            get { return (string)GetValue(SourceProperty); }
+            get { return (string?)GetValue(SourceProperty); }
             set { SetValue(SourceProperty, value); }
         }
 
@@ -76,7 +76,7 @@
             UpdateSource();
         }
 
-        private void OnLoaded(object sender, RoutedEventArgs e)
+        private void OnLoaded(object? sender, RoutedEventArgs e)
         {
             if (_isSubscribed)
             {
@@ -91,7 +91,7 @@
             }
         }
 
-        private void OnUnloaded(object sender, RoutedEventArgs e)
+        private void OnUnloaded(object? sender, RoutedEventArgs e)
         {
             if (!_isSubscribed)
             {
@@ -106,7 +106,7 @@
             }
         }
 
-        private void OnBaseColorSchemeServiceBaseColorSchemeChanged(object sender, EventArgs e)
+        private void OnBaseColorSchemeServiceBaseColorSchemeChanged(object? sender, EventArgs e)
         {
             UpdateSource();
         }
@@ -145,7 +145,7 @@
                 }
             }
 
-            ImageSource imageSource = null;
+            ImageSource? imageSource = null;
             if (finalSource is not null)
             {
                 imageSource = new BitmapImage(new Uri(finalSource, UriKind.RelativeOrAbsolute));

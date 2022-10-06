@@ -11,8 +11,13 @@
     {
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
 
-        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        public object? Convert(object?[]? values, Type targetType, object? parameter, CultureInfo culture)
         {
+            if (values is null)
+            {
+                return null;
+            }
+
             if (values.Length < 2)
             {
                 throw Log.ErrorAndCreateException<InvalidOperationException>("Wrong argument count passed to converter");
@@ -23,7 +28,7 @@
                 throw Log.ErrorAndCreateException<InvalidOperationException>("Wrong argument type");
             }
 
-            var propertyPath = parameter.ToString();
+            var propertyPath = parameter?.ToString();
 
             return propertyPath switch
             {
@@ -33,7 +38,7 @@
             };
         }
 
-        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        public object?[]? ConvertBack(object? value, Type[] targetTypes, object? parameter, CultureInfo? culture)
         {
             return new[] {value};
         }

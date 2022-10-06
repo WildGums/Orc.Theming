@@ -11,6 +11,8 @@
 
         private Color? _accentColor;
 
+        public event EventHandler<EventArgs>? AccentColorChanged;
+
         public virtual Color GetAccentColor()
         {
             if (_accentColor.HasValue)
@@ -41,8 +43,6 @@
 
             return true;
         }
-
-        public event EventHandler<EventArgs> AccentColorChanged;
 
         protected void RaiseAccentColorChanged()
         {

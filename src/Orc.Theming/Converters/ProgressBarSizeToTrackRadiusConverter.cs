@@ -12,8 +12,13 @@
 
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
 
-        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        public object? Convert(object[]? values, Type targetType, object? parameter, CultureInfo? culture)
         {
+            if (values is null)
+            {
+                return DefaultRadius;
+            }
+
             try
             {
                 if (values.Length < 3)
@@ -25,7 +30,8 @@
                 var size1 = values[1] as double?;
                 var size2 = values[2] as double?;
 
-                if ((!size1.HasValue || double.IsNaN(size1.Value)) && (!size2.HasValue || double.IsNaN(size2.Value)))
+                if ((!size1.HasValue || double.IsNaN(size1.Value)) || 
+                    (!size2.HasValue || double.IsNaN(size2.Value)))
                 {
                     return DefaultRadius;
                 }
@@ -41,7 +47,7 @@
             }
         }
 
-        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        public object?[]? ConvertBack(object? value, Type[] targetTypes, object? parameter, CultureInfo? culture)
         {
             return new[] {value};
         }

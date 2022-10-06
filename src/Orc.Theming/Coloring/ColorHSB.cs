@@ -10,20 +10,15 @@
     /// </summary>
     public struct ColorHsb
     {
-        #region Constants
         /// <summary>
         /// Gets an empty HSB structure.
         /// </summary>
         public static readonly ColorHsb Empty = new ColorHsb();
-        #endregion
 
-        #region Fields
         private double _brightness;
         private double _hue;
         private double _saturation;
-        #endregion
 
-        #region Constructors
         /// <summary>
         /// Creates an instance of a HSB structure.
         /// </summary>
@@ -58,11 +53,8 @@
             {
                 _brightness = b >= 0 ? b : 0;
             }
-
         }
-        #endregion
 
-        #region Properties
         /// <summary>
         /// Gets or sets the brightness component.
         /// </summary>
@@ -119,9 +111,7 @@
                 }
             }
         }
-        #endregion
 
-        #region Methods
         /// <summary>
         /// Checks inequality of two Colors in HSB.
         /// </summary>
@@ -153,7 +143,7 @@
         /// </summary>
         /// <param name="obj">Second color object.</param>
         /// <returns></returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (obj is null || GetType() != obj.GetType())
             {
@@ -172,6 +162,5 @@
             return Hue.GetHashCode() ^ Saturation.GetHashCode() ^
                    Brightness.GetHashCode();
         }
-        #endregion
     }
 }

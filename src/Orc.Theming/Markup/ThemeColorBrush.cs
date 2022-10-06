@@ -24,7 +24,7 @@
 
         public ThemeColorStyle ThemeColorStyle { get; set; }
 
-        public string ResourceName { get; set; }
+        public string? ResourceName { get; set; }
 
         protected override void OnTargetObjectLoaded()
         {
@@ -40,12 +40,12 @@
             base.OnTargetObjectUnloaded();
         }
 
-        private void OnThemeChanged(object sender, EventArgs e)
+        private void OnThemeChanged(object? sender, EventArgs e)
         {
             UpdateValue();
         }
 
-        protected override object ProvideDynamicValue(IServiceProvider serviceProvider)
+        protected override object? ProvideDynamicValue(IServiceProvider? serviceProvider)
         {
             var resourceName = ResourceName;
             if (!string.IsNullOrWhiteSpace(resourceName))

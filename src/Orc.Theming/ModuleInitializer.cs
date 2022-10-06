@@ -25,7 +25,7 @@ public static class ModuleInitializer
         serviceLocator.RegisterInstance(themeManager);
         serviceLocator.RegisterType<ThemeManager>();
 
-        var languageService = serviceLocator.ResolveType<ILanguageService>();
+        var languageService = serviceLocator.ResolveRequiredType<ILanguageService>();
         languageService.RegisterLanguageSource(new LanguageResourceSource("Orc.Theming", "Orc.Theming.Properties", "Resources"));
     }
 }

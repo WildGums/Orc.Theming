@@ -5,10 +5,10 @@
 
     public interface IAccentColorService
     {
+        event EventHandler<EventArgs>? AccentColorChanged;
+
         Color GetAccentColor();
 
         bool SetAccentColor(Color color);
-
-        event EventHandler<EventArgs> AccentColorChanged;
     }
 }

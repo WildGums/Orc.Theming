@@ -12,19 +12,19 @@
 
         private readonly ControlzEx.Theming.ThemeManager _themeManager;
 
-        private string _baseColorScheme;
+        private string _baseColorScheme = "Light";
 
         public BaseColorSchemeService()
         {
             _themeManager = ControlzEx.Theming.ThemeManager.Current;
         }
 
+        public event EventHandler<EventArgs>? BaseColorSchemeChanged;
+
         public string GetBaseColorScheme()
         {
             return _baseColorScheme ??= GetAvailableBaseColorSchemes()[0];
         }
-
-        public event EventHandler<EventArgs> BaseColorSchemeChanged;
 
         public bool SetBaseColorScheme(string scheme)
         {

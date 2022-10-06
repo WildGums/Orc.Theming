@@ -1,4 +1,4 @@
-﻿namespace Orc.Theming
+﻿namespace Orc.Theming.Behaviors
 {
     using System;
     using System.Windows;
@@ -7,11 +7,19 @@
     using Catel.Windows.Interactivity;
     using Window = System.Windows.Window;
 
-    public class CorrectPopupWidthBehavior : BehaviorBase<Popup>
+    public class CorrectPopupWidth : BehaviorBase<Popup>
     {
-        #region Fields
-        private FrameworkElement _parentElement;
-        #endregion
+        private FrameworkElement? _parentElement;
+
+        public FrameworkElement? ParentElement
+        {
+            get => (FrameworkElement?)GetValue(ParentElementProperty);
+            set => SetValue(ParentElementProperty, value);
+        }
+
+        public static readonly DependencyProperty ParentElementProperty = DependencyProperty.Register(
+            nameof(ParentElement), typeof(FrameworkElement), typeof(CorrectPopupWidth), new PropertyMetadata(default(FrameworkElement),
+                (sender, args) => ((CorrectPopupWidth)sender).OnParentElementChanged(args)));
 
         private void OnParentElementChanged(DependencyPropertyChangedEventArgs args)
         {
@@ -28,7 +36,7 @@
             AssociatedObject.Opened -= OnOpened;
         }
 
-        private void OnOpened(object sender, EventArgs e)
+        private void OnOpened(object? sender, EventArgs e)
         {
             if (_parentElement is null)
             {
@@ -36,6 +44,11 @@
             }
 
             var window = AssociatedObject.FindLogicalOrVisualAncestorByType<Window>();
+            if (window is null)
+            {
+                return;
+            }
+
             var screenBounds = ScreenHelper.GetScreenBounds(window);
             var currentScreenWidth = screenBounds.Width + screenBounds.X;
             var rightCornerPointOnScreen = _parentElement.PointToScreen(new Point(_parentElement.ActualWidth, 0)).X;
@@ -63,17 +76,5 @@
 
             AssociatedObject.SetCurrentValue(FrameworkElement.WidthProperty, width);
         }
-
-        #region Dependency properties
-        public FrameworkElement ParentElement
-        {
-            get => (FrameworkElement)GetValue(ParentElementProperty);
-            set => SetValue(ParentElementProperty, value);
-        }
-
-        public static readonly DependencyProperty ParentElementProperty = DependencyProperty.Register(
-            nameof(ParentElement), typeof(FrameworkElement), typeof(CorrectPopupWidthBehavior), new PropertyMetadata(default(FrameworkElement),
-                (sender, args) => ((CorrectPopupWidthBehavior)sender).OnParentElementChanged(args)));
-        #endregion
     }
 }

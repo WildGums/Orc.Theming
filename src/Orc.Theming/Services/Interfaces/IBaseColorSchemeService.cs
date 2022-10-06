@@ -5,7 +5,7 @@
 
     public interface IBaseColorSchemeService
     {
-        event EventHandler<EventArgs> BaseColorSchemeChanged;
+        event EventHandler<EventArgs>? BaseColorSchemeChanged;
 
         /// <summary>
         /// returns the available base colors (at least one)

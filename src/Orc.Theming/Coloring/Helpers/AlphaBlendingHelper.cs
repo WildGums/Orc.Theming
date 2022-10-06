@@ -1,11 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AlphaBlendingHelper.cs" company="WildGums">
-//   Copyright (c) 2008 - 2016 WildGums. All rights reserved.
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
-
-
-namespace Orc.Theming
+﻿namespace Orc.Theming
 {
     using Coloring;
 
@@ -14,7 +7,6 @@ namespace Orc.Theming
     /// </summary>
     public static class AlphaBlendingHelper
     {
-        #region Constants
         /// <summary>
         /// Const for fully opaque color alpha channel.
         /// </summary>
@@ -29,9 +21,7 @@ namespace Orc.Theming
         /// Filter alpha blending mask Should be the same as <see cref="IntColors.TransparentSoftGray"/>.
         /// </summary>
         private const uint HighlightFilterColor = 0x1F000000;
-        #endregion
 
-        #region Methods
         /// <summary>
         /// Grey filter of level 1.
         /// </summary>
@@ -151,6 +141,5 @@ namespace Orc.Theming
 
             return dstPixel;
         }
-        #endregion
     }
 }

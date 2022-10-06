@@ -26,7 +26,7 @@
                 var assemblyName = expectedResourceNames[0].Replace("/", string.Empty);
 #pragma warning restore CA1307 // Specify StringComparison
                 var assembly = (from x in AppDomain.CurrentDomain.GetAssemblies()
-                    where x.GetName().Name.EqualsIgnoreCase(assemblyName)
+                    where x.GetName().Name?.EqualsIgnoreCase(assemblyName) ?? false
                     select x).FirstOrDefault();
                 if (assembly is not null)
                 {

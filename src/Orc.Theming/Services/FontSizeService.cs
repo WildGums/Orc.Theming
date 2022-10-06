@@ -11,6 +11,8 @@
 
         private double? _fontSize;
 
+        public event EventHandler<EventArgs>? FontSizeChanged;
+
         public virtual double GetFontSize()
         {
             if (!_fontSize.HasValue)
@@ -44,8 +46,6 @@
 
             return true;
         }
-
-        public event EventHandler<EventArgs> FontSizeChanged;
 
         protected void RaiseFontSizeChanged()
         {

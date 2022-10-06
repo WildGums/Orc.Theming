@@ -1,11 +1,13 @@
 ﻿namespace Orc.Theming
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     public class BaseColorScheme
     {
+        public BaseColorScheme()
+        {
+            Name = string.Empty;
+            ImageUri = string.Empty;
+        }
+
         public string Name { get; set; }
 
         public string ImageUri { get; set; }

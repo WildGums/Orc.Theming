@@ -1,6 +1,6 @@
 ﻿namespace Orc.Theming
 {
-    using Catel;
+    using System;
 
     public class ThemeService : IThemeService
     {
@@ -9,8 +9,8 @@
 
         public ThemeService(IAccentColorService accentColorService, IBaseColorSchemeService baseColorSchemeService)
         {
-            Argument.IsNotNull(() => accentColorService);
-            Argument.IsNotNull(() => baseColorSchemeService);
+            ArgumentNullException.ThrowIfNull(accentColorService);
+            ArgumentNullException.ThrowIfNull(baseColorSchemeService);
 
             _accentColorService = accentColorService;
             _baseColorSchemeService = baseColorSchemeService;

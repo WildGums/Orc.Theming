@@ -12,28 +12,6 @@
 
     public class ThemeManager
     {
-        #region Constructors
-        public ThemeManager(ControlzEx.Theming.ThemeManager controlzThemeManager, IAccentColorService accentColorService, IBaseColorSchemeService baseColorSchemeService)
-        {
-            Argument.IsNotNull(() => controlzThemeManager);
-            Argument.IsNotNull(() => accentColorService);
-            Argument.IsNotNull(() => baseColorSchemeService);
-
-            _accentColorService = accentColorService;
-            _baseColorSchemeService = baseColorSchemeService;
-            _controlzThemeManager = controlzThemeManager;
-
-            _controlzThemeManager.ThemeChanged += OnThemeManagerThemeChanged;
-            _accentColorService.AccentColorChanged += OnAccentColorChanged;
-            _baseColorSchemeService.BaseColorSchemeChanged += OnBaseColorSchemeChanged;
-        }
-        #endregion
-
-        public static ThemeManager Current { get { return CurrentLazy.Value; } }
-
-        public event EventHandler<EventArgs> ThemeChanged;
-
-        #region Fields
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
 
         private readonly ControlzEx.Theming.ThemeManager _controlzThemeManager;
@@ -45,15 +23,32 @@
         private readonly CacheStorage<ThemeColorStyle, Color> _themeColorsCache = new CacheStorage<ThemeColorStyle, Color>();
         private readonly CacheStorage<ThemeColorStyle, SolidColorBrush> _themeColorBrushesCache = new CacheStorage<ThemeColorStyle, SolidColorBrush>();
 
-        private SolidColorBrush _accentColorBrushCache;
+        private SolidColorBrush? _accentColorBrushCache;
 
-        private Theme _currentTheme;
+        private Theme? _currentTheme;
 
         // Note: must be lazy because we don't want the static ctor to be invoked whenever we resolve this class correctly via DI
-        private static readonly Lazy<ThemeManager> CurrentLazy = new Lazy<ThemeManager>(() => ServiceLocator.Default.ResolveType<ThemeManager>());
-        #endregion
+        private static readonly Lazy<ThemeManager> CurrentLazy = new Lazy<ThemeManager>(() => ServiceLocator.Default.ResolveRequiredType<ThemeManager>());
 
-        #region Methods
+        public ThemeManager(ControlzEx.Theming.ThemeManager controlzThemeManager, IAccentColorService accentColorService, IBaseColorSchemeService baseColorSchemeService)
+        {
+            ArgumentNullException.ThrowIfNull(controlzThemeManager);
+            ArgumentNullException.ThrowIfNull(accentColorService);
+            ArgumentNullException.ThrowIfNull(baseColorSchemeService);
+
+            _accentColorService = accentColorService;
+            _baseColorSchemeService = baseColorSchemeService;
+            _controlzThemeManager = controlzThemeManager;
+
+            _controlzThemeManager.ThemeChanged += OnThemeManagerThemeChanged;
+            _accentColorService.AccentColorChanged += OnAccentColorChanged;
+            _baseColorSchemeService.BaseColorSchemeChanged += OnBaseColorSchemeChanged;
+        }
+
+        public static ThemeManager Current { get { return CurrentLazy.Value; } }
+
+        public event EventHandler<EventArgs>? ThemeChanged;
+
         public Color GetThemeColor(string resourceName)
         {
             var resource = _currentTheme?.Resources[resourceName];
@@ -164,12 +159,12 @@
 
         public SolidColorBrush GetAccentColorBrush()
         {
-            return _accentColorBrushCache ??= _currentTheme?.PrimaryAccentColor.ToSolidColorBrush() 
-                                              ?? Application.Current?.TryFindResource("AccentColorBrush") as SolidColorBrush 
+            return _accentColorBrushCache ??= _currentTheme?.PrimaryAccentColor.ToSolidColorBrush()
+                                              ?? Application.Current?.TryFindResource("AccentColorBrush") as SolidColorBrush
                                               ?? Brushes.Green;
         }
 
-        private void OnThemeManagerThemeChanged(object sender, ThemeChangedEventArgs e)
+        private void OnThemeManagerThemeChanged(object? sender, ThemeChangedEventArgs e)
         {
             Log.Debug("Theme has changed, clearing current cache");
 
@@ -181,12 +176,12 @@
             _currentTheme = e.NewTheme;
         }
 
-        private void OnAccentColorChanged(object sender, EventArgs e)
+        private void OnAccentColorChanged(object? sender, EventArgs e)
         {
             SynchronizeTheme();
         }
 
-        private void OnBaseColorSchemeChanged(object sender, EventArgs e)
+        private void OnBaseColorSchemeChanged(object? sender, EventArgs e)
         {
             SynchronizeTheme();
         }
@@ -214,6 +209,5 @@
 
             ThemeChanged?.Invoke(this, EventArgs.Empty);
         }
-        #endregion
     }
 }

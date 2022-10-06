@@ -14,7 +14,7 @@
         public BaseColorSchemeSwitcherViewModel(IBaseColorSchemeService baseColorSchemeService)
 #pragma warning restore CA1801 // Review unused parameters
         {
-            Argument.IsNotNull(() => baseColorSchemeService);
+            ArgumentNullException.ThrowIfNull(baseColorSchemeService);
 
             _baseColorSchemeService = baseColorSchemeService;
 
@@ -40,7 +40,7 @@
             await base.CloseAsync();
         }
 
-        private void OnBaseColorSchemeServiceBaseColorSchemeChanged(object sender, EventArgs e)
+        private void OnBaseColorSchemeServiceBaseColorSchemeChanged(object? sender, EventArgs e)
         {
             SelectedBaseColorScheme = _baseColorSchemeService.GetBaseColorScheme();
         }

@@ -1,5 +1,6 @@
 ﻿namespace Orc.Theming
 {
+    using System;
     using System.Drawing;
     using System.Reflection;
     using System.Windows;
@@ -21,14 +22,27 @@
             var dpiXProperty = typeof(SystemParameters).GetProperty("DpiX", BindingFlags.NonPublic | BindingFlags.Static);
             var dpiYProperty = typeof(SystemParameters).GetProperty("Dpi", BindingFlags.NonPublic | BindingFlags.Static);
 
-            DpiCache.Width = (int)dpiXProperty.GetValue(null, null);
-            DpiCache.Height = (int)dpiYProperty.GetValue(null, null);
+            var width = dpiXProperty?.GetValue(null, null) as int?;
+            if (width is null)
+            {
+                width = 96;
+            }
+
+            var height = dpiYProperty?.GetValue(null, null) as int?;
+            if (height is null)
+            {
+                height = 96;
+            }
+
+            DpiCache.Width = width.Value;
+            DpiCache.Height = height.Value;
 
             return DpiCache;
         }
 
         public static Rectangle GetScreenBounds(Window window)
         {
+            ArgumentNullException.ThrowIfNull(window);
 
             var windowInteropHelper = new WindowInteropHelper(window);
             var screen = Screen.FromHandle(windowInteropHelper.Handle);
