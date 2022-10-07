@@ -3,6 +3,7 @@
 [assembly: System.Windows.Markup.XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming")]
 [assembly: System.Windows.Markup.XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Behaviors")]
 [assembly: System.Windows.Markup.XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Controls")]
+[assembly: System.Windows.Markup.XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Converters")]
 [assembly: System.Windows.Markup.XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Views")]
 [assembly: System.Windows.Markup.XmlnsPrefix("http://schemas.wildgums.com/orc/theming", "orctheming")]
 [assembly: System.Windows.ThemeInfo(System.Windows.ResourceDictionaryLocation.None, System.Windows.ResourceDictionaryLocation.SourceAssembly)]
