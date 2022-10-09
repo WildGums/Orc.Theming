@@ -13,11 +13,8 @@
     /// </summary>
     public partial class App : Application
     {
-        #region Fields
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
-        #endregion
 
-        #region Methods
         protected override void OnStartup(StartupEventArgs e)
         {
             var languageService = ServiceLocator.Default.ResolveType<ILanguageService>();
@@ -40,6 +37,5 @@
 
             base.OnStartup(e);
         }
-        #endregion
     }
 }

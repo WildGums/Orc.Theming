@@ -43,6 +43,8 @@
             _controlzThemeManager.ThemeChanged += OnThemeManagerThemeChanged;
             _accentColorService.AccentColorChanged += OnAccentColorChanged;
             _baseColorSchemeService.BaseColorSchemeChanged += OnBaseColorSchemeChanged;
+
+            SynchronizeTheme();
         }
 
         public static ThemeManager Current { get { return CurrentLazy.Value; } }
