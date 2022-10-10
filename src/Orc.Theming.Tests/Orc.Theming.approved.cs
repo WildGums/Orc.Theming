@@ -153,6 +153,11 @@ namespace Orc.Theming
         Orc.Theming.ThemeInfo GetThemeInfo();
         bool ShouldCreateStyleForwarders();
     }
+    public static class IconHelper
+    {
+        public static System.Drawing.Icon? ExtractIconFromFile(string filePath) { }
+        public static System.Windows.Media.Imaging.BitmapImage? ExtractLargestIconFromFile(string filePath) { }
+    }
     public class LibraryThemeProvider : ControlzEx.Theming.LibraryThemeProvider
     {
         public LibraryThemeProvider() { }
