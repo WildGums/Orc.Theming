@@ -37,6 +37,11 @@ namespace Orc.Theming
         BottomRight = 2,
         BottomLeft = 3,
     }
+    public static class AssemblyExtensions
+    {
+        public static System.Drawing.Icon? ExtractAssemblyIcon(this System.Reflection.Assembly assembly) { }
+        public static System.Windows.Media.Imaging.BitmapImage? ExtractLargestIcon(this System.Reflection.Assembly assembly) { }
+    }
     public class AsterixAdorner : System.Windows.Documents.Adorner
     {
         public AsterixAdorner(System.Windows.UIElement adornedElement, System.Windows.Thickness padding, Orc.Theming.ArrangePosition positionCorner) { }
