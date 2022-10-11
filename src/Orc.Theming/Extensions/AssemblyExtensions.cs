@@ -4,7 +4,6 @@
     using System.Drawing;
     using System.Reflection;
     using System.Windows.Media.Imaging;
-    using Orc.Theming;
 
     public static class AssemblyExtensions
     {
