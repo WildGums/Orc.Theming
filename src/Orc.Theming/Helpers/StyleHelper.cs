@@ -266,7 +266,9 @@
                 }
             }
 
-            foreach (var resourceDictionary in sourceResources.MergedDictionaries)
+            var currentDictionaries = sourceResources.MergedDictionaries.ToArray();
+
+            foreach (var resourceDictionary in currentDictionaries)
             {
                 FindDefaultStyles(context, resourceDictionary, defaultPrefix);
             }
