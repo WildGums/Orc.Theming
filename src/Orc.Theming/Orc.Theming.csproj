@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <XamlToolsDisableInDebugMode>true</XamlToolsDisableInDebugMode>
     <UseWpf>true</UseWpf>
     <UseWindowsForms>true</UseWindowsForms>
     <ExtrasEnableImplicitWpfReferences>true</ExtrasEnableImplicitWpfReferences>
