@@ -136,7 +136,7 @@
                         return GetThemeColor("Orc.Colors.Text");
 
                     default:
-                        throw new ArgumentOutOfRangeException(nameof(colorStyle));
+                        throw Log.ErrorAndCreateException<ArgumentOutOfRangeException>(nameof(colorStyle));
                 }
             });
         }

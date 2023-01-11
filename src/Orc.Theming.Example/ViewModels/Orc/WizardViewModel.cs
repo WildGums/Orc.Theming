@@ -1,5 +1,6 @@
 ﻿namespace Orc.Theming.Example.ViewModels
 {
+    using System;
     using System.Threading.Tasks;
     using Catel;
     using Catel.MVVM;
@@ -14,8 +15,8 @@
 
         public WizardViewModel(IWizardService wizardService, IUIVisualizerService uiVisualizerService)
         {
-            Argument.IsNotNull(() => wizardService);
-            Argument.IsNotNull(() => uiVisualizerService);
+            ArgumentNullException.ThrowIfNull(wizardService);
+            ArgumentNullException.ThrowIfNull(uiVisualizerService);
 
             _wizardService = wizardService;
             _uiVisualizerService = uiVisualizerService;

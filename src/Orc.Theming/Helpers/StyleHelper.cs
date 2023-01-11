@@ -49,7 +49,7 @@
         [Time]
         public static void EnsureApplicationResourcesAndCreateStyleForwarders(Uri applicationResourceDictionary, string defaultPrefix = DefaultKeyPrefix)
         {
-            Argument.IsNotNull(nameof(applicationResourceDictionary), applicationResourceDictionary);
+            ArgumentNullException.ThrowIfNull(applicationResourceDictionary);
             Argument.IsNotNullOrWhitespace(nameof(defaultPrefix), defaultPrefix);
 
             if (Application.Current is null)
@@ -148,9 +148,9 @@
         public static void CreateStyleForwardersForDefaultStyles(ResourceDictionary rootResourceDictionary, ResourceDictionary sourceResources,
             ResourceDictionary targetResources, string defaultPrefix = DefaultKeyPrefix)
         {
-            Argument.IsNotNull(nameof(rootResourceDictionary), rootResourceDictionary);
-            Argument.IsNotNull(nameof(sourceResources), sourceResources);
-            Argument.IsNotNull(nameof(targetResources), targetResources);
+            ArgumentNullException.ThrowIfNull(rootResourceDictionary);
+            ArgumentNullException.ThrowIfNull(sourceResources);
+            ArgumentNullException.ThrowIfNull(targetResources);
             Argument.IsNotNullOrWhitespace(nameof(defaultPrefix), defaultPrefix);
 
             var foundDefaultStyles = FindDefaultStyles(sourceResources, defaultPrefix);
