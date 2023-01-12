@@ -6,6 +6,7 @@
     using Catel.Services;
     using Wizards.ExampleWizard;
     using Wizard;
+    using System;
 
     public class WizardViewModel : ViewModelBase
     {
@@ -14,8 +15,8 @@
 
         public WizardViewModel(IWizardService wizardService, IUIVisualizerService uiVisualizerService)
         {
-            Argument.IsNotNull(() => wizardService);
-            Argument.IsNotNull(() => uiVisualizerService);
+            ArgumentNullException.ThrowIfNull(wizardService);
+            ArgumentNullException.ThrowIfNull(uiVisualizerService);
 
             _wizardService = wizardService;
             _uiVisualizerService = uiVisualizerService;
