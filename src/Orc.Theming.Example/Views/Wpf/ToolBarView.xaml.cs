@@ -1,10 +1,9 @@
-﻿namespace Orc.Theming.Example.Views
+﻿namespace Orc.Theming.Example.Views;
+
+public partial class ToolBarView
 {
-    public partial class ToolBarView
+    public ToolBarView()
     {
-        public ToolBarView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

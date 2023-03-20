@@ -1,10 +1,9 @@
-﻿namespace Orc.Theming.Example.Wizards.ExampleWizard.Views
+﻿namespace Orc.Theming.Example.Wizards.ExampleWizard.Views;
+
+public partial class ComponentsWizardPageView 
 {
-    public partial class ComponentsWizardPageView 
+    public ComponentsWizardPageView()
     {
-        public ComponentsWizardPageView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

@@ -1,32 +1,27 @@
-﻿namespace Orc.Theming.Example.ViewModels
+﻿namespace Orc.Theming.Example.ViewModels;
+
+using Catel.MVVM;
+using System.Threading.Tasks;
+
+public class RichTextBoxViewModel : ViewModelBase
 {
-    using Catel.MVVM;
-    using System.Threading.Tasks;
+    public override string Title { get { return "View model title"; } }
 
-    public class RichTextBoxViewModel : ViewModelBase
+    // TODO: Register models with the vmpropmodel codesnippet
+    // TODO: Register view model properties with the vmprop or vmpropviewmodeltomodel codesnippets
+    // TODO: Register commands with the vmcommand or vmcommandwithcanexecute codesnippets
+
+    protected override async Task InitializeAsync()
     {
-        public RichTextBoxViewModel(/* dependency injection here */)
-        {
-        }
+        await base.InitializeAsync();
 
-        public override string Title { get { return "View model title"; } }
+        // TODO: subscribe to events here
+    }
 
-        // TODO: Register models with the vmpropmodel codesnippet
-        // TODO: Register view model properties with the vmprop or vmpropviewmodeltomodel codesnippets
-        // TODO: Register commands with the vmcommand or vmcommandwithcanexecute codesnippets
+    protected override async Task CloseAsync()
+    {
+        // TODO: unsubscribe from events here
 
-        protected override async Task InitializeAsync()
-        {
-            await base.InitializeAsync();
-
-            // TODO: subscribe to events here
-        }
-
-        protected override async Task CloseAsync()
-        {
-            // TODO: unsubscribe from events here
-
-            await base.CloseAsync();
-        }
+        await base.CloseAsync();
     }
 }

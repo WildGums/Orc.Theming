@@ -1,13 +1,12 @@
-﻿namespace Orc.Theming.Example.ViewModels
-{
-    using Catel.MVVM;
+﻿namespace Orc.Theming.Example.ViewModels;
 
-    public class MainViewModel : ViewModelBase
+using Catel.MVVM;
+
+public class MainViewModel : ViewModelBase
+{
+    public MainViewModel()
     {
-        public MainViewModel()
-        {
-            DeferValidationUntilFirstSaveCall = false;
-        }
-        public override string Title => "Orc.Theming example";
+        DeferValidationUntilFirstSaveCall = false;
     }
+    public override string Title => "Orc.Theming example";
 }

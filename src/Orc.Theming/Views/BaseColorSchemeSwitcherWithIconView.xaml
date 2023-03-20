@@ -3,7 +3,7 @@
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                    xmlns:catel="http://schemas.catelproject.com">
 
-    <StackPanel Grid.Column="1" Orientation="Horizontal">
+    <StackPanel Orientation="Horizontal">
         <ListBox ItemsSource="{Binding BaseColorSchemes}" 
                  SelectedItem="{Binding SelectedBaseColorScheme}"
                  SelectionMode="Single"

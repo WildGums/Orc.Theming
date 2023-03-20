@@ -1,10 +1,9 @@
-﻿namespace Orc.Theming.Example.Views
+﻿namespace Orc.Theming.Example.Views;
+
+public partial class ThemeImageView
 {
-    public partial class ThemeImageView
+    public ThemeImageView()
     {
-        public ThemeImageView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

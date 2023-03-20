@@ -1,10 +1,9 @@
-﻿namespace Orc.Theming.Example.Views
+﻿namespace Orc.Theming.Example.Views;
+
+public partial class ListBoxView
 {
-    public partial class ListBoxView
+    public ListBoxView()
     {
-        public ListBoxView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

@@ -1,10 +1,9 @@
-﻿namespace Orc.Theming.Example.Views
+﻿namespace Orc.Theming.Example.Views;
+
+public sealed partial class ControlsView
 {
-    public sealed partial class ControlsView
+    public ControlsView()
     {
-        public ControlsView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

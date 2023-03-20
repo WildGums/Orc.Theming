@@ -1,10 +1,9 @@
-﻿namespace Orc.Theming.Views
+﻿namespace Orc.Theming.Views;
+
+public partial class FontSizeSwitcherView
 {
-    public partial class FontSizeSwitcherView
+    public FontSizeSwitcherView()
     {
-        public FontSizeSwitcherView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }
