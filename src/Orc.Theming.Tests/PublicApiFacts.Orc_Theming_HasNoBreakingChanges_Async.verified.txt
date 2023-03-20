@@ -211,7 +211,7 @@ namespace Orc.Theming
         public Orc.Theming.ThemeColorStyle ThemeColorStyle { get; set; }
         protected override void OnTargetObjectLoaded() { }
         protected override void OnTargetObjectUnloaded() { }
-        protected override object? ProvideDynamicValue(System.IServiceProvider? serviceProvider) { }
+        protected override object ProvideDynamicValue(System.IServiceProvider? serviceProvider) { }
     }
     public class ThemeColorBrush : Catel.Windows.Markup.UpdatableMarkupExtension
     {
@@ -436,7 +436,7 @@ namespace Orc.Theming.ViewModels
     public class BaseColorSchemeSwitcherWithIconViewModel : Catel.MVVM.ViewModelBase
     {
         public static readonly Catel.Data.IPropertyData SelectedBaseColorSchemeProperty;
-        public BaseColorSchemeSwitcherWithIconViewModel(Catel.IoC.IServiceLocator serviceLocator, Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
+        public BaseColorSchemeSwitcherWithIconViewModel(Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
         public System.Collections.Generic.IReadOnlyList<Orc.Theming.BaseColorScheme> BaseColorSchemes { get; }
         public Orc.Theming.BaseColorScheme? SelectedBaseColorScheme { get; set; }
         protected override System.Threading.Tasks.Task CloseAsync() { }
