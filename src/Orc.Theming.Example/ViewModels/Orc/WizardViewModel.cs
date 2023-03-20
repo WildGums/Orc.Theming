@@ -1,41 +1,39 @@
-﻿namespace Orc.Theming.Example.ViewModels
+﻿namespace Orc.Theming.Example.ViewModels;
+
+using System.Threading.Tasks;
+using Catel.MVVM;
+using Catel.Services;
+using Wizards.ExampleWizard;
+using Wizard;
+using System;
+
+public class WizardViewModel : ViewModelBase
 {
-    using System.Threading.Tasks;
-    using Catel;
-    using Catel.MVVM;
-    using Catel.Services;
-    using Wizards.ExampleWizard;
-    using Wizard;
-    using System;
+    private readonly IWizardService _wizardService;
+    private readonly IUIVisualizerService _uiVisualizerService;
 
-    public class WizardViewModel : ViewModelBase
+    public WizardViewModel(IWizardService wizardService, IUIVisualizerService uiVisualizerService)
     {
-        private readonly IWizardService _wizardService;
-        private readonly IUIVisualizerService _uiVisualizerService;
+        ArgumentNullException.ThrowIfNull(wizardService);
+        ArgumentNullException.ThrowIfNull(uiVisualizerService);
 
-        public WizardViewModel(IWizardService wizardService, IUIVisualizerService uiVisualizerService)
-        {
-            ArgumentNullException.ThrowIfNull(wizardService);
-            ArgumentNullException.ThrowIfNull(uiVisualizerService);
+        _wizardService = wizardService;
+        _uiVisualizerService = uiVisualizerService;
 
-            _wizardService = wizardService;
-            _uiVisualizerService = uiVisualizerService;
-
-            ShowWizard = new TaskCommand(OnShowWizardExecuteAsync);
-            ShowSeparateWindow = new TaskCommand(OnShowSeparateWindowAsync);
-        }
+        ShowWizard = new TaskCommand(OnShowWizardExecuteAsync);
+        ShowSeparateWindow = new TaskCommand(OnShowSeparateWindowAsync);
+    }
         
-        public TaskCommand ShowWizard { get; private set; }
-        public TaskCommand ShowSeparateWindow { get; private set; }
+    public TaskCommand ShowWizard { get; }
+    public TaskCommand ShowSeparateWindow { get; }
 
-        private async Task OnShowWizardExecuteAsync()
-        {
-            await _wizardService.ShowWizardAsync<ExampleWizard>();
-        }
+    private async Task OnShowWizardExecuteAsync()
+    {
+        await _wizardService.ShowWizardAsync<ExampleWizard>();
+    }
 
-        private async Task OnShowSeparateWindowAsync()
-        {
-            await _uiVisualizerService.ShowDialogAsync<SeparateWindowViewModel>();
-        }
+    private async Task OnShowSeparateWindowAsync()
+    {
+        await _uiVisualizerService.ShowDialogAsync<SeparateWindowViewModel>();
     }
 }

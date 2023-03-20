@@ -1,17 +1,16 @@
-﻿namespace Orc.Theming.Example.Views
+﻿namespace Orc.Theming.Example.Views;
+
+using System.Windows.Controls;
+
+public partial class ComboBoxView
 {
-    using System.Windows.Controls;
-
-    public partial class ComboBoxView
+    public ComboBoxView()
     {
-        public ComboBoxView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
 
-        private void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+    private void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
             
-        }
     }
 }

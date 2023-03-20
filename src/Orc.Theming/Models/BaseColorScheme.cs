@@ -1,15 +1,14 @@
-﻿namespace Orc.Theming
+﻿namespace Orc.Theming;
+
+public class BaseColorScheme
 {
-    public class BaseColorScheme
+    public BaseColorScheme()
     {
-        public BaseColorScheme()
-        {
-            Name = string.Empty;
-            ImageUri = string.Empty;
-        }
-
-        public string Name { get; set; }
-
-        public string ImageUri { get; set; }
+        Name = string.Empty;
+        ImageUri = string.Empty;
     }
+
+    public string Name { get; set; }
+
+    public string ImageUri { get; set; }
 }

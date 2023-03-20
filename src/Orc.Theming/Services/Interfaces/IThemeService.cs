@@ -1,8 +1,7 @@
-﻿namespace Orc.Theming
+﻿namespace Orc.Theming;
+
+public interface IThemeService
 {
-    public interface IThemeService
-    {
-        bool ShouldCreateStyleForwarders();
-        ThemeInfo GetThemeInfo();
-    }
+    bool ShouldCreateStyleForwarders();
+    ThemeInfo GetThemeInfo();
 }

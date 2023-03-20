@@ -1,24 +1,23 @@
-﻿namespace Orc.Theming
+﻿namespace Orc.Theming;
+
+using System;
+using System.Drawing;
+using System.Reflection;
+using System.Windows.Media.Imaging;
+
+public static class AssemblyExtensions
 {
-    using System;
-    using System.Drawing;
-    using System.Reflection;
-    using System.Windows.Media.Imaging;
-
-    public static class AssemblyExtensions
+    public static Icon? ExtractAssemblyIcon(this Assembly assembly)
     {
-        public static Icon? ExtractAssemblyIcon(this Assembly assembly)
-        {
-            ArgumentNullException.ThrowIfNull(assembly);
+        ArgumentNullException.ThrowIfNull(assembly);
 
-            return IconHelper.ExtractIconFromFile(assembly.Location);
-        }
+        return IconHelper.ExtractIconFromFile(assembly.Location);
+    }
 
-        public static BitmapImage? ExtractLargestIcon(this Assembly assembly)
-        {
-            ArgumentNullException.ThrowIfNull(assembly);
+    public static BitmapImage? ExtractLargestIcon(this Assembly assembly)
+    {
+        ArgumentNullException.ThrowIfNull(assembly);
 
-            return IconHelper.ExtractLargestIconFromFile(assembly.Location);
-        }
+        return IconHelper.ExtractLargestIconFromFile(assembly.Location);
     }
 }

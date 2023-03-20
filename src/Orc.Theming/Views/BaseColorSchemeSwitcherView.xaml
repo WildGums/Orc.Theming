@@ -3,14 +3,14 @@
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                    xmlns:catel="http://schemas.catelproject.com">
 
-    <StackPanel Grid.Column="1" Orientation="Horizontal">
+    <StackPanel Orientation="Horizontal">
         <Label Content="{catel:LanguageBinding BaseColorSchemeSwitcherView_SelectBaseColorScheme}" />
         <ComboBox ItemsSource="{Binding BaseColorSchemes}" 
                   SelectedItem="{Binding SelectedBaseColorScheme}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
-                        <TextBlock Grid.Column="1" Text="{Binding }" VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding}" VerticalAlignment="Center" />
                     </Grid>
                 </DataTemplate>
             </ComboBox.ItemTemplate>

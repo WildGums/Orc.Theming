@@ -1,7 +1,6 @@
-﻿namespace Orc.Theming
+﻿namespace Orc.Theming;
+
+public interface IResourceDictionaryService
 {
-    public interface IResourceDictionaryService
-    {
-        bool IsResourceDictionaryAvailable(string resourceDictionaryUri);
-    }
+    bool IsResourceDictionaryAvailable(string resourceDictionaryUri);
 }

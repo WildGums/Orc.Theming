@@ -1,10 +1,9 @@
-﻿namespace Orc.Theming.Example.Views
+﻿namespace Orc.Theming.Example.Views;
+
+public partial class SliderView
 {
-    public partial class SliderView
+    public SliderView()
     {
-        public SliderView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

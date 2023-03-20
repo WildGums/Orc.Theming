@@ -1,65 +1,64 @@
-﻿namespace Orc.Theming.ViewModels
+﻿namespace Orc.Theming.ViewModels;
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Media;
+using Catel.MVVM;
+using Catel.Reflection;
+
+public class AccentColorSwitcherViewModel : ViewModelBase
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using System.Windows.Media;
-    using Catel.MVVM;
-    using Catel.Reflection;
+    private readonly IAccentColorService _accentColorService;
 
-    public class AccentColorSwitcherViewModel : ViewModelBase
+    public AccentColorSwitcherViewModel(ThemeManager themeManager, IAccentColorService accentColorService)
     {
-        private readonly IAccentColorService _accentColorService;
+        ArgumentNullException.ThrowIfNull(accentColorService);
 
-        public AccentColorSwitcherViewModel(ThemeManager themeManager, IAccentColorService accentColorService)
+        _accentColorService = accentColorService;
+
+        AccentColors = typeof(Colors).GetPropertiesEx(true, true)
+            .Where(x => x.PropertyType.IsAssignableFromEx(typeof(Color)))
+            .Select(x => (Color?)x.GetValue(null))
+            .Where(x => x is not null)
+            .Cast<Color>()
+            .ToList();
+
+        var currentAccentColor = themeManager.GetAccentColorBrush().Color;
+        if (!AccentColors.Contains(currentAccentColor))
         {
-            ArgumentNullException.ThrowIfNull(accentColorService);
-
-            _accentColorService = accentColorService;
-
-            AccentColors = typeof(Colors).GetPropertiesEx(true, true)
-                .Where(x => x.PropertyType.IsAssignableFromEx(typeof(Color)))
-                .Select(x => (Color?)x.GetValue(null))
-                .Where(x => x is not null)
-                .Cast<Color>()
-                .ToList();
-
-            var currentAccentColor = themeManager.GetAccentColorBrush()?.Color ?? Colors.Transparent;
-            if (!AccentColors.Contains(currentAccentColor))
-            {
-                AccentColors.Insert(0, currentAccentColor);
-            }
-
-            SelectedAccentColor = currentAccentColor;
+            AccentColors.Insert(0, currentAccentColor);
         }
 
-        public List<Color> AccentColors { get; }
+        SelectedAccentColor = currentAccentColor;
+    }
 
-        public Color SelectedAccentColor { get; set; }
+    public List<Color> AccentColors { get; }
 
-        protected override async Task InitializeAsync()
-        {
-            await base.InitializeAsync();
+    public Color SelectedAccentColor { get; set; }
 
-            _accentColorService.AccentColorChanged += OnAccentColorServiceAccentColorChanged;
-        }
+    protected override async Task InitializeAsync()
+    {
+        await base.InitializeAsync();
 
-        protected override async Task CloseAsync()
-        {
-            _accentColorService.AccentColorChanged -= OnAccentColorServiceAccentColorChanged;
+        _accentColorService.AccentColorChanged += OnAccentColorServiceAccentColorChanged;
+    }
 
-            await base.CloseAsync();
-        }
+    protected override async Task CloseAsync()
+    {
+        _accentColorService.AccentColorChanged -= OnAccentColorServiceAccentColorChanged;
 
-        private void OnAccentColorServiceAccentColorChanged(object? sender, EventArgs e)
-        {
-            SelectedAccentColor = _accentColorService.GetAccentColor();
-        }
+        await base.CloseAsync();
+    }
 
-        private void OnSelectedAccentColorChanged()
-        {
-            _accentColorService.SetAccentColor(SelectedAccentColor);
-        }
+    private void OnAccentColorServiceAccentColorChanged(object? sender, EventArgs e)
+    {
+        SelectedAccentColor = _accentColorService.GetAccentColor();
+    }
+
+    private void OnSelectedAccentColorChanged()
+    {
+        _accentColorService.SetAccentColor(SelectedAccentColor);
     }
 }

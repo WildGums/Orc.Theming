@@ -1,10 +1,9 @@
-﻿namespace Orc.Theming.Example.Views
+﻿namespace Orc.Theming.Example.Views;
+
+public partial class RepeatButtonView
 {
-    public partial class RepeatButtonView
+    public RepeatButtonView()
     {
-        public RepeatButtonView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

@@ -1,10 +1,9 @@
-﻿namespace Orc.Theming.Views
+﻿namespace Orc.Theming.Views;
+
+public partial class AccentColorSwitcherView
 {
-    public partial class AccentColorSwitcherView
+    public AccentColorSwitcherView()
     {
-        public AccentColorSwitcherView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

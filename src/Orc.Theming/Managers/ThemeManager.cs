@@ -1,215 +1,171 @@
-﻿namespace Orc.Theming
+﻿namespace Orc.Theming;
+
+using System;
+using System.Windows;
+using System.Windows.Media;
+using Catel.Caching;
+using Catel.IoC;
+using Catel.Logging;
+using ControlzEx.Theming;
+using MethodTimer;
+
+public class ThemeManager
 {
-    using System;
-    using System.Windows;
-    using System.Windows.Media;
-    using Catel;
-    using Catel.Caching;
-    using Catel.IoC;
-    using Catel.Logging;
-    using ControlzEx.Theming;
-    using MethodTimer;
+    private static readonly ILog Log = LogManager.GetCurrentClassLogger();
 
-    public class ThemeManager
+    private readonly ControlzEx.Theming.ThemeManager _controlzThemeManager;
+    private readonly IAccentColorService _accentColorService;
+    private readonly IBaseColorSchemeService _baseColorSchemeService;
+
+    private readonly CacheStorage<string, SolidColorBrush> _resourceBrushesCache = new();
+    private readonly CacheStorage<ThemeColorStyle, Color> _themeColorsCache = new();
+    private readonly CacheStorage<ThemeColorStyle, SolidColorBrush> _themeColorBrushesCache = new();
+
+    private SolidColorBrush? _accentColorBrushCache;
+
+    private Theme? _currentTheme;
+
+    // Note: must be lazy because we don't want the static ctor to be invoked whenever we resolve this class correctly via DI
+    private static readonly Lazy<ThemeManager> CurrentLazy = new(() => ServiceLocator.Default.ResolveRequiredType<ThemeManager>());
+
+    public ThemeManager(ControlzEx.Theming.ThemeManager controlzThemeManager, IAccentColorService accentColorService, IBaseColorSchemeService baseColorSchemeService)
     {
-        private static readonly ILog Log = LogManager.GetCurrentClassLogger();
+        ArgumentNullException.ThrowIfNull(controlzThemeManager);
+        ArgumentNullException.ThrowIfNull(accentColorService);
+        ArgumentNullException.ThrowIfNull(baseColorSchemeService);
 
-        private readonly ControlzEx.Theming.ThemeManager _controlzThemeManager;
-        private readonly IAccentColorService _accentColorService;
-        private readonly IBaseColorSchemeService _baseColorSchemeService;
+        _accentColorService = accentColorService;
+        _baseColorSchemeService = baseColorSchemeService;
+        _controlzThemeManager = controlzThemeManager;
 
-        private readonly CacheStorage<string, SolidColorBrush> _resourceBrushesCache = new CacheStorage<string, SolidColorBrush>();
+        _controlzThemeManager.ThemeChanged += OnThemeManagerThemeChanged;
+        _accentColorService.AccentColorChanged += OnAccentColorChanged;
+        _baseColorSchemeService.BaseColorSchemeChanged += OnBaseColorSchemeChanged;
 
-        private readonly CacheStorage<ThemeColorStyle, Color> _themeColorsCache = new CacheStorage<ThemeColorStyle, Color>();
-        private readonly CacheStorage<ThemeColorStyle, SolidColorBrush> _themeColorBrushesCache = new CacheStorage<ThemeColorStyle, SolidColorBrush>();
+        SynchronizeTheme();
+    }
 
-        private SolidColorBrush? _accentColorBrushCache;
+    public static ThemeManager Current { get { return CurrentLazy.Value; } }
 
-        private Theme? _currentTheme;
+    public event EventHandler<EventArgs>? ThemeChanged;
 
-        // Note: must be lazy because we don't want the static ctor to be invoked whenever we resolve this class correctly via DI
-        private static readonly Lazy<ThemeManager> CurrentLazy = new Lazy<ThemeManager>(() => ServiceLocator.Default.ResolveRequiredType<ThemeManager>());
-
-        public ThemeManager(ControlzEx.Theming.ThemeManager controlzThemeManager, IAccentColorService accentColorService, IBaseColorSchemeService baseColorSchemeService)
+    public Color GetThemeColor(string resourceName)
+    {
+        var resource = _currentTheme?.Resources[resourceName];
+        if (resource is Color color)
         {
-            ArgumentNullException.ThrowIfNull(controlzThemeManager);
-            ArgumentNullException.ThrowIfNull(accentColorService);
-            ArgumentNullException.ThrowIfNull(baseColorSchemeService);
-
-            _accentColorService = accentColorService;
-            _baseColorSchemeService = baseColorSchemeService;
-            _controlzThemeManager = controlzThemeManager;
-
-            _controlzThemeManager.ThemeChanged += OnThemeManagerThemeChanged;
-            _accentColorService.AccentColorChanged += OnAccentColorChanged;
-            _baseColorSchemeService.BaseColorSchemeChanged += OnBaseColorSchemeChanged;
-
-            SynchronizeTheme();
+            return color;
         }
 
-        public static ThemeManager Current { get { return CurrentLazy.Value; } }
+        return Colors.Transparent;
+    }
 
-        public event EventHandler<EventArgs>? ThemeChanged;
-
-        public Color GetThemeColor(string resourceName)
+    public Color GetThemeColor(ThemeColorStyle colorStyle = ThemeColorStyle.AccentColor)
+    {
+        return _themeColorsCache.GetFromCacheOrFetch(colorStyle, () =>
         {
-            var resource = _currentTheme?.Resources[resourceName];
-            if (resource is Color color)
+            return colorStyle switch
             {
-                return color;
-            }
+                // Accent color
+                ThemeColorStyle.AccentColor => GetThemeColor("Orc.Colors.AccentColor"),
+                ThemeColorStyle.AccentColor80 => GetThemeColor("Orc.Colors.AccentColor80"),
+                ThemeColorStyle.AccentColor60 => GetThemeColor("Orc.Colors.AccentColor60"),
+                ThemeColorStyle.AccentColor40 => GetThemeColor("Orc.Colors.AccentColor40"),
+                ThemeColorStyle.AccentColor20 => GetThemeColor("Orc.Colors.AccentColor20"),
+                // Border
+                ThemeColorStyle.BorderColor => GetThemeColor("Orc.Colors.Control.Border"),
+                // Background
+                ThemeColorStyle.BackgroundColor => GetThemeColor("Orc.Colors.Background"),
+                // Foreground
+                ThemeColorStyle.ForegroundColor => GetThemeColor("Orc.Colors.Foreground"),
+                // Highlight
+                ThemeColorStyle.HighlightColor => GetThemeColor("Orc.Colors.HighlightColor"),
+                // Gray
+                ThemeColorStyle.Gray1 => GetThemeColor("Gray1"),
+                ThemeColorStyle.Gray2 => GetThemeColor("Gray2"),
+                ThemeColorStyle.Gray3 => GetThemeColor("Gray3"),
+                ThemeColorStyle.Gray4 => GetThemeColor("Gray4"),
+                ThemeColorStyle.Gray5 => GetThemeColor("Gray5"),
+                ThemeColorStyle.Gray6 => GetThemeColor("Gray6"),
+                ThemeColorStyle.Gray7 => GetThemeColor("Gray7"),
+                ThemeColorStyle.Gray8 => GetThemeColor("Gray8"),
+                ThemeColorStyle.Gray9 => GetThemeColor("Gray9"),
+                ThemeColorStyle.Gray10 => GetThemeColor("Gray10"),
+                // Text
+                ThemeColorStyle.Text => GetThemeColor("Orc.Colors.Text"),
+                _ => throw Log.ErrorAndCreateException(_ => new ArgumentOutOfRangeException(nameof(colorStyle)), string.Empty)
+            };
+        });
+    }
 
-            return Colors.Transparent;
-        }
-
-        public Color GetThemeColor(ThemeColorStyle colorStyle = ThemeColorStyle.AccentColor)
+    public SolidColorBrush GetThemeColorBrush(string resourceName)
+    {
+        return _resourceBrushesCache.GetFromCacheOrFetch(resourceName, () =>
         {
-            return _themeColorsCache.GetFromCacheOrFetch(colorStyle, () =>
-            {
-                switch (colorStyle)
-                {
-                    // Accent color
-                    case ThemeColorStyle.AccentColor:
-                        return GetThemeColor("Orc.Colors.AccentColor");
+            var color = GetThemeColor(resourceName);
+            return color.ToSolidColorBrush();
+        });
+    }
 
-                    case ThemeColorStyle.AccentColor80:
-                        return GetThemeColor("Orc.Colors.AccentColor80");
-
-                    case ThemeColorStyle.AccentColor60:
-                        return GetThemeColor("Orc.Colors.AccentColor60");
-
-                    case ThemeColorStyle.AccentColor40:
-                        return GetThemeColor("Orc.Colors.AccentColor40");
-
-                    case ThemeColorStyle.AccentColor20:
-                        return GetThemeColor("Orc.Colors.AccentColor20");
-
-                    // Border
-                    case ThemeColorStyle.BorderColor:
-                        return GetThemeColor("Orc.Colors.Control.Border");
-
-                    // Background
-                    case ThemeColorStyle.BackgroundColor:
-                        return GetThemeColor("Orc.Colors.Background");
-
-                    // Foreground
-                    case ThemeColorStyle.ForegroundColor:
-                        return GetThemeColor("Orc.Colors.Foreground");
-
-                    // Highlight
-                    case ThemeColorStyle.HighlightColor:
-                        return GetThemeColor("Orc.Colors.HighlightColor");
-
-                    // Gray
-                    case ThemeColorStyle.Gray1:
-                        return GetThemeColor("Gray1");
-
-                    case ThemeColorStyle.Gray2:
-                        return GetThemeColor("Gray2");
-
-                    case ThemeColorStyle.Gray3:
-                        return GetThemeColor("Gray3");
-
-                    case ThemeColorStyle.Gray4:
-                        return GetThemeColor("Gray4");
-
-                    case ThemeColorStyle.Gray5:
-                        return GetThemeColor("Gray5");
-
-                    case ThemeColorStyle.Gray6:
-                        return GetThemeColor("Gray6");
-
-                    case ThemeColorStyle.Gray7:
-                        return GetThemeColor("Gray7");
-
-                    case ThemeColorStyle.Gray8:
-                        return GetThemeColor("Gray8");
-
-                    case ThemeColorStyle.Gray9:
-                        return GetThemeColor("Gray9");
-
-                    case ThemeColorStyle.Gray10:
-                        return GetThemeColor("Gray10");
-
-                    // Text
-                    case ThemeColorStyle.Text:
-                        return GetThemeColor("Orc.Colors.Text");
-
-                    default:
-                        throw Log.ErrorAndCreateException<ArgumentOutOfRangeException>(_ => new ArgumentOutOfRangeException(nameof(colorStyle)), string.Empty);
-                }
-            });
-        }
-
-        public SolidColorBrush GetThemeColorBrush(string resourceName)
+    public SolidColorBrush GetThemeColorBrush(ThemeColorStyle colorStyle = ThemeColorStyle.AccentColor)
+    {
+        return _themeColorBrushesCache.GetFromCacheOrFetch(colorStyle, () =>
         {
-            return _resourceBrushesCache.GetFromCacheOrFetch(resourceName, () =>
-            {
-                var color = GetThemeColor(resourceName);
-                return color.ToSolidColorBrush();
-            });
-        }
+            var color = GetThemeColor(colorStyle);
+            return color.ToSolidColorBrush();
+        });
+    }
 
-        public SolidColorBrush GetThemeColorBrush(ThemeColorStyle colorStyle = ThemeColorStyle.AccentColor)
+    public SolidColorBrush GetAccentColorBrush()
+    {
+        return _accentColorBrushCache ??= _currentTheme?.PrimaryAccentColor.ToSolidColorBrush()
+                                          ?? Application.Current?.TryFindResource("AccentColorBrush") as SolidColorBrush
+                                          ?? Brushes.Green;
+    }
+
+    private void OnThemeManagerThemeChanged(object? sender, ThemeChangedEventArgs e)
+    {
+        Log.Debug("Theme has changed, clearing current cache");
+
+        _accentColorBrushCache = null;
+        _resourceBrushesCache.Clear();
+        _themeColorBrushesCache.Clear();
+        _themeColorsCache.Clear();
+
+        _currentTheme = e.NewTheme;
+    }
+
+    private void OnAccentColorChanged(object? sender, EventArgs e)
+    {
+        SynchronizeTheme();
+    }
+
+    private void OnBaseColorSchemeChanged(object? sender, EventArgs e)
+    {
+        SynchronizeTheme();
+    }
+
+    public virtual void SynchronizeTheme()
+    {
+        Log.Debug("Synchronizing theme");
+
+        var themeGenerator = RuntimeThemeGenerator.Current;
+        themeGenerator.Options.UseHSL = false;
+
+        var generatedTheme = themeGenerator.GenerateRuntimeTheme(_baseColorSchemeService.GetBaseColorScheme(), _accentColorService.GetAccentColor());
+        if (generatedTheme is null)
         {
-            return _themeColorBrushesCache.GetFromCacheOrFetch(colorStyle, () =>
-            {
-                var color = GetThemeColor(colorStyle);
-                return color.ToSolidColorBrush();
-            });
+            throw Log.ErrorAndCreateException<InvalidOperationException>("Failed to generate runtime theme");
         }
 
-        public SolidColorBrush GetAccentColorBrush()
-        {
-            return _accentColorBrushCache ??= _currentTheme?.PrimaryAccentColor.ToSolidColorBrush()
-                                              ?? Application.Current?.TryFindResource("AccentColorBrush") as SolidColorBrush
-                                              ?? Brushes.Green;
-        }
+        ChangeTheme(generatedTheme);
+    }
 
-        private void OnThemeManagerThemeChanged(object? sender, ThemeChangedEventArgs e)
-        {
-            Log.Debug("Theme has changed, clearing current cache");
+    [Time]
+    private void ChangeTheme(Theme generatedTheme)
+    {
+        _controlzThemeManager.ChangeTheme(Application.Current, generatedTheme);
 
-            _accentColorBrushCache = null;
-            _resourceBrushesCache.Clear();
-            _themeColorBrushesCache.Clear();
-            _themeColorsCache.Clear();
-
-            _currentTheme = e.NewTheme;
-        }
-
-        private void OnAccentColorChanged(object? sender, EventArgs e)
-        {
-            SynchronizeTheme();
-        }
-
-        private void OnBaseColorSchemeChanged(object? sender, EventArgs e)
-        {
-            SynchronizeTheme();
-        }
-
-        public virtual void SynchronizeTheme()
-        {
-            Log.Debug("Synchronizing theme");
-
-            var themeGenerator = RuntimeThemeGenerator.Current;
-            themeGenerator.Options.UseHSL = false;
-
-            var generatedTheme = themeGenerator.GenerateRuntimeTheme(_baseColorSchemeService.GetBaseColorScheme(), _accentColorService.GetAccentColor());
-            if (generatedTheme is null)
-            {
-                throw Log.ErrorAndCreateException<InvalidOperationException>("Failed to generate runtime theme");
-            }
-
-            ChangeTheme(generatedTheme);
-        }
-
-        [Time]
-        private void ChangeTheme(Theme generatedTheme)
-        {
-            _controlzThemeManager.ChangeTheme(Application.Current, generatedTheme);
-
-            ThemeChanged?.Invoke(this, EventArgs.Empty);
-        }
+        ThemeChanged?.Invoke(this, EventArgs.Empty);
     }
 }

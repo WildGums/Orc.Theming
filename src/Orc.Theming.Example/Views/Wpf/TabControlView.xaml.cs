@@ -1,10 +1,9 @@
-﻿namespace Orc.Theming.Example.Views
+﻿namespace Orc.Theming.Example.Views;
+
+public partial class TabControlView
 {
-    public partial class TabControlView
+    public TabControlView()
     {
-        public TabControlView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

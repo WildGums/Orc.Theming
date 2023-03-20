@@ -1,10 +1,9 @@
-﻿namespace Orc.Theming.Views
+﻿namespace Orc.Theming.Views;
+
+public partial class BaseColorSchemeSwitcherWithIconView
 {
-    public partial class BaseColorSchemeSwitcherWithIconView
+    public BaseColorSchemeSwitcherWithIconView()
     {
-        public BaseColorSchemeSwitcherWithIconView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

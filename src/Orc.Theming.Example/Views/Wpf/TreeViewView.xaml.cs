@@ -1,10 +1,9 @@
-﻿namespace Orc.Theming.Example.Views
+﻿namespace Orc.Theming.Example.Views;
+
+public partial class TreeViewView
 {
-    public partial class TreeViewView
+    public TreeViewView()
     {
-        public TreeViewView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

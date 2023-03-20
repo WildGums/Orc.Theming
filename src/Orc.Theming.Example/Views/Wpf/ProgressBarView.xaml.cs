@@ -1,10 +1,9 @@
-﻿namespace Orc.Theming.Example.Views
+﻿namespace Orc.Theming.Example.Views;
+
+public partial class ProgressBarView
 {
-    public partial class ProgressBarView
+    public ProgressBarView()
     {
-        public ProgressBarView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }
