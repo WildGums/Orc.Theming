@@ -80,6 +80,14 @@ namespace Orc.Theming
         public static System.Windows.Media.SolidColorBrush ToSolidColorBrush(this System.Windows.Media.Color color, double opacity = 1) { }
         public static System.Windows.Media.Color[] TransformPalette(this System.Collections.Generic.IReadOnlyList<System.Windows.Media.Color> palette, int count) { }
     }
+    public static class ColorHelper
+    {
+        public static uint GetAlpha(int color) { }
+        public static uint GetBlue(int color) { }
+        public static System.Windows.Media.Color GetColor(int colorAsInt) { }
+        public static uint GetGreen(int color) { }
+        public static uint GetRed(int color) { }
+    }
     public class Crc32 : System.Security.Cryptography.HashAlgorithm
     {
         public const uint DefaultPolynomial = 3988292384u;

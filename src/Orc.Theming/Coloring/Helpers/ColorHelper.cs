@@ -1,8 +1,8 @@
-﻿namespace Orc.Theming;
+namespace Orc.Theming;
 
 using System.Windows.Media;
 
-internal static class ColorHelper
+public static class ColorHelper
 {
     public static uint GetAlpha(int color)
     {
