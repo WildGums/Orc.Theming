@@ -11,7 +11,7 @@ public class ControlExtensionsTests
 {
     [Test]
     [Apartment(ApartmentState.STA)]
-    public void Get_Required_Template_Should_Return_Template_If_It_Existed()
+    public void Get_Required_Template_Should_Return_Template_If_It_Exist()
     {
         const string partName = "PART_Border";
 
@@ -26,7 +26,7 @@ public class ControlExtensionsTests
 
     [Test]
     [Apartment(ApartmentState.STA)]
-    public void Get_Required_Template_Should_Fail_With_InvalidOperationException_If_Template_Does_Not_Existed()
+    public void Get_Required_Template_Should_Fail_With_InvalidOperationException_If_Template_Does_Not_Exist()
     {
         const string partName = "PART_Border";
         string differentPartName = partName + "1";
