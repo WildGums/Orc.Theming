@@ -88,6 +88,11 @@ namespace Orc.Theming
         public static uint GetGreen(int color) { }
         public static uint GetRed(int color) { }
     }
+    public static class ControlExtensions
+    {
+        public static TControl GetRequiredTemplateChild<TControl>(this System.Windows.Controls.Control control, string partName)
+            where TControl : System.Windows.FrameworkElement { }
+    }
     public class Crc32 : System.Security.Cryptography.HashAlgorithm
     {
         public const uint DefaultPolynomial = 3988292384u;
