@@ -48,9 +48,14 @@ public class ControlExtensionsTests
         {
             Name = partName
         };
+
         templateButton.VisualTree = elemFactory;
         elemFactory.AppendChild(new FrameworkElementFactory(typeof(ContentPresenter)));
-        style.Setters.Add(new Setter { Property = Control.TemplateProperty, Value = templateButton });
+        style.Setters.Add(new Setter
+        {
+            Property = Control.TemplateProperty, 
+            Value = templateButton
+        });
 
         button.Style = style;
 
