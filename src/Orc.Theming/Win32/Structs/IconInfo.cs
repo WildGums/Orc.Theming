@@ -1,8 +1,8 @@
-﻿namespace Orc.Theming;
+﻿namespace Orc.Theming.Win32;
 
 using System;
 
-public struct IconInfo
+internal struct IconInfo
 {
     public bool FIcon;
     public int XHotspot;

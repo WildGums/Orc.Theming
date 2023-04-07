@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-public static class User32
+internal static class User32
 {
     [DllImport("user32.dll")]
     public static extern SafeIconHandle CreateIconIndirect(ref IconInfo icon);

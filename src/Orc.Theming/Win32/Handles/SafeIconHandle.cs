@@ -1,9 +1,9 @@
-﻿namespace Orc.Theming;
+﻿namespace Orc.Theming.Win32;
 
 using Microsoft.Win32.SafeHandles;
 using Win32;
 
-public class SafeIconHandle : SafeHandleZeroOrMinusOneIsInvalid
+internal class SafeIconHandle : SafeHandleZeroOrMinusOneIsInvalid
 {
     public SafeIconHandle()
         : base(true)
