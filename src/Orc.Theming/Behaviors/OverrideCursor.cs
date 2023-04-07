@@ -6,16 +6,16 @@ using Catel.Windows.Interactivity;
 
 public class OverrideCursor : BehaviorBase<FrameworkElement>
 {
-    public static readonly DependencyProperty CursorProperty = DependencyProperty.Register(
-        nameof(Cursor), typeof(Cursor), typeof(OverrideCursor), new PropertyMetadata(Cursors.Arrow));
-
-    private OverrideCursorScope? _currentScope;
+    private Cursor? _previousCursor;
 
     public Cursor Cursor
     {
         get => (Cursor)GetValue(CursorProperty);
         set => SetValue(CursorProperty, value);
     }
+
+    public static readonly DependencyProperty CursorProperty = DependencyProperty.Register(
+        nameof(Cursor), typeof(Cursor), typeof(OverrideCursor), new PropertyMetadata(Cursors.Arrow));
 
     protected override void OnAssociatedObjectLoaded()
     {
@@ -35,11 +35,13 @@ public class OverrideCursor : BehaviorBase<FrameworkElement>
 
     private void OnMouseEnter(object sender, MouseEventArgs e)
     {
-        _currentScope = new OverrideCursorScope(Cursor);
+        _previousCursor = Mouse.OverrideCursor;
+        Mouse.OverrideCursor = Cursor;
     }
 
     private void OnMouseLeave(object sender, MouseEventArgs e)
     {
-        _currentScope?.Dispose();
+        Mouse.OverrideCursor = _previousCursor;
+        _previousCursor = null;
     }
 }

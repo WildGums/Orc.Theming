@@ -1,72 +1,38 @@
 ﻿namespace Orc.Theming;
 
 using System;
+using System.Drawing;
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Microsoft.Win32.SafeHandles;
+using Win32;
+using Point = System.Windows.Point;
+using Size = System.Windows.Size;
 
-//Idea is taken from: 
+//Idea was taken from: 
 //https://wpf.2000things.com/2012/12/17/713-setting-the-cursor-to-an-image-of-an-uielement-while-dragging/
-public class CursorHelper
+public static class CursorHelper
 {
-    private static class NativeMethods
+    public static Cursor CreateCursor(Bitmap bmp)
     {
-        public struct IconInfo
-        {
-            public bool FIcon;
-            public int XHotspot;
-            public int YHotspot;
-            public IntPtr HbmMask;
-            public IntPtr HbmColor;
-        }
-
-        [DllImport("user32.dll")]
-        public static extern SafeIconHandle CreateIconIndirect(ref IconInfo icon);
-
-        [DllImport("user32.dll")]
-        public static extern bool DestroyIcon(IntPtr hIcon);
-
-        [DllImport("user32.dll")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool GetIconInfo(IntPtr hIcon, ref IconInfo pIconInfo);
-    }
-
-    internal class SafeIconHandle : SafeHandleZeroOrMinusOneIsInvalid
-    {
-        public SafeIconHandle()
-            : base(true)
-        {
-        }
-
-        protected override bool ReleaseHandle()
-        {
-            return NativeMethods.DestroyIcon(handle);
-        }
-    }
-
-    public static Cursor CreateCursor(System.Drawing.Bitmap bmp)
-    {
-        var iconInfo = new NativeMethods.IconInfo();
-        NativeMethods.GetIconInfo(bmp.GetHicon(), ref iconInfo);
+        var iconInfo = new IconInfo();
+        User32.GetIconInfo(bmp.GetHicon(), ref iconInfo);
 
         iconInfo.XHotspot = 0;
         iconInfo.YHotspot = 0;
         iconInfo.FIcon = false;
 
-        var cursorHandle = NativeMethods.CreateIconIndirect(ref iconInfo);
+        var cursorHandle = User32.CreateIconIndirect(ref iconInfo);
         return CursorInteropHelper.Create(cursorHandle);
     }
-
 
     public static Cursor CreateCursor(UIElement element)
     {
         element.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-        element.Arrange(new Rect(new Point(), element.DesiredSize));
+        element.Arrange(new Rect(default, element.DesiredSize));
 
         var desiredSize = element.DesiredSize;
         if (desiredSize.Width <= 0 || desiredSize.Height <= 0)
@@ -84,7 +50,7 @@ public class CursorHelper
 
         using var ms = new MemoryStream();
         encoder.Save(ms);
-        using var bmp = new System.Drawing.Bitmap(ms);
+        using var bmp = new Bitmap(ms);
         return CreateCursor(bmp);
     }
 }

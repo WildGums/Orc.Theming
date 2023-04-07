@@ -1,4 +1,4 @@
-﻿namespace Orc.Theming.Tests.Helpers;
+﻿namespace Orc.Theming.Tests;
 
 using System;
 using System.Drawing;

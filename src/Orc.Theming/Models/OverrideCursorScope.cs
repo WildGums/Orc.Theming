@@ -20,13 +20,9 @@ public sealed class OverrideCursorScope : IDisposable
 
     public void Dispose()
     {
-        Cursors.Pop();
+        
+        var cursor = Cursors.Count > 0 ? Cursors.Pop() : null;
 
-        var cursor = Cursors.Count > 0 ? Cursors.Peek() : null;
-
-        if (cursor != Mouse.OverrideCursor)
-        {
-            Mouse.OverrideCursor = cursor;
-        }
+        Mouse.OverrideCursor = cursor;
     }
 }
