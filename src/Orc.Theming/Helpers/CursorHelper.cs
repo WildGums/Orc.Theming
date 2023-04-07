@@ -36,14 +36,14 @@ public class CursorHelper
         public static extern bool GetIconInfo(IntPtr hIcon, ref IconInfo pIconInfo);
     }
 
-    private class SafeIconHandle : SafeHandleZeroOrMinusOneIsInvalid
+    internal class SafeIconHandle : SafeHandleZeroOrMinusOneIsInvalid
     {
         public SafeIconHandle()
             : base(true)
         {
         }
 
-        override protected bool ReleaseHandle()
+        protected override bool ReleaseHandle()
         {
             return NativeMethods.DestroyIcon(handle);
         }
@@ -68,8 +68,13 @@ public class CursorHelper
         element.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
         element.Arrange(new Rect(new Point(), element.DesiredSize));
 
-        var dpi = ScreenHelper.GetDpi();
+        var desiredSize = element.DesiredSize;
+        if (desiredSize.Width <= 0 || desiredSize.Height <= 0)
+        {
+            throw new ArgumentException("Can't create Cursor from Visual with zero size");
+        }
 
+        var dpi = ScreenHelper.GetDpi();
         var rtb = new RenderTargetBitmap((int)element.DesiredSize.Width, (int)element.DesiredSize.Height, dpi.Width, dpi.Height, PixelFormats.Pbgra32);
 
         rtb.Render(element);
