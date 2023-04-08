@@ -7,6 +7,7 @@ using System.Threading;
 using System.Windows.Controls;
 using System.Windows.Input;
 using NUnit.Framework;
+using Win32;
 
 [TestFixture]
 public class CursorHelperTests
@@ -50,12 +51,12 @@ public class CursorHelperTests
             "Can't create Cursor from Visual with zero size");
     }
 
-    private CursorHelper.SafeIconHandle GetCursorHandle(Cursor cursor)
+    private SafeIconHandle GetCursorHandle(Cursor cursor)
     {
         var handleProperty = typeof(Cursor).GetProperty("Handle", BindingFlags.Instance |
                                                                   BindingFlags.NonPublic |
                                                                   BindingFlags.Public);
 
-        return handleProperty.GetValue(cursor) as CursorHelper.SafeIconHandle;
+        return handleProperty.GetValue(cursor) as SafeIconHandle;
     }
 }

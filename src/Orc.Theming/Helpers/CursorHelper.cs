@@ -9,7 +9,6 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Win32;
-using Point = System.Windows.Point;
 using Size = System.Windows.Size;
 
 //Idea was taken from: 
@@ -21,8 +20,8 @@ public static class CursorHelper
         var iconInfo = new IconInfo();
         User32.GetIconInfo(bmp.GetHicon(), ref iconInfo);
 
-        iconInfo.XHotspot = 0;
-        iconInfo.YHotspot = 0;
+        iconInfo.XHotspot = 5;
+        iconInfo.YHotspot = 5;
         iconInfo.FIcon = false;
 
         var cursorHandle = User32.CreateIconIndirect(ref iconInfo);
