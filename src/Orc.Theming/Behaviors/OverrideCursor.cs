@@ -23,7 +23,6 @@ public class OverrideCursor : BehaviorBase<FrameworkElement>
 
         frameworkElement.MouseEnter += OnMouseEnter;
         frameworkElement.MouseLeave += OnMouseLeave;
-        frameworkElement.GiveFeedback += OnGiveFeedback;
     }
 
     protected override void OnAssociatedObjectUnloaded()
@@ -32,7 +31,6 @@ public class OverrideCursor : BehaviorBase<FrameworkElement>
 
         frameworkElement.MouseEnter -= OnMouseEnter;
         frameworkElement.MouseLeave -= OnMouseLeave;
-        frameworkElement.GiveFeedback -= OnGiveFeedback;
     }
 
     private void OnMouseEnter(object sender, MouseEventArgs e)
@@ -45,20 +43,5 @@ public class OverrideCursor : BehaviorBase<FrameworkElement>
     {
         Mouse.OverrideCursor = _previousCursor;
         _previousCursor = null;
-    }
-
-    private void OnGiveFeedback(object sender, GiveFeedbackEventArgs e)
-    {
-        if (e.Effects == DragDropEffects.Copy)
-        {
-            e.UseDefaultCursors = false;
-            Mouse.SetCursor(Cursor);
-        }
-        else
-        {
-            e.UseDefaultCursors = true;
-        }
-
-        e.Handled = true;
     }
 }
