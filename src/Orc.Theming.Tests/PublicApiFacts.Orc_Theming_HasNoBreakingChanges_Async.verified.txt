@@ -1,4 +1,5 @@
 ﻿[assembly: System.Resources.NeutralResourcesLanguage("en-US")]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Orc.Theming.Tests")]
 [assembly: System.Runtime.Versioning.TargetFramework(".NETCoreApp,Version=v6.0", FrameworkDisplayName="")]
 [assembly: System.Windows.Markup.XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming")]
 [assembly: System.Windows.Markup.XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Behaviors")]
@@ -107,6 +108,12 @@ namespace Orc.Theming
         public static uint Compute(uint seed, byte[] buffer) { }
         public static uint Compute(uint polynomial, uint seed, byte[] buffer) { }
     }
+    public class CursorHelper
+    {
+        public CursorHelper() { }
+        public static System.Windows.Input.Cursor CreateCursor(System.Drawing.Bitmap bmp) { }
+        public static System.Windows.Input.Cursor CreateCursor(System.Windows.UIElement element) { }
+    }
     public class FontImage : Catel.Windows.Markup.UpdatableMarkupExtension
     {
         public FontImage() { }
@@ -127,6 +134,14 @@ namespace Orc.Theming
         public static System.Windows.Media.FontFamily? GetRegisteredFont(string name) { }
         public static System.Collections.Generic.IEnumerable<string> GetRegisteredFonts() { }
         public static void RegisterFont(string name, System.Windows.Media.FontFamily fontFamily) { }
+    }
+    public class FontImageCursor : Orc.Theming.FontImage
+    {
+        public FontImageCursor() { }
+        public FontImageCursor(string itemName) { }
+        public double Height { get; set; }
+        public double Width { get; set; }
+        protected override object ProvideDynamicValue(System.IServiceProvider? serviceProvider) { }
     }
     public class FontSizeService : Orc.Theming.IFontSizeService
     {
@@ -196,6 +211,19 @@ namespace Orc.Theming
         public static void SetLeft(System.Windows.DependencyObject d, double value) { }
         public static void SetRight(System.Windows.DependencyObject d, double value) { }
         public static void SetTop(System.Windows.DependencyObject d, double value) { }
+    }
+    public class OverrideCursor : Catel.Windows.Interactivity.BehaviorBase<System.Windows.FrameworkElement>
+    {
+        public static readonly System.Windows.DependencyProperty CursorProperty;
+        public OverrideCursor() { }
+        public System.Windows.Input.Cursor Cursor { get; set; }
+        protected override void OnAssociatedObjectLoaded() { }
+        protected override void OnAssociatedObjectUnloaded() { }
+    }
+    public sealed class OverrideCursorScope : System.IDisposable
+    {
+        public OverrideCursorScope(System.Windows.Input.Cursor changeToCursor) { }
+        public void Dispose() { }
     }
     public class ResourceDictionaryService : Orc.Theming.IResourceDictionaryService
     {
