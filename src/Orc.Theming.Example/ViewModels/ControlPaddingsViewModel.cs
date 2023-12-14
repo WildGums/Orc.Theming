@@ -1,8 +1,7 @@
-﻿namespace Orc.Theming.Example.ViewModels
-{
-    using Catel.MVVM;
+﻿namespace Orc.Theming.Example.ViewModels;
 
-    public class ControlPaddingsViewModel : ViewModelBase
-    {
-    }
+using Catel.MVVM;
+
+public class ControlPaddingsViewModel : ViewModelBase
+{
 }

@@ -1,10 +1,9 @@
-﻿namespace Orc.Theming
+﻿namespace Orc.Theming;
+
+public enum ArrangePosition
 {
-    public enum ArrangePosition
-    {
-        TopLeft,
-        TopRight,
-        BottomRight,
-        BottomLeft,
-    }
+    TopLeft = 0,
+    TopRight = 1,
+    BottomRight = 2,
+    BottomLeft = 3,
 }

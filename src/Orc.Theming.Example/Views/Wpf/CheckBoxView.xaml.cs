@@ -1,10 +1,9 @@
-﻿namespace Orc.Theming.Example.Views
+﻿namespace Orc.Theming.Example.Views;
+
+public partial class CheckBoxView
 {
-    public partial class CheckBoxView
+    public CheckBoxView()
     {
-        public CheckBoxView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

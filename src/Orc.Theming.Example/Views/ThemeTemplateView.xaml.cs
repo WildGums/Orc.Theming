@@ -1,13 +1,9 @@
-﻿namespace Orc.Theming.Example.Views
+﻿namespace Orc.Theming.Example.Views;
+
+public partial class ThemeTemplateView
 {
-    /// <summary>
-    ///     Interaction logic for ThemeTemplateView.xaml
-    /// </summary>
-    public partial class ThemeTemplateView
+    public ThemeTemplateView()
     {
-        public ThemeTemplateView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

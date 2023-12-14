@@ -1,13 +1,12 @@
-﻿namespace Orc.Theming.Example.Views
+﻿namespace Orc.Theming.Example.Views;
+
+/// <summary>
+///     Interaction logic for DataGridView.xaml
+/// </summary>
+public partial class DataGridView
 {
-    /// <summary>
-    ///     Interaction logic for DataGridView.xaml
-    /// </summary>
-    public partial class DataGridView
+    public DataGridView()
     {
-        public DataGridView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

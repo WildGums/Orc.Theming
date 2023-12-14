@@ -1,41 +1,48 @@
-﻿namespace Orc.Theming.Converters
+﻿namespace Orc.Theming.Converters;
+
+using System;
+using System.Globalization;
+using System.Windows;
+using System.Windows.Data;
+using System.Windows.Media;
+using Catel.Logging;
+
+internal class ProgressBarTrackRadiusToTrackOffsetConverter : IMultiValueConverter
 {
-    using System;
-    using System.Globalization;
-    using System.Windows;
-    using System.Windows.Data;
-    using System.Windows.Media;
-    using Catel.Logging;
+    private static readonly ILog Log = LogManager.GetCurrentClassLogger();
 
-    internal class ProgressBarTrackRadiusToTrackOffsetConverter : IMultiValueConverter
+    public object? Convert(object?[]? values, Type targetType, object? parameter, CultureInfo culture)
     {
-        private static readonly ILog Log = LogManager.GetCurrentClassLogger();
-
-        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        if (values is null)
         {
-            if (values.Length < 2)
-            {
-                throw Log.ErrorAndCreateException<InvalidOperationException>("Wrong argument count passed to converter");
-            }
-
-            if (!(values[0] is double trackPath) || !(values[1] is EllipseGeometry trackGeometry))
-            {
-                throw Log.ErrorAndCreateException<InvalidOperationException>("Wrong argument type");
-            }
-
-            var propertyPath = parameter.ToString();
-
-            return propertyPath switch
-            {
-                nameof(EllipseGeometry.RadiusX) => trackGeometry.RadiusX + (double?)trackPath,
-                nameof(EllipseGeometry.RadiusY) => trackGeometry.RadiusY + (double?)trackPath,
-                _ => DependencyProperty.UnsetValue
-            };
+            return null;
         }
 
-        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        if (values.Length < 2)
         {
-            return new[] {value};
+            throw Log.ErrorAndCreateException<InvalidOperationException>("Wrong argument count passed to converter");
         }
+
+        if (values[0] is not double trackPath || values[1] is not EllipseGeometry trackGeometry)
+        {
+            throw Log.ErrorAndCreateException<InvalidOperationException>("Wrong argument type");
+        }
+
+        var propertyPath = parameter?.ToString();
+
+        return propertyPath switch
+        {
+            nameof(EllipseGeometry.RadiusX) => trackGeometry.RadiusX + (double?)trackPath,
+            nameof(EllipseGeometry.RadiusY) => trackGeometry.RadiusY + (double?)trackPath,
+            _ => DependencyProperty.UnsetValue
+        };
+    }
+
+    public object?[] ConvertBack(object? value, Type[] targetTypes, object? parameter, CultureInfo? culture)
+    {
+        return new[]
+        {
+            value
+        };
     }
 }

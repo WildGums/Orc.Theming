@@ -1,10 +1,9 @@
-﻿namespace Orc.Theming.Example.Views
+﻿namespace Orc.Theming.Example.Views;
+
+public partial class PasswordBoxView
 {
-    public partial class PasswordBoxView
+    public PasswordBoxView()
     {
-        public PasswordBoxView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

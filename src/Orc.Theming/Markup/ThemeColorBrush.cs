@@ -1,59 +1,55 @@
-﻿namespace Orc.Theming
+﻿namespace Orc.Theming;
+
+using System;
+using Catel.Windows.Markup;
+
+public class ThemeColorBrush : UpdatableMarkupExtension
 {
-    using System;
-    using Catel.Windows.Markup;
+    private readonly ControlzEx.Theming.ThemeManager _controlzThemeManager;
+    private readonly ThemeManager _themeManager;
 
-    public class ThemeColorBrush : UpdatableMarkupExtension
+    public ThemeColorBrush()
     {
-        private readonly ControlzEx.Theming.ThemeManager _controlzThemeManager;
-        private readonly ThemeManager _themeManager;
+        AllowUpdatableStyleSetters = true;
 
-        public ThemeColorBrush()
-        {
-            AllowUpdatableStyleSetters = true;
+        _controlzThemeManager = ControlzEx.Theming.ThemeManager.Current;
+        _themeManager = ThemeManager.Current;
+    }
 
-            _controlzThemeManager = ControlzEx.Theming.ThemeManager.Current;
-            _themeManager = ThemeManager.Current;
-        }
+    public ThemeColorBrush(ThemeColorStyle themeColorStyle)
+        : this()
+    {
+        ThemeColorStyle = themeColorStyle;
+    }
 
-        public ThemeColorBrush(ThemeColorStyle themeColorStyle)
-            : this()
-        {
-            ThemeColorStyle = themeColorStyle;
-        }
+    public ThemeColorStyle ThemeColorStyle { get; set; }
 
-        public ThemeColorStyle ThemeColorStyle { get; set; }
+    public string? ResourceName { get; set; }
 
-        public string ResourceName { get; set; }
+    protected override void OnTargetObjectLoaded()
+    {
+        base.OnTargetObjectLoaded();
 
-        protected override void OnTargetObjectLoaded()
-        {
-            base.OnTargetObjectLoaded();
+        _controlzThemeManager.ThemeChanged += OnThemeChanged;
+    }
 
-            _controlzThemeManager.ThemeChanged += OnThemeChanged;
-        }
+    protected override void OnTargetObjectUnloaded()
+    {
+        _controlzThemeManager.ThemeChanged -= OnThemeChanged;
 
-        protected override void OnTargetObjectUnloaded()
-        {
-            _controlzThemeManager.ThemeChanged -= OnThemeChanged;
+        base.OnTargetObjectUnloaded();
+    }
 
-            base.OnTargetObjectUnloaded();
-        }
+    private void OnThemeChanged(object? sender, EventArgs e)
+    {
+        UpdateValue();
+    }
 
-        private void OnThemeChanged(object sender, EventArgs e)
-        {
-            UpdateValue();
-        }
-
-        protected override object ProvideDynamicValue(IServiceProvider serviceProvider)
-        {
-            var resourceName = ResourceName;
-            if (!string.IsNullOrWhiteSpace(resourceName))
-            {
-                return _themeManager.GetThemeColorBrush(resourceName);
-            }
-
-            return _themeManager.GetThemeColorBrush(ThemeColorStyle);
-        }
+    protected override object? ProvideDynamicValue(IServiceProvider? serviceProvider)
+    {
+        var resourceName = ResourceName;
+        return string.IsNullOrWhiteSpace(resourceName)
+            ? _themeManager.GetThemeColorBrush(ThemeColorStyle)
+            : _themeManager.GetThemeColorBrush(resourceName);
     }
 }

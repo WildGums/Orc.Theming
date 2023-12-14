@@ -1,70 +1,68 @@
-﻿namespace Orc.Theming.ViewModels
+﻿namespace Orc.Theming.ViewModels;
+
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Catel.MVVM;
+
+public class FontSizeSwitcherViewModel : ViewModelBase
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using Catel;
-    using Catel.MVVM;
+    private readonly IFontSizeService _fontSizeService;
 
-    public class FontSizeSwitcherViewModel : ViewModelBase
+    public FontSizeSwitcherViewModel(IFontSizeService fontSizeService)
     {
-        private readonly IFontSizeService _fontSizeService;
+        ArgumentNullException.ThrowIfNull(fontSizeService);
 
-        public FontSizeSwitcherViewModel(IFontSizeService fontSizeService)
+        _fontSizeService = fontSizeService;
+
+        var fontSizes = new List<double>(new[]
         {
-            Argument.IsNotNull(() => fontSizeService);
+            10d,
+            11d,
+            12d,
+            14d,
+            16d,
+            18d,
+            20d,
+            22d,
+            24d
+        });
 
-            _fontSizeService = fontSizeService;
-
-            var fontSizes = new List<double>(new[]
-            {
-                10d,
-                11d,
-                12d,
-                14d,
-                16d,
-                18d,
-                20d,
-                22d,
-                24d
-            });
-
-            var currentFontSize = fontSizeService.GetFontSize();
-            if (!fontSizes.Contains(currentFontSize))
-            {
-                fontSizes.Insert(0, currentFontSize);
-            }
-
-            FontSizes = fontSizes;
-            SelectedFontSize = currentFontSize;
+        var currentFontSize = fontSizeService.GetFontSize();
+        if (!fontSizes.Contains(currentFontSize))
+        {
+            fontSizes.Insert(0, currentFontSize);
         }
 
-        public List<double> FontSizes { get; }
+        FontSizes = fontSizes;
+        SelectedFontSize = currentFontSize;
+    }
 
-        public double SelectedFontSize { get; set; }
+    public List<double> FontSizes { get; }
 
-        protected override async Task InitializeAsync()
-        {
-            await base.InitializeAsync();
+    public double SelectedFontSize { get; set; }
 
-            _fontSizeService.FontSizeChanged += OnFontSizeServiceFontSizeChanged;
-        }
+    protected override async Task InitializeAsync()
+    {
+        await base.InitializeAsync();
 
-        protected override async Task CloseAsync()
-        {
-            _fontSizeService.FontSizeChanged -= OnFontSizeServiceFontSizeChanged;
+        _fontSizeService.FontSizeChanged += OnFontSizeServiceFontSizeChanged;
+    }
 
-            await base.CloseAsync();
-        }
+    protected override async Task CloseAsync()
+    {
+        _fontSizeService.FontSizeChanged -= OnFontSizeServiceFontSizeChanged;
 
-        private void OnFontSizeServiceFontSizeChanged(object sender, EventArgs e)
-        {
-            SelectedFontSize = _fontSizeService.GetFontSize();
-        }
+        await base.CloseAsync();
+    }
 
-        private void OnSelectedFontSizeChanged()
-        {
-            _fontSizeService.SetFontSize(SelectedFontSize);
-        }
+    private void OnFontSizeServiceFontSizeChanged(object? sender, EventArgs e)
+    {
+        SelectedFontSize = _fontSizeService.GetFontSize();
+    }
+
+    private void OnSelectedFontSizeChanged()
+    {
+        _fontSizeService.SetFontSize(SelectedFontSize);
     }
 }

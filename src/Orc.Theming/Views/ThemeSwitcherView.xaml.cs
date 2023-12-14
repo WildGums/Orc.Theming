@@ -1,10 +1,9 @@
-﻿namespace Orc.Theming.Views
+﻿namespace Orc.Theming.Views;
+
+public partial class ThemeSwitcherView
 {
-    public partial class ThemeSwitcherView
+    public ThemeSwitcherView()
     {
-        public ThemeSwitcherView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

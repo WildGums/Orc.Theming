@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Catel.MVVM;component/Themes/Generic.xaml" />
+
+        <ResourceDictionary Source="/Orc.Theming;component/Themes/Styles.xaml" />
+        <ResourceDictionary Source="/Orc.Theming;component/Themes/Theming.defaultstyles.wpf.xaml" />
+        <ResourceDictionary Source="/Orc.Theming;component/Themes/Theming.defaultstyles.catel.xaml" />
+        <ResourceDictionary Source="/Orc.Theming;component/Themes/Theming.defaultstyles.orctheming.xaml" />
+        <ResourceDictionary Source="/Orc.Theming;component/Themes/Theming.normal.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

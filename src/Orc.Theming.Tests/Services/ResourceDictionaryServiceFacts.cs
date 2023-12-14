@@ -1,16 +1,15 @@
-﻿namespace Orc.Theming.Tests.Services
-{
-    using NUnit.Framework;
+﻿namespace Orc.Theming.Tests.Services;
 
-    [TestFixture]
-    public class ResourceDictionaryServiceFacts
+using NUnit.Framework;
+
+[TestFixture]
+public class ResourceDictionaryServiceFacts
+{
+    [TestCase("/Orc.Theming;component/themes/nonexisting.xaml", ExpectedResult = false)]
+    [TestCase("/Orc.Theming;component/themes/generic.xaml", ExpectedResult = true)]
+    public bool IsResourceDictionaryAvailable(string uri)
     {
-        [TestCase("/Orc.Theming;component/themes/nonexisting.xaml", ExpectedResult = false)]
-        [TestCase("/Orc.Theming;component/themes/generic.xaml", ExpectedResult = true)]
-        public bool IsResourceDictionaryAvailable(string uri)
-        {
-            var resourceDictionaryService = new ResourceDictionaryService();
-            return resourceDictionaryService.IsResourceDictionaryAvailable(uri);
-        }
+        var resourceDictionaryService = new ResourceDictionaryService();
+        return resourceDictionaryService.IsResourceDictionaryAvailable(uri);
     }
 }

@@ -1,36 +1,35 @@
-﻿namespace Orc.Theming.Example.Wizards.ExampleWizard.ViewModels
-{
-    using System.Collections.Generic;
-    using Catel.Data;
-    using Catel.MVVM;
-    using Orc.Wizard;
+﻿namespace Orc.Theming.Example.Wizards.ExampleWizard.ViewModels;
 
-    public class PersonWizardPageViewModel : WizardPageViewModelBase<PersonWizardPage>
+using System.Collections.Generic;
+using Catel.Data;
+using Catel.MVVM;
+using Wizard;
+
+public class PersonWizardPageViewModel : WizardPageViewModelBase<PersonWizardPage>
+{
+    public PersonWizardPageViewModel(PersonWizardPage wizardPage)
+        : base(wizardPage)
     {
-        public PersonWizardPageViewModel(PersonWizardPage wizardPage)
-            : base(wizardPage)
+    }
+
+    [ViewModelToModel]
+    public string FirstName { get; set; }
+
+    [ViewModelToModel]
+    public string LastName { get; set; }
+
+    protected override void ValidateFields(List<IFieldValidationResult> validationResults)
+    {
+        base.ValidateFields(validationResults);
+
+        if (string.IsNullOrWhiteSpace(FirstName))
         {
+            validationResults.Add(FieldValidationResult.CreateError(nameof(FirstName), "First name is required"));
         }
 
-        [ViewModelToModel]
-        public string FirstName { get; set; }
-
-        [ViewModelToModel]
-        public string LastName { get; set; }
-
-        protected override void ValidateFields(List<IFieldValidationResult> validationResults)
+        if (string.IsNullOrWhiteSpace(LastName))
         {
-            base.ValidateFields(validationResults);
-
-            if (string.IsNullOrWhiteSpace(FirstName))
-            {
-                validationResults.Add(FieldValidationResult.CreateError(nameof(FirstName), "First name is required"));
-            }
-
-            if (string.IsNullOrWhiteSpace(LastName))
-            {
-                validationResults.Add(FieldValidationResult.CreateError(nameof(LastName), "Last name is required"));
-            }
+            validationResults.Add(FieldValidationResult.CreateError(nameof(LastName), "Last name is required"));
         }
     }
 }

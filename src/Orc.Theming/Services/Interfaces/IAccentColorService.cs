@@ -1,14 +1,13 @@
-﻿namespace Orc.Theming
+﻿namespace Orc.Theming;
+
+using System;
+using System.Windows.Media;
+
+public interface IAccentColorService
 {
-    using System;
-    using System.Windows.Media;
+    event EventHandler<EventArgs>? AccentColorChanged;
 
-    public interface IAccentColorService
-    {
-        Color GetAccentColor();
+    Color GetAccentColor();
 
-        bool SetAccentColor(Color color);
-
-        event EventHandler<EventArgs> AccentColorChanged;
-    }
+    bool SetAccentColor(Color color);
 }

@@ -1,19 +1,18 @@
-﻿namespace Orc.Theming.Example.Views
+﻿namespace Orc.Theming.Example.Views;
+
+using System.Windows.Controls;
+
+public partial class TextBoxView
 {
-    using System.Windows.Controls;
-
-    public partial class TextBoxView
+    public TextBoxView()
     {
-        public TextBoxView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
 
-        private void TextBox_Loaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-            var textBox = sender as TextBox;
-            textBox.SelectionStart = 0;
-            textBox.SelectionLength = textBox.Text.Length;
-        }
+    private void TextBox_Loaded(object sender, System.Windows.RoutedEventArgs e)
+    {
+        var textBox = sender as TextBox;
+        textBox.SelectionStart = 0;
+        textBox.SelectionLength = textBox.Text.Length;
     }
 }

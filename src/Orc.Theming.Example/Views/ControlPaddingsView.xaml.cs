@@ -1,13 +1,9 @@
-﻿namespace Orc.Theming.Example.Views
+﻿namespace Orc.Theming.Example.Views;
+
+public partial class ControlPaddingsView
 {
-    /// <summary>
-    ///     Interaction logic for ControlPaddingsView.xaml
-    /// </summary>
-    public partial class ControlPaddingsView
+    public ControlPaddingsView()
     {
-        public ControlPaddingsView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

@@ -1,13 +1,9 @@
-﻿namespace Orc.Theming.Example.Views
+﻿namespace Orc.Theming.Example.Views;
+
+public partial class SeparateWindow
 {
-    /// <summary>
-    ///     Interaction logic for SeparateWindow.xaml
-    /// </summary>
-    public partial class SeparateWindow
+    public SeparateWindow()
     {
-        public SeparateWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

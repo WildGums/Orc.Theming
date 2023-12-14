@@ -101,7 +101,6 @@
 
             <GroupBox Header="Orc.Controls controls">
                 <WrapPanel Orientation="Horizontal">
-                    <orccontrols:DatePicker ToolTip="Orc.Controls: DatePicker" />
                     <orccontrols:DateTimePicker ToolTip="Orc.Controls: DateTimePicker" />
                     <orccontrols:DropDownButton Width="40"
                                                 ToolTip="Orc.Controls: DropDownButton" />

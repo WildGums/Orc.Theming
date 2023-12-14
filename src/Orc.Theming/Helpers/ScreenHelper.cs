@@ -1,39 +1,40 @@
-﻿namespace Orc.Theming
+﻿namespace Orc.Theming;
+
+using System;
+using System.Drawing;
+using System.Reflection;
+using System.Windows;
+using System.Windows.Forms;
+using System.Windows.Interop;
+using Size = System.Windows.Size;
+
+public static class ScreenHelper
 {
-    using System.Drawing;
-    using System.Reflection;
-    using System.Windows;
-    using System.Windows.Forms;
-    using System.Windows.Interop;
-    using Size = System.Windows.Size;
+    private static Size DpiCache;
 
-    public static class ScreenHelper
+    public static Size GetDpi()
     {
-        private static Size DpiCache;
-
-        public static Size GetDpi()
+        if (DpiCache.Width != 0d && DpiCache.Height != 0d)
         {
-            if (DpiCache.Width != 0d && DpiCache.Height != 0d)
-            {
-                return DpiCache;
-            }
-
-            var dpiXProperty = typeof(SystemParameters).GetProperty("DpiX", BindingFlags.NonPublic | BindingFlags.Static);
-            var dpiYProperty = typeof(SystemParameters).GetProperty("Dpi", BindingFlags.NonPublic | BindingFlags.Static);
-
-            DpiCache.Width = (int)dpiXProperty.GetValue(null, null);
-            DpiCache.Height = (int)dpiYProperty.GetValue(null, null);
-
             return DpiCache;
         }
 
-        public static Rectangle GetScreenBounds(Window window)
-        {
+        var dpiXProperty = typeof(SystemParameters).GetProperty("DpiX", BindingFlags.NonPublic | BindingFlags.Static);
+        var dpiYProperty = typeof(SystemParameters).GetProperty("Dpi", BindingFlags.NonPublic | BindingFlags.Static);
 
-            var windowInteropHelper = new WindowInteropHelper(window);
-            var screen = Screen.FromHandle(windowInteropHelper.Handle);
+        DpiCache.Width = dpiXProperty?.GetValue(null, null) as int? ?? 96;
+        DpiCache.Height = dpiYProperty?.GetValue(null, null) as int? ?? 96;
 
-            return screen.Bounds;
-        }
+        return DpiCache;
+    }
+
+    public static Rectangle GetScreenBounds(Window window)
+    {
+        ArgumentNullException.ThrowIfNull(window);
+
+        var windowInteropHelper = new WindowInteropHelper(window);
+        var screen = Screen.FromHandle(windowInteropHelper.Handle);
+
+        return screen.Bounds;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Resources;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Markup;
 
@@ -12,14 +13,16 @@ using System.Windows.Markup;
 
 [assembly: XmlnsPrefix("http://schemas.wildgums.com/orc/theming", "orctheming")]
 [assembly: XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming")]
-//[assembly: XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Behaviors")]
+[assembly: XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Behaviors")]
 [assembly: XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Controls")]
-//[assembly: XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Converters")]
+[assembly: XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Converters")]
 //[assembly: XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Fonts")]
 //[assembly: XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Markup")]
 //[assembly: XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Theming")]
 [assembly: XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Views")]
 //[assembly: XmlnsDefinition("http://schemas.wildgums.com/orc/theming", "Orc.Theming.Windows")]
+
+[assembly: InternalsVisibleTo("Orc.Theming.Tests")]
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located

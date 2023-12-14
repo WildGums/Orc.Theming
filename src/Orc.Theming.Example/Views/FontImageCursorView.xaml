@@ -1,0 +1,82 @@
+﻿<catel:UserControl x:Class="Orc.Theming.Example.Views.FontImageCursorView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:catel="http://schemas.catelproject.com"
+                   xmlns:example="clr-namespace:Orc.Theming.Example"
+                   xmlns:orccontrols="http://schemas.wildgums.com/orc/controls"
+                   xmlns:orctheming="http://schemas.wildgums.com/orc/theming"
+                   mc:Ignorable="d"
+                   d:DesignHeight="450"
+                   d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Border BorderThickness="2"
+                BorderBrush="Black"
+                Width="150"
+                Height="100"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Cursor="{Binding ElementName=CursorImagesListView, Path=SelectedItem.DataContext}">
+
+            <TextBlock Text="Move pointer here..."
+                       TextWrapping="Wrap"
+                       VerticalAlignment="Stretch"
+                       HorizontalAlignment="Stretch" />
+        </Border>
+
+        <ListView x:Name="CursorImagesListView"
+                  Grid.Column="1">
+
+            <ListViewItem DataContext="{orctheming:FontImageCursor ItemName={x:Static example:FontAwesome.SmileO}, Brush=Green, Width=100, Height=100}">
+                <orccontrols:FontImageControl FontFamily="FontAwesome"
+                                              Foreground="Green"
+                                              Background="Transparent"
+                                              Width="100"
+                                              Height="100"
+                                              ItemName="{x:Static example:FontAwesome.SmileO}" />
+            </ListViewItem>
+
+            <ListViewItem DataContext="{orctheming:FontImageCursor ItemName={x:Static example:FontAwesome.HandOLeft}, Brush=Red}">
+                <orccontrols:FontImageControl FontFamily="FontAwesome"
+                                              Foreground="Red"
+                                              Background="Transparent"
+                                              Width="20"
+                                              Height="20"
+                                              ItemName="{x:Static example:FontAwesome.HandOLeft}" />
+            </ListViewItem>
+
+            <ListViewItem DataContext="{orctheming:FontImageCursor ItemName={x:Static example:FontAwesome.HandODown}, Brush=Blue}">
+                <orccontrols:FontImageControl FontFamily="FontAwesome"
+                                              Foreground="Blue"
+                                              Background="Transparent"
+                                              Width="20"
+                                              Height="20"
+                                              ItemName="{x:Static example:FontAwesome.HandODown}" />
+            </ListViewItem>
+
+            <ListViewItem DataContext="{orctheming:FontImageCursor ItemName={x:Static example:FontAwesome.Scissors}, Brush=Black}">
+                <orccontrols:FontImageControl FontFamily="FontAwesome"
+                                              Foreground="Black"
+                                              Background="Transparent"
+                                              Width="20"
+                                              Height="20"
+                                              ItemName="{x:Static example:FontAwesome.Scissors}" />
+            </ListViewItem>
+
+            <ListViewItem DataContext="{orctheming:FontImageCursor ItemName={x:Static example:FontAwesome.Copy}, Brush=Purple}">
+                <orccontrols:FontImageControl FontFamily="FontAwesome"
+                                              Foreground="Purple"
+                                              Background="Transparent"
+                                              Width="20"
+                                              Height="20"
+                                              ItemName="{x:Static example:FontAwesome.Copy}" />
+            </ListViewItem>
+        </ListView>
+    </Grid>
+</catel:UserControl>

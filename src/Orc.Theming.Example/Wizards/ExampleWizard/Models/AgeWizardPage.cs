@@ -1,16 +1,15 @@
-﻿namespace Orc.Theming.Example.Wizards.ExampleWizard
+﻿namespace Orc.Theming.Example.Wizards.ExampleWizard;
+
+using Wizard;
+
+public class AgeWizardPage : WizardPageBase
 {
-    using Orc.Wizard;
-
-    public class AgeWizardPage : WizardPageBase
+    public AgeWizardPage()
     {
-        public AgeWizardPage()
-        {
-            Title = "Age";
-            Description = "Specify the age of the person";
-            IsOptional = true;
-        }
-
-        public string Age { get; set; }
+        Title = "Age";
+        Description = "Specify the age of the person";
+        IsOptional = true;
     }
+
+    public string Age { get; set; }
 }

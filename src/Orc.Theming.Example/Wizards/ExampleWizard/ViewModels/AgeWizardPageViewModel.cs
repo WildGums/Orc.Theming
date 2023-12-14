@@ -1,16 +1,15 @@
-﻿namespace Orc.Theming.Example.Wizards.ExampleWizard.ViewModels
+﻿namespace Orc.Theming.Example.Wizards.ExampleWizard.ViewModels;
+
+using Catel.MVVM;
+using Wizard;
+
+public class AgeWizardPageViewModel : WizardPageViewModelBase<AgeWizardPage>
 {
-    using Catel.MVVM;
-    using Orc.Wizard;
-
-    public class AgeWizardPageViewModel : WizardPageViewModelBase<AgeWizardPage>
+    public AgeWizardPageViewModel(AgeWizardPage wizardPage)
+        : base(wizardPage)
     {
-        public AgeWizardPageViewModel(AgeWizardPage wizardPage)
-            : base(wizardPage)
-        {
-        }
-
-        [ViewModelToModel]
-        public string Age { get; set; }
     }
+
+    [ViewModelToModel]
+    public string Age { get; set; }
 }

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:controls="clr-namespace:Orc.Theming.Controls" xmlns:converters="clr-namespace:Orc.Theming.Converters" xmlns:catel="http://schemas.catelproject.com" xmlns:b="http://schemas.microsoft.com/xaml/behaviors" xmlns:orctheming="clr-namespace:Orc.Theming" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:controls="clr-namespace:Orc.Theming.Controls" xmlns:converters="clr-namespace:Orc.Theming.Converters" xmlns:catel="http://schemas.catelproject.com" xmlns:b="http://schemas.microsoft.com/xaml/behaviors" xmlns:orcthemingbehaviors="clr-namespace:Orc.Theming.Behaviors" xmlns:sys="clr-namespace:System;assembly=mscorlib">
   <converters:ProgressBarSizeToTrackRadiusConverter x:Key="ProgressBarSizeToTrackRadiusConverter" />
   <converters:ProgressBarTrackRadiusToTrackOffsetConverter x:Key="ProgressBarTrackRadiusToTrackOffsetConverter" />
   <converters:ProgressBarTrackToIndicatorSizeConverter x:Key="ProgressBarTrackToIndicatorSizeConverter" />
@@ -275,7 +275,7 @@
             <!-- Popup -->
             <Popup IsOpen="{Binding ElementName=PART_MessageBar, Path=IsMouseOver, Mode=OneWay}" PlacementTarget="{Binding ElementName=infoBarSeparator}" Placement="Bottom" AllowsTransparency="True" PopupAnimation="Fade">
               <b:Interaction.Behaviors>
-                <orctheming:CorrectPopupWidthBehavior ParentElement="{Binding RelativeSource={RelativeSource TemplatedParent}}" />
+                <orcthemingbehaviors:CorrectPopupWidth ParentElement="{Binding RelativeSource={RelativeSource TemplatedParent}}" />
               </b:Interaction.Behaviors>
               <Grid Background="{DynamicResource InfoBarMessageErrorTextBackgroundBrush}" DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type catel:InfoBarMessageControl}}}">
                 <!-- Column definitions -->
