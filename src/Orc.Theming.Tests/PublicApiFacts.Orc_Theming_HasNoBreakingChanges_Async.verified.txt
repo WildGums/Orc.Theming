@@ -142,6 +142,19 @@ namespace Orc.Theming
         public double Width { get; set; }
         protected override object ProvideDynamicValue(System.IServiceProvider? serviceProvider) { }
     }
+    public class FontSize : Catel.Windows.Markup.UpdatableMarkupExtension
+    {
+        public FontSize() { }
+        [System.Windows.Markup.ConstructorArgument("delta")]
+        public double? Delta { get; set; }
+        [System.Windows.Markup.ConstructorArgument("scale")]
+        public double? Scale { get; set; }
+        [System.Windows.Markup.ConstructorArgument("subscribeToEvents")]
+        public bool SubscribeToEvents { get; set; }
+        protected override void OnTargetObjectLoaded() { }
+        protected override void OnTargetObjectUnloaded() { }
+        protected override object? ProvideDynamicValue(System.IServiceProvider? serviceProvider) { }
+    }
     public class FontSizeService : Orc.Theming.IFontSizeService
     {
         public FontSizeService() { }

@@ -1,0 +1,98 @@
+﻿<catel:UserControl x:Class="Orc.Theming.Example.Views.FontSizeView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:catel="http://schemas.catelproject.com"
+                   xmlns:ribbon="clr-namespace:Orc.Theming.Example"
+                   xmlns:orctheming="http://schemas.wildgums.com/orc/theming"
+                   xmlns:orccontrols="http://schemas.wildgums.com/orc/controls">
+
+    <orccontrols:StackGrid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Default font size"
+               Grid.ColumnSpan="2" 
+               HorizontalAlignment="Center" />
+
+        <GroupBox Header="No subscriptions">
+            <StackPanel Orientation="Horizontal">
+                <GroupBox Header="Scaling">
+                    <StackPanel Orientation="Vertical"
+                                HorizontalAlignment="Left">
+                        <Label Content="This is 0.6"
+                               FontSize="{orctheming:FontSize Scale=0.6}" />
+                        <Label Content="This is 0.8"
+                               FontSize="{orctheming:FontSize Scale=0.8}" />
+                        <Label Content="This is 1.0"
+                               FontSize="{orctheming:FontSize Scale=1.0}" />
+                        <Label Content="This is 1.2"
+                               FontSize="{orctheming:FontSize Scale=1.2}" />
+                        <Label Content="This is 1.4"
+                               FontSize="{orctheming:FontSize Scale=1.4}" />
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Header="Delta">
+                    <StackPanel Orientation="Vertical"
+                                HorizontalAlignment="Left">
+                        <Label Content="This is -4"
+                               FontSize="{orctheming:FontSize Delta=-4}" />
+                        <Label Content="This is -2"
+                               FontSize="{orctheming:FontSize Delta=-2}" />
+                        <Label Content="This is 0"
+                               FontSize="{orctheming:FontSize Delta=0}" />
+                        <Label Content="This is +2"
+                               FontSize="{orctheming:FontSize Delta=2}" />
+                        <Label Content="This is +4"
+                               FontSize="{orctheming:FontSize Delta=4}" />
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="Subscriptions">
+            <StackPanel Orientation="Horizontal">
+                <GroupBox Header="Scaling">
+                    <StackPanel Orientation="Vertical"
+                                HorizontalAlignment="Left">
+                        <Label Content="This is 0.6"
+                               FontSize="{orctheming:FontSize Scale=0.6, SubscribeToEvents=True}" />
+                        <Label Content="This is 0.8"
+                               FontSize="{orctheming:FontSize Scale=0.8, SubscribeToEvents=True}" />
+                        <Label Content="This is 1.0"
+                               FontSize="{orctheming:FontSize Scale=1.0, SubscribeToEvents=True}" />
+                        <Label Content="This is 1.2"
+                               FontSize="{orctheming:FontSize Scale=1.2, SubscribeToEvents=True}" />
+                        <Label Content="This is 1.4"
+                               FontSize="{orctheming:FontSize Scale=1.4, SubscribeToEvents=True}" />
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Header="Delta">
+                    <StackPanel Orientation="Vertical"
+                                HorizontalAlignment="Left">
+                        <Label Content="This is -4"
+                               FontSize="{orctheming:FontSize Delta=-4, SubscribeToEvents=True}" />
+                        <Label Content="This is -2"
+                               FontSize="{orctheming:FontSize Delta=-2, SubscribeToEvents=True}" />
+                        <Label Content="This is 0"
+                               FontSize="{orctheming:FontSize Delta=0, SubscribeToEvents=True}" />
+                        <Label Content="This is +2"
+                               FontSize="{orctheming:FontSize Delta=2, SubscribeToEvents=True}" />
+                        <Label Content="This is +4"
+                               FontSize="{orctheming:FontSize Delta=4, SubscribeToEvents=True}" />
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </GroupBox>
+
+    </orccontrols:StackGrid>
+
+</catel:UserControl>
