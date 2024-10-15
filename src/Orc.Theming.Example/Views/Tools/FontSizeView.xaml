@@ -21,7 +21,7 @@
                Grid.ColumnSpan="2" 
                HorizontalAlignment="Center" />
 
-        <GroupBox Header="No subscriptions">
+        <GroupBox Header="No subscriptions (not responsive)">
             <StackPanel Orientation="Horizontal">
                 <GroupBox Header="Scaling">
                     <StackPanel Orientation="Vertical"
@@ -57,7 +57,7 @@
             </StackPanel>
         </GroupBox>
 
-        <GroupBox Header="Subscriptions">
+        <GroupBox Header="Subscriptions (responsive)">
             <StackPanel Orientation="Horizontal">
                 <GroupBox Header="Scaling">
                     <StackPanel Orientation="Vertical"
