@@ -146,6 +146,8 @@ namespace Orc.Theming
     {
         public FontSize() { }
         [System.Windows.Markup.ConstructorArgument("delta")]
+        public double? Absolute { get; set; }
+        [System.Windows.Markup.ConstructorArgument("delta")]
         public double? Delta { get; set; }
         [System.Windows.Markup.ConstructorArgument("mode")]
         public Orc.Theming.FontSizeMode Mode { get; set; }

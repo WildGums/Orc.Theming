@@ -52,6 +52,13 @@ public class FontSize : UpdatableMarkupExtension
     public double? Delta { get; set; }
 
     /// <summary>
+    /// Gets or sets the absolute font size, that will be scaled to the default font size of 12.
+    /// </summary>
+    /// <value>The absolute font size.</value>
+    [ConstructorArgument("delta")]
+    public double? Absolute { get; set; }
+
+    /// <summary>
     /// Gets or sets the mode
     /// </summary>
     [ConstructorArgument("mode")]
@@ -93,6 +100,14 @@ public class FontSize : UpdatableMarkupExtension
         }
 
         var finalFontSize = defaultFontSize;
+
+        if (Absolute is not null)
+        {
+            // Return immediately, always use 12d as base font
+            var factor = Absolute.Value / 12d;
+            finalFontSize =  defaultFontSize * factor;
+            return finalFontSize;
+        }
 
         if (Delta is not null)
         {
