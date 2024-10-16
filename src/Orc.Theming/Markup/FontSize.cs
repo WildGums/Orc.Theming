@@ -17,7 +17,7 @@ public class FontSize : UpdatableMarkupExtension
 {
     private static readonly ILog Log = LogManager.GetCurrentClassLogger();
 
-    private static Stopwatch LastUpdatedTextBlockFontSizeStopwatch = Stopwatch.StartNew();
+    private static readonly Stopwatch LastUpdatedTextBlockFontSizeStopwatch = Stopwatch.StartNew();
     private static double? DefaultTextBlockFontSize = null;
 
     private IFontSizeService? _fontSizeService;
