@@ -63,6 +63,11 @@ public class FontSizeSwitcherViewModel : ViewModelBase
 
     private void OnSelectedFontSizeChanged()
     {
+        if (!IsInitialized)
+        {
+            return;
+        }
+
         _fontSizeService.SetFontSize(SelectedFontSize);
     }
 }

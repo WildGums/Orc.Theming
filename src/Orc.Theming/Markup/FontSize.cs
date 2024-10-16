@@ -29,6 +29,7 @@ public class FontSize : UpdatableMarkupExtension
     {
         Scale = 1.0d;
         SubscribeToEvents = false;
+        Mode = FontSizeMode.Default;
     }
 
     /// <summary>
@@ -46,6 +47,12 @@ public class FontSize : UpdatableMarkupExtension
     public double? Delta { get; set; }
 
     /// <summary>
+    /// Gets or sets the mode
+    /// </summary>
+    [ConstructorArgument("mode")]
+    public FontSizeMode Mode { get; set; }
+
+    /// <summary>
     /// Gets or sets whether this markup extension should subscribe to events to be responsive.
     /// <para />
     /// The default value is <c>false</c> for performance reasons.
@@ -58,13 +65,26 @@ public class FontSize : UpdatableMarkupExtension
     {
         var defaultFontSize = 12d;
 
-        if (TargetObject is DependencyObject dependencyObject)
+        switch (Mode)
         {
-            var parentControl = dependencyObject.GetLogicalParent()?.FindLogicalAncestorByType<Control>();
-            if (parentControl is not null)
-            {
-                defaultFontSize = (double)parentControl.GetValue(Control.FontSizeProperty);
-            }
+            case FontSizeMode.TextBlockMetadata:
+                defaultFontSize = GetFontSizeFromTextBlockMetadata();
+                break;
+
+            case FontSizeMode.Parent:
+                defaultFontSize = GetFontSizeFromParent();
+                break;
+
+            case FontSizeMode.Service:
+                defaultFontSize = GetFontSizeFromService();
+                break;
+
+            case FontSizeMode.Resource:
+                defaultFontSize = GetFontSizeFromResource();
+                break;
+
+            default:
+                throw Log.ErrorAndCreateException<NotSupportedException>($"Mode '{Mode}' is not supported");
         }
 
         var finalFontSize = defaultFontSize;
@@ -82,22 +102,50 @@ public class FontSize : UpdatableMarkupExtension
         return finalFontSize;
     }
 
+    private double GetFontSizeFromTextBlockMetadata()
+    {
+        var defaultValue = (double)TextBlock.FontSizeProperty.GetMetadata(typeof(TextBlock)).DefaultValue;
+        return defaultValue;
+    }
+
+    private double GetFontSizeFromParent()
+    {
+        var defaultFontSize = 12d;
+
+        if (TargetObject is DependencyObject dependencyObject)
+        {
+            var parentControl = dependencyObject.GetLogicalParent()?.FindLogicalAncestorByType<Control>();
+            if (parentControl is not null)
+            {
+                defaultFontSize = (double)parentControl.GetValue(Control.FontSizeProperty);
+            }
+        }
+
+        return defaultFontSize;
+    }
+
+    private double GetFontSizeFromService()
+    {
+        var service = GetFontSizeService();
+        return service.GetFontSize();
+    }
+
+    private double GetFontSizeFromResource()
+    {
+        // TODO: Based on discussion and performance, we consider
+        // resolving "fixed resources" based on the properties (e.g. Delta=4 resolves to Heading2)
+
+        throw Log.ErrorAndCreateException<NotImplementedException>("Reserved for future usage");
+    }
+
     protected override void OnTargetObjectLoaded()
     {
         base.OnTargetObjectLoaded();
 
         if (SubscribeToEvents)
         {
-            var fontSizeService = _fontSizeService;
-            if (fontSizeService is null)
-            {
-                _fontSizeService = fontSizeService = ServiceLocator.Default.ResolveType<IFontSizeService>();
-            }
-
-            if (fontSizeService is not null)
-            {
-                fontSizeService.FontSizeChanged += OnFontSizeServiceFontSizeChanged;
-            }
+            var fontSizeService = GetFontSizeService();
+            fontSizeService.FontSizeChanged += OnFontSizeServiceFontSizeChanged;
         }
     }
 
@@ -110,6 +158,17 @@ public class FontSize : UpdatableMarkupExtension
         }
 
         base.OnTargetObjectUnloaded();
+    }
+
+    private IFontSizeService GetFontSizeService()
+    {
+        var fontSizeService = _fontSizeService;
+        if (fontSizeService is null)
+        {
+            _fontSizeService = fontSizeService = ServiceLocator.Default.ResolveRequiredType<IFontSizeService>();
+        }
+
+        return fontSizeService;
     }
 
     private void OnFontSizeServiceFontSizeChanged(object? sender, EventArgs e)
