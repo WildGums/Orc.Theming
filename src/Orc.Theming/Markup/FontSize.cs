@@ -1,6 +1,7 @@
 ﻿namespace Orc.Theming;
 
 using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
@@ -16,7 +17,11 @@ public class FontSize : UpdatableMarkupExtension
 {
     private static readonly ILog Log = LogManager.GetCurrentClassLogger();
 
+    private static Stopwatch LastUpdatedTextBlockFontSizeStopwatch = Stopwatch.StartNew();
+    private static double? DefaultTextBlockFontSize = null;
+
     private IFontSizeService? _fontSizeService;
+
 
     static FontSize()
     {
@@ -104,8 +109,13 @@ public class FontSize : UpdatableMarkupExtension
 
     private double GetFontSizeFromTextBlockMetadata()
     {
-        var defaultValue = (double)TextBlock.FontSizeProperty.GetMetadata(typeof(TextBlock)).DefaultValue;
-        return defaultValue;
+        var defaultValue = DefaultTextBlockFontSize;
+        if (defaultValue is null)
+        {
+            defaultValue = DefaultTextBlockFontSize = (double)TextBlock.FontSizeProperty.GetMetadata(typeof(TextBlock)).DefaultValue;
+        }
+
+        return defaultValue.Value;
     }
 
     private double GetFontSizeFromParent()
@@ -173,6 +183,15 @@ public class FontSize : UpdatableMarkupExtension
 
     private void OnFontSizeServiceFontSizeChanged(object? sender, EventArgs e)
     {
+        // "Simple" way for fast static caching with single updates
+        if (LastUpdatedTextBlockFontSizeStopwatch.ElapsedMilliseconds > 500)
+        {
+            Debug.WriteLine("Resetting default TextBlock font size");
+
+            DefaultTextBlockFontSize = null;
+            LastUpdatedTextBlockFontSizeStopwatch.Reset();
+        }
+
         UpdateValue();
     }
 }
