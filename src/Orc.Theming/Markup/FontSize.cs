@@ -15,6 +15,8 @@ using Catel.Windows.Markup;
 /// </summary>
 public class FontSize : UpdatableMarkupExtension
 {
+    private const double DefaultFontSize = 12d;
+
     private static readonly ILog Log = LogManager.GetCurrentClassLogger();
 
     private static readonly Stopwatch LastUpdatedTextBlockFontSizeStopwatch = Stopwatch.StartNew();
@@ -75,7 +77,7 @@ public class FontSize : UpdatableMarkupExtension
 
     protected override object? ProvideDynamicValue(IServiceProvider? serviceProvider)
     {
-        var defaultFontSize = 12d;
+        var defaultFontSize = DefaultFontSize;
 
         switch (Mode)
         {
@@ -104,7 +106,7 @@ public class FontSize : UpdatableMarkupExtension
         if (Absolute is not null)
         {
             // Return immediately, always use 12d as base font
-            var factor = Absolute.Value / 12d;
+            var factor = Absolute.Value / DefaultFontSize;
             finalFontSize =  defaultFontSize * factor;
             return finalFontSize;
         }
@@ -135,7 +137,7 @@ public class FontSize : UpdatableMarkupExtension
 
     private double GetFontSizeFromParent()
     {
-        var defaultFontSize = 12d;
+        var defaultFontSize = DefaultFontSize;
 
         if (TargetObject is DependencyObject dependencyObject)
         {
