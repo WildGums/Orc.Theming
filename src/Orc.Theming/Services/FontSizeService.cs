@@ -3,6 +3,7 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using Catel.Logging;
 
 public class FontSizeService : IFontSizeService
@@ -42,6 +43,16 @@ public class FontSizeService : IFontSizeService
         if (mainWindow is not null)
         {
             TextBlock.SetFontSize(mainWindow, fontSize);
+        }
+
+        try
+        {
+            TextElement.FontSizeProperty.OverrideMetadata(typeof(TextElement), new FrameworkPropertyMetadata(fontSize));
+            TextBlock.FontSizeProperty.OverrideMetadata(typeof(TextBlock), new FrameworkPropertyMetadata(fontSize));
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Failed to apply font size");
         }
 
         RaiseFontSizeChanged();

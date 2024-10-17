@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:controls="clr-namespace:Orc.Theming.Controls" xmlns:converters="clr-namespace:Orc.Theming.Converters" xmlns:catel="http://schemas.catelproject.com" xmlns:b="http://schemas.microsoft.com/xaml/behaviors" xmlns:orcthemingbehaviors="clr-namespace:Orc.Theming.Behaviors" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:controls="clr-namespace:Orc.Theming.Controls" xmlns:converters="clr-namespace:Orc.Theming.Converters" xmlns:catel="http://schemas.catelproject.com" xmlns:b="http://schemas.microsoft.com/xaml/behaviors" xmlns:orcthemingbehaviors="clr-namespace:Orc.Theming.Behaviors" xmlns:local="clr-namespace:Orc.Theming" xmlns:sys="clr-namespace:System;assembly=mscorlib">
   <converters:ProgressBarSizeToTrackRadiusConverter x:Key="ProgressBarSizeToTrackRadiusConverter" />
   <converters:ProgressBarTrackRadiusToTrackOffsetConverter x:Key="ProgressBarTrackRadiusToTrackOffsetConverter" />
   <converters:ProgressBarTrackToIndicatorSizeConverter x:Key="ProgressBarTrackToIndicatorSizeConverter" />
@@ -345,7 +345,7 @@
               <ControlTemplate.Resources>
                 <!-- Start: Data template for header button -->
                 <DataTemplate x:Key="{x:Static CalendarItem.DayTitleTemplateResourceKey}">
-                  <TextBlock FontWeight="Bold" FontFamily="Verdana" FontSize="9.5" Foreground="{DynamicResource Orc.Brushes.Control.Default.Foreground}" HorizontalAlignment="Center" Text="{Binding}" Margin="0,6,0,6" VerticalAlignment="Center" />
+                  <TextBlock FontWeight="Bold" FontFamily="Verdana" FontSize="{local:FontSize Absolute=9.5}" Foreground="{DynamicResource Orc.Brushes.Control.Default.Foreground}" HorizontalAlignment="Center" Text="{Binding}" Margin="0,6,0,6" VerticalAlignment="Center" />
                 </DataTemplate>
                 <!-- End: Data template for header button -->
               </ControlTemplate.Resources>
@@ -465,7 +465,7 @@
                       <Button x:Name="PART_PreviousButton" Grid.Row="0" Grid.Column="0" Template="{StaticResource Ö}" Height="20" Width="28" HorizontalAlignment="Left" Focusable="False" />
                       <!-- End: Previous button content -->
                       <!-- Start: Header button content -->
-                      <Button x:Name="PART_HeaderButton" Grid.Row="0" Grid.Column="1" Template="{StaticResource Ø}" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="10.5" Focusable="False" />
+                      <Button x:Name="PART_HeaderButton" Grid.Row="0" Grid.Column="1" Template="{StaticResource Ø}" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="{local:FontSize Absolute=10.5}" Focusable="False" />
                       <!-- End: Header button content -->
                       <!-- Start: Next button content -->
                       <Button x:Name="PART_NextButton" Grid.Row="0" Grid.Column="2" Height="20" Width="28" HorizontalAlignment="Right" Template="{StaticResource ×}" Focusable="False" />

@@ -20,7 +20,7 @@
                       HorizontalContentAlignment="Center"
                       VerticalContentAlignment="Center"
                       Content="&#8800;"
-                      FontSize="28"/>
+                      FontSize="{orctheming:FontSize Absolute=28}"/>
     </StackPanel>
     
 </catel:UserControl>

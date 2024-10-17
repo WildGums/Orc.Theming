@@ -16,10 +16,13 @@
 
         <StackPanel Grid.Row="0"
                     Orientation="Horizontal">
-            <orctheming:BaseColorSchemeSwitcherView />
+            <StackPanel>
+                <orctheming:AccentColorSwitcherView />
+                <orctheming:FontSizeSwitcherView />
+                <orctheming:BaseColorSchemeSwitcherView />
+            </StackPanel>
+            
             <orctheming:BaseColorSchemeSwitcherWithIconView />
-            <orctheming:AccentColorSwitcherView />
-            <orctheming:FontSizeSwitcherView />
         </StackPanel>
 
         <TabControl x:Name="TabControl" Grid.Row="1">

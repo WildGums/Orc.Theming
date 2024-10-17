@@ -8,6 +8,7 @@
              xmlns:system="clr-namespace:System;assembly=System.Runtime"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    
     <StackPanel Orientation="Vertical">
         <orccontrols:WatermarkTextBox Watermark="WatermarkTextBox"/>
         <TextBox Text="TextBox"/>
@@ -15,4 +16,5 @@
         <orccontrols:FilterBox Text="FilterBox"/>
         <orccontrols:DateTimePicker Value="{x:Static system:DateTime.Now}"/>
     </StackPanel>
+    
 </catel:UserControl>
