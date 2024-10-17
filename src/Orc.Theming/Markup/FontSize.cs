@@ -92,6 +92,26 @@ public class FontSize : UpdatableMarkupExtension
         LastUpdatedTextBlockFontSizeStopwatch.Reset();
     }
 
+    /// <summary>
+    /// Gets the font size using the <see cref="FontSizeMode.TextBlockMetadata"/> mode.
+    /// </summary>
+    /// <param name="absolute">The absolute value based on the standard 12p font size.</param>
+    /// <returns></returns>
+    public static double GetFontSize(double absolute)
+    {
+        var defaultFontSize = GetFontSizeFromTextBlockMetadata();
+
+        return GetFontSize(defaultFontSize, absolute);
+    }
+
+    protected static double GetFontSize(double defaultFontSize, double absoluteFontSize)
+    {
+        // Use constant to define the ratio
+        var factor = absoluteFontSize / DefaultFontSize;
+        var finalFontSize = defaultFontSize * factor;
+        return finalFontSize;
+    }
+
     protected override object? ProvideDynamicValue(IServiceProvider? serviceProvider)
     {
         var defaultFontSize = DefaultFontSize;
@@ -123,9 +143,7 @@ public class FontSize : UpdatableMarkupExtension
         if (Absolute is not null)
         {
             // Return immediately, always use 12d as base font
-            var factor = Absolute.Value / DefaultFontSize;
-            finalFontSize =  defaultFontSize * factor;
-            return finalFontSize;
+            return GetFontSize(Absolute.Value);
         }
 
         if (Delta is not null)
@@ -141,7 +159,7 @@ public class FontSize : UpdatableMarkupExtension
         return finalFontSize;
     }
 
-    private double GetFontSizeFromTextBlockMetadata()
+    protected static double GetFontSizeFromTextBlockMetadata()
     {
         var defaultValue = DefaultTextBlockFontSize;
         if (defaultValue is null)
@@ -152,7 +170,7 @@ public class FontSize : UpdatableMarkupExtension
         return defaultValue.Value;
     }
 
-    private double GetFontSizeFromParent()
+    protected virtual double GetFontSizeFromParent()
     {
         var defaultFontSize = DefaultFontSize;
 
@@ -168,13 +186,13 @@ public class FontSize : UpdatableMarkupExtension
         return defaultFontSize;
     }
 
-    private double GetFontSizeFromService()
+    protected virtual double GetFontSizeFromService()
     {
         var service = GetFontSizeService();
         return service.GetFontSize();
     }
 
-    private double GetFontSizeFromResource()
+    protected virtual double GetFontSizeFromResource()
     {
         // TODO: Based on discussion and performance, we consider
         // resolving "fixed resources" based on the properties (e.g. Delta=4 resolves to Heading2)

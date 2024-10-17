@@ -156,9 +156,15 @@ namespace Orc.Theming
         public double? Scale { get; set; }
         [System.Windows.Markup.ConstructorArgument("subscribeToEvents")]
         public bool SubscribeToEvents { get; set; }
+        protected virtual double GetFontSizeFromParent() { }
+        protected virtual double GetFontSizeFromResource() { }
+        protected virtual double GetFontSizeFromService() { }
         protected override void OnTargetObjectLoaded() { }
         protected override void OnTargetObjectUnloaded() { }
         protected override object? ProvideDynamicValue(System.IServiceProvider? serviceProvider) { }
+        public static double GetFontSize(double absolute) { }
+        protected static double GetFontSize(double defaultFontSize, double absoluteFontSize) { }
+        protected static double GetFontSizeFromTextBlockMetadata() { }
         public static void ResetCache() { }
     }
     public enum FontSizeMode
