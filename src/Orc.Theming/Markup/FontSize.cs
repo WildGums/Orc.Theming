@@ -39,6 +39,12 @@ public class FontSize : UpdatableMarkupExtension
         Mode = FontSizeMode.Default;
     }
 
+    public FontSize(double absolute)
+        : this()
+    {
+        Absolute = absolute;
+    }
+
     /// <summary>
     /// Gets or sets the font size scaling.
     /// </summary>
@@ -57,7 +63,7 @@ public class FontSize : UpdatableMarkupExtension
     /// Gets or sets the absolute font size, that will be scaled to the default font size of 12.
     /// </summary>
     /// <value>The absolute font size.</value>
-    [ConstructorArgument("delta")]
+    [ConstructorArgument("absolute")]
     public double? Absolute { get; set; }
 
     /// <summary>

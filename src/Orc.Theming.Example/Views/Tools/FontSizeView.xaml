@@ -59,15 +59,15 @@
                     <StackPanel Orientation="Vertical"
                                 HorizontalAlignment="Left">
                         <Label Content="This is 10"
-                               FontSize="{orctheming:FontSize Absolute=10}" />
+                               FontSize="{orctheming:FontSize 10}" />
                         <Label Content="This is 12"
-                               FontSize="{orctheming:FontSize Absolute=12}" />
+                               FontSize="{orctheming:FontSize 12}" />
                         <Label Content="This is 14"
-                               FontSize="{orctheming:FontSize Absolute=14}" />
+                               FontSize="{orctheming:FontSize 14}" />
                         <Label Content="This is 16"
-                               FontSize="{orctheming:FontSize Absolute=16}" />
+                               FontSize="{orctheming:FontSize 16}" />
                         <Label Content="This is 18"
-                               FontSize="{orctheming:FontSize Absolute=18}" />
+                               FontSize="{orctheming:FontSize 18}" />
                     </StackPanel>
                 </GroupBox>
             </StackPanel>
@@ -111,15 +111,15 @@
                     <StackPanel Orientation="Vertical"
                                 HorizontalAlignment="Left">
                         <Label Content="This is 10"
-                               FontSize="{orctheming:FontSize Absolute=10, SubscribeToEvents=True}" />
+                               FontSize="{orctheming:FontSize 10, SubscribeToEvents=True}" />
                         <Label Content="This is 12"
-                               FontSize="{orctheming:FontSize Absolute=12, SubscribeToEvents=True}" />
+                               FontSize="{orctheming:FontSize 12, SubscribeToEvents=True}" />
                         <Label Content="This is 14"
-                               FontSize="{orctheming:FontSize Absolute=14, SubscribeToEvents=True}" />
+                               FontSize="{orctheming:FontSize 14, SubscribeToEvents=True}" />
                         <Label Content="This is 16"
-                               FontSize="{orctheming:FontSize Absolute=16, SubscribeToEvents=True}" />
+                               FontSize="{orctheming:FontSize 16, SubscribeToEvents=True}" />
                         <Label Content="This is 18"
-                               FontSize="{orctheming:FontSize Absolute=18, SubscribeToEvents=True}" />
+                               FontSize="{orctheming:FontSize 18, SubscribeToEvents=True}" />
                     </StackPanel>
                 </GroupBox>
             </StackPanel>
