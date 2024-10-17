@@ -81,6 +81,17 @@ public class FontSize : UpdatableMarkupExtension
     [ConstructorArgument("subscribeToEvents")]
     public bool SubscribeToEvents { get; set; }
 
+    /// <summary>
+    /// Resets the cache by re-evaluating the default font size.
+    /// </summary>
+    public static void ResetCache()
+    {
+        Debug.WriteLine("Resetting default TextBlock font size");
+
+        DefaultTextBlockFontSize = null;
+        LastUpdatedTextBlockFontSizeStopwatch.Reset();
+    }
+
     protected override object? ProvideDynamicValue(IServiceProvider? serviceProvider)
     {
         var defaultFontSize = DefaultFontSize;
@@ -209,10 +220,7 @@ public class FontSize : UpdatableMarkupExtension
         // "Simple" way for fast static caching with single updates
         if (LastUpdatedTextBlockFontSizeStopwatch.ElapsedMilliseconds > 500)
         {
-            Debug.WriteLine("Resetting default TextBlock font size");
-
-            DefaultTextBlockFontSize = null;
-            LastUpdatedTextBlockFontSizeStopwatch.Reset();
+            ResetCache();
         }
 
         UpdateValue();

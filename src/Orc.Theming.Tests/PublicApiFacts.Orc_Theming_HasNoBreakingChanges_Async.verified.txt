@@ -159,6 +159,7 @@ namespace Orc.Theming
         protected override void OnTargetObjectLoaded() { }
         protected override void OnTargetObjectUnloaded() { }
         protected override object? ProvideDynamicValue(System.IServiceProvider? serviceProvider) { }
+        public static void ResetCache() { }
     }
     public enum FontSizeMode
     {
