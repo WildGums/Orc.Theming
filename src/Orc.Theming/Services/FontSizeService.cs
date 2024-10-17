@@ -3,6 +3,7 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
 using Catel.Logging;
 
@@ -47,8 +48,9 @@ public class FontSizeService : IFontSizeService
 
         try
         {
-            TextElement.FontSizeProperty.OverrideMetadata(typeof(TextElement), new FrameworkPropertyMetadata(fontSize));
             TextBlock.FontSizeProperty.OverrideMetadata(typeof(TextBlock), new FrameworkPropertyMetadata(fontSize));
+            TextBoxBase.FontSizeProperty.OverrideMetadata(typeof(TextBoxBase), new FrameworkPropertyMetadata(fontSize));
+            TextElement.FontSizeProperty.OverrideMetadata(typeof(TextElement), new FrameworkPropertyMetadata(fontSize));
         }
         catch (Exception ex)
         {
