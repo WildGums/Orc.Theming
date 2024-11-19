@@ -3,8 +3,10 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
 using Catel.Logging;
+using Catel.Reflection;
 
 public class FontSizeService : IFontSizeService
 {
@@ -47,8 +49,11 @@ public class FontSizeService : IFontSizeService
 
         try
         {
-            TextElement.FontSizeProperty.OverrideMetadata(typeof(TextElement), new FrameworkPropertyMetadata(fontSize));
-            TextBlock.FontSizeProperty.OverrideMetadata(typeof(TextBlock), new FrameworkPropertyMetadata(fontSize));
+            OverrideMetadataWithFontSize(TextBlock.FontSizeProperty, typeof(TextBlock), fontSize);
+            OverrideMetadataWithFontSize(TextBox.FontSizeProperty, typeof(TextBox), fontSize);
+            OverrideMetadataWithFontSize(TextBoxBase.FontSizeProperty, typeof(TextBoxBase), fontSize);
+            OverrideMetadataWithFontSize(TextElement.FontSizeProperty, typeof(TextElement), fontSize);
+            OverrideMetadataWithFontSize(ToolTip.FontSizeProperty, typeof(ToolTip), fontSize);
         }
         catch (Exception ex)
         {
@@ -63,5 +68,43 @@ public class FontSizeService : IFontSizeService
     protected void RaiseFontSizeChanged()
     {
         FontSizeChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    protected virtual void OverrideMetadataWithFontSize(DependencyProperty dependencyProperty, Type targetType, double fontSize)
+    {
+        try
+        {
+            var existingMetadata = dependencyProperty.GetMetadata(targetType);
+            if (existingMetadata is null)
+            {
+                dependencyProperty.OverrideMetadata(targetType, new FrameworkPropertyMetadata(fontSize));
+                return;
+            }
+
+            var dependencyObjectType = DependencyObjectType.FromSystemType(targetType);
+
+            var metadataMapField = dependencyProperty.GetType().GetFieldEx("_metadataMap")!;
+            var metadataMap = metadataMapField.GetValue(dependencyProperty)!;
+
+            var itemProperty = metadataMap.GetType().GetPropertyEx("Item")!;
+            itemProperty.SetValue(metadataMap, DependencyProperty.UnsetValue, new object?[] { dependencyObjectType.Id });
+
+            // Create new metadata
+            var newMetadata = new FrameworkPropertyMetadata(
+                fontSize,
+                FrameworkPropertyMetadataOptions.Inherits |
+                FrameworkPropertyMetadataOptions.Journal |
+                FrameworkPropertyMetadataOptions.AffectsMeasure |
+                FrameworkPropertyMetadataOptions.AffectsRender,
+                existingMetadata?.PropertyChangedCallback,
+                existingMetadata?.CoerceValueCallback
+            );
+
+            dependencyProperty.OverrideMetadata(targetType, newMetadata);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, $"Failed to override font size metadata for '{targetType.Name}'");
+        }
     }
 }
