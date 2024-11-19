@@ -180,6 +180,7 @@ namespace Orc.Theming
         public FontSizeService() { }
         public event System.EventHandler<System.EventArgs>? FontSizeChanged;
         public virtual double GetFontSize() { }
+        protected virtual void OverrideMetadataWithFontSize(System.Windows.DependencyProperty dependencyProperty, System.Type targetType, double fontSize) { }
         protected void RaiseFontSizeChanged() { }
         public virtual bool SetFontSize(double fontSize) { }
     }
