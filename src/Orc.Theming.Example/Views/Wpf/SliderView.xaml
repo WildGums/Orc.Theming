@@ -316,10 +316,90 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <Style x:Key="CustomThumbStyle" 
+           TargetType="{x:Type Thumb}"
+           BasedOn="{StaticResource Orc.Styles.Slider.Thumb}">
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Width" Value="30" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Thumb}">
+                        <Grid>
+                            <Ellipse x:Name="BackEllipse" Width="26" Height="26" 
+                                Stroke="{DynamicResource Orc.Brushes.White}" 
+                                Fill="{DynamicResource Orc.Brushes.White}" 
+                                StrokeThickness="1" />
+                            <Ellipse x:Name="ThumbEllipse" Width="26" Height="26" 
+                                Stroke="{TemplateBinding BorderBrush}" 
+                                Fill="{TemplateBinding Background}" 
+                                StrokeThickness="1" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SliderStyle_1"
+           TargetType="{x:Type Slider}"
+           BasedOn="{StaticResource Orc.Styles.Slider}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Slider}">
+                        <Grid VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TickBar x:Name="TopTick" Fill="{TemplateBinding Foreground}" Height="4" Placement="Top" Grid.Row="0" Visibility="Collapsed" />
+                            <TickBar x:Name="BottomTick" Fill="{TemplateBinding Foreground}" Height="4" Placement="Bottom" Grid.Row="2" Visibility="Collapsed" />
+                            <Border x:Name="TrackBackground" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="1" Height="3.0" Margin="5,0" Grid.Row="1" VerticalAlignment="center">
+                                <Canvas Margin="-6,-1">
+                                    <Rectangle x:Name="PART_SelectionRange" Fill="{DynamicResource Orc.Brushes.Control.SelectionActive.Background}" Stroke="{DynamicResource Orc.Brushes.Control.SelectionActive.Border}" Height="3.0" StrokeThickness="1.0" Visibility="Hidden" />
+                                </Canvas>
+                            </Border>
+                            <Track x:Name="PART_Track" Grid.Row="1">
+                                <Track.DecreaseRepeatButton>
+                                    <RepeatButton Command="{x:Static Slider.DecreaseLarge}" Style="{StaticResource Orc.Styles.Slider.RepeatButtonStyle}" />
+                                </Track.DecreaseRepeatButton>
+                                <Track.IncreaseRepeatButton>
+                                    <RepeatButton Command="{x:Static Slider.IncreaseLarge}" Style="{StaticResource Orc.Styles.Slider.RepeatButtonStyle}" />
+                                </Track.IncreaseRepeatButton>
+                                <Track.Thumb>
+                                    <Thumb x:Name="Thumb" Style="{StaticResource CustomThumbStyle}" />
+                                </Track.Thumb>
+                            </Track>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="TickPlacement" Value="TopLeft">
+                                <Setter Property="Visibility" TargetName="TopTick" Value="Visible" />
+                                <Setter Property="Margin" TargetName="TrackBackground" Value="5,2,5,0" />
+                            </Trigger>
+                            <Trigger Property="TickPlacement" Value="BottomRight">
+                                <Setter Property="Visibility" TargetName="BottomTick" Value="Visible" />
+                                <Setter Property="Margin" TargetName="TrackBackground" Value="5,0,5,2" />
+                            </Trigger>
+                            <Trigger Property="TickPlacement" Value="Both">
+                                <Setter Property="Visibility" TargetName="TopTick" Value="Visible" />
+                                <Setter Property="Visibility" TargetName="BottomTick" Value="Visible" />
+                            </Trigger>
+                            <Trigger Property="IsSelectionRangeEnabled" Value="true">
+                                <Setter Property="Visibility" TargetName="PART_SelectionRange" Value="Visible" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="Foreground" TargetName="Thumb" Value="Gray" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </catel:UserControl.Resources>
 
     <StackPanel Orientation="Vertical">
-        <Slider Style="{StaticResource Orc.Styles.Slider}"
+        <Slider Style="{StaticResource SliderStyle_1}"
                 Width="200" 
                 Minimum="0" Maximum="100" Value="50"
                 IsEnabled="True" ToolTip="Enabled" />
