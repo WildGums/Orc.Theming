@@ -36,9 +36,9 @@
                     </Label>
 
                     <StackPanel Orientation="Horizontal">
-                    <CheckBox x:Name="alignmentCheckBox"
-                              Content="Enable alignment grid"
-                              IsChecked="True" />
+                        <CheckBox x:Name="alignmentCheckBox"
+                                  Content="Enable alignment grid"
+                                  IsChecked="True" />
 
                         <Slider Width="100"
                                 Minimum="12"
@@ -69,14 +69,14 @@
                     <TextBox Text="Textbox should be similar to ComboBox"
                              ToolTip="TextBox"
                              Width="100" />
-                    
+
                     <Label Content="Label"
                            ToolTip="Label">
                         <behaviors:Interaction.Behaviors>
                             <theming:MandatoryField />
                         </behaviors:Interaction.Behaviors>
                     </Label>
-                    
+
                     <PasswordBox Width="100"
                                  ToolTip="PasswordBox"
                                  Password="123" />
@@ -143,6 +143,7 @@
                     <orccontrols:WatermarkTextBox Width="100"
                                                   ToolTip="Orc.Controls: WatermarkTextBox"
                                                   Watermark="This is a watermark" />
+                    <TextBox Text="TextBox for alignment" />
                 </WrapPanel>
             </GroupBox>
 
