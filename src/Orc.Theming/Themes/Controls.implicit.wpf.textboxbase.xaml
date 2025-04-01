@@ -15,7 +15,8 @@
         <Setter Property="Control.AllowDrop" Value="true"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
         <Setter Property="Control.FocusVisualStyle" Value="{x:Null}"/>
-     
+        
+        <Setter Property="TextBoxBase.VerticalAlignment" Value="Center"/>
         <Setter Property="TextBoxBase.SelectionBrush" Value="{DynamicResource Orc.Styles.TextBox.Selection.Highlight}"/>
 
         <Style.Triggers>
@@ -39,6 +40,10 @@
                 <Setter Property="TextBoxBase.SelectionBrush" Value="{DynamicResource Orc.Styles.TextBox.Selection.HighlightInactive}"/>
             </MultiTrigger>
 
+            <Trigger Property="TextBoxBase.AcceptsReturn" Value="True">
+                <Setter Property="TextBoxBase.VerticalAlignment" Value="Stretch" />
+            </Trigger>
+            
             <Trigger Property="TextBoxBase.VerticalAlignment" Value="Stretch">
                 <Setter Property="TextBoxBase.Height" Value="Auto"/>
             </Trigger>
