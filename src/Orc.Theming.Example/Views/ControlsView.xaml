@@ -53,6 +53,10 @@
                     <ComboBox Text="ComboBox"
                               IsEditable="true"
                               ToolTip="ComboBox" />
+
+                    <TextBox Text="Textbox should be similar to ComboBox"
+                             ToolTip="TextBox"
+                             Width="100" />
                     
                     <Label Content="Label"
                            ToolTip="Label">
@@ -64,6 +68,11 @@
                     <PasswordBox Width="100"
                                  ToolTip="PasswordBox"
                                  Password="123" />
+
+                    <TextBox Text="Textbox should be similar to PasswordBox"
+                             ToolTip="TextBox"
+                             Width="100" />
+
                     <ProgressBar Minimum="0"
                                  Maximum="100"
                                  Value="50"
