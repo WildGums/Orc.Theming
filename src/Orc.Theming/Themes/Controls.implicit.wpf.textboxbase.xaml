@@ -15,7 +15,8 @@
         <Setter Property="Control.AllowDrop" Value="true"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
         <Setter Property="Control.FocusVisualStyle" Value="{x:Null}"/>
-     
+        
+        <Setter Property="TextBoxBase.VerticalAlignment" Value="Center"/>
         <Setter Property="TextBoxBase.SelectionBrush" Value="{DynamicResource Orc.Styles.TextBox.Selection.Highlight}"/>
 
         <Style.Triggers>
