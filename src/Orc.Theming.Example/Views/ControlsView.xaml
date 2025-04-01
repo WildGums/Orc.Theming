@@ -35,13 +35,25 @@
                                    Text="This view shows all the controls with the alignments updated with the style forwarders. The first row contains an alignment helper border. All styles must also respect the current theme color." />
                     </Label>
 
+                    <StackPanel Orientation="Horizontal">
                     <CheckBox x:Name="alignmentCheckBox"
                               Content="Enable alignment grid"
                               IsChecked="True" />
+
+                        <Slider Width="100"
+                                Minimum="12"
+                                Maximum="48"
+                                Value="{Binding AlignmentGridSize, Mode=TwoWay}" />
+
+                        <TextBox IsReadOnly="True"
+                                 Text="{Binding AlignmentGridSize}" />
+                    </StackPanel>
                 </StackPanel>
             </GroupBox>
 
             <orccontrols:AlignmentGrid Grid.RowSpan="7"
+                                       HorizontalStep="{Binding AlignmentGridSize}"
+                                       VerticalStep="{Binding AlignmentGridSize}"
                                        Visibility="{Binding ElementName=alignmentCheckBox, Path=IsChecked, Converter={catel:BooleanToHidingVisibilityConverter}}" />
 
             <GroupBox Header="WPF controls">
