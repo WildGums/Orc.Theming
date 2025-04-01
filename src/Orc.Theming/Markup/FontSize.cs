@@ -73,10 +73,10 @@ public class FontSize : UpdatableMarkupExtension
     public FontSizeMode Mode { get; set; }
 
     /// <summary>
-    /// Gets or sets the name of the resource to use when calculating the value.
+    /// Gets or sets the key of the resource to use when calculating the value.
     /// </summary>
-    [ConstructorArgument("resourceName")]
-    public string? ResourceName { get; set; }
+    [ConstructorArgument("resourceKey")]
+    public string? ResourceKey { get; set; }
 
     /// <summary>
     /// Gets or sets whether this markup extension should subscribe to events to be responsive.
@@ -125,8 +125,8 @@ public class FontSize : UpdatableMarkupExtension
         var mode = Mode;
 
         // Enforce resource mode when a resource name is available
-        var resourceName = ResourceName;
-        if (!string.IsNullOrWhiteSpace(resourceName))
+        var resourceKey = ResourceKey;
+        if (!string.IsNullOrWhiteSpace(resourceKey))
         {
             mode = FontSizeMode.Resource;
         }
@@ -209,15 +209,15 @@ public class FontSize : UpdatableMarkupExtension
 
     protected virtual double GetFontSizeFromResource()
     {
-        var resourceName = ResourceName;
-        if (!string.IsNullOrWhiteSpace(resourceName))
+        var resourceKey = ResourceKey;
+        if (!string.IsNullOrWhiteSpace(resourceKey))
         {
             if (TargetObject is DependencyObject dependencyObject)
             {
                 var frameworkElement = dependencyObject.FindLogicalOrVisualAncestorByType<FrameworkElement>();
                 if (frameworkElement is not null)
                 {
-                    var resource = frameworkElement.TryFindResource(resourceName);
+                    var resource = frameworkElement.TryFindResource(resourceKey);
                     if (resource is double doubleValue)
                     {
                         return doubleValue;
@@ -229,7 +229,7 @@ public class FontSize : UpdatableMarkupExtension
             var application = Application.Current;
             if (application is not null)
             {
-                var resource = application.TryFindResource(resourceName);
+                var resource = application.TryFindResource(resourceKey);
                 if (resource is double doubleValue)
                 {
                     return doubleValue;
