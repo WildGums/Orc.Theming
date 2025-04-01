@@ -73,6 +73,12 @@ public class FontSize : UpdatableMarkupExtension
     public FontSizeMode Mode { get; set; }
 
     /// <summary>
+    /// Gets or sets the name of the resource to use when calculating the value.
+    /// </summary>
+    [ConstructorArgument("resourceName")]
+    public string? ResourceName { get; set; }
+
+    /// <summary>
     /// Gets or sets whether this markup extension should subscribe to events to be responsive.
     /// <para />
     /// The default value is <c>false</c> for performance reasons.
@@ -116,7 +122,16 @@ public class FontSize : UpdatableMarkupExtension
     {
         var defaultFontSize = DefaultFontSize;
 
-        switch (Mode)
+        var mode = Mode;
+
+        // Enforce resource mode when a resource name is available
+        var resourceName = ResourceName;
+        if (!string.IsNullOrWhiteSpace(resourceName))
+        {
+            mode = FontSizeMode.Resource;
+        }
+
+        switch (mode)
         {
             case FontSizeMode.TextBlockMetadata:
                 defaultFontSize = GetFontSizeFromTextBlockMetadata();
@@ -194,6 +209,34 @@ public class FontSize : UpdatableMarkupExtension
 
     protected virtual double GetFontSizeFromResource()
     {
+        var resourceName = ResourceName;
+        if (!string.IsNullOrWhiteSpace(resourceName))
+        {
+            if (TargetObject is DependencyObject dependencyObject)
+            {
+                var frameworkElement = dependencyObject.FindLogicalOrVisualAncestorByType<FrameworkElement>();
+                if (frameworkElement is not null)
+                {
+                    var resource = frameworkElement.TryFindResource(resourceName);
+                    if (resource is double doubleValue)
+                    {
+                        return doubleValue;
+                    }
+                }
+            }
+
+            // Fallback to application
+            var application = Application.Current;
+            if (application is not null)
+            {
+                var resource = application.TryFindResource(resourceName);
+                if (resource is double doubleValue)
+                {
+                    return doubleValue;
+                }
+            }
+        }
+
         // TODO: Based on discussion and performance, we consider
         // resolving "fixed resources" based on the properties (e.g. Delta=4 resolves to Heading2)
 
