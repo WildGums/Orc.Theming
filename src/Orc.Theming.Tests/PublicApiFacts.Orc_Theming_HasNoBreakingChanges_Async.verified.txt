@@ -152,6 +152,8 @@ namespace Orc.Theming
         public double? Delta { get; set; }
         [System.Windows.Markup.ConstructorArgument("mode")]
         public Orc.Theming.FontSizeMode Mode { get; set; }
+        [System.Windows.Markup.ConstructorArgument("resourceKey")]
+        public string? ResourceKey { get; set; }
         [System.Windows.Markup.ConstructorArgument("scale")]
         public double? Scale { get; set; }
         [System.Windows.Markup.ConstructorArgument("subscribeToEvents")]
