@@ -5,11 +5,13 @@
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.buttonbase.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="Orc.Styles.RepeatButton" TargetType="{x:Type RepeatButton}"
+    <Style x:Key="Orc.Styles.RepeatButton"
+           TargetType="{x:Type RepeatButton}"
            BasedOn="{StaticResource Orc.Styles.ButtonBase}">
 
-        <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false"/>
-       
+        <Setter Property="Stylus.IsPressAndHoldEnabled"
+                Value="false" />
+
     </Style>
 
 </ResourceDictionary>

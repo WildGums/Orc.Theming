@@ -6,11 +6,14 @@
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.focusvisual.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="Orc.Styles.CheckBox" TargetType="{x:Type CheckBox}"
+    <Style x:Key="Orc.Styles.CheckBox"
+           TargetType="{x:Type CheckBox}"
            BasedOn="{StaticResource Orc.Styles.Control}">
 
-        <Setter Property="FocusVisualStyle" Value="{StaticResource Orc.Styles.Control.Outside.FocusVisual}"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FocusVisualStyle"
+                Value="{StaticResource Orc.Styles.Control.Outside.FocusVisual}" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
 
         <Setter Property="Template">
             <Setter.Value>
@@ -25,22 +28,22 @@
                                 <Border x:Name="CheckBoxBorder"
                                         Height="14"
                                         Width="14"
-									    BorderThickness="{TemplateBinding BorderThickness}"
-									    BorderBrush="{TemplateBinding BorderBrush}"
-									    Background="{TemplateBinding Background}">
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        Background="{TemplateBinding Background}">
                                     <Grid>
                                         <Path x:Name="CheckMark"
-                                          Data="M7.2,5 L5.5,7.16 4.16,6.3 3.5,6.7 5.5,8.4 8.6,5.25 C8.6,5.25 8,4.7 7.22,5"
-                                          Height="Auto"
-                                          Width="Auto"
-                                          Stretch="Fill"
-                                          Fill="{DynamicResource Orc.Brushes.AccentColor}"
-                                          Margin="1,1.007,1,1"/>
+                                              Data="M7.2,5 L5.5,7.16 4.16,6.3 3.5,6.7 5.5,8.4 8.6,5.25 C8.6,5.25 8,4.7 7.22,5"
+                                              Height="Auto"
+                                              Width="Auto"
+                                              Stretch="Fill"
+                                              Fill="{DynamicResource Orc.Brushes.AccentColor}"
+                                              Margin="1,1.007,1,1" />
 
                                         <Rectangle x:Name="IndeterminateMark"
-                                           Fill="{DynamicResource Orc.Brushes.AccentColor}"
-                                           Margin="2.5,2.5,2,2"
-                                           Visibility="Collapsed"/>
+                                                   Fill="{DynamicResource Orc.Brushes.AccentColor}"
+                                                   Margin="2.5,2.5,2,2"
+                                                   Visibility="Collapsed" />
                                     </Grid>
                                 </Border>
 
@@ -51,16 +54,24 @@
                                           Margin="{TemplateBinding Padding}"
                                           RecognizesAccessKey="True"
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                     </BulletDecorator>
 
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsChecked" Value="False">
-                            <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
+                        <Trigger Property="IsChecked"
+                                 Value="False">
+                            <Setter TargetName="CheckMark"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
                         </Trigger>
-                        <Trigger Property="IsChecked" Value="{x:Null}">
-                            <Setter TargetName="IndeterminateMark" Property="Visibility"  Value="Visible"/>
-                            <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
+                        <Trigger Property="IsChecked"
+                                 Value="{x:Null}">
+                            <Setter TargetName="IndeterminateMark"
+                                    Property="Visibility"
+                                    Value="Visible" />
+                            <Setter TargetName="CheckMark"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -68,16 +79,24 @@
         </Setter>
 
         <Style.Triggers>
-            <Trigger Property="HasContent" Value="true">
-                <Setter Property="Padding" Value="4,0,0,0"/>
+            <Trigger Property="HasContent"
+                     Value="true">
+                <Setter Property="Padding"
+                        Value="4,0,0,0" />
             </Trigger>
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.Disabled.Background}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Disabled.Border}"/>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Background"
+                        Value="{DynamicResource Orc.Brushes.Control.Disabled.Background}" />
+                <Setter Property="BorderBrush"
+                        Value="{DynamicResource Orc.Brushes.Control.Disabled.Border}" />
             </Trigger>
-            <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Background}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Border}"/>
+            <Trigger Property="IsMouseOver"
+                     Value="true">
+                <Setter Property="Background"
+                        Value="{DynamicResource Orc.Brushes.Control.MouseOver.Background}" />
+                <Setter Property="BorderBrush"
+                        Value="{DynamicResource Orc.Brushes.Control.MouseOver.Border}" />
             </Trigger>
         </Style.Triggers>
     </Style>

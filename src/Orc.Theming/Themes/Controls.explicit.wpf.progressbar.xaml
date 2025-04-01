@@ -4,50 +4,67 @@
 
     <converters:ProgressBarSizeToTrackRadiusConverter x:Key="ProgressBarSizeToTrackRadiusConverter" />
     <converters:ProgressBarTrackRadiusToTrackOffsetConverter x:Key="ProgressBarTrackRadiusToTrackOffsetConverter" />
-    <converters:ProgressBarTrackToIndicatorSizeConverter x:Key="ProgressBarTrackToIndicatorSizeConverter"/>
-    <converters:ProgressBarTrackToIndicatorStartPointConverter x:Key="ProgressBarTrackToIndicatorStartPointConverter"/>
-    <converters:ThicknessToDoubleConverter x:Key="ThicknessToDoubleConverter"/>
-    <converters:ProgressBarValueToArcPointConverter x:Key="ProgressBarValueToArcPointConverter"/>
-    <converters:ProgressBarValueToArcTypeConverter x:Key="ProgressBarValueToArcTypeConverter"/>
+    <converters:ProgressBarTrackToIndicatorSizeConverter x:Key="ProgressBarTrackToIndicatorSizeConverter" />
+    <converters:ProgressBarTrackToIndicatorStartPointConverter x:Key="ProgressBarTrackToIndicatorStartPointConverter" />
+    <converters:ThicknessToDoubleConverter x:Key="ThicknessToDoubleConverter" />
+    <converters:ProgressBarValueToArcPointConverter x:Key="ProgressBarValueToArcPointConverter" />
+    <converters:ProgressBarValueToArcTypeConverter x:Key="ProgressBarValueToArcTypeConverter" />
 
-    <Style x:Key="Orc.Styles.ProgressBar.Circular" TargetType="{x:Type ProgressBar}" >
-        <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.AccentColor}"/>
-        <Setter Property="BorderThickness" Value="5"/>
+    <Style x:Key="Orc.Styles.ProgressBar.Circular"
+           TargetType="{x:Type ProgressBar}">
+        <Setter Property="Foreground"
+                Value="{DynamicResource Orc.Brushes.AccentColor}" />
+        <Setter Property="BorderThickness"
+                Value="5" />
         <Setter Property="Template">
             <Setter.Value>
 
                 <ControlTemplate TargetType="{x:Type ProgressBar}">
                     <ControlTemplate.Resources>
-                        <Storyboard SpeedRatio="1" RepeatBehavior="Forever" x:Key="IndicatorAnimationStoryBoard" >
-                            <DoubleAnimationUsingKeyFrames RepeatBehavior="Forever" Storyboard.TargetName="IndicatorRotateTransform" 
+                        <Storyboard SpeedRatio="1"
+                                    RepeatBehavior="Forever"
+                                    x:Key="IndicatorAnimationStoryBoard">
+                            <DoubleAnimationUsingKeyFrames RepeatBehavior="Forever"
+                                                           Storyboard.TargetName="IndicatorRotateTransform"
                                                            Storyboard.TargetProperty="Angle">
-                                <LinearDoubleKeyFrame KeyTime="0:0:0.000" Value="0"/>
-                                <LinearDoubleKeyFrame KeyTime="0:0:3.000" Value="360"/>
+                                <LinearDoubleKeyFrame KeyTime="0:0:0.000"
+                                                      Value="0" />
+                                <LinearDoubleKeyFrame KeyTime="0:0:3.000"
+                                                      Value="360" />
                             </DoubleAnimationUsingKeyFrames>
                         </Storyboard>
                     </ControlTemplate.Resources>
                     <Grid x:Name="TemplateRoot">
 
-                        <Grid Background="{DynamicResource TransparentWhiteBrush}" ClipToBounds="True" x:Name="PART_Indicator"
-                                         HorizontalAlignment="Stretch" 
-                                         VerticalAlignment="Stretch" 
-                                         MinWidth="{TemplateBinding Width}"
-                                         Width="{TemplateBinding Width}">
+                        <Grid Background="{DynamicResource TransparentWhiteBrush}"
+                              ClipToBounds="True"
+                              x:Name="PART_Indicator"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch"
+                              MinWidth="{TemplateBinding Width}"
+                              Width="{TemplateBinding Width}">
 
-                            <Canvas Opacity="1.0" Width="{TemplateBinding Width}">
-                                <Path Stroke="{TemplateBinding Foreground}" StrokeThickness="{TemplateBinding BorderThickness, Converter={converters:ThicknessToDoubleConverter}}" x:Name="IndicatorPath">
+                            <Canvas Opacity="1.0"
+                                    Width="{TemplateBinding Width}">
+                                <Path Stroke="{TemplateBinding Foreground}"
+                                      StrokeThickness="{TemplateBinding BorderThickness, Converter={converters:ThicknessToDoubleConverter}}"
+                                      x:Name="IndicatorPath">
                                     <Path.RenderTransform>
                                         <TransformGroup>
                                             <RotateTransform x:Name="IndicatorRotateTransform">
                                                 <RotateTransform.CenterX>
-                                                    <MultiBinding Converter="{StaticResource ProgressBarTrackRadiusToTrackOffsetConverter}" ConverterParameter="RadiusX">
-                                                        <Binding ElementName="TrackPath" Path="StrokeThickness"/>
-                                                        <Binding ElementName="TrackEllipse"/>
+                                                    <MultiBinding Converter="{StaticResource ProgressBarTrackRadiusToTrackOffsetConverter}"
+                                                                  ConverterParameter="RadiusX">
+                                                        <Binding ElementName="TrackPath"
+                                                                 Path="StrokeThickness" />
+                                                        <Binding ElementName="TrackEllipse" />
                                                     </MultiBinding>
                                                 </RotateTransform.CenterX>
                                                 <RotateTransform.CenterY>
-                                                    <MultiBinding Converter="{StaticResource ProgressBarTrackRadiusToTrackOffsetConverter}" ConverterParameter="RadiusY">
-                                                        <Binding ElementName="TrackPath" Path="StrokeThickness"/>
+                                                    <MultiBinding Converter="{StaticResource ProgressBarTrackRadiusToTrackOffsetConverter}"
+                                                                  ConverterParameter="RadiusY">
+                                                        <Binding ElementName="TrackPath"
+                                                                 Path="StrokeThickness" />
                                                         <Binding ElementName="TrackEllipse" />
                                                     </MultiBinding>
                                                 </RotateTransform.CenterY>
@@ -59,9 +76,11 @@
                                             <PathGeometry.Transform>
                                                 <TranslateTransform X="{Binding ElementName=TrackPath, Path=StrokeThickness}">
                                                     <TranslateTransform.Y>
-                                                        <MultiBinding Converter="{StaticResource ProgressBarTrackRadiusToTrackOffsetConverter}" ConverterParameter="RadiusY">
-                                                            <Binding ElementName="TrackPath" Path="StrokeThickness"/>
-                                                            <Binding ElementName="TrackEllipse"/>
+                                                        <MultiBinding Converter="{StaticResource ProgressBarTrackRadiusToTrackOffsetConverter}"
+                                                                      ConverterParameter="RadiusY">
+                                                            <Binding ElementName="TrackPath"
+                                                                     Path="StrokeThickness" />
+                                                            <Binding ElementName="TrackEllipse" />
                                                         </MultiBinding>
                                                     </TranslateTransform.Y>
                                                 </TranslateTransform>
@@ -72,23 +91,31 @@
                                                                 x:Name="IndicatorArcPathFigure">
                                                         <PathFigure.Segments>
                                                             <PathSegmentCollection>
-                                                                <ArcSegment x:Name="IndicatorArc" 
-                                                                            Size="{Binding ElementName=TrackEllipse, Path=., Converter={StaticResource ProgressBarTrackToIndicatorSizeConverter}}" 
+                                                                <ArcSegment x:Name="IndicatorArc"
+                                                                            Size="{Binding ElementName=TrackEllipse, Path=., Converter={StaticResource ProgressBarTrackToIndicatorSizeConverter}}"
                                                                             SweepDirection="Clockwise">
                                                                     <ArcSegment.IsLargeArc>
                                                                         <MultiBinding Converter="{StaticResource ProgressBarValueToArcTypeConverter}">
-                                                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Value"/>
-                                                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Minimum"/>
-                                                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Maximum"/>
+                                                                            <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                                                                     Path="Value" />
+                                                                            <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                                                                     Path="Minimum" />
+                                                                            <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                                                                     Path="Maximum" />
                                                                         </MultiBinding>
                                                                     </ArcSegment.IsLargeArc>
                                                                     <ArcSegment.Point>
                                                                         <MultiBinding Converter="{StaticResource ProgressBarValueToArcPointConverter}">
-                                                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Value"/>
-                                                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Minimum"/>
-                                                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Maximum"/>
-                                                                            <Binding ElementName="TrackEllipse" Path="RadiusX"/>
-                                                                            <Binding ElementName="TrackEllipse" Path="RadiusY"/>
+                                                                            <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                                                                     Path="Value" />
+                                                                            <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                                                                     Path="Minimum" />
+                                                                            <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                                                                     Path="Maximum" />
+                                                                            <Binding ElementName="TrackEllipse"
+                                                                                     Path="RadiusX" />
+                                                                            <Binding ElementName="TrackEllipse"
+                                                                                     Path="RadiusY" />
                                                                         </MultiBinding>
                                                                     </ArcSegment.Point>
                                                                 </ArcSegment>
@@ -102,36 +129,50 @@
                                 </Path>
                             </Canvas>
 
-                            <Canvas x:Name="PART_Track" Opacity="0.3" Width="{TemplateBinding Width}">
-                                <Path Stroke="{TemplateBinding Foreground}" StrokeThickness="{TemplateBinding BorderThickness, Converter={converters:ThicknessToDoubleConverter}}" x:Name="TrackPath">    
+                            <Canvas x:Name="PART_Track"
+                                    Opacity="0.3"
+                                    Width="{TemplateBinding Width}">
+                                <Path Stroke="{TemplateBinding Foreground}"
+                                      StrokeThickness="{TemplateBinding BorderThickness, Converter={converters:ThicknessToDoubleConverter}}"
+                                      x:Name="TrackPath">
                                     <Path.Data>
                                         <EllipseGeometry x:Name="TrackEllipse">
                                             <EllipseGeometry.RadiusX>
                                                 <MultiBinding Converter="{StaticResource ProgressBarSizeToTrackRadiusConverter}">
-                                                    <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="BorderThickness"/>
-                                                    <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Width"/>
-                                                    <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Height"/>
+                                                    <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                                             Path="BorderThickness" />
+                                                    <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                                             Path="Width" />
+                                                    <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                                             Path="Height" />
                                                 </MultiBinding>
                                             </EllipseGeometry.RadiusX>
                                             <EllipseGeometry.RadiusY>
                                                 <MultiBinding Converter="{StaticResource ProgressBarSizeToTrackRadiusConverter}">
-                                                    <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="BorderThickness"/>
-                                                    <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Width"/>
-                                                    <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Height"/>
+                                                    <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                                             Path="BorderThickness" />
+                                                    <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                                             Path="Width" />
+                                                    <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                                             Path="Height" />
                                                 </MultiBinding>
                                             </EllipseGeometry.RadiusY>
                                             <EllipseGeometry.Transform>
                                                 <TranslateTransform>
                                                     <TranslateTransform.X>
-                                                        <MultiBinding Converter="{StaticResource ProgressBarTrackRadiusToTrackOffsetConverter}" ConverterParameter="RadiusX">
-                                                            <Binding ElementName="TrackPath" Path="StrokeThickness"/>
-                                                            <Binding ElementName="TrackEllipse"/>
+                                                        <MultiBinding Converter="{StaticResource ProgressBarTrackRadiusToTrackOffsetConverter}"
+                                                                      ConverterParameter="RadiusX">
+                                                            <Binding ElementName="TrackPath"
+                                                                     Path="StrokeThickness" />
+                                                            <Binding ElementName="TrackEllipse" />
                                                         </MultiBinding>
                                                     </TranslateTransform.X>
                                                     <TranslateTransform.Y>
-                                                        <MultiBinding Converter="{StaticResource ProgressBarTrackRadiusToTrackOffsetConverter}" ConverterParameter="RadiusY">
-                                                            <Binding ElementName="TrackPath" Path="StrokeThickness"/>
-                                                            <Binding ElementName="TrackEllipse"/>
+                                                        <MultiBinding Converter="{StaticResource ProgressBarTrackRadiusToTrackOffsetConverter}"
+                                                                      ConverterParameter="RadiusY">
+                                                            <Binding ElementName="TrackPath"
+                                                                     Path="StrokeThickness" />
+                                                            <Binding ElementName="TrackEllipse" />
                                                         </MultiBinding>
                                                     </TranslateTransform.Y>
                                                 </TranslateTransform>
@@ -146,15 +187,18 @@
                     <ControlTemplate.Triggers>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="Visibility" Value="Visible"/>
-                                <Condition Property="IsIndeterminate" Value="True"/>
+                                <Condition Property="Visibility"
+                                           Value="Visible" />
+                                <Condition Property="IsIndeterminate"
+                                           Value="True" />
                             </MultiTrigger.Conditions>
 
                             <MultiTrigger.EnterActions>
-                                <BeginStoryboard Storyboard="{StaticResource IndicatorAnimationStoryBoard}" x:Name="IndicatorAnimationStoryBoard"/>
+                                <BeginStoryboard Storyboard="{StaticResource IndicatorAnimationStoryBoard}"
+                                                 x:Name="IndicatorAnimationStoryBoard" />
                             </MultiTrigger.EnterActions>
                             <MultiTrigger.ExitActions>
-                                <RemoveStoryboard BeginStoryboardName="IndicatorAnimationStoryBoard"/>
+                                <RemoveStoryboard BeginStoryboardName="IndicatorAnimationStoryBoard" />
                             </MultiTrigger.ExitActions>
                         </MultiTrigger>
                     </ControlTemplate.Triggers>

@@ -50,7 +50,7 @@
     </Style>
 
     <ControlTemplate x:Key="{ComponentResourceKey ResourceId=SubmenuItemTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}"
-                     TargetType="{x:Type MenuItem}" >
+                     TargetType="{x:Type MenuItem}">
         <Grid SnapsToDevicePixels="true">
 
             <Rectangle x:Name="Bg"
@@ -79,7 +79,8 @@
         </Grid>
 
         <ControlTemplate.Triggers>
-            <Trigger Property="IsHighlighted" Value="true">
+            <Trigger Property="IsHighlighted"
+                     Value="true">
                 <Setter Property="Fill"
                         TargetName="Bg"
                         Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Background}" />
@@ -87,16 +88,23 @@
                         TargetName="Content"
                         Value="{DynamicResource Orc.Brushes.Control.MouseOver.Foreground}" />
             </Trigger>
-            <Trigger Property="IsEnabled" Value="false">
-                <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}" />
+            <Trigger Property="IsEnabled"
+                     Value="false">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <Style x:Key="MenuScrollButton" BasedOn="{x:Null}" TargetType="{x:Type RepeatButton}">
-        <Setter Property="ClickMode" Value="Hover" />
-        <Setter Property="MinWidth" Value="0" />
-        <Setter Property="MinHeight" Value="0" />
+    <Style x:Key="MenuScrollButton"
+           BasedOn="{x:Null}"
+           TargetType="{x:Type RepeatButton}">
+        <Setter Property="ClickMode"
+                Value="Hover" />
+        <Setter Property="MinWidth"
+                Value="0" />
+        <Setter Property="MinHeight"
+                Value="0" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RepeatButton}">
@@ -124,9 +132,12 @@
     <MenuScrollingVisibilityConverter x:Key="MenuScrollingVisibilityConverter" />
 
     <Style x:Key="{ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}"
-           BasedOn="{StaticResource Orc.Styles.Control}" TargetType="{x:Type ScrollViewer}">
-        <Setter Property="HorizontalScrollBarVisibility" Value="Hidden" />
-        <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+           BasedOn="{StaticResource Orc.Styles.Control}"
+           TargetType="{x:Type ScrollViewer}">
+        <Setter Property="HorizontalScrollBarVisibility"
+                Value="Hidden" />
+        <Setter Property="VerticalScrollBarVisibility"
+                Value="Auto" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ScrollViewer}">
@@ -140,7 +151,7 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Border Grid.Column="0"
-                                        Grid.Row="1">
+                                Grid.Row="1">
                             <ScrollContentPresenter CanContentScroll="{TemplateBinding CanContentScroll}"
                                                     Margin="{TemplateBinding Padding}" />
                         </Border>
@@ -169,23 +180,23 @@
                                   Fill="{TemplateBinding Foreground}" />
                         </RepeatButton>
                         <RepeatButton Grid.Column="0"
-                                              CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                                              Command="{x:Static ScrollBar.LineDownCommand}"
-                                              Focusable="false"
-                                              Grid.Row="2"
-                                              Style="{StaticResource MenuScrollButton}">
+                                      CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                      Command="{x:Static ScrollBar.LineDownCommand}"
+                                      Focusable="false"
+                                      Grid.Row="2"
+                                      Style="{StaticResource MenuScrollButton}">
                             <RepeatButton.Visibility>
                                 <MultiBinding ConverterParameter="100"
-                                                      Converter="{StaticResource MenuScrollingVisibilityConverter}"
-                                                      FallbackValue="Visibility.Collapsed">
+                                              Converter="{StaticResource MenuScrollingVisibilityConverter}"
+                                              FallbackValue="Visibility.Collapsed">
                                     <Binding Path="ComputedVerticalScrollBarVisibility"
-                                                     RelativeSource="{RelativeSource TemplatedParent}" />
+                                             RelativeSource="{RelativeSource TemplatedParent}" />
                                     <Binding Path="VerticalOffset"
-                                                     RelativeSource="{RelativeSource TemplatedParent}" />
+                                             RelativeSource="{RelativeSource TemplatedParent}" />
                                     <Binding Path="ExtentHeight"
-                                                     RelativeSource="{RelativeSource TemplatedParent}" />
+                                             RelativeSource="{RelativeSource TemplatedParent}" />
                                     <Binding Path="ViewportHeight"
-                                                     RelativeSource="{RelativeSource TemplatedParent}" />
+                                             RelativeSource="{RelativeSource TemplatedParent}" />
                                 </MultiBinding>
                             </RepeatButton.Visibility>
                             <Path x:Name="DownArrow"
@@ -202,21 +213,21 @@
                      TargetType="{x:Type MenuItem}">
         <Grid SnapsToDevicePixels="true">
             <Rectangle x:Name="Bg"
-                               Fill="{TemplateBinding Background}"
-                               Margin="1" />
+                       Fill="{TemplateBinding Background}"
+                       Margin="1" />
             <ContentPresenter x:Name="Content"
-                                      ContentSource="Header"
-                                      Margin="{TemplateBinding Padding}"
-                                      RecognizesAccessKey="True"
-                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                              ContentSource="Header"
+                              Margin="{TemplateBinding Padding}"
+                              RecognizesAccessKey="True"
+                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
             <Popup x:Name="PART_Popup"
-                           AllowsTransparency="true"
-                           Focusable="false"
-                           IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
-                           PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}"
-                           VerticalOffset="-1">
+                   AllowsTransparency="true"
+                   Focusable="false"
+                   IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                   PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}"
+                   VerticalOffset="-1">
                 <Border x:Name="Shdw"
-                       Background="Transparent">
+                        Background="Transparent">
                     <Border x:Name="SubMenuBorder"
                             BorderBrush="{DynamicResource Orc.Brushes.Control.Default.Border}"
                             BorderThickness="1"
@@ -247,29 +258,57 @@
             </Popup>
         </Grid>
         <ControlTemplate.Triggers>
-            <Trigger Property="IsSuspendingPopupAnimation" Value="true">
-                <Setter Property="PopupAnimation" TargetName="PART_Popup" Value="None" />
+            <Trigger Property="IsSuspendingPopupAnimation"
+                     Value="true">
+                <Setter Property="PopupAnimation"
+                        TargetName="PART_Popup"
+                        Value="None" />
             </Trigger>
-            <Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="true">
-                <Setter Property="Margin" TargetName="Shdw" Value="0,0,5,5" />
-                <Setter Property="Background" TargetName="Shdw" Value="#71000000" />
+            <Trigger Property="HasDropShadow"
+                     SourceName="PART_Popup"
+                     Value="true">
+                <Setter Property="Margin"
+                        TargetName="Shdw"
+                        Value="0,0,5,5" />
+                <Setter Property="Background"
+                        TargetName="Shdw"
+                        Value="#71000000" />
             </Trigger>
-            <Trigger Property="IsHighlighted" Value="true">
-                <Setter Property="Fill" TargetName="Bg" Value="{DynamicResource Orc.Brushes.Control.Pressed.Background}" />
-                <Setter Property="TextBlock.Foreground" TargetName="Content" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Foreground}" />
+            <Trigger Property="IsHighlighted"
+                     Value="true">
+                <Setter Property="Fill"
+                        TargetName="Bg"
+                        Value="{DynamicResource Orc.Brushes.Control.Pressed.Background}" />
+                <Setter Property="TextBlock.Foreground"
+                        TargetName="Content"
+                        Value="{DynamicResource Orc.Brushes.Control.MouseOver.Foreground}" />
             </Trigger>
-            <Trigger Property="IsKeyboardFocused" Value="true">
-                <Setter Property="Fill" TargetName="Bg" Value="{DynamicResource Orc.Brushes.Control.Pressed.Background}" />
+            <Trigger Property="IsKeyboardFocused"
+                     Value="true">
+                <Setter Property="Fill"
+                        TargetName="Bg"
+                        Value="{DynamicResource Orc.Brushes.Control.Pressed.Background}" />
             </Trigger>
-            <Trigger Property="IsSubmenuOpen" Value="true">
-                <Setter Property="Fill" TargetName="Bg" Value="{DynamicResource Orc.Brushes.Control.Pressed.Background}" />
+            <Trigger Property="IsSubmenuOpen"
+                     Value="true">
+                <Setter Property="Fill"
+                        TargetName="Bg"
+                        Value="{DynamicResource Orc.Brushes.Control.Pressed.Background}" />
             </Trigger>
-            <Trigger Property="IsEnabled" Value="false">
-                <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}" />
+            <Trigger Property="IsEnabled"
+                     Value="false">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}" />
             </Trigger>
-            <Trigger Property="ScrollViewer.CanContentScroll" SourceName="SubMenuScrollViewer" Value="false">
-                <Setter Property="Canvas.Top" TargetName="OpaqueRect" Value="{Binding VerticalOffset, ElementName=SubMenuScrollViewer}" />
-                <Setter Property="Canvas.Left" TargetName="OpaqueRect" Value="{Binding HorizontalOffset, ElementName=SubMenuScrollViewer}" />
+            <Trigger Property="ScrollViewer.CanContentScroll"
+                     SourceName="SubMenuScrollViewer"
+                     Value="false">
+                <Setter Property="Canvas.Top"
+                        TargetName="OpaqueRect"
+                        Value="{Binding VerticalOffset, ElementName=SubMenuScrollViewer}" />
+                <Setter Property="Canvas.Left"
+                        TargetName="OpaqueRect"
+                        Value="{Binding HorizontalOffset, ElementName=SubMenuScrollViewer}" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -286,15 +325,24 @@
                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
         </Grid>
         <ControlTemplate.Triggers>
-            <Trigger Property="IsHighlighted" Value="true">
-                <Setter Property="Fill" TargetName="Bg" Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Background}" />
-                <Setter Property="TextBlock.Foreground" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Foreground}" />
+            <Trigger Property="IsHighlighted"
+                     Value="true">
+                <Setter Property="Fill"
+                        TargetName="Bg"
+                        Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Background}" />
+                <Setter Property="TextBlock.Foreground"
+                        Value="{DynamicResource Orc.Brushes.Control.MouseOver.Foreground}" />
             </Trigger>
-            <Trigger Property="IsKeyboardFocused" Value="true">
-                <Setter Property="Fill" TargetName="Bg" Value="{DynamicResource Orc.Brushes.Control.Pressed.Background}" />
+            <Trigger Property="IsKeyboardFocused"
+                     Value="true">
+                <Setter Property="Fill"
+                        TargetName="Bg"
+                        Value="{DynamicResource Orc.Brushes.Control.Pressed.Background}" />
             </Trigger>
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}" />
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -309,7 +357,8 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition SharedSizeGroup="MenuItemIGTColumnGroup" Width="Auto" />
+                    <ColumnDefinition SharedSizeGroup="MenuItemIGTColumnGroup"
+                                      Width="Auto" />
                     <ColumnDefinition Width="17" />
                 </Grid.ColumnDefinitions>
 
@@ -371,54 +420,84 @@
         </Grid>
 
         <ControlTemplate.Triggers>
-            <Trigger Property="IsSuspendingPopupAnimation" Value="true">
-                <Setter Property="PopupAnimation" TargetName="PART_Popup" Value="None" />
+            <Trigger Property="IsSuspendingPopupAnimation"
+                     Value="true">
+                <Setter Property="PopupAnimation"
+                        TargetName="PART_Popup"
+                        Value="None" />
             </Trigger>
-            <Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="true">
-                <Setter Property="Margin" TargetName="Shdw" Value="0,0,5,5" />
-                <Setter Property="Background" TargetName="Shdw" Value="#71000000" />
+            <Trigger Property="HasDropShadow"
+                     SourceName="PART_Popup"
+                     Value="true">
+                <Setter Property="Margin"
+                        TargetName="Shdw"
+                        Value="0,0,5,5" />
+                <Setter Property="Background"
+                        TargetName="Shdw"
+                        Value="#71000000" />
             </Trigger>
-            <Trigger Property="IsHighlighted" Value="true">
-                <Setter Property="Fill" TargetName="Bg"
+            <Trigger Property="IsHighlighted"
+                     Value="true">
+                <Setter Property="Fill"
+                        TargetName="Bg"
                         Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Background}" />
-                <Setter Property="TextBlock.Foreground" TargetName="Content"
+                <Setter Property="TextBlock.Foreground"
+                        TargetName="Content"
                         Value="{DynamicResource Orc.Brushes.Control.MouseOver.Foreground}" />
-                <Setter Property="Fill" TargetName="RightArrowPath"
+                <Setter Property="Fill"
+                        TargetName="RightArrowPath"
                         Value="{DynamicResource Orc.Brushes.Control.MouseOver.Foreground}" />
             </Trigger>
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}" />
-            </Trigger>
-            <Trigger Property="ScrollViewer.CanContentScroll" SourceName="SubMenuScrollViewer"
+            <Trigger Property="IsEnabled"
                      Value="False">
-                <Setter Property="Canvas.Top" TargetName="OpaqueRect"
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}" />
+            </Trigger>
+            <Trigger Property="ScrollViewer.CanContentScroll"
+                     SourceName="SubMenuScrollViewer"
+                     Value="False">
+                <Setter Property="Canvas.Top"
+                        TargetName="OpaqueRect"
                         Value="{Binding VerticalOffset, ElementName=SubMenuScrollViewer}" />
-                <Setter Property="Canvas.Left" TargetName="OpaqueRect"
+                <Setter Property="Canvas.Left"
+                        TargetName="OpaqueRect"
                         Value="{Binding HorizontalOffset, ElementName=SubMenuScrollViewer}" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <Style x:Key="Orc.Styles.MenuItem" TargetType="{x:Type MenuItem}">
-        <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.Default.Foreground}" />
-        <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.Default.Background}" />
-        <Setter Property="ScrollViewer.PanningMode" Value="Both" />
-        <Setter Property="MinHeight" Value="26" />
-        <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
-        <Setter Property="Template" Value="{DynamicResource {ComponentResourceKey ResourceId=SubmenuItemTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}}" />
+    <Style x:Key="Orc.Styles.MenuItem"
+           TargetType="{x:Type MenuItem}">
+        <Setter Property="Foreground"
+                Value="{DynamicResource Orc.Brushes.Control.Default.Foreground}" />
+        <Setter Property="Background"
+                Value="{DynamicResource Orc.Brushes.Control.Default.Background}" />
+        <Setter Property="ScrollViewer.PanningMode"
+                Value="Both" />
+        <Setter Property="MinHeight"
+                Value="26" />
+        <Setter Property="Stylus.IsFlicksEnabled"
+                Value="False" />
+        <Setter Property="Template"
+                Value="{DynamicResource {ComponentResourceKey ResourceId=SubmenuItemTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}}" />
         <Style.Triggers>
-            <Trigger Property="Role" Value="TopLevelHeader">
+            <Trigger Property="Role"
+                     Value="TopLevelHeader">
                 <Setter Property="Template"
                         Value="{DynamicResource {ComponentResourceKey ResourceId=TopLevelHeaderTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}}" />
             </Trigger>
-            <Trigger Property="Role" Value="TopLevelItem">
+            <Trigger Property="Role"
+                     Value="TopLevelItem">
                 <Setter Property="Template"
                         Value="{DynamicResource {ComponentResourceKey ResourceId=TopLevelItemTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}}" />
             </Trigger>
-            <Trigger Property="Role" Value="SubmenuHeader">
-                <Setter Property="Template" Value="{DynamicResource {ComponentResourceKey ResourceId=SubmenuHeaderTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}}" />
+            <Trigger Property="Role"
+                     Value="SubmenuHeader">
+                <Setter Property="Template"
+                        Value="{DynamicResource {ComponentResourceKey ResourceId=SubmenuHeaderTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}}" />
             </Trigger>
-            <Trigger Property="Role" Value="SubmenuItem">
+            <Trigger Property="Role"
+                     Value="SubmenuItem">
                 <Setter Property="Template"
                         Value="{DynamicResource {ComponentResourceKey ResourceId=SubmenuItemTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}}" />
             </Trigger>
@@ -426,12 +505,14 @@
     </Style>
 
     <!-- Separator -->
-    <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}" TargetType="{x:Type Separator}">
-        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+    <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}"
+           TargetType="{x:Type Separator}">
+        <Setter Property="FocusVisualStyle"
+                Value="{x:Null}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Separator}">
-                    <Grid Margin="3,2,3,2" 
+                    <Grid Margin="3,2,3,2"
                           SnapsToDevicePixels="true"
                           UseLayoutRounding="False">
                         <Rectangle Fill="{DynamicResource Orc.Brushes.Control.SelectionInactive.Border}"

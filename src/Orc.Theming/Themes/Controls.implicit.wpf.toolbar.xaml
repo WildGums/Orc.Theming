@@ -5,12 +5,16 @@
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.control.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="Orc.Styles.ToolBarTray" TargetType="{x:Type ToolBarTray}">
-        <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.Background}" />
+    <Style x:Key="Orc.Styles.ToolBarTray"
+           TargetType="{x:Type ToolBarTray}">
+        <Setter Property="Background"
+                Value="{DynamicResource Orc.Brushes.Control.Background}" />
     </Style>
 
-    <Style x:Key="Orc.Styles.ToolBar" TargetType="{x:Type ToolBar}">
-        <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.Background}" />
+    <Style x:Key="Orc.Styles.ToolBar"
+           TargetType="{x:Type ToolBar}">
+        <Setter Property="Background"
+                Value="{DynamicResource Orc.Brushes.Control.Background}" />
     </Style>
 
 </ResourceDictionary>
