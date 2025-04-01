@@ -208,7 +208,7 @@
 
     <!-- Progress bar -->
     <Style x:Key="DefaultProgressBarStyle" TargetType="{x:Type ProgressBar}" BasedOn="{StaticResource Orc.Styles.ProgressBar}">
-        <Setter Property="MinHeight" Value="{DynamicResource Size.Height}" />
+        <Setter Property="MinHeight" Value="{DynamicResource Size.MinHeight}" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Margin" Value="{DynamicResource Margin.Default}" />
     </Style>
