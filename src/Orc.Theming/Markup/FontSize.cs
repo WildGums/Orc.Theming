@@ -110,7 +110,7 @@ public class FontSize : UpdatableMarkupExtension
         return GetFontSize(defaultFontSize, absolute);
     }
 
-    protected static double GetFontSize(double defaultFontSize, double absoluteFontSize)
+    public static double GetFontSize(double defaultFontSize, double absoluteFontSize)
     {
         // Use constant to define the ratio
         var factor = absoluteFontSize / DefaultFontSize;

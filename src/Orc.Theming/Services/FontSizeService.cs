@@ -44,9 +44,11 @@ public class FontSizeService : IFontSizeService
         var application = Application.Current;
         if (application is not null)
         {
-            // Special case for tooltips: override font size as app resource
-            application.Resources["Orc.FontSizes.ToolTip"] = fontSize;
-            
+            // Special case for some styles: override font size as app resource since
+            // they must work with dynamic resources
+            UpdateAppResourceFontSize("Orc.FontSizes.ContextMenu", fontSize);
+            UpdateAppResourceFontSize("Orc.FontSizes.ToolTip", fontSize);
+
             var mainWindow = application.MainWindow;
             if (mainWindow is not null)
             {
@@ -75,6 +77,24 @@ public class FontSizeService : IFontSizeService
         RaiseFontSizeChanged();
 
         return true;
+    }
+
+    private void UpdateAppResourceFontSize(string key, double fontSize)
+    {
+        var application = Application.Current;
+        if (application is null)
+        {
+            return; 
+        }
+        
+        var defaultValueKey = $"{key}.DefaultValue";
+        var defaultFontSizeObject = application.TryFindResource(defaultValueKey);
+        if (defaultFontSizeObject is not double defaultFontSize)
+        {
+             defaultFontSize = 12d;
+        }
+
+        application.Resources[key] = FontSize.GetFontSize(defaultFontSize, fontSize);
     }
 
     private void OnApplicationActivated(object? sender, EventArgs e)

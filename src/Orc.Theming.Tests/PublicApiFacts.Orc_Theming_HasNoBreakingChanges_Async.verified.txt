@@ -165,7 +165,7 @@ namespace Orc.Theming
         protected override void OnTargetObjectUnloaded() { }
         protected override object? ProvideDynamicValue(System.IServiceProvider? serviceProvider) { }
         public static double GetFontSize(double absolute) { }
-        protected static double GetFontSize(double defaultFontSize, double absoluteFontSize) { }
+        public static double GetFontSize(double defaultFontSize, double absoluteFontSize) { }
         protected static double GetFontSizeFromTextBlockMetadata() { }
         public static void ResetCache() { }
     }

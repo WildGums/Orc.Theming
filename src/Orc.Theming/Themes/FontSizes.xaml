@@ -2,6 +2,15 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
+    <!-- 
+        Note: use .DefaultValue as non-modifyable value that can be used 
+        to calculate the offset
+    -->
+
+    <sys:Double x:Key="Orc.FontSizes.ContextMenu.DefaultValue">12</sys:Double>
+    <sys:Double x:Key="Orc.FontSizes.ContextMenu">12</sys:Double>
+
+    <sys:Double x:Key="Orc.FontSizes.ToolTip.DefaultValue">12</sys:Double>
     <sys:Double x:Key="Orc.FontSizes.ToolTip">12</sys:Double>
 
 </ResourceDictionary>
