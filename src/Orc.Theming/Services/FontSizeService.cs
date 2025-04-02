@@ -52,6 +52,10 @@ public class FontSizeService : IFontSizeService
             {
                 TextBlock.SetFontSize(mainWindow, fontSize);
             }
+            else
+            {
+                application.Activated += OnApplicationActivated;
+            }
         }
 
         try
@@ -71,6 +75,31 @@ public class FontSizeService : IFontSizeService
         RaiseFontSizeChanged();
 
         return true;
+    }
+
+    private void OnApplicationActivated(object? sender, EventArgs e)
+    {
+        if (sender is not Application app)
+        {
+            app = Application.Current;
+        }
+
+        var fontSize = _fontSize;
+        if (fontSize is null)
+        {
+            return;
+        }
+
+        var mainWindow = app.MainWindow;
+        if (mainWindow is null)
+        {
+            // Come back later
+            return;
+        }
+
+        app.Activated -= OnApplicationActivated;
+
+        TextBlock.SetFontSize(mainWindow, fontSize.Value);
     }
 
     protected void RaiseFontSizeChanged()
