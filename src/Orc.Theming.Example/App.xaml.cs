@@ -4,6 +4,7 @@ using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Media;
+using Catel.Configuration;
 using Catel.IoC;
 using Catel.Logging;
 using Catel.Services;
@@ -15,7 +16,7 @@ public partial class App
 {
     private static readonly ILog Log = LogManager.GetCurrentClassLogger();
 
-    protected override void OnStartup(StartupEventArgs e)
+    protected override async void OnStartup(StartupEventArgs e)
     {
         var languageService = ServiceLocator.Default.ResolveRequiredType<ILanguageService>();
 
@@ -31,6 +32,14 @@ public partial class App
         // This shows the StyleHelper, but uses a *copy* of the Orchestra themes. The default margins for controls are not defined in
         // Orc.Theming since it's a low-level library. The final default styles should be in the shell (thus Orchestra makes sense)
         StyleHelper.CreateStyleForwardersForDefaultStyles();
+
+        var configurationService = ServiceLocator.Default.ResolveType<IConfigurationService>();
+        await configurationService.LoadAsync();
+
+        var fontSize = configurationService.GetRoamingValue("FontSize", 12d);
+
+        var fontSizeService = ServiceLocator.Default.ResolveRequiredType<IFontSizeService>();
+        fontSizeService.SetFontSize(fontSize);
 
         Log.Info("Starting application");
         Log.Info("This log message should show up as debug");
