@@ -6,88 +6,122 @@
     </ResourceDictionary.MergedDictionaries>
 
     <!--Default DataGrid Style-->
-    <Style TargetType="{x:Type DataGrid}" BasedOn="{StaticResource Orc.Styles.Control}">
+    <Style TargetType="{x:Type DataGrid}"
+           BasedOn="{StaticResource Orc.Styles.Control}">
         <Style.Resources>
             <!--ColumnHeaderGripperStyle-->
-            <Style x:Key="ColumnHeaderGripperStyle" TargetType="{x:Type Thumb}">
-                <Setter Property="Width" Value="8"/>
-                <Setter Property="Background" Value="Transparent"/>
-                <Setter Property="Cursor" Value="SizeWE"/>
+            <Style x:Key="ColumnHeaderGripperStyle"
+                   TargetType="{x:Type Thumb}">
+                <Setter Property="Width"
+                        Value="8" />
+                <Setter Property="Background"
+                        Value="Transparent" />
+                <Setter Property="Cursor"
+                        Value="SizeWE" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Thumb}">
-                            <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}"/>
+                            <Border Background="{TemplateBinding Background}"
+                                    Padding="{TemplateBinding Padding}" />
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
             </Style>
 
             <!--ColmnHeaderStyle-->
-            <Style x:Key="ColumnHeaderStyle" TargetType="{x:Type DataGridColumnHeader}">
-                <Setter Property="Padding" Value="3"/>
-                <Setter Property="FontWeight" Value="Normal"/>
-                <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Style x:Key="ColumnHeaderStyle"
+                   TargetType="{x:Type DataGridColumnHeader}">
+                <Setter Property="Padding"
+                        Value="3" />
+                <Setter Property="FontWeight"
+                        Value="Normal" />
+                <Setter Property="SnapsToDevicePixels"
+                        Value="True" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
-                            <Grid x:Name="ContainerGrid" 
-                          Background="{DynamicResource Orc.Brushes.Control.Default.Background}">
+                            <Grid x:Name="ContainerGrid"
+                                  Background="{DynamicResource Orc.Brushes.Control.Default.Background}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <Border x:Name="BackgroundBorder"
                                         BorderThickness="0 0 1 1"
-                                        Height="28" 
+                                        Height="28"
                                         Grid.ColumnSpan="2"
                                         Background="{DynamicResource Orc.Brushes.Control.Default.Background}" />
-                                <ContentPresenter Margin="3 0 3 0" VerticalAlignment="Center" />
-                                <Path x:Name="SortArrow" 
+                                <ContentPresenter Margin="3 0 3 0"
+                                                  VerticalAlignment="Center" />
+                                <Path x:Name="SortArrow"
                                       Visibility="Collapsed"
                                       Data="M0,0 L1,0 0.5,1 z"
-                                      Stretch="Fill" 
-                                      Grid.Column="1" 
-                                      Width="8" 
-                                      Height="6" 
-                                      Fill="{DynamicResource Orc.Brushes.Control.Default.Foreground}" 
-                                      Margin="0,2,6,0" 
+                                      Stretch="Fill"
+                                      Grid.Column="1"
+                                      Width="8"
+                                      Height="6"
+                                      Fill="{DynamicResource Orc.Brushes.Control.Default.Foreground}"
+                                      Margin="0,2,6,0"
                                       VerticalAlignment="Center"
                                       RenderTransformOrigin="0.5,0.4" />
 
                                 <Thumb x:Name="PART_LeftHeaderGripper"
-                                       HorizontalAlignment="Left" 
-                                       Style="{StaticResource ColumnHeaderGripperStyle}"/>
+                                       HorizontalAlignment="Left"
+                                       Style="{StaticResource ColumnHeaderGripperStyle}" />
                                 <Thumb x:Name="PART_RightHeaderGripper"
-                                       HorizontalAlignment="Right" 
-                                       Style="{StaticResource ColumnHeaderGripperStyle}"/>
+                                       HorizontalAlignment="Right"
+                                       Style="{StaticResource ColumnHeaderGripperStyle}" />
                             </Grid>
                             <ControlTemplate.Triggers>
-                                <Trigger Property="SortDirection" Value="{x:Null}">
-                                    <Setter TargetName="BackgroundBorder" Property="Background" Value="{DynamicResource Orc.Brushes.Control.Default.Background}" />
-                                    <Setter TargetName="BackgroundBorder" Property="BorderBrush" Value="Transparent" />
+                                <Trigger Property="SortDirection"
+                                         Value="{x:Null}">
+                                    <Setter TargetName="BackgroundBorder"
+                                            Property="Background"
+                                            Value="{DynamicResource Orc.Brushes.Control.Default.Background}" />
+                                    <Setter TargetName="BackgroundBorder"
+                                            Property="BorderBrush"
+                                            Value="Transparent" />
                                 </Trigger>
                                 <MultiTrigger>
                                     <MultiTrigger.Conditions>
-                                        <Condition Property="IsMouseOver" Value="True" />
-                                        <Condition Property="SortDirection" Value="{x:Null}" />
+                                        <Condition Property="IsMouseOver"
+                                                   Value="True" />
+                                        <Condition Property="SortDirection"
+                                                   Value="{x:Null}" />
                                     </MultiTrigger.Conditions>
-                                    <Setter Property="Background" TargetName="BackgroundBorder" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Background}" />
-                                    <Setter Property="BorderBrush" TargetName="BackgroundBorder" Value="{DynamicResource Orc.Brushes.Control.Default.Border}" />
-                                    <Setter Property="Background" TargetName="ContainerGrid" Value="Transparent" />
+                                    <Setter Property="Background"
+                                            TargetName="BackgroundBorder"
+                                            Value="{DynamicResource Orc.Brushes.Control.MouseOver.Background}" />
+                                    <Setter Property="BorderBrush"
+                                            TargetName="BackgroundBorder"
+                                            Value="{DynamicResource Orc.Brushes.Control.Default.Border}" />
+                                    <Setter Property="Background"
+                                            TargetName="ContainerGrid"
+                                            Value="Transparent" />
                                 </MultiTrigger>
-                                <Trigger Property="SortDirection" Value="Ascending">
-                                    <Setter TargetName="SortArrow" Property="Visibility" Value="Visible" />
-                                    <Setter TargetName="SortArrow" Property="RenderTransform">
+                                <Trigger Property="SortDirection"
+                                         Value="Ascending">
+                                    <Setter TargetName="SortArrow"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                    <Setter TargetName="SortArrow"
+                                            Property="RenderTransform">
                                         <Setter.Value>
                                             <RotateTransform Angle="180" />
                                         </Setter.Value>
                                     </Setter>
                                 </Trigger>
-                                <Trigger Property="SortDirection" Value="Descending">
-                                    <Setter TargetName="SortArrow" Property="Visibility" Value="Visible" />
+                                <Trigger Property="SortDirection"
+                                         Value="Descending">
+                                    <Setter TargetName="SortArrow"
+                                            Property="Visibility"
+                                            Value="Visible" />
                                 </Trigger>
-                                <Trigger Property="DisplayIndex" Value="0">
-                                    <Setter Property="Visibility" Value="Collapsed" TargetName="PART_LeftHeaderGripper" />
+                                <Trigger Property="DisplayIndex"
+                                         Value="0">
+                                    <Setter Property="Visibility"
+                                            Value="Collapsed"
+                                            TargetName="PART_LeftHeaderGripper" />
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -95,53 +129,76 @@
                 </Setter>
             </Style>
 
-            <Style x:Key="CellStyle" TargetType="{x:Type DataGridCell}">
-                <Setter Property="Padding" Value="3" />
-                <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.Default.Foreground}" />
-                <Setter Property="Background" Value="Transparent" />
+            <Style x:Key="CellStyle"
+                   TargetType="{x:Type DataGridCell}">
+                <Setter Property="Padding"
+                        Value="3" />
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Orc.Brushes.Control.Default.Foreground}" />
+                <Setter Property="Background"
+                        Value="Transparent" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type DataGridCell}">
                             <Grid Background="{TemplateBinding Background}">
-                                <ContentPresenter Margin="{TemplateBinding Padding}"/>
+                                <ContentPresenter Margin="{TemplateBinding Padding}" />
                             </Grid>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
                 <Style.Triggers>
 
-                    <Trigger Property="DataGridCell.IsSelected" Value="True">
-                        <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.Default.Foreground}" />
-                        <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Background}" />
+                    <Trigger Property="DataGridCell.IsSelected"
+                             Value="True">
+                        <Setter Property="Foreground"
+                                Value="{DynamicResource Orc.Brushes.Control.Default.Foreground}" />
+                        <Setter Property="Background"
+                                Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Background}" />
                     </Trigger>
 
                     <MultiTrigger>
                         <MultiTrigger.Conditions>
-                            <Condition Property="IsSelected" Value="True"/>
-                            <Condition Property="IsFocused" Value="True"/>
+                            <Condition Property="IsSelected"
+                                       Value="True" />
+                            <Condition Property="IsFocused"
+                                       Value="True" />
                         </MultiTrigger.Conditions>
-                        <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.Default.Foreground}" />
-                        <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Background}" />
+                        <Setter Property="Foreground"
+                                Value="{DynamicResource Orc.Brushes.Control.Default.Foreground}" />
+                        <Setter Property="Background"
+                                Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Background}" />
                     </MultiTrigger>
 
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Foreground}"/>
-                        <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Background}"/>
+                    <Trigger Property="IsMouseOver"
+                             Value="True">
+                        <Setter Property="Foreground"
+                                Value="{DynamicResource Orc.Brushes.Control.MouseOver.Foreground}" />
+                        <Setter Property="Background"
+                                Value="{DynamicResource Orc.Brushes.Control.MouseOver.Background}" />
                     </Trigger>
 
-                    <Trigger Property="IsEnabled" Value="false">
-                        <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}"/>
-                        <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.Disabled.Background}"/>
+                    <Trigger Property="IsEnabled"
+                             Value="false">
+                        <Setter Property="Foreground"
+                                Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}" />
+                        <Setter Property="Background"
+                                Value="{DynamicResource Orc.Brushes.Control.Disabled.Background}" />
                     </Trigger>
                 </Style.Triggers>
             </Style>
         </Style.Resources>
 
-        <Setter Property="RowBackground" Value="{DynamicResource Orc.Brushes.Control.Default.Background}"/>
-        <Setter Property="AlternatingRowBackground" Value="{DynamicResource GrayBrush10}" />
-        <Setter Property="ColumnHeaderStyle" Value="{StaticResource ColumnHeaderStyle}" />
-        <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource Orc.Brushes.Control.Default.Border}" />
-        <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource Orc.Brushes.Control.Default.Border}" />
-        <Setter Property="CellStyle" Value="{StaticResource CellStyle}" />
+        <Setter Property="RowBackground"
+                Value="{DynamicResource Orc.Brushes.Control.Default.Background}" />
+        <Setter Property="AlternatingRowBackground"
+                Value="{DynamicResource GrayBrush10}" />
+        <Setter Property="ColumnHeaderStyle"
+                Value="{StaticResource ColumnHeaderStyle}" />
+        <Setter Property="VerticalGridLinesBrush"
+                Value="{DynamicResource Orc.Brushes.Control.Default.Border}" />
+        <Setter Property="HorizontalGridLinesBrush"
+                Value="{DynamicResource Orc.Brushes.Control.Default.Border}" />
+        <Setter Property="CellStyle"
+                Value="{StaticResource CellStyle}" />
     </Style>
 </ResourceDictionary>

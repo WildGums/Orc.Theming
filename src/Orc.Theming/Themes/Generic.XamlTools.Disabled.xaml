@@ -3,6 +3,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Catel.MVVM;component/Themes/Generic.xaml" />
 
+        <ResourceDictionary Source="/Orc.Theming;component/Themes/FontSizes.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/Themes/Styles.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/Themes/Theming.defaultstyles.wpf.xaml" />
         <ResourceDictionary Source="/Orc.Theming;component/Themes/Theming.defaultstyles.catel.xaml" />

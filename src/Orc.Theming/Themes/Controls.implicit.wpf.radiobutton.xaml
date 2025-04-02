@@ -6,15 +6,18 @@
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.focusvisual.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="Orc.Styles.RadioButton" TargetType="{x:Type RadioButton}"
+    <Style x:Key="Orc.Styles.RadioButton"
+           TargetType="{x:Type RadioButton}"
            BasedOn="{StaticResource Orc.Styles.Control}">
 
-        <Setter Property="FocusVisualStyle" Value="{StaticResource Orc.Styles.Control.Outside.FocusVisual}"/>
+        <Setter Property="FocusVisualStyle"
+                Value="{StaticResource Orc.Styles.Control.Outside.FocusVisual}" />
 
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RadioButton}">
-                    <BulletDecorator Background="Transparent" SnapsToDevicePixels="true"
+                    <BulletDecorator Background="Transparent"
+                                     SnapsToDevicePixels="true"
                                      VerticalAlignment="{TemplateBinding VerticalAlignment}"
                                      HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
                         <BulletDecorator.Bullet>
@@ -22,22 +25,23 @@
                                 <Border x:Name="Chrome"
                                         Height="14"
                                         Width="14"
-                                        CornerRadius="100" 
+                                        CornerRadius="100"
                                         BorderThickness="0"
-                                        Background="{DynamicResource Orc.Brushes.Control.Background}"/>
+                                        Background="{DynamicResource Orc.Brushes.Control.Background}" />
 
                                 <Border x:Name="RadioButtonBorder"
                                         Height="14"
                                         Width="14"
-                                        CornerRadius="100" 
+                                        CornerRadius="100"
                                         BorderThickness="{TemplateBinding BorderThickness}"
-                                        BorderBrush="{TemplateBinding BorderBrush}" 
+                                        BorderBrush="{TemplateBinding BorderBrush}"
                                         Background="{TemplateBinding Background}">
 
-                                    <Ellipse x:Name="RadioMark" 
-                                         Margin="3"
-                                         Fill="{DynamicResource Orc.Brushes.AccentColor}" 
-                                         Width="6" Height="6"/>
+                                    <Ellipse x:Name="RadioMark"
+                                             Margin="3"
+                                             Fill="{DynamicResource Orc.Brushes.AccentColor}"
+                                             Width="6"
+                                             Height="6" />
                                 </Border>
                             </Grid>
                         </BulletDecorator.Bullet>
@@ -46,12 +50,15 @@
                                           Margin="{TemplateBinding Padding}"
                                           RecognizesAccessKey="True"
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                     </BulletDecorator>
 
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsChecked" Value="False">
-                            <Setter TargetName="RadioMark" Property="Visibility" Value="Hidden"/>
+                        <Trigger Property="IsChecked"
+                                 Value="False">
+                            <Setter TargetName="RadioMark"
+                                    Property="Visibility"
+                                    Value="Hidden" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -59,17 +66,25 @@
         </Setter>
 
         <Style.Triggers>
-            <Trigger Property="HasContent" Value="true">
-                <Setter Property="Padding" Value="4,0,0,0"/>
+            <Trigger Property="HasContent"
+                     Value="true">
+                <Setter Property="Padding"
+                        Value="4,0,0,0" />
             </Trigger>
 
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.Disabled.Background}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Disabled.Border}"/>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Background"
+                        Value="{DynamicResource Orc.Brushes.Control.Disabled.Background}" />
+                <Setter Property="BorderBrush"
+                        Value="{DynamicResource Orc.Brushes.Control.Disabled.Border}" />
             </Trigger>
-            <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Background}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Border}"/>
+            <Trigger Property="IsMouseOver"
+                     Value="true">
+                <Setter Property="Background"
+                        Value="{DynamicResource Orc.Brushes.Control.MouseOver.Background}" />
+                <Setter Property="BorderBrush"
+                        Value="{DynamicResource Orc.Brushes.Control.MouseOver.Border}" />
             </Trigger>
         </Style.Triggers>
     </Style>

@@ -241,11 +241,11 @@ public static class StyleHelper
         }
 
         var keys = (from key in sourceResources.Keys as ICollection<object>
-            let stringKey = key as string
-            where stringKey != null &&
-                  (stringKey).StartsWith(defaultPrefix, StringComparison.Ordinal) &&
-                  (stringKey).EndsWith(DefaultKeyPostfix, StringComparison.Ordinal)
-            select stringKey).Distinct().ToList();
+                    let stringKey = key as string
+                    where stringKey != null &&
+                          stringKey.StartsWith(defaultPrefix, StringComparison.Ordinal) &&
+                          stringKey.EndsWith(DefaultKeyPostfix, StringComparison.Ordinal)
+                    select stringKey).Distinct().ToArray();
 
         foreach (var key in keys)
         {

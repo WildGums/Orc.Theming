@@ -5,42 +5,72 @@
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.control.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <SolidColorBrush x:Key="Orc.Styles.TextBox.Selection.Highlight" Color="#0078D7"/>
-    <SolidColorBrush x:Key="Orc.Styles.TextBox.Selection.HighlightInactive" Color="#B9B9B9"/>
+    <SolidColorBrush x:Key="Orc.Styles.TextBox.Selection.Highlight"
+                     Color="#0078D7" />
+    <SolidColorBrush x:Key="Orc.Styles.TextBox.Selection.HighlightInactive"
+                     Color="#B9B9B9" />
 
-    <Style x:Key="Orc.Styles.TextBoxBase" BasedOn="{StaticResource Orc.Styles.Control}">
+    <Style x:Key="Orc.Styles.TextBoxBase"
+           BasedOn="{StaticResource Orc.Styles.Control}">
 
-        <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
-        <Setter Property="Control.HorizontalContentAlignment" Value="Left"/>
-        <Setter Property="Control.AllowDrop" Value="true"/>
-        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
-        <Setter Property="Control.FocusVisualStyle" Value="{x:Null}"/>
-     
-        <Setter Property="TextBoxBase.SelectionBrush" Value="{DynamicResource Orc.Styles.TextBox.Selection.Highlight}"/>
+        <Setter Property="KeyboardNavigation.TabNavigation"
+                Value="None" />
+        <Setter Property="Control.HorizontalContentAlignment"
+                Value="Left" />
+        <Setter Property="Control.AllowDrop"
+                Value="true" />
+        <Setter Property="Stylus.IsFlicksEnabled"
+                Value="False" />
+        <Setter Property="Control.FocusVisualStyle"
+                Value="{x:Null}" />
+
+        <Setter Property="TextBoxBase.VerticalAlignment"
+                Value="Center" />
+        <Setter Property="TextBoxBase.SelectionBrush"
+                Value="{DynamicResource Orc.Styles.TextBox.Selection.Highlight}" />
 
         <Style.Triggers>
-            <Trigger Property="Control.IsEnabled" Value="false">
-                <Setter Property="Control.BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Disabled.Border}"/>
-                <Setter Property="Control.Foreground" Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}"/>
-                <Setter Property="Control.Background" Value="{DynamicResource Orc.Brushes.Control.Disabled.Background}"/>
+            <Trigger Property="Control.IsEnabled"
+                     Value="false">
+                <Setter Property="Control.BorderBrush"
+                        Value="{DynamicResource Orc.Brushes.Control.Disabled.Border}" />
+                <Setter Property="Control.Foreground"
+                        Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}" />
+                <Setter Property="Control.Background"
+                        Value="{DynamicResource Orc.Brushes.Control.Disabled.Background}" />
             </Trigger>
-            <Trigger Property="Control.IsMouseOver" Value="true">
-                <Setter Property="Control.BorderBrush" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Border}"/>
+            <Trigger Property="Control.IsMouseOver"
+                     Value="true">
+                <Setter Property="Control.BorderBrush"
+                        Value="{DynamicResource Orc.Brushes.Control.MouseOver.Border}" />
             </Trigger>
-            <Trigger Property="Control.IsKeyboardFocused" Value="true">
-                <Setter Property="Control.BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Focus.Border}"/>
+            <Trigger Property="Control.IsKeyboardFocused"
+                     Value="true">
+                <Setter Property="Control.BorderBrush"
+                        Value="{DynamicResource Orc.Brushes.Control.Focus.Border}" />
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="TextBoxBase.IsInactiveSelectionHighlightEnabled" Value="true"/>
-                    <Condition Property="TextBoxBase.IsSelectionActive" Value="false"/>
+                    <Condition Property="TextBoxBase.IsInactiveSelectionHighlightEnabled"
+                               Value="true" />
+                    <Condition Property="TextBoxBase.IsSelectionActive"
+                               Value="false" />
                 </MultiTrigger.Conditions>
 
-                <Setter Property="TextBoxBase.SelectionBrush" Value="{DynamicResource Orc.Styles.TextBox.Selection.HighlightInactive}"/>
+                <Setter Property="TextBoxBase.SelectionBrush"
+                        Value="{DynamicResource Orc.Styles.TextBox.Selection.HighlightInactive}" />
             </MultiTrigger>
 
-            <Trigger Property="TextBoxBase.VerticalAlignment" Value="Stretch">
-                <Setter Property="TextBoxBase.Height" Value="Auto"/>
+            <Trigger Property="TextBoxBase.AcceptsReturn"
+                     Value="True">
+                <Setter Property="TextBoxBase.VerticalAlignment"
+                        Value="Stretch" />
+            </Trigger>
+
+            <Trigger Property="TextBoxBase.VerticalAlignment"
+                     Value="Stretch">
+                <Setter Property="TextBoxBase.Height"
+                        Value="Auto" />
             </Trigger>
         </Style.Triggers>
     </Style>

@@ -5,23 +5,34 @@
         <ResourceDictionary Source="/Orc.Theming;component/themes/Controls.implicit.wpf.control.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="Orc.Styles.Thumb" TargetType="{x:Type Thumb}"
+    <Style x:Key="Orc.Styles.Thumb"
+           TargetType="{x:Type Thumb}"
            BasedOn="{StaticResource Orc.Styles.Control}">
 
-        <Setter Property="Focusable" Value="False"/>
-        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Focusable"
+                Value="False" />
+        <Setter Property="OverridesDefaultStyle"
+                Value="true" />
 
         <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Background}"/>
+            <Trigger Property="IsMouseOver"
+                     Value="true">
+                <Setter Property="Background"
+                        Value="{DynamicResource Orc.Brushes.Control.MouseOver.Background}" />
             </Trigger>
-            <Trigger Property="IsDragging" Value="true">
-                <Setter Property="Background" Value="{DynamicResource Orc.Brushes.AccentBaseColorBrush}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource Orc.Brushes.AccentBaseColorBrush}"/>
+            <Trigger Property="IsDragging"
+                     Value="true">
+                <Setter Property="Background"
+                        Value="{DynamicResource Orc.Brushes.AccentBaseColorBrush}" />
+                <Setter Property="BorderBrush"
+                        Value="{DynamicResource Orc.Brushes.AccentBaseColorBrush}" />
             </Trigger>
-            <Trigger Property="IsEnabled" Value="false">
-                <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.Disabled.Background}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Disabled.Border}"/>
+            <Trigger Property="IsEnabled"
+                     Value="false">
+                <Setter Property="Background"
+                        Value="{DynamicResource Orc.Brushes.Control.Disabled.Background}" />
+                <Setter Property="BorderBrush"
+                        Value="{DynamicResource Orc.Brushes.Control.Disabled.Border}" />
             </Trigger>
         </Style.Triggers>
 

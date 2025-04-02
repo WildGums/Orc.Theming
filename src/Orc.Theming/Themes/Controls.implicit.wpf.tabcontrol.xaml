@@ -9,101 +9,156 @@
         <Setter Property="Control.Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Rectangle Margin="3,3,3,1" SnapsToDevicePixels="true" 
+                    <Rectangle Margin="3,3,3,1"
+                               SnapsToDevicePixels="true"
                                Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
-                               StrokeThickness="1" StrokeDashArray="1 2"/>
+                               StrokeThickness="1"
+                               StrokeDashArray="1 2" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <Style x:Key="Orc.Styles.TabItem" TargetType="{x:Type TabItem}"
+    <Style x:Key="Orc.Styles.TabItem"
+           TargetType="{x:Type TabItem}"
            BasedOn="{StaticResource Orc.Styles.Control}">
         <!--<Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.Default.Background}" />-->
-        <Setter Property="FocusVisualStyle" Value="{StaticResource TabItemFocusVisual}"/>
-        <Setter Property="Padding" Value="6,1,6,1"/>
-        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="FocusVisualStyle"
+                Value="{StaticResource TabItemFocusVisual}" />
+        <Setter Property="Padding"
+                Value="6,1,6,1" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Stretch" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabItem}">
                     <Grid SnapsToDevicePixels="true">
-                        <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}"
-								BorderThickness="1,1,1,0"
-								Background="{TemplateBinding Background}"
-								Padding="{TemplateBinding Padding}">
+                        <Border x:Name="Bd"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1,1,1,0"
+                                Background="{TemplateBinding Background}"
+                                Padding="{TemplateBinding Padding}">
                             <ContentPresenter x:Name="Content"
-									ContentSource="Header"
-									HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
-									RecognizesAccessKey="True"
-									SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-									VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+                                              ContentSource="Header"
+                                              HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                              RecognizesAccessKey="True"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                              VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
                         </Border>
                     </Grid>
-                    
+
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Background}"/>
+                        <Trigger Property="IsMouseOver"
+                                 Value="true">
+                            <Setter Property="Background"
+                                    TargetName="Bd"
+                                    Value="{DynamicResource Orc.Brushes.Control.MouseOver.Background}" />
                         </Trigger>
-                        <Trigger Property="IsSelected" Value="true">
-                            <Setter Property="Panel.ZIndex" Value="1"/>
-                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Background}"/>
-                            <Setter Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Border}"/>
+                        <Trigger Property="IsSelected"
+                                 Value="true">
+                            <Setter Property="Panel.ZIndex"
+                                    Value="1" />
+                            <Setter Property="Background"
+                                    TargetName="Bd"
+                                    Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Background}" />
+                            <Setter Property="BorderBrush"
+                                    Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Border}" />
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="IsSelected" Value="false"/>
-                                <Condition Property="IsMouseOver" Value="true"/>
+                                <Condition Property="IsSelected"
+                                           Value="false" />
+                                <Condition Property="IsMouseOver"
+                                           Value="true" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Border}"/>
+                            <Setter Property="BorderBrush"
+                                    TargetName="Bd"
+                                    Value="{DynamicResource Orc.Brushes.Control.MouseOver.Border}" />
                         </MultiTrigger>
-                        
-                        <Trigger Property="TabStripPlacement" Value="Bottom">
-                            <Setter Property="BorderThickness" TargetName="Bd" Value="1,0,1,1"/>
+
+                        <Trigger Property="TabStripPlacement"
+                                 Value="Bottom">
+                            <Setter Property="BorderThickness"
+                                    TargetName="Bd"
+                                    Value="1,0,1,1" />
                         </Trigger>
-                        <Trigger Property="TabStripPlacement" Value="Left">
-                            <Setter Property="BorderThickness" TargetName="Bd" Value="1,1,0,1"/>
+                        <Trigger Property="TabStripPlacement"
+                                 Value="Left">
+                            <Setter Property="BorderThickness"
+                                    TargetName="Bd"
+                                    Value="1,1,0,1" />
                         </Trigger>
-                        <Trigger Property="TabStripPlacement" Value="Right">
-                            <Setter Property="BorderThickness" TargetName="Bd" Value="0,1,1,1"/>
+                        <Trigger Property="TabStripPlacement"
+                                 Value="Right">
+                            <Setter Property="BorderThickness"
+                                    TargetName="Bd"
+                                    Value="0,1,1,1" />
                         </Trigger>
-                        
+
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="IsSelected" Value="true"/>
-                                <Condition Property="TabStripPlacement" Value="Top"/>
+                                <Condition Property="IsSelected"
+                                           Value="true" />
+                                <Condition Property="TabStripPlacement"
+                                           Value="Top" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Margin" Value="-2,-2,-2,-1"/>
-                            <Setter Property="Margin" TargetName="Content" Value="0,0,0,1"/>
+                            <Setter Property="Margin"
+                                    Value="-2,-2,-2,-1" />
+                            <Setter Property="Margin"
+                                    TargetName="Content"
+                                    Value="0,0,0,1" />
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="IsSelected" Value="true"/>
-                                <Condition Property="TabStripPlacement" Value="Bottom"/>
+                                <Condition Property="IsSelected"
+                                           Value="true" />
+                                <Condition Property="TabStripPlacement"
+                                           Value="Bottom" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Margin" Value="-2,-1,-2,-2"/>
-                            <Setter Property="Margin" TargetName="Content" Value="0,1,0,0"/>
+                            <Setter Property="Margin"
+                                    Value="-2,-1,-2,-2" />
+                            <Setter Property="Margin"
+                                    TargetName="Content"
+                                    Value="0,1,0,0" />
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="IsSelected" Value="true"/>
-                                <Condition Property="TabStripPlacement" Value="Left"/>
+                                <Condition Property="IsSelected"
+                                           Value="true" />
+                                <Condition Property="TabStripPlacement"
+                                           Value="Left" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Margin" Value="-2,-2,-1,-2"/>
-                            <Setter Property="Margin" TargetName="Content" Value="0,0,1,0"/>
+                            <Setter Property="Margin"
+                                    Value="-2,-2,-1,-2" />
+                            <Setter Property="Margin"
+                                    TargetName="Content"
+                                    Value="0,0,1,0" />
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="IsSelected" Value="true"/>
-                                <Condition Property="TabStripPlacement" Value="Right"/>
+                                <Condition Property="IsSelected"
+                                           Value="true" />
+                                <Condition Property="TabStripPlacement"
+                                           Value="Right" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Margin" Value="-1,-2,-2,-2"/>
-                            <Setter Property="Margin" TargetName="Content" Value="1,0,0,0"/>
+                            <Setter Property="Margin"
+                                    Value="-1,-2,-2,-2" />
+                            <Setter Property="Margin"
+                                    TargetName="Content"
+                                    Value="1,0,0,0" />
                         </MultiTrigger>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource Orc.Brushes.Control.Disabled.Background}"/>
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="{DynamicResource Orc.Brushes.Control.Disabled.Border}"/>
-                            <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}"/>
+                        <Trigger Property="IsEnabled"
+                                 Value="false">
+                            <Setter Property="Background"
+                                    TargetName="Bd"
+                                    Value="{DynamicResource Orc.Brushes.Control.Disabled.Background}" />
+                            <Setter Property="BorderBrush"
+                                    TargetName="Bd"
+                                    Value="{DynamicResource Orc.Brushes.Control.Disabled.Border}" />
+                            <Setter Property="Foreground"
+                                    Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -111,92 +166,156 @@
         </Setter>
     </Style>
 
-    <Style x:Key="Orc.Styles.TabControl" TargetType="{x:Type TabControl}">
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-        <Setter Property="Padding" Value="4,4,4,4"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Default.Border}"/>
-        <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.Default.Background}"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    <Style x:Key="Orc.Styles.TabControl"
+           TargetType="{x:Type TabControl}">
+        <Setter Property="Foreground"
+                Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+        <Setter Property="Padding"
+                Value="4,4,4,4" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource Orc.Brushes.Control.Default.Border}" />
+        <Setter Property="Background"
+                Value="{DynamicResource Orc.Brushes.Control.Default.Background}" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Center" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabControl}">
-                    <Grid ClipToBounds="true" SnapsToDevicePixels="true" KeyboardNavigation.TabNavigation="Local">
+                    <Grid ClipToBounds="true"
+                          SnapsToDevicePixels="true"
+                          KeyboardNavigation.TabNavigation="Local">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition x:Name="ColumnDefinition0"/>
-                            <ColumnDefinition x:Name="ColumnDefinition1" Width="0"/>
+                            <ColumnDefinition x:Name="ColumnDefinition0" />
+                            <ColumnDefinition x:Name="ColumnDefinition1"
+                                              Width="0" />
                         </Grid.ColumnDefinitions>
-                        
+
                         <Grid.RowDefinitions>
-                            <RowDefinition x:Name="RowDefinition0" Height="Auto"/>
-                            <RowDefinition x:Name="RowDefinition1" Height="*"/>
+                            <RowDefinition x:Name="RowDefinition0"
+                                           Height="Auto" />
+                            <RowDefinition x:Name="RowDefinition1"
+                                           Height="*" />
                         </Grid.RowDefinitions>
-                        
-                        <TabPanel x:Name="HeaderPanel" 
-                                  Grid.Column="0" 
-                                  IsItemsHost="true" 
-                                  Margin="2,2,2,0" 
-                                  Grid.Row="0" 
-                                  KeyboardNavigation.TabIndex="1" 
-                                  Panel.ZIndex="1"/>
-                        
-                        <Border x:Name="ContentPanel" 
-                                BorderBrush="{TemplateBinding BorderBrush}" 
+
+                        <TabPanel x:Name="HeaderPanel"
+                                  Grid.Column="0"
+                                  IsItemsHost="true"
+                                  Margin="2,2,2,0"
+                                  Grid.Row="0"
+                                  KeyboardNavigation.TabIndex="1"
+                                  Panel.ZIndex="1" />
+
+                        <Border x:Name="ContentPanel"
+                                BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-								Background="{TemplateBinding Background}" 
+                                Background="{TemplateBinding Background}"
                                 Grid.Column="0"
-                                Grid.Row="1" 
-								KeyboardNavigation.DirectionalNavigation="Contained" 
-								KeyboardNavigation.TabIndex="2" 
+                                Grid.Row="1"
+                                KeyboardNavigation.DirectionalNavigation="Contained"
+                                KeyboardNavigation.TabIndex="2"
                                 KeyboardNavigation.TabNavigation="Local">
-                            <ContentPresenter x:Name="PART_SelectedContentHost" 
-                                              ContentSource="SelectedContent" 
-								              Margin="{TemplateBinding Padding}" 
-								              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            <ContentPresenter x:Name="PART_SelectedContentHost"
+                                              ContentSource="SelectedContent"
+                                              Margin="{TemplateBinding Padding}"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         </Border>
                     </Grid>
-                    
+
                     <ControlTemplate.Triggers>
-                        <Trigger Property="TabStripPlacement" Value="Bottom">
-                            <Setter Property="Grid.Row" TargetName="HeaderPanel" Value="1"/>
-                            <Setter Property="Grid.Row" TargetName="ContentPanel" Value="0"/>
-                            <Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
-                            <Setter Property="Height" TargetName="RowDefinition1" Value="Auto"/>
-                            <Setter Property="Margin" TargetName="HeaderPanel" Value="2,0,2,2"/>
+                        <Trigger Property="TabStripPlacement"
+                                 Value="Bottom">
+                            <Setter Property="Grid.Row"
+                                    TargetName="HeaderPanel"
+                                    Value="1" />
+                            <Setter Property="Grid.Row"
+                                    TargetName="ContentPanel"
+                                    Value="0" />
+                            <Setter Property="Height"
+                                    TargetName="RowDefinition0"
+                                    Value="*" />
+                            <Setter Property="Height"
+                                    TargetName="RowDefinition1"
+                                    Value="Auto" />
+                            <Setter Property="Margin"
+                                    TargetName="HeaderPanel"
+                                    Value="2,0,2,2" />
                         </Trigger>
-                        
-                        <Trigger Property="TabStripPlacement" Value="Left">
-                            <Setter Property="Grid.Row" TargetName="HeaderPanel" Value="0"/>
-                            <Setter Property="Grid.Row" TargetName="ContentPanel" Value="0"/>
-                            <Setter Property="Grid.Column" TargetName="HeaderPanel" Value="0"/>
-                            <Setter Property="Grid.Column" TargetName="ContentPanel" Value="1"/>
-                            <Setter Property="Width" TargetName="ColumnDefinition0" Value="Auto"/>
-                            <Setter Property="Width" TargetName="ColumnDefinition1" Value="*"/>
-                            <Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
-                            <Setter Property="Height" TargetName="RowDefinition1" Value="0"/>
-                            <Setter Property="Margin" TargetName="HeaderPanel" Value="2,2,0,2"/>
+
+                        <Trigger Property="TabStripPlacement"
+                                 Value="Left">
+                            <Setter Property="Grid.Row"
+                                    TargetName="HeaderPanel"
+                                    Value="0" />
+                            <Setter Property="Grid.Row"
+                                    TargetName="ContentPanel"
+                                    Value="0" />
+                            <Setter Property="Grid.Column"
+                                    TargetName="HeaderPanel"
+                                    Value="0" />
+                            <Setter Property="Grid.Column"
+                                    TargetName="ContentPanel"
+                                    Value="1" />
+                            <Setter Property="Width"
+                                    TargetName="ColumnDefinition0"
+                                    Value="Auto" />
+                            <Setter Property="Width"
+                                    TargetName="ColumnDefinition1"
+                                    Value="*" />
+                            <Setter Property="Height"
+                                    TargetName="RowDefinition0"
+                                    Value="*" />
+                            <Setter Property="Height"
+                                    TargetName="RowDefinition1"
+                                    Value="0" />
+                            <Setter Property="Margin"
+                                    TargetName="HeaderPanel"
+                                    Value="2,2,0,2" />
                         </Trigger>
-                        
-                        <Trigger Property="TabStripPlacement" Value="Right">
-                            <Setter Property="Grid.Row" TargetName="HeaderPanel" Value="0"/>
-                            <Setter Property="Grid.Row" TargetName="ContentPanel" Value="0"/>
-                            <Setter Property="Grid.Column" TargetName="HeaderPanel" Value="1"/>
-                            <Setter Property="Grid.Column" TargetName="ContentPanel" Value="0"/>
-                            <Setter Property="Width" TargetName="ColumnDefinition0" Value="*"/>
-                            <Setter Property="Width" TargetName="ColumnDefinition1" Value="Auto"/>
-                            <Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
-                            <Setter Property="Height" TargetName="RowDefinition1" Value="0"/>
-                            <Setter Property="Margin" TargetName="HeaderPanel" Value="0,2,2,2"/>
+
+                        <Trigger Property="TabStripPlacement"
+                                 Value="Right">
+                            <Setter Property="Grid.Row"
+                                    TargetName="HeaderPanel"
+                                    Value="0" />
+                            <Setter Property="Grid.Row"
+                                    TargetName="ContentPanel"
+                                    Value="0" />
+                            <Setter Property="Grid.Column"
+                                    TargetName="HeaderPanel"
+                                    Value="1" />
+                            <Setter Property="Grid.Column"
+                                    TargetName="ContentPanel"
+                                    Value="0" />
+                            <Setter Property="Width"
+                                    TargetName="ColumnDefinition0"
+                                    Value="*" />
+                            <Setter Property="Width"
+                                    TargetName="ColumnDefinition1"
+                                    Value="Auto" />
+                            <Setter Property="Height"
+                                    TargetName="RowDefinition0"
+                                    Value="*" />
+                            <Setter Property="Height"
+                                    TargetName="RowDefinition1"
+                                    Value="0" />
+                            <Setter Property="Margin"
+                                    TargetName="HeaderPanel"
+                                    Value="0,2,2,2" />
                         </Trigger>
-                        
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}"/>
+
+                        <Trigger Property="IsEnabled"
+                                 Value="false">
+                            <Setter Property="Foreground"
+                                    Value="{DynamicResource Orc.Brushes.Control.Disabled.Foreground}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>    
-    
+    </Style>
+
 </ResourceDictionary>

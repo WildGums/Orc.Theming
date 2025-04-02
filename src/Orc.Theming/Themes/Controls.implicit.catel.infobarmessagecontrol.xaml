@@ -4,21 +4,28 @@
                     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
                     xmlns:orcthemingbehaviors="clr-namespace:Orc.Theming.Behaviors">
 
-    <Style x:Key="Orc.Styles.InfoBarMessageControl" TargetType="{x:Type catel:InfoBarMessageControl}">
-        <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.Default.Background}" />
+    <Style x:Key="Orc.Styles.InfoBarMessageControl"
+           TargetType="{x:Type catel:InfoBarMessageControl}">
+        <Setter Property="Background"
+                Value="{DynamicResource Orc.Brushes.Control.Default.Background}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type catel:InfoBarMessageControl}">
                     <ControlTemplate.Resources>
                         <!-- Brushes -->
-                        <SolidColorBrush x:Key="InfoBarMessageBackgroundBrush" Color="#FFC32D" />
-                        <SolidColorBrush x:Key="InfoBarMessageSeparatorBrush" Color="Black" />
-                        <SolidColorBrush x:Key="InfoBarMessageErrorTextBackgroundBrush" Color="#FFC32D" />
-                        <SolidColorBrush x:Key="InfoBarMessageErrorTextColorBrush" Color="Red" />
-                        <SolidColorBrush x:Key="InfoBarMessageWarningTextColorBrush" Color="Orange" />
+                        <SolidColorBrush x:Key="InfoBarMessageBackgroundBrush"
+                                         Color="#FFC32D" />
+                        <SolidColorBrush x:Key="InfoBarMessageSeparatorBrush"
+                                         Color="Black" />
+                        <SolidColorBrush x:Key="InfoBarMessageErrorTextBackgroundBrush"
+                                         Color="#FFC32D" />
+                        <SolidColorBrush x:Key="InfoBarMessageErrorTextColorBrush"
+                                         Color="Red" />
+                        <SolidColorBrush x:Key="InfoBarMessageWarningTextColorBrush"
+                                         Color="Orange" />
                     </ControlTemplate.Resources>
-                    
-                    <Grid Width="{TemplateBinding Width}" 
+
+                    <Grid Width="{TemplateBinding Width}"
                           Height="{TemplateBinding Height}">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -31,36 +38,42 @@
                             </Grid.ColumnDefinitions>
 
                             <!-- Actual content -->
-                            <ContentPresenter Grid.Row="1" x:Name="actualContent" />
+                            <ContentPresenter Grid.Row="1"
+                                              x:Name="actualContent" />
 
                             <!-- Message bar, by default in-line (Grid.Row = 0) -->
-                            <StackPanel Grid.Row="0" x:Name="PART_MessageBar"
+                            <StackPanel Grid.Row="0"
+                                        x:Name="PART_MessageBar"
                                         Visibility="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type catel:InfoBarMessageControl}}, Path=MessageCount, Converter={catel:CollectionToCollapsingVisibilityConverter}}"
                                         Width="{Binding ElementName=actualContent, Path=ActualWidth}">
 
                                 <!-- Internal StackPanel, otherwise the whole control will have the background brush -->
                                 <StackPanel Background="{DynamicResource InfoBarMessageBackgroundBrush}">
                                     <!-- Actual text -->
-                                    <TextBlock Padding="4,2,4,2" 
+                                    <TextBlock Padding="4,2,4,2"
                                                Foreground="Black"
                                                Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type catel:InfoBarMessageControl}}, Path=InfoMessage}" />
 
                                     <!-- Line -->
-                                    <Line Name="infoBarSeparator" Margin="0" 
-                                          Stroke="{DynamicResource InfoBarMessageSeparatorBrush}" 
-                                          X1="0" X2="1" Stretch="UniformToFill" />
+                                    <Line Name="infoBarSeparator"
+                                          Margin="0"
+                                          Stroke="{DynamicResource InfoBarMessageSeparatorBrush}"
+                                          X1="0"
+                                          X2="1"
+                                          Stretch="UniformToFill" />
                                 </StackPanel>
 
                             </StackPanel>
                         </Grid>
 
                         <!-- Popup -->
-                        <Popup IsOpen="{Binding ElementName=PART_MessageBar, Path=IsMouseOver, Mode=OneWay}" 
+                        <Popup IsOpen="{Binding ElementName=PART_MessageBar, Path=IsMouseOver, Mode=OneWay}"
                                PlacementTarget="{Binding ElementName=infoBarSeparator}"
-                               Placement="Bottom" 
-                               AllowsTransparency="True" PopupAnimation="Fade">
+                               Placement="Bottom"
+                               AllowsTransparency="True"
+                               PopupAnimation="Fade">
                             <b:Interaction.Behaviors>
-                                <orcthemingbehaviors:CorrectPopupWidth ParentElement="{Binding RelativeSource={RelativeSource TemplatedParent}}"/>
+                                <orcthemingbehaviors:CorrectPopupWidth ParentElement="{Binding RelativeSource={RelativeSource TemplatedParent}}" />
                             </b:Interaction.Behaviors>
 
                             <Grid Background="{DynamicResource InfoBarMessageErrorTextBackgroundBrush}"
@@ -79,8 +92,11 @@
                                 </Grid.RowDefinitions>
 
                                 <!-- List of errors -->
-                                <ItemsControl Grid.Row="0" ItemsSource="{Binding ErrorMessageCollection}" Height="Auto" VerticalAlignment="Top"
-											  Visibility="{Binding ErrorMessageCollection.Count, Converter={catel:CollectionToCollapsingVisibilityConverter}}">
+                                <ItemsControl Grid.Row="0"
+                                              ItemsSource="{Binding ErrorMessageCollection}"
+                                              Height="Auto"
+                                              VerticalAlignment="Top"
+                                              Visibility="{Binding ErrorMessageCollection.Count, Converter={catel:CollectionToCollapsingVisibilityConverter}}">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
                                             <Grid>
@@ -91,18 +107,26 @@
                                                 </Grid.ColumnDefinitions>
 
                                                 <!-- Content -->
-                                                <Image Grid.Column="0" Source="/Catel.MVVM;component/Resources/Images/Error.png" Margin="2,2,4,2" Width="16" Height="16"/>
-                                                <TextBlock Grid.Column="1" 
-                                                           Foreground="{DynamicResource InfoBarMessageErrorTextColorBrush}" 
-                                                           Text="{Binding}" TextWrapping="Wrap" />
+                                                <Image Grid.Column="0"
+                                                       Source="/Catel.MVVM;component/Resources/Images/Error.png"
+                                                       Margin="2,2,4,2"
+                                                       Width="16"
+                                                       Height="16" />
+                                                <TextBlock Grid.Column="1"
+                                                           Foreground="{DynamicResource InfoBarMessageErrorTextColorBrush}"
+                                                           Text="{Binding}"
+                                                           TextWrapping="Wrap" />
                                             </Grid>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
 
                                 <!-- List of warnings -->
-                                <ItemsControl Grid.Row="1" ItemsSource="{Binding WarningMessageCollection}" Height="Auto" VerticalAlignment="Top" 
-											  Visibility="{Binding WarningMessageCollection.Count, Converter={catel:CollectionToCollapsingVisibilityConverter}}">
+                                <ItemsControl Grid.Row="1"
+                                              ItemsSource="{Binding WarningMessageCollection}"
+                                              Height="Auto"
+                                              VerticalAlignment="Top"
+                                              Visibility="{Binding WarningMessageCollection.Count, Converter={catel:CollectionToCollapsingVisibilityConverter}}">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
                                             <Grid>
@@ -113,19 +137,26 @@
                                                 </Grid.ColumnDefinitions>
 
                                                 <!-- Content -->
-                                                <Image Grid.Column="0" Source="/Catel.MVVM;component/Resources/Images/Warning.png" Margin="2,2,4,2" Width="16" Height="16"/>
-                                                <TextBlock Grid.Column="1" 
-                                                           Foreground="{DynamicResource InfoBarMessageWarningTextColorBrush}" 
-                                                           Text="{Binding}" TextWrapping="Wrap" />
+                                                <Image Grid.Column="0"
+                                                       Source="/Catel.MVVM;component/Resources/Images/Warning.png"
+                                                       Margin="2,2,4,2"
+                                                       Width="16"
+                                                       Height="16" />
+                                                <TextBlock Grid.Column="1"
+                                                           Foreground="{DynamicResource InfoBarMessageWarningTextColorBrush}"
+                                                           Text="{Binding}"
+                                                           TextWrapping="Wrap" />
                                             </Grid>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
 
                                 <!-- Line -->
-                                <Line Grid.Row="2" Margin="0" 
-                                      Stroke="{DynamicResource InfoBarMessageSeparatorBrush}"  
-                                      X1="0" X2="1" 
+                                <Line Grid.Row="2"
+                                      Margin="0"
+                                      Stroke="{DynamicResource InfoBarMessageSeparatorBrush}"
+                                      X1="0"
+                                      X2="1"
                                       Stretch="UniformToFill" />
 
                             </Grid>

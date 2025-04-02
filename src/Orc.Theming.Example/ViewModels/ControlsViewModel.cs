@@ -6,7 +6,14 @@ using Catel.MVVM;
 
 public class ControlsViewModel : ViewModelBase
 {
+    public ControlsViewModel()
+    {
+        AlignmentGridSize = 16;
+    }
+
     public string Text { get; set; }
+
+    public int AlignmentGridSize { get; set; }
 
     protected override void ValidateFields(List<IFieldValidationResult> validationResults)
     {

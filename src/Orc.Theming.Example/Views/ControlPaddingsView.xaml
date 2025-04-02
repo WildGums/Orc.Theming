@@ -15,6 +15,7 @@
         <ComboBox Text="Combobox" IsEditable="True"/>
         <orccontrols:FilterBox Text="FilterBox"/>
         <orccontrols:DateTimePicker Value="{x:Static system:DateTime.Now}"/>
+
     </StackPanel>
     
 </catel:UserControl>

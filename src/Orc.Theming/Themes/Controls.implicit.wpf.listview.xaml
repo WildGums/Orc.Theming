@@ -12,7 +12,7 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        
+
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                             <RowDefinition Height="Auto" />
@@ -62,15 +62,20 @@
         </Setter>
     </Style>
 
-    <Style x:Key="GridViewColumnHeaderGripper" TargetType="Thumb">
-        <Setter Property="Width" Value="18" />
+    <Style x:Key="GridViewColumnHeaderGripper"
+           TargetType="Thumb">
+        <Setter Property="Width"
+                Value="18" />
         <Setter Property="Background">
             <Setter.Value>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <LinearGradientBrush StartPoint="0,0"
+                                     EndPoint="0,1">
                     <LinearGradientBrush.GradientStops>
                         <GradientStopCollection>
-                            <GradientStop Color="{DynamicResource Orc.Colors.AccentColor20}" Offset="0.0" />
-                            <GradientStop Color="{DynamicResource Orc.Colors.AccentColor40}" Offset="1.0" />
+                            <GradientStop Color="{DynamicResource Orc.Colors.AccentColor20}"
+                                          Offset="0.0" />
+                            <GradientStop Color="{DynamicResource Orc.Colors.AccentColor40}"
+                                          Offset="1.0" />
                         </GradientStopCollection>
                     </LinearGradientBrush.GradientStops>
                 </LinearGradientBrush>
@@ -79,27 +84,35 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
-                    <Border Padding="{TemplateBinding Padding}" 
+                    <Border Padding="{TemplateBinding Padding}"
                             Background="Transparent">
-                        <Rectangle HorizontalAlignment="Center" Width="1" Fill="{TemplateBinding Background}" />
+                        <Rectangle HorizontalAlignment="Center"
+                                   Width="1"
+                                   Fill="{TemplateBinding Background}" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
         <Setter Property="BorderBrush">
             <Setter.Value>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black" Offset="0" />
-                    <GradientStop Color="White" Offset="1" />
+                <LinearGradientBrush EndPoint="0.5,1"
+                                     StartPoint="0.5,0">
+                    <GradientStop Color="Black"
+                                  Offset="0" />
+                    <GradientStop Color="White"
+                                  Offset="1" />
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
     </Style>
 
     <Style TargetType="{x:Type GridViewColumnHeader}">
-        <Setter Property="HorizontalContentAlignment" Value="Center" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Center" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="Foreground"
+                Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
@@ -111,7 +124,8 @@
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)"
                                                                       Storyboard.TargetName="HeaderBorder">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource Orc.Colors.AccentColor40}" />
+                                            <EasingColorKeyFrame KeyTime="0"
+                                                                 Value="{DynamicResource Orc.Colors.AccentColor40}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -119,7 +133,7 @@
                                 <VisualState x:Name="Disabled" />
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        
+
                         <Border x:Name="HeaderBorder"
                                 BorderThickness="0,1,0,1"
                                 Padding="2,0,2,0">
@@ -136,7 +150,7 @@
                                     </LinearGradientBrush.GradientStops>
                                 </LinearGradientBrush>
                             </Border.BorderBrush>
-                            
+
                             <Border.Background>
                                 <LinearGradientBrush StartPoint="0,0"
                                                      EndPoint="0,1">
@@ -156,7 +170,7 @@
                                               RecognizesAccessKey="True"
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         </Border>
                         <Thumb x:Name="PART_HeaderGripper"
                                HorizontalAlignment="Right"
@@ -212,21 +226,30 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="Orc.Styles.ListView" TargetType="{x:Type ListView}">
-        <Setter Property="SnapsToDevicePixels" Value="true" />
-        <Setter Property="OverridesDefaultStyle" Value="true" />
-        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
-        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
-        <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="BorderBrush" Value="{DynamicResource Orc.Brushes.Control.Default.Border}" />
-        <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.Default.Background}" />
+    <Style x:Key="Orc.Styles.ListView"
+           TargetType="{x:Type ListView}">
+        <Setter Property="SnapsToDevicePixels"
+                Value="true" />
+        <Setter Property="OverridesDefaultStyle"
+                Value="true" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
+                Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility"
+                Value="Auto" />
+        <Setter Property="ScrollViewer.CanContentScroll"
+                Value="true" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource Orc.Brushes.Control.Default.Border}" />
+        <Setter Property="Background"
+                Value="{DynamicResource Orc.Brushes.Control.Default.Background}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListView}">
-                    <Border Name="Border" 
+                    <Border Name="Border"
                             BorderThickness="1"
-                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderBrush="{TemplateBinding BorderBrush}"
                             Background="{TemplateBinding Background}">
                         <ScrollViewer Style="{DynamicResource {x:Static GridView.GridViewScrollViewerStyleKey}}">
                             <ItemsPresenter />
@@ -234,11 +257,16 @@
                     </Border>
 
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsGrouping" Value="true">
-                            <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+                        <Trigger Property="IsGrouping"
+                                 Value="true">
+                            <Setter Property="ScrollViewer.CanContentScroll"
+                                    Value="false" />
                         </Trigger>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" TargetName="Border" Value="{DynamicResource Orc.Brushes.Control.Disabled.Background}" />
+                        <Trigger Property="IsEnabled"
+                                 Value="false">
+                            <Setter Property="Background"
+                                    TargetName="Border"
+                                    Value="{DynamicResource Orc.Brushes.Control.Disabled.Background}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -246,69 +274,98 @@
         </Setter>
     </Style>
 
-    <Style x:Key="Orc.Styles.ListViewItem" TargetType="{x:Type ListViewItem}">
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
-        <Setter Property="Padding" Value="4,1"/>
-        <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-        <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="FocusVisualStyle" Value="{DynamicResource Orc.Styles.Control.Inside.FocusVisual}"/>
+    <Style x:Key="Orc.Styles.ListViewItem"
+           TargetType="{x:Type ListViewItem}">
+        <Setter Property="SnapsToDevicePixels"
+                Value="True" />
+        <Setter Property="Padding"
+                Value="4,1" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="VerticalContentAlignment"
+                Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="BorderBrush"
+                Value="Transparent" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="FocusVisualStyle"
+                Value="{DynamicResource Orc.Styles.Control.Inside.FocusVisual}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListViewItem}">
-                  
-                    <Border x:Name="Border" 
-                            BorderBrush="{TemplateBinding BorderBrush}" 
-                            BorderThickness="{TemplateBinding BorderThickness}" 
-                            Background="{TemplateBinding Background}" 
-                            Padding="{TemplateBinding Padding}" 
+
+                    <Border x:Name="Border"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            Padding="{TemplateBinding Padding}"
                             SnapsToDevicePixels="true">
 
                         <Grid>
                             <GridViewRowPresenter x:Name="GridViewRowPresenter"
-                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
-                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                                   Visibility="{Binding RelativeSource={RelativeSource FindAncestor,
-                                                    AncestorType={x:Type ListView}}, Path=View.Columns, Converter={catel:CollectionToCollapsingVisibilityConverter}}"/>
+                                                    AncestorType={x:Type ListView}}, Path=View.Columns, Converter={catel:CollectionToCollapsingVisibilityConverter}}" />
 
                             <ContentPresenter x:Name="ContentPresenter"
-                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
-                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                               Visibility="{Binding RelativeSource={RelativeSource FindAncestor,
-                                                    AncestorType={x:Type ListView}}, Path=View.Columns, Converter={catel:CollectionToCollapsingVisibilityConverter SupportInversionUsingCommandParameter=True}, ConverterParameter=True}"/>
+                                                    AncestorType={x:Type ListView}}, Path=View.Columns, Converter={catel:CollectionToCollapsingVisibilityConverter SupportInversionUsingCommandParameter=True}, ConverterParameter=True}" />
                         </Grid>
                     </Border>
-            
+
                     <ControlTemplate.Triggers>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="IsMouseOver" Value="True"/>
+                                <Condition Property="IsMouseOver"
+                                           Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="Border" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Background}"/>
-                            <Setter Property="BorderBrush" TargetName="Border" Value="{DynamicResource Orc.Brushes.Control.MouseOver.Border}"/>
+                            <Setter Property="Background"
+                                    TargetName="Border"
+                                    Value="{DynamicResource Orc.Brushes.Control.MouseOver.Background}" />
+                            <Setter Property="BorderBrush"
+                                    TargetName="Border"
+                                    Value="{DynamicResource Orc.Brushes.Control.MouseOver.Border}" />
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="Selector.IsSelectionActive" Value="False"/>
-                                <Condition Property="IsSelected" Value="True"/>
+                                <Condition Property="Selector.IsSelectionActive"
+                                           Value="False" />
+                                <Condition Property="IsSelected"
+                                           Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="Border" Value="{DynamicResource Orc.Brushes.Control.SelectionInactive.Background}"/>
-                            <Setter Property="BorderBrush" TargetName="Border" Value="{DynamicResource Orc.Brushes.Control.SelectionInactive.Border}"/>
+                            <Setter Property="Background"
+                                    TargetName="Border"
+                                    Value="{DynamicResource Orc.Brushes.Control.SelectionInactive.Background}" />
+                            <Setter Property="BorderBrush"
+                                    TargetName="Border"
+                                    Value="{DynamicResource Orc.Brushes.Control.SelectionInactive.Border}" />
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="Selector.IsSelectionActive" Value="True"/>
-                                <Condition Property="IsSelected" Value="True"/>
+                                <Condition Property="Selector.IsSelectionActive"
+                                           Value="True" />
+                                <Condition Property="IsSelected"
+                                           Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="Border" Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Background}"/>
-                            <Setter Property="BorderBrush" TargetName="Border" Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Border}"/>
+                            <Setter Property="Background"
+                                    TargetName="Border"
+                                    Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Background}" />
+                            <Setter Property="BorderBrush"
+                                    TargetName="Border"
+                                    Value="{DynamicResource Orc.Brushes.Control.SelectionActive.Border}" />
                         </MultiTrigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="TextElement.Foreground" TargetName="Border" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                        <Trigger Property="IsEnabled"
+                                 Value="False">
+                            <Setter Property="TextElement.Foreground"
+                                    TargetName="Border"
+                                    Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

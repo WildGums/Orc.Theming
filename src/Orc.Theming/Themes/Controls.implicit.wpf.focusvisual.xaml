@@ -21,11 +21,11 @@
         <Setter Property="Control.Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Rectangle Margin="-2" 
-                               SnapsToDevicePixels="true" 
-                               Stroke="{DynamicResource Orc.Brushes.Control.Default.Foreground}" 
-                               StrokeThickness="1" 
-                               StrokeDashArray="1 2"/>
+                    <Rectangle Margin="-2"
+                               SnapsToDevicePixels="true"
+                               Stroke="{DynamicResource Orc.Brushes.Control.Default.Foreground}"
+                               StrokeThickness="1"
+                               StrokeDashArray="1 2" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -35,11 +35,11 @@
         <Setter Property="Control.Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Rectangle Margin="2" 
-                               SnapsToDevicePixels="true" 
-                               Stroke="{DynamicResource Orc.Brushes.Control.Default.Foreground}" 
-                               StrokeThickness="1" 
-                               StrokeDashArray="1 2"/>
+                    <Rectangle Margin="2"
+                               SnapsToDevicePixels="true"
+                               Stroke="{DynamicResource Orc.Brushes.Control.Default.Foreground}"
+                               StrokeThickness="1"
+                               StrokeDashArray="1 2" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

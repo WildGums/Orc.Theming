@@ -152,6 +152,8 @@ namespace Orc.Theming
         public double? Delta { get; set; }
         [System.Windows.Markup.ConstructorArgument("mode")]
         public Orc.Theming.FontSizeMode Mode { get; set; }
+        [System.Windows.Markup.ConstructorArgument("resourceKey")]
+        public string? ResourceKey { get; set; }
         [System.Windows.Markup.ConstructorArgument("scale")]
         public double? Scale { get; set; }
         [System.Windows.Markup.ConstructorArgument("subscribeToEvents")]
@@ -163,7 +165,7 @@ namespace Orc.Theming
         protected override void OnTargetObjectUnloaded() { }
         protected override object? ProvideDynamicValue(System.IServiceProvider? serviceProvider) { }
         public static double GetFontSize(double absolute) { }
-        protected static double GetFontSize(double defaultFontSize, double absoluteFontSize) { }
+        public static double GetFontSize(double defaultFontSize, double absoluteFontSize) { }
         protected static double GetFontSizeFromTextBlockMetadata() { }
         public static void ResetCache() { }
     }
@@ -557,17 +559,5 @@ namespace Orc.Theming.Views
     {
         public ThemeSwitcherView() { }
         public void InitializeComponent() { }
-    }
-}
-namespace XamlGeneratedNamespace
-{
-    public sealed class GeneratedInternalTypeHelper : System.Windows.Markup.InternalTypeHelper
-    {
-        public GeneratedInternalTypeHelper() { }
-        protected override void AddEventHandler(System.Reflection.EventInfo eventInfo, object target, System.Delegate handler) { }
-        protected override System.Delegate CreateDelegate(System.Type delegateType, object target, string handler) { }
-        protected override object CreateInstance(System.Type type, System.Globalization.CultureInfo culture) { }
-        protected override object GetPropertyValue(System.Reflection.PropertyInfo propertyInfo, object target, System.Globalization.CultureInfo culture) { }
-        protected override void SetPropertyValue(System.Reflection.PropertyInfo propertyInfo, object target, object value, System.Globalization.CultureInfo culture) { }
     }
 }

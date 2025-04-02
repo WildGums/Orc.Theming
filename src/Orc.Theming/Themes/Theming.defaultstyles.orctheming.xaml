@@ -7,6 +7,8 @@
     </ResourceDictionary.MergedDictionaries>
 
     <!-- ThemeImage -->
-    <Style x:Key="DefaultThemeImageStyle" TargetType="{x:Type controls:ThemeImage}" BasedOn="{StaticResource {x:Type controls:ThemeImage}}"/>
+    <Style x:Key="DefaultThemeImageStyle"
+           TargetType="{x:Type controls:ThemeImage}"
+           BasedOn="{StaticResource {x:Type controls:ThemeImage}}" />
 
 </ResourceDictionary>
