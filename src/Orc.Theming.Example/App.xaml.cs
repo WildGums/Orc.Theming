@@ -36,14 +36,15 @@ public partial class App
         var configurationService = ServiceLocator.Default.ResolveType<IConfigurationService>();
         await configurationService.LoadAsync();
 
-        var fontSize = configurationService.GetRoamingValue("FontSize", 12d);
-
-        var fontSizeService = ServiceLocator.Default.ResolveRequiredType<IFontSizeService>();
-        fontSizeService.SetFontSize(fontSize);
-
         Log.Info("Starting application");
         Log.Info("This log message should show up as debug");
 
         base.OnStartup(e);
+
+        // Note: run after window has been created
+        var fontSize = configurationService.GetRoamingValue("FontSize", 12d);
+
+        var fontSizeService = ServiceLocator.Default.ResolveRequiredType<IFontSizeService>();
+        fontSizeService.SetFontSize(fontSize);
     }
 }

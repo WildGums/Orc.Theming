@@ -41,10 +41,17 @@ public class FontSizeService : IFontSizeService
 
         _fontSize = fontSize;
 
-        var mainWindow = Application.Current.MainWindow;
-        if (mainWindow is not null)
+        var application = Application.Current;
+        if (application is not null)
         {
-            TextBlock.SetFontSize(mainWindow, fontSize);
+            // Special case for tooltips: override font size as app resource
+            application.Resources["Orc.FontSizes.ToolTip"] = fontSize;
+            
+            var mainWindow = application.MainWindow;
+            if (mainWindow is not null)
+            {
+                TextBlock.SetFontSize(mainWindow, fontSize);
+            }
         }
 
         try
@@ -54,6 +61,7 @@ public class FontSizeService : IFontSizeService
             OverrideMetadataWithFontSize(TextBoxBase.FontSizeProperty, typeof(TextBoxBase), fontSize);
             OverrideMetadataWithFontSize(TextElement.FontSizeProperty, typeof(TextElement), fontSize);
             OverrideMetadataWithFontSize(ToolTip.FontSizeProperty, typeof(ToolTip), fontSize);
+
         }
         catch (Exception ex)
         {

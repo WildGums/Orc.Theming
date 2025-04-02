@@ -1921,7 +1921,13 @@
   <Style x:Key="Orc.Styles.ToolBar" TargetType="{x:Type ToolBar}">
     <Setter Property="Background" Value="{DynamicResource Orc.Brushes.Control.Background}" />
   </Style>
-  <Style x:Key="Orc.Styles.ToolTip" TargetType="ToolTip" BasedOn="{StaticResource Orc.Styles.Control}" />
+  <Style x:Key="Orc.Styles.ToolTip" TargetType="{x:Type ToolTip}" BasedOn="{StaticResource Orc.Styles.Control}">
+    <!-- 
+            Note: tooltips are complex, and don't allow overriding metadata afterwards, so
+            it's important to use DynamicResource instead
+        -->
+    <Setter Property="FontSize" Value="{DynamicResource Orc.FontSizes.ToolTip}" />
+  </Style>
   <Style x:Key="Orc.Styles.TreeView" TargetType="TreeView" BasedOn="{StaticResource Orc.Styles.Control}">
     <Style.Resources />
     <Setter Property="OverridesDefaultStyle" Value="True" />
