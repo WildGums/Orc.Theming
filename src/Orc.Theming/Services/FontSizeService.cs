@@ -41,10 +41,23 @@ public class FontSizeService : IFontSizeService
 
         _fontSize = fontSize;
 
-        var mainWindow = Application.Current.MainWindow;
-        if (mainWindow is not null)
+        var application = Application.Current;
+        if (application is not null)
         {
-            TextBlock.SetFontSize(mainWindow, fontSize);
+            // Special case for some styles: override font size as app resource since
+            // they must work with dynamic resources
+            UpdateAppResourceFontSize("Orc.FontSizes.ContextMenu", fontSize);
+            UpdateAppResourceFontSize("Orc.FontSizes.ToolTip", fontSize);
+
+            var mainWindow = application.MainWindow;
+            if (mainWindow is not null)
+            {
+                TextBlock.SetFontSize(mainWindow, fontSize);
+            }
+            else
+            {
+                application.Activated += OnApplicationActivated;
+            }
         }
 
         try
@@ -54,6 +67,7 @@ public class FontSizeService : IFontSizeService
             OverrideMetadataWithFontSize(TextBoxBase.FontSizeProperty, typeof(TextBoxBase), fontSize);
             OverrideMetadataWithFontSize(TextElement.FontSizeProperty, typeof(TextElement), fontSize);
             OverrideMetadataWithFontSize(ToolTip.FontSizeProperty, typeof(ToolTip), fontSize);
+
         }
         catch (Exception ex)
         {
@@ -63,6 +77,49 @@ public class FontSizeService : IFontSizeService
         RaiseFontSizeChanged();
 
         return true;
+    }
+
+    private void UpdateAppResourceFontSize(string key, double fontSize)
+    {
+        var application = Application.Current;
+        if (application is null)
+        {
+            return; 
+        }
+        
+        var defaultValueKey = $"{key}.DefaultValue";
+        var defaultFontSizeObject = application.TryFindResource(defaultValueKey);
+        if (defaultFontSizeObject is not double defaultFontSize)
+        {
+             defaultFontSize = 12d;
+        }
+
+        application.Resources[key] = FontSize.GetFontSize(defaultFontSize, fontSize);
+    }
+
+    private void OnApplicationActivated(object? sender, EventArgs e)
+    {
+        if (sender is not Application app)
+        {
+            app = Application.Current;
+        }
+
+        var fontSize = _fontSize;
+        if (fontSize is null)
+        {
+            return;
+        }
+
+        var mainWindow = app.MainWindow;
+        if (mainWindow is null)
+        {
+            // Come back later
+            return;
+        }
+
+        app.Activated -= OnApplicationActivated;
+
+        TextBlock.SetFontSize(mainWindow, fontSize.Value);
     }
 
     protected void RaiseFontSizeChanged()

@@ -47,6 +47,13 @@
                 <Setter Property="Padding" Value="4" />
             </Style>
         </Style.Resources>-->
+
+        <!-- 
+            Note: context menu items are complex, and don't allow overriding metadata afterwards, so
+            it's important to use DynamicResource instead
+        -->
+        <Setter Property="FontSize"
+                Value="{DynamicResource Orc.FontSizes.ContextMenu}" />
     </Style>
 
     <ControlTemplate x:Key="{ComponentResourceKey ResourceId=SubmenuItemTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}"
