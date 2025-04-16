@@ -265,6 +265,14 @@ namespace Orc.Theming
         public static System.Windows.Size GetDpi() { }
         public static System.Drawing.Rectangle GetScreenBounds(System.Windows.Window window) { }
     }
+    public class Square : Catel.Windows.Interactivity.BehaviorBase<System.Windows.FrameworkElement>
+    {
+        public static readonly System.Windows.DependencyProperty OrientationProperty;
+        public Square() { }
+        public System.Windows.Controls.Orientation Orientation { get; set; }
+        protected override void OnAssociatedObjectLoaded() { }
+        protected override void OnAssociatedObjectUnloaded() { }
+    }
     public static class StyleHelper
     {
         public static bool IsStyleForwardingEnabled { get; }
