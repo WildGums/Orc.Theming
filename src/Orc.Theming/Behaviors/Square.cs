@@ -74,7 +74,7 @@
                         break;
 
                     default:
-                        throw new ArgumentOutOfRangeException();
+                        throw new ArgumentOutOfRangeException(nameof(Orientation), Orientation, "Unexpected orientation value.");
                 }
             }
             finally
