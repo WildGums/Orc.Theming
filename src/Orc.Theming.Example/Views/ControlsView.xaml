@@ -7,7 +7,9 @@
                    mc:Ignorable="d"
                    xmlns:catel="http://schemas.catelproject.com"
                    xmlns:orccontrols="http://schemas.wildgums.com/orc/controls"
+                   xmlns:orctheming="http://schemas.wildgums.com/orc/theming"
                    xmlns:theming="http://schemas.wildgums.com/orc/theming"
+                   xmlns:example="clr-namespace:Orc.Theming.Example"
                    d:DesignHeight="300"
                    d:DesignWidth="400">
 
@@ -60,6 +62,19 @@
                 <WrapPanel Orientation="Horizontal">
                     <Button Content="Button"
                             ToolTip="Button" />
+                    
+                    <Button ToolTip="Button with Square behavior">
+                        <behaviors:Interaction.Behaviors>
+                            <theming:Square />
+                        </behaviors:Interaction.Behaviors>
+                        
+                        <orccontrols:FontImageControl FontFamily="FontAwesome"
+                                                      Foreground="Green"
+                                                      Background="Transparent"
+                                                      Width="16"
+                                                      ItemName="{x:Static example:FontAwesome.SmileO}" />
+                    </Button>
+                    
                     <CheckBox Content="CheckBox"
                               ToolTip="CheckBox" />
                     <ComboBox Text="ComboBox"
