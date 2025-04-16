@@ -8,6 +8,7 @@ using Catel.Configuration;
 using Catel.IoC;
 using Catel.Logging;
 using Catel.Services;
+using Orchestra;
 
 /// <summary>
 /// Interaction logic for App.xaml
@@ -18,6 +19,10 @@ public partial class App
 
     protected override async void OnStartup(StartupEventArgs e)
     {
+#if DEBUG
+        LogManager.AddDebugListener();
+#endif
+
         var languageService = ServiceLocator.Default.ResolveRequiredType<ILanguageService>();
 
         // Note: it's best to use .CurrentUICulture in actual apps since it will use the preferred language
@@ -29,9 +34,7 @@ public partial class App
         FontImage.RegisterFont("FontAwesome", new FontFamily(new Uri("pack://application:,,,/Orc.Theming.Example;component/Resources/Fonts/", UriKind.RelativeOrAbsolute), "./#FontAwesome"));
         FontImage.DefaultFontFamily = "FontAwesome";
 
-        // This shows the StyleHelper, but uses a *copy* of the Orchestra themes. The default margins for controls are not defined in
-        // Orc.Theming since it's a low-level library. The final default styles should be in the shell (thus Orchestra makes sense)
-        StyleHelper.CreateStyleForwardersForDefaultStyles();
+        this.ApplyTheme();
 
         var configurationService = ServiceLocator.Default.ResolveType<IConfigurationService>();
         await configurationService.LoadAsync();
