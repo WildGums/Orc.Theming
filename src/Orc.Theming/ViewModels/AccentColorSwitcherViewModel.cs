@@ -18,6 +18,8 @@ public class AccentColorSwitcherViewModel : ViewModelBase
 
         _accentColorService = accentColorService;
 
+        ValidateUsingDataAnnotations = false;
+
         AccentColors = typeof(Colors).GetPropertiesEx(true, true)
             .Where(x => x.PropertyType.IsAssignableFromEx(typeof(Color)))
             .Select(x => (Color?)x.GetValue(null))
