@@ -77,6 +77,7 @@
                     
                     <CheckBox Content="CheckBox"
                               ToolTip="CheckBox" />
+                    
                     <ComboBox Text="ComboBox"
                               IsEditable="true"
                               ToolTip="ComboBox" />
@@ -105,15 +106,20 @@
                                  Value="50"
                                  Width="100"
                                  ToolTip="ProgressBar" />
+                    
                     <RadioButton Content="RadioButton"
                                  ToolTip="RadioButton" />
+                    
                     <RepeatButton ToolTip="RepeatButton"
                                   MinWidth="16"
                                   Content="RepeatButton" />
+                    
                     <ToggleButton ToolTip="ToggleButton"
                                   MinWidth="16"
                                   Content="ToggleButton" />
+                    
                     <RichTextBox ToolTip="RichTextBox" />
+                    
                     <Slider Minimum="0"
                             Maximum="100"
                             Value="50"
@@ -135,6 +141,14 @@
                 </WrapPanel>
             </GroupBox>
 
+            <GroupBox Header="WPF controls (sizes)">
+                <WrapPanel Orientation="Horizontal">
+                    <orccontrols:FilterBox Width="100" />
+                    <orccontrols:WatermarkTextBox Width="100" />
+                    <TextBox Width="100" />
+                </WrapPanel>
+            </GroupBox>
+            
             <GroupBox Header="Orc.Controls controls">
                 <WrapPanel Orientation="Horizontal">
                     <orccontrols:DateTimePicker ToolTip="Orc.Controls: DateTimePicker" />

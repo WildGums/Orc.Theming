@@ -2,8 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <ResourceDictionary.MergedDictionaries>
-        <!-- Demo Orchestra default styles that adds margins -->
-        <ResourceDictionary Source="/Orc.Theming.Example;component/Themes/Orchestra/Generic.xaml" />
+        <ResourceDictionary Source="/Catel.MVVM;component/Themes/Generic.xaml" />
+        <ResourceDictionary Source="/Orc.Theming;component/Themes/Generic.xaml" />
+        <ResourceDictionary Source="/Orc.Controls;component/Themes/Generic.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>
