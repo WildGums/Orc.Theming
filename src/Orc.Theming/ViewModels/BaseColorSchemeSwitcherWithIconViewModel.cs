@@ -19,6 +19,8 @@ public class BaseColorSchemeSwitcherWithIconViewModel : ViewModelBase
 
         _baseColorSchemeService = baseColorSchemeService;
 
+        ValidateUsingDataAnnotations = false;
+
         var baseColorSchemes = _baseColorSchemeService.GetAvailableBaseColorSchemes()
             .Select(baseColorSchemeFromService => new BaseColorScheme
             {

@@ -20,6 +20,8 @@ public class ThemeSwitcherViewModel : ViewModelBase
         _accentColorService = accentColorService;
         _baseColorSchemeService = baseColorSchemeService;
 
+        ValidateUsingDataAnnotations = false;
+
         AccentColors = typeof(Colors).GetPropertiesEx(true, true)
             .Where(x => x.PropertyType.IsAssignableFromEx(typeof(Color)))
             .Select(x => (Color?)x.GetValue(null))

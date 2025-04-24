@@ -15,6 +15,8 @@ public class FontSizeSwitcherViewModel : ViewModelBase
 
         _fontSizeService = fontSizeService;
 
+        ValidateUsingDataAnnotations = false;
+
         var fontSizes = new List<double>(new[]
         {
             10d,
