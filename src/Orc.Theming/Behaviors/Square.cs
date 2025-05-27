@@ -54,6 +54,11 @@
 
         private void OnOrientationChanged()
         {
+            if (AssociatedObject is null)
+            {
+                return;
+            }
+
             UpdateSize();
         }
 
