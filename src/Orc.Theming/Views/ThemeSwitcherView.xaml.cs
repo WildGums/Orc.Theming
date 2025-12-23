@@ -2,8 +2,5 @@
 
 public partial class ThemeSwitcherView
 {
-    public ThemeSwitcherView()
-    {
-        InitializeComponent();
-    }
+
 }

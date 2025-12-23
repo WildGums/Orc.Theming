@@ -4,13 +4,14 @@ using System;
 using System.Globalization;
 using System.Windows.Data;
 using Catel.Logging;
+using Microsoft.Extensions.Logging;
 
 /// <summary>
 ///     Converts current progress double value to boolean ArcSegment.IsLargeArc
 /// </summary>
 internal class ProgressBarValueToArcTypeConverter : IMultiValueConverter
 {
-    private static readonly ILog Log = LogManager.GetCurrentClassLogger();
+    private static readonly ILogger Logger = LogManager.GetLogger(typeof(ProgressBarValueToArcTypeConverter));
 
     public object? Convert(object[]? values, Type targetType, object? parameter, CultureInfo? culture)
     {
@@ -21,7 +22,7 @@ internal class ProgressBarValueToArcTypeConverter : IMultiValueConverter
 
         if (values.Length < 3)
         {
-            throw Log.ErrorAndCreateException<InvalidOperationException>("Wrong argument count passed to converter");
+            throw Logger.LogErrorAndCreateException<InvalidOperationException>("Wrong argument count passed to converter");
         }
 
         var progressValue = (double)values[0];

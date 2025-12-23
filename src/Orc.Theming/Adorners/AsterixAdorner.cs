@@ -11,7 +11,7 @@ public class AsterixAdorner : Adorner
     private readonly Thickness _padding;
     private readonly ArrangePosition _positionCorner;
     private double? _lastDpiUpdate;
-    private FormattedText? _cachedformattedText;
+    private FormattedText? _cachedFormattedText;
 
     public AsterixAdorner(UIElement adornedElement, Thickness padding, ArrangePosition positionCorner)
         : base(adornedElement)
@@ -32,12 +32,12 @@ public class AsterixAdorner : Adorner
     {
         var currentDpi = VisualTreeHelper.GetDpi(this).PixelsPerDip;
 
-        if (_cachedformattedText is null ||
+        if (_cachedFormattedText is null ||
             currentDpi != _lastDpiUpdate)
         {
             _lastDpiUpdate = currentDpi;
 
-            _cachedformattedText = new FormattedText
+            _cachedFormattedText = new FormattedText
             (
                 "*",
                 CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
@@ -57,23 +57,23 @@ public class AsterixAdorner : Adorner
         switch (_positionCorner)
         {
             case ArrangePosition.TopLeft:
-                drawingContext.DrawText(_cachedformattedText, new Point(drawRect.TopLeft.X + _padding.Left, drawRect.TopLeft.Y + _padding.Top));
+                drawingContext.DrawText(_cachedFormattedText, new Point(drawRect.TopLeft.X + _padding.Left, drawRect.TopLeft.Y + _padding.Top));
                 break;
                     
             case ArrangePosition.BottomRight:
-                drawingContext.DrawText(_cachedformattedText, new Point(drawRect.BottomRight.X - _padding.Right, drawRect.BottomRight.Y - _padding.Bottom));
+                drawingContext.DrawText(_cachedFormattedText, new Point(drawRect.BottomRight.X - _padding.Right, drawRect.BottomRight.Y - _padding.Bottom));
                 break;
                     
             case ArrangePosition.TopRight:
-                drawingContext.DrawText(_cachedformattedText, new Point(drawRect.TopRight.X - _padding.Right, drawRect.TopRight.Y + _padding.Top));
+                drawingContext.DrawText(_cachedFormattedText, new Point(drawRect.TopRight.X - _padding.Right, drawRect.TopRight.Y + _padding.Top));
                 break;
                     
             case ArrangePosition.BottomLeft:
-                drawingContext.DrawText(_cachedformattedText, new Point(drawRect.BottomLeft.X + _padding.Left, drawRect.BottomLeft.Y - _padding.Bottom));
+                drawingContext.DrawText(_cachedFormattedText, new Point(drawRect.BottomLeft.X + _padding.Left, drawRect.BottomLeft.Y - _padding.Bottom));
                 break;
                     
             default:
-                drawingContext.DrawText(_cachedformattedText, new Point(drawRect.TopRight.X - _padding.Right, drawRect.TopRight.Y + _padding.Top));
+                drawingContext.DrawText(_cachedFormattedText, new Point(drawRect.TopRight.X - _padding.Right, drawRect.TopRight.Y + _padding.Top));
                 break;
         }
     }

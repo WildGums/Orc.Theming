@@ -39,8 +39,8 @@ public partial class App
         var configurationService = ServiceLocator.Default.ResolveType<IConfigurationService>();
         await configurationService.LoadAsync();
 
-        Log.Info("Starting application");
-        Log.Info("This log message should show up as debug");
+        Logger.LogInfo("Starting application");
+        Logger.LogInfo("This log message should show up as debug");
 
         base.OnStartup(e);
 

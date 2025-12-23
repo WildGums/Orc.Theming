@@ -9,6 +9,8 @@ using Catel.IoC;
 using Catel.Logging;
 using Catel.Windows;
 using Catel.Windows.Markup;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 /// <summary>
 /// Markup extension that can set a relative font size.
@@ -17,13 +19,12 @@ public class FontSize : UpdatableMarkupExtension
 {
     private const double DefaultFontSize = 12d;
 
-    private static readonly ILog Log = LogManager.GetCurrentClassLogger();
+    private static readonly ILogger Logger = LogManager.GetLogger(typeof(FontSize));
 
     private static readonly Stopwatch LastUpdatedTextBlockFontSizeStopwatch = Stopwatch.StartNew();
     private static double? DefaultTextBlockFontSize = null;
 
-    private IFontSizeService? _fontSizeService;
-
+    private readonly IFontSizeService _fontSizeService = Catel.IoC.IoCContainer.ServiceProvider.GetRequiredService<IFontSizeService>();
 
     static FontSize()
     {
@@ -150,7 +151,7 @@ public class FontSize : UpdatableMarkupExtension
                 break;
 
             default:
-                throw Log.ErrorAndCreateException<NotSupportedException>($"Mode '{Mode}' is not supported");
+                throw Logger.LogErrorAndCreateException<NotSupportedException>($"Mode '{Mode}' is not supported");
         }
 
         var finalFontSize = defaultFontSize;
@@ -203,7 +204,7 @@ public class FontSize : UpdatableMarkupExtension
 
     protected virtual double GetFontSizeFromService()
     {
-        var service = GetFontSizeService();
+        var service = _fontSizeService;
         return service.GetFontSize();
     }
 
@@ -240,7 +241,7 @@ public class FontSize : UpdatableMarkupExtension
         // TODO: Based on discussion and performance, we consider
         // resolving "fixed resources" based on the properties (e.g. Delta=4 resolves to Heading2)
 
-        throw Log.ErrorAndCreateException<NotImplementedException>("Reserved for future usage");
+        throw Logger.LogErrorAndCreateException<NotImplementedException>("Reserved for future usage");
     }
 
     protected override void OnTargetObjectLoaded()
@@ -249,7 +250,7 @@ public class FontSize : UpdatableMarkupExtension
 
         if (SubscribeToEvents)
         {
-            var fontSizeService = GetFontSizeService();
+            var fontSizeService = _fontSizeService;
             fontSizeService.FontSizeChanged += OnFontSizeServiceFontSizeChanged;
         }
     }
@@ -263,17 +264,6 @@ public class FontSize : UpdatableMarkupExtension
         }
 
         base.OnTargetObjectUnloaded();
-    }
-
-    private IFontSizeService GetFontSizeService()
-    {
-        var fontSizeService = _fontSizeService;
-        if (fontSizeService is null)
-        {
-            _fontSizeService = fontSizeService = ServiceLocator.Default.ResolveRequiredType<IFontSizeService>();
-        }
-
-        return fontSizeService;
     }
 
     private void OnFontSizeServiceFontSizeChanged(object? sender, EventArgs e)

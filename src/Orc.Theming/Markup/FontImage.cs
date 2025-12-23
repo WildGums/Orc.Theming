@@ -9,6 +9,7 @@ using System.Windows.Media;
 using Catel;
 using Catel.Logging;
 using Catel.Windows.Markup;
+using Microsoft.Extensions.Logging;
 
 /// <summary>
 ///     Markup extension that can show a font as image.
@@ -18,7 +19,7 @@ using Catel.Windows.Markup;
 /// </remarks>
 public class FontImage : UpdatableMarkupExtension
 {
-    private static readonly ILog Log = LogManager.GetCurrentClassLogger();
+    private static readonly ILogger Logger = LogManager.GetLogger(typeof(FontImage));
 
     private static readonly Dictionary<string, FontFamily> RegisteredFontFamilies = new();
     private static readonly double RenderingEmSize;
@@ -120,12 +121,12 @@ public class FontImage : UpdatableMarkupExtension
         var fontFamily = FontFamily;
         if (fontFamily is null)
         {
-            throw Log.ErrorAndCreateException<InvalidOperationException>("FontFamily cannot be null, make sure to set it or use the DefaultFontFamily");
+            throw Logger.LogErrorAndCreateException<InvalidOperationException>("FontFamily cannot be null, make sure to set it or use the DefaultFontFamily");
         }
 
         if (!RegisteredFontFamilies.TryGetValue(fontFamily, out var family))
         {
-            throw Log.ErrorAndCreateException<InvalidOperationException>("FontFamily '{0}' is not yet registered, register it first using the RegisterFont method", fontFamily);
+            throw Logger.LogErrorAndCreateException<InvalidOperationException>("FontFamily '{0}' is not yet registered, register it first using the RegisterFont method", fontFamily);
         }
 
         var brush = GetBrush();
@@ -235,7 +236,7 @@ public class FontImage : UpdatableMarkupExtension
 
         if (!typeface.TryGetGlyphTypeface(out var glyphTypeface))
         {
-            throw Log.ErrorAndCreateException<InvalidOperationException>($"No glyph type face found for font family '{fontFamily.FamilyNames.FirstOrDefault()}'");
+            throw Logger.LogErrorAndCreateException<InvalidOperationException>($"No glyph type face found for font family '{fontFamily.FamilyNames.FirstOrDefault()}'");
         }
 
         const int notFoundValue = 42;
@@ -290,7 +291,7 @@ public class FontImage : UpdatableMarkupExtension
         }
         catch (Exception ex)
         {
-            Log.Error(ex, "Error in generating Glyphrun");
+            Logger.LogError(ex, "Error in generating Glyphrun");
         }
 
         return null;

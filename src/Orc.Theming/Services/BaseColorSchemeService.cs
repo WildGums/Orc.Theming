@@ -5,17 +5,18 @@ using System.Collections.Generic;
 using System.Linq;
 using Catel;
 using Catel.Logging;
+using Microsoft.Extensions.Logging;
 
 public class BaseColorSchemeService : IBaseColorSchemeService
 {
-    private static readonly ILog Log = LogManager.GetCurrentClassLogger();
-
+    private readonly ILogger<BaseColorSchemeService> _logger;
     private readonly ControlzEx.Theming.ThemeManager _themeManager;
 
     private string _baseColorScheme = "Light";
 
-    public BaseColorSchemeService()
+    public BaseColorSchemeService(ILogger<BaseColorSchemeService> logger)
     {
+        _logger = logger;
         _themeManager = ControlzEx.Theming.ThemeManager.Current;
     }
 
@@ -33,7 +34,7 @@ public class BaseColorSchemeService : IBaseColorSchemeService
             return false;
         }
 
-        Log.Info($"Setting base color scheme '{scheme}'");
+        _logger.LogInformation($"Setting base color scheme '{scheme}'");
 
         _baseColorScheme = scheme;
 

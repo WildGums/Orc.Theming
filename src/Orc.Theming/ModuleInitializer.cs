@@ -1,4 +1,4 @@
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using Catel.IoC;
 using Catel.Services;
 using Orc.Theming;
@@ -15,21 +15,6 @@ public static class ModuleInitializer
     [ModuleInitializer]
     public static void Initialize()
     {
-        var serviceLocator = ServiceLocator.Default;
 
-        serviceLocator.RegisterTypeIfNotYetRegistered<IAccentColorService, AccentColorService>();
-        serviceLocator.RegisterTypeIfNotYetRegistered<IBaseColorSchemeService, BaseColorSchemeService>();
-        serviceLocator.RegisterTypeIfNotYetRegistered<IFontSizeService, FontSizeService>();
-        serviceLocator.RegisterTypeIfNotYetRegistered<IResourceDictionaryService, ResourceDictionaryService>();
-        serviceLocator.RegisterTypeIfNotYetRegistered<IThemeService, ThemeService>();
-        serviceLocator.RegisterTypeIfNotYetRegistered<IColorGenerator, ColorGenerator>();
-
-        var themeManager = ControlzEx.Theming.ThemeManager.Current;
-        themeManager.RegisterLibraryThemeProvider(new LibraryThemeProvider());
-        serviceLocator.RegisterInstance(themeManager);
-        serviceLocator.RegisterType<ThemeManager>();
-
-        var languageService = serviceLocator.ResolveRequiredType<ILanguageService>();
-        languageService.RegisterLanguageSource(new LanguageResourceSource("Orc.Theming", "Orc.Theming.Properties", "Resources"));
     }
 }

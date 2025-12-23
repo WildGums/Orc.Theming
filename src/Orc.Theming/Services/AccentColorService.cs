@@ -3,13 +3,18 @@
 using System;
 using System.Windows;
 using System.Windows.Media;
-using Catel.Logging;
+using Microsoft.Extensions.Logging;
 
 public class AccentColorService : IAccentColorService
 {
-    private static readonly ILog Log = LogManager.GetCurrentClassLogger();
+    private readonly ILogger<AccentColorService> _logger;
 
     private Color? _accentColor;
+
+    public AccentColorService(ILogger<AccentColorService> logger)
+    {
+        _logger = logger;
+    }
 
     public event EventHandler<EventArgs>? AccentColorChanged;
 
@@ -35,7 +40,7 @@ public class AccentColorService : IAccentColorService
             return false;
         }
 
-        Log.Info($"Setting accent color '{color}'");
+        _logger.LogInformation($"Setting accent color '{color}'");
 
         _accentColor = color;
 

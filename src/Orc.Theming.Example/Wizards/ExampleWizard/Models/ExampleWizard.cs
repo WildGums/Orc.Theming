@@ -29,7 +29,7 @@ public class ExampleWizard : WizardBase
 
     public override async Task ResumeAsync()
     {
-        Log.Info("Resuming wizard");
+        Logger.LogInfo("Resuming wizard");
 
         await base.ResumeAsync();
     }

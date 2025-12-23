@@ -6,10 +6,11 @@ using System.Windows;
 using System.Windows.Documents;
 using Catel.Logging;
 using Catel.Windows.Interactivity;
+using Microsoft.Extensions.Logging;
 
 public class MandatoryField : BehaviorBase<FrameworkElement>
 {
-    private static readonly ILog Log = LogManager.GetCurrentClassLogger();
+    private static readonly ILogger Logger = LogManager.GetLogger(typeof(MandatoryField));
 
     public static void SetOffset(DependencyObject element, Thickness value)
     {
@@ -60,7 +61,7 @@ public class MandatoryField : BehaviorBase<FrameworkElement>
             var myAdornerLayer = AdornerLayer.GetAdornerLayer(element);
             if (myAdornerLayer is null)
             {
-                Log.Warning($"FrameworkElement {element} doesn't have adorner layer in the visual tree");
+                Logger.LogWarning($"FrameworkElement {element} doesn't have adorner layer in the visual tree");
                 return;
             }
 
@@ -82,7 +83,7 @@ public class MandatoryField : BehaviorBase<FrameworkElement>
         }
         catch (Exception ex)
         {
-            Log.Error(ex);
+            Logger.LogError(ex, "Failed to draw adorner");
         }
     }
 

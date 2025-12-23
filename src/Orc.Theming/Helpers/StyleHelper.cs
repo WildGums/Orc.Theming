@@ -7,16 +7,14 @@ using System.Windows;
 using Catel;
 using Catel.Logging;
 using MethodTimer;
+using Microsoft.Extensions.Logging;
 
 /// <summary>
 /// Helper class for WPF styles and themes.
 /// </summary>
 public static class StyleHelper
 {
-    /// <summary>
-    /// The log.
-    /// </summary>
-    private static readonly ILog Log = LogManager.GetCurrentClassLogger();
+    private static readonly ILogger Logger = LogManager.GetLogger(typeof(StyleHelper));
 
     /// <summary>
     /// Gets or sets a value indicating whether style forwarding is enabled. Style forwarding can be
@@ -79,7 +77,7 @@ public static class StyleHelper
         }
         catch (Exception ex)
         {
-            Log.Error(ex, "Failed to ensure application resources");
+            Logger.LogError(ex, "Failed to ensure application resources");
         }
     }
 
@@ -206,7 +204,7 @@ public static class StyleHelper
             catch (Exception ex)
             {
                 var tag = defaultStyle.TargetType?.ToString() ?? defaultStyle.ToString();
-                Log.Warning(ex, "Failed to complete the style for '{0}'", tag);
+                Logger.LogWarning(ex, "Failed to complete the style for '{0}'", tag);
             }
         }
 
@@ -263,7 +261,7 @@ public static class StyleHelper
             }
             catch (Exception ex)
             {
-                Log.Warning(ex, $"Failed to add a default style ('{key}') definition to the list of styles");
+                Logger.LogWarning(ex, $"Failed to add a default style ('{key}') definition to the list of styles");
             }
         }
 

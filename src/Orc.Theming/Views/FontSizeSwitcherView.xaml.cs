@@ -2,8 +2,5 @@
 
 public partial class FontSizeSwitcherView
 {
-    public FontSizeSwitcherView()
-    {
-        InitializeComponent();
-    }
+
 }

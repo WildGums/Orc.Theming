@@ -5,12 +5,13 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 using Catel.Logging;
+using Microsoft.Extensions.Logging;
 
 internal class ProgressBarSizeToTrackRadiusConverter : IMultiValueConverter
 {
     private const double DefaultRadius = 10;
 
-    private static readonly ILog Log = LogManager.GetCurrentClassLogger();
+    private static readonly ILogger Logger = LogManager.GetLogger(typeof(ProgressBarSizeToTrackRadiusConverter));
 
     public object? Convert(object[]? values, Type targetType, object? parameter, CultureInfo? culture)
     {
@@ -23,7 +24,7 @@ internal class ProgressBarSizeToTrackRadiusConverter : IMultiValueConverter
         {
             if (values.Length < 3)
             {
-                throw Log.ErrorAndCreateException<InvalidOperationException>("Wrong argument count passed to converter");
+                throw Logger.LogErrorAndCreateException<InvalidOperationException>("Wrong argument count passed to converter");
             }
 
             var strokeThickness = (Thickness)values[0];
@@ -40,7 +41,7 @@ internal class ProgressBarSizeToTrackRadiusConverter : IMultiValueConverter
         }
         catch (Exception ex)
         {
-            Log.Error(ex);
+            Logger.LogError(ex, "Failed to convert");
             return DefaultRadius;
         }
     }

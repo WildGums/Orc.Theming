@@ -6,10 +6,16 @@ using System.Linq;
 using System.Resources;
 using Catel;
 using Catel.Logging;
+using Microsoft.Extensions.Logging;
 
 public class ResourceDictionaryService : IResourceDictionaryService
 {
-    private static readonly ILog Log = LogManager.GetCurrentClassLogger();
+    private readonly ILogger<ResourceDictionaryService> _logger;
+
+    public ResourceDictionaryService(ILogger<ResourceDictionaryService> logger)
+    {
+        _logger = logger;
+    }
 
     /// <summary>
     ///     Checks whether the specified resource dictionary is available as resource.
@@ -36,7 +42,7 @@ public class ResourceDictionaryService : IResourceDictionaryService
                 using var resourceStream = assembly.GetManifestResourceStream(generatedResourceName);
                 if (resourceStream is null)
                 {
-                    Log.Debug($"Could not find generated resources @ '{generatedResourceName}', assuming the resource dictionary '{resourceDictionaryUri}' does not exist");
+                    _logger.LogDebug($"Could not find generated resources @ '{generatedResourceName}', assuming the resource dictionary '{resourceDictionaryUri}' does not exist");
                     return false;
                 }
 
@@ -50,13 +56,13 @@ public class ResourceDictionaryService : IResourceDictionaryService
                     select x).Any();
                 if (exists)
                 {
-                    Log.Debug($"Resource '{resourceDictionaryUri}' exists");
+                    _logger.LogDebug($"Resource '{resourceDictionaryUri}' exists");
                     return true;
                 }
             }
         }
 
-        Log.Debug($"Failed to confirm that resource '{resourceDictionaryUri}' exists");
+        _logger.LogDebug($"Failed to confirm that resource '{resourceDictionaryUri}' exists");
 
         return false;
     }

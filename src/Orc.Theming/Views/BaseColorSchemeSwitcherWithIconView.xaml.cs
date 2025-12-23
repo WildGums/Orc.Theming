@@ -2,8 +2,5 @@
 
 public partial class BaseColorSchemeSwitcherWithIconView
 {
-    public BaseColorSchemeSwitcherWithIconView()
-    {
-        InitializeComponent();
-    }
+
 }

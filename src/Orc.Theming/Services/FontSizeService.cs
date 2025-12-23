@@ -7,14 +7,20 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
 using Catel.Logging;
 using Catel.Reflection;
+using Microsoft.Extensions.Logging;
 
 public class FontSizeService : IFontSizeService
 {
-    private static readonly ILog Log = LogManager.GetCurrentClassLogger();
+    private readonly ILogger<FontSizeService> _logger;
 
     private double? _fontSize;
 
     public event EventHandler<EventArgs>? FontSizeChanged;
+
+    public FontSizeService(ILogger<FontSizeService> logger)
+    {
+        _logger = logger;
+    }
 
     public virtual double GetFontSize()
     {
@@ -37,7 +43,7 @@ public class FontSizeService : IFontSizeService
 
     public virtual bool SetFontSize(double fontSize)
     {
-        Log.Info($"Setting font size '{fontSize}'");
+        _logger.LogInformation($"Setting font size '{fontSize}'");
 
         _fontSize = fontSize;
 
@@ -71,7 +77,7 @@ public class FontSizeService : IFontSizeService
         }
         catch (Exception ex)
         {
-            Log.Error(ex, "Failed to apply font size");
+            _logger.LogError(ex, "Failed to apply font size");
         }
 
         RaiseFontSizeChanged();
@@ -161,7 +167,7 @@ public class FontSizeService : IFontSizeService
         }
         catch (Exception ex)
         {
-            Log.Error(ex, $"Failed to override font size metadata for '{targetType.Name}'");
+            _logger.LogError(ex, $"Failed to override font size metadata for '{targetType.Name}'");
         }
     }
 }
