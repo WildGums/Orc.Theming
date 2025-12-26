@@ -10,7 +10,7 @@
     /// </summary>
     public static class OrcThemingModule
     {
-        public static IServiceCollection AddOrcThemingServices(this IServiceCollection serviceCollection)
+        public static IServiceCollection AddOrcTheming(this IServiceCollection serviceCollection)
         {
             serviceCollection.TryAddSingleton<IAccentColorService, AccentColorService>();
             serviceCollection.TryAddSingleton<IBaseColorSchemeService, BaseColorSchemeService>();
