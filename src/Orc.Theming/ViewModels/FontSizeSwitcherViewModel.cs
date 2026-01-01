@@ -9,7 +9,8 @@ public class FontSizeSwitcherViewModel : ViewModelBase
 {
     private readonly IFontSizeService _fontSizeService;
 
-    public FontSizeSwitcherViewModel(IFontSizeService fontSizeService)
+    public FontSizeSwitcherViewModel(IServiceProvider serviceProvider, IFontSizeService fontSizeService)
+        : base(serviceProvider)
     {
         ArgumentNullException.ThrowIfNull(fontSizeService);
 

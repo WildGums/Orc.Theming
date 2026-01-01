@@ -12,7 +12,9 @@ public class ThemeSwitcherViewModel : ViewModelBase
     private readonly IAccentColorService _accentColorService;
     private readonly IBaseColorSchemeService _baseColorSchemeService;
 
-    public ThemeSwitcherViewModel(IAccentColorService accentColorService, IBaseColorSchemeService baseColorSchemeService)
+    public ThemeSwitcherViewModel(IServiceProvider serviceProvider, 
+        IAccentColorService accentColorService, IBaseColorSchemeService baseColorSchemeService)
+        : base(serviceProvider)
     {
         ArgumentNullException.ThrowIfNull(accentColorService);
         ArgumentNullException.ThrowIfNull(baseColorSchemeService);
