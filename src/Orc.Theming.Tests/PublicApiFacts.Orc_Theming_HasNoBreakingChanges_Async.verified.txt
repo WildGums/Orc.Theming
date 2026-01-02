@@ -18,7 +18,7 @@ namespace Orc.Theming
 {
     public class AccentColorService : Orc.Theming.IAccentColorService
     {
-        public AccentColorService() { }
+        public AccentColorService(Microsoft.Extensions.Logging.ILogger<Orc.Theming.AccentColorService> logger) { }
         public event System.EventHandler<System.EventArgs>? AccentColorChanged;
         public virtual System.Windows.Media.Color GetAccentColor() { }
         protected void RaiseAccentColorChanged() { }
@@ -57,7 +57,7 @@ namespace Orc.Theming
     }
     public class BaseColorSchemeService : Orc.Theming.IBaseColorSchemeService
     {
-        public BaseColorSchemeService() { }
+        public BaseColorSchemeService(Microsoft.Extensions.Logging.ILogger<Orc.Theming.BaseColorSchemeService> logger) { }
         public event System.EventHandler<System.EventArgs>? BaseColorSchemeChanged;
         public virtual System.Collections.Generic.IReadOnlyList<string> GetAvailableBaseColorSchemes() { }
         public string GetBaseColorScheme() { }
@@ -180,7 +180,7 @@ namespace Orc.Theming
     }
     public class FontSizeService : Orc.Theming.IFontSizeService
     {
-        public FontSizeService() { }
+        public FontSizeService(Microsoft.Extensions.Logging.ILogger<Orc.Theming.FontSizeService> logger) { }
         public event System.EventHandler<System.EventArgs>? FontSizeChanged;
         public virtual double GetFontSize() { }
         protected virtual void OverrideMetadataWithFontSize(System.Windows.DependencyProperty dependencyProperty, System.Type targetType, double fontSize) { }
@@ -248,6 +248,10 @@ namespace Orc.Theming
         public static void SetRight(System.Windows.DependencyObject d, double value) { }
         public static void SetTop(System.Windows.DependencyObject d, double value) { }
     }
+    public static class OrcThemingModule
+    {
+        public static Microsoft.Extensions.DependencyInjection.IServiceCollection AddOrcTheming(this Microsoft.Extensions.DependencyInjection.IServiceCollection serviceCollection) { }
+    }
     public class OverrideCursor : Catel.Windows.Interactivity.BehaviorBase<System.Windows.FrameworkElement>
     {
         public static readonly System.Windows.DependencyProperty CursorProperty;
@@ -258,7 +262,7 @@ namespace Orc.Theming
     }
     public class ResourceDictionaryService : Orc.Theming.IResourceDictionaryService
     {
-        public ResourceDictionaryService() { }
+        public ResourceDictionaryService(Microsoft.Extensions.Logging.ILogger<Orc.Theming.ResourceDictionaryService> logger) { }
         public virtual bool IsResourceDictionaryAvailable(string resourceDictionaryUri) { }
     }
     public static class ScreenHelper
@@ -371,7 +375,7 @@ namespace Orc.Theming
     }
     public class ThemeManager
     {
-        public ThemeManager(ControlzEx.Theming.ThemeManager controlzThemeManager, Orc.Theming.IAccentColorService accentColorService, Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
+        public ThemeManager(Microsoft.Extensions.Logging.ILogger<Orc.Theming.ThemeManager> logger, ControlzEx.Theming.ThemeManager controlzThemeManager, Orc.Theming.IAccentColorService accentColorService, Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
         public static Orc.Theming.ThemeManager Current { get; }
         public event System.EventHandler<System.EventArgs>? ThemeChanged;
         public System.Windows.Media.SolidColorBrush GetAccentColorBrush() { }
@@ -474,6 +478,7 @@ namespace Orc.Theming.Controls
         public static readonly System.Windows.DependencyProperty StretchDirectionProperty;
         public static readonly System.Windows.DependencyProperty StretchProperty;
         public ThemeImage() { }
+        public ThemeImage(Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
         public string? Source { get; set; }
         public System.Windows.Media.Stretch Stretch { get; set; }
         public System.Windows.Controls.StretchDirection StretchDirection { get; set; }
@@ -498,7 +503,7 @@ namespace Orc.Theming.ViewModels
     public class AccentColorSwitcherViewModel : Catel.MVVM.ViewModelBase
     {
         public static readonly Catel.Data.IPropertyData SelectedAccentColorProperty;
-        public AccentColorSwitcherViewModel(Orc.Theming.ThemeManager themeManager, Orc.Theming.IAccentColorService accentColorService) { }
+        public AccentColorSwitcherViewModel(System.IServiceProvider serviceProvider, Orc.Theming.ThemeManager themeManager, Orc.Theming.IAccentColorService accentColorService) { }
         public System.Collections.Generic.List<System.Windows.Media.Color> AccentColors { get; }
         public System.Windows.Media.Color SelectedAccentColor { get; set; }
         protected override System.Threading.Tasks.Task CloseAsync() { }
@@ -507,7 +512,7 @@ namespace Orc.Theming.ViewModels
     public class BaseColorSchemeSwitcherViewModel : Catel.MVVM.ViewModelBase
     {
         public static readonly Catel.Data.IPropertyData SelectedBaseColorSchemeProperty;
-        public BaseColorSchemeSwitcherViewModel(Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
+        public BaseColorSchemeSwitcherViewModel(System.IServiceProvider serviceProvider, Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
         public System.Collections.Generic.IReadOnlyList<string> BaseColorSchemes { get; }
         public string SelectedBaseColorScheme { get; set; }
         protected override System.Threading.Tasks.Task CloseAsync() { }
@@ -516,7 +521,7 @@ namespace Orc.Theming.ViewModels
     public class BaseColorSchemeSwitcherWithIconViewModel : Catel.MVVM.ViewModelBase
     {
         public static readonly Catel.Data.IPropertyData SelectedBaseColorSchemeProperty;
-        public BaseColorSchemeSwitcherWithIconViewModel(Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
+        public BaseColorSchemeSwitcherWithIconViewModel(System.IServiceProvider serviceProvider, Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
         public System.Collections.Generic.IReadOnlyList<Orc.Theming.BaseColorScheme> BaseColorSchemes { get; }
         public Orc.Theming.BaseColorScheme? SelectedBaseColorScheme { get; set; }
         protected override System.Threading.Tasks.Task CloseAsync() { }
@@ -525,7 +530,7 @@ namespace Orc.Theming.ViewModels
     public class FontSizeSwitcherViewModel : Catel.MVVM.ViewModelBase
     {
         public static readonly Catel.Data.IPropertyData SelectedFontSizeProperty;
-        public FontSizeSwitcherViewModel(Orc.Theming.IFontSizeService fontSizeService) { }
+        public FontSizeSwitcherViewModel(System.IServiceProvider serviceProvider, Orc.Theming.IFontSizeService fontSizeService) { }
         public System.Collections.Generic.List<double> FontSizes { get; }
         public double SelectedFontSize { get; set; }
         protected override System.Threading.Tasks.Task CloseAsync() { }
@@ -535,7 +540,7 @@ namespace Orc.Theming.ViewModels
     {
         public static readonly Catel.Data.IPropertyData SelectedAccentColorProperty;
         public static readonly Catel.Data.IPropertyData SelectedBaseColorSchemeProperty;
-        public ThemeSwitcherViewModel(Orc.Theming.IAccentColorService accentColorService, Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
+        public ThemeSwitcherViewModel(System.IServiceProvider serviceProvider, Orc.Theming.IAccentColorService accentColorService, Orc.Theming.IBaseColorSchemeService baseColorSchemeService) { }
         public System.Collections.Generic.List<System.Windows.Media.Color> AccentColors { get; }
         public System.Collections.Generic.IReadOnlyList<string> BaseColorSchemes { get; }
         public System.Windows.Media.Color SelectedAccentColor { get; set; }
@@ -547,26 +552,41 @@ namespace Orc.Theming.Views
     public class AccentColorSwitcherView : Catel.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
     {
         public AccentColorSwitcherView() { }
+        [Microsoft.Extensions.DependencyInjection.ActivatorUtilitiesConstructor]
+        public AccentColorSwitcherView(System.IServiceProvider serviceProvider, Catel.Services.IViewModelWrapperService viewModelWrapperService, Catel.MVVM.IDataContextSubscriptionService dataContextSubscriptionService) { }
+        public AccentColorSwitcherView(Catel.MVVM.IViewModel? viewModel, System.IServiceProvider serviceProvider, Catel.Services.IViewModelWrapperService viewModelWrapperService, Catel.MVVM.IDataContextSubscriptionService dataContextSubscriptionService) { }
         public void InitializeComponent() { }
     }
     public class BaseColorSchemeSwitcherView : Catel.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
     {
         public BaseColorSchemeSwitcherView() { }
+        [Microsoft.Extensions.DependencyInjection.ActivatorUtilitiesConstructor]
+        public BaseColorSchemeSwitcherView(System.IServiceProvider serviceProvider, Catel.Services.IViewModelWrapperService viewModelWrapperService, Catel.MVVM.IDataContextSubscriptionService dataContextSubscriptionService) { }
+        public BaseColorSchemeSwitcherView(Catel.MVVM.IViewModel? viewModel, System.IServiceProvider serviceProvider, Catel.Services.IViewModelWrapperService viewModelWrapperService, Catel.MVVM.IDataContextSubscriptionService dataContextSubscriptionService) { }
         public void InitializeComponent() { }
     }
     public class BaseColorSchemeSwitcherWithIconView : Catel.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
     {
         public BaseColorSchemeSwitcherWithIconView() { }
+        [Microsoft.Extensions.DependencyInjection.ActivatorUtilitiesConstructor]
+        public BaseColorSchemeSwitcherWithIconView(System.IServiceProvider serviceProvider, Catel.Services.IViewModelWrapperService viewModelWrapperService, Catel.MVVM.IDataContextSubscriptionService dataContextSubscriptionService) { }
+        public BaseColorSchemeSwitcherWithIconView(Catel.MVVM.IViewModel? viewModel, System.IServiceProvider serviceProvider, Catel.Services.IViewModelWrapperService viewModelWrapperService, Catel.MVVM.IDataContextSubscriptionService dataContextSubscriptionService) { }
         public void InitializeComponent() { }
     }
     public class FontSizeSwitcherView : Catel.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
     {
         public FontSizeSwitcherView() { }
+        [Microsoft.Extensions.DependencyInjection.ActivatorUtilitiesConstructor]
+        public FontSizeSwitcherView(System.IServiceProvider serviceProvider, Catel.Services.IViewModelWrapperService viewModelWrapperService, Catel.MVVM.IDataContextSubscriptionService dataContextSubscriptionService) { }
+        public FontSizeSwitcherView(Catel.MVVM.IViewModel? viewModel, System.IServiceProvider serviceProvider, Catel.Services.IViewModelWrapperService viewModelWrapperService, Catel.MVVM.IDataContextSubscriptionService dataContextSubscriptionService) { }
         public void InitializeComponent() { }
     }
     public class ThemeSwitcherView : Catel.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
     {
         public ThemeSwitcherView() { }
+        [Microsoft.Extensions.DependencyInjection.ActivatorUtilitiesConstructor]
+        public ThemeSwitcherView(System.IServiceProvider serviceProvider, Catel.Services.IViewModelWrapperService viewModelWrapperService, Catel.MVVM.IDataContextSubscriptionService dataContextSubscriptionService) { }
+        public ThemeSwitcherView(Catel.MVVM.IViewModel? viewModel, System.IServiceProvider serviceProvider, Catel.Services.IViewModelWrapperService viewModelWrapperService, Catel.MVVM.IDataContextSubscriptionService dataContextSubscriptionService) { }
         public void InitializeComponent() { }
     }
 }
