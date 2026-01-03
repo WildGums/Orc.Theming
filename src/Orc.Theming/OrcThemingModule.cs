@@ -1,6 +1,7 @@
 ﻿namespace Orc.Theming
 {
     using Catel.Services;
+    using Catel.ThirdPartyNotices;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.DependencyInjection.Extensions;
     using Orc.Theming.Coloring;
@@ -25,6 +26,8 @@
             serviceCollection.AddSingleton<ThemeManager>();
 
             serviceCollection.AddSingleton<ILanguageSource>(new LanguageResourceSource("Orc.Theming", "Orc.Theming.Properties", "Resources"));
+
+            serviceCollection.AddSingleton<IThirdPartyNotice>((x) => new LibraryThirdPartyNotice("Orc.Theming", "https://github.com/wildgums/orc.theming"));
 
             return serviceCollection;
         }
