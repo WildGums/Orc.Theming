@@ -12,16 +12,15 @@ public class WizardViewModel : ViewModelBase
     private readonly IWizardService _wizardService;
     private readonly IUIVisualizerService _uiVisualizerService;
 
-    public WizardViewModel(IWizardService wizardService, IUIVisualizerService uiVisualizerService)
+    public WizardViewModel(IWizardService wizardService, 
+        IUIVisualizerService uiVisualizerService, IServiceProvider serviceProvider)
+        :base(serviceProvider)
     {
-        ArgumentNullException.ThrowIfNull(wizardService);
-        ArgumentNullException.ThrowIfNull(uiVisualizerService);
-
         _wizardService = wizardService;
         _uiVisualizerService = uiVisualizerService;
 
-        ShowWizard = new TaskCommand(OnShowWizardExecuteAsync);
-        ShowSeparateWindow = new TaskCommand(OnShowSeparateWindowAsync);
+        ShowWizard = new TaskCommand(serviceProvider, OnShowWizardExecuteAsync);
+        ShowSeparateWindow = new TaskCommand(serviceProvider, OnShowSeparateWindowAsync);
     }
         
     public TaskCommand ShowWizard { get; }

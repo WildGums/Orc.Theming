@@ -4,10 +4,14 @@ using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Media;
+using Catel;
 using Catel.Configuration;
 using Catel.IoC;
-using Catel.Logging;
 using Catel.Services;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Orc.Theming.Example.Views;
 using Orchestra;
 
 /// <summary>
@@ -15,15 +19,48 @@ using Orchestra;
 /// </summary>
 public partial class App
 {
-    private static readonly ILog Log = LogManager.GetCurrentClassLogger();
+#pragma warning disable IDISP006 // Implement IDisposable
+    private readonly IHost _host;
+#pragma warning restore IDISP006 // Implement IDisposable
+
+    public App()
+    {
+        var hostBuilder = new HostBuilder()
+            .ConfigureServices((hostContext, services) =>
+            {
+                services.AddCatelCore();
+                services.AddCatelMvvm();
+                services.AddOrcAutomation();
+                services.AddOrcControls();
+                services.AddOrcFileSystem();
+                services.AddOrcLogViewer();
+                services.AddOrcSerializationJson();
+                services.AddOrcSystemInfo();
+                services.AddOrcTheming();
+                services.AddOrcWizard();
+                services.AddOrchestraCore();
+
+                services.AddLogging(x =>
+                {
+                    x.AddConsole();
+                    x.AddDebug();
+                });
+            });
+
+        _host = hostBuilder.Build();
+
+        IoCContainer.ServiceProvider = _host.Services;
+    }
 
     protected override async void OnStartup(StartupEventArgs e)
     {
-#if DEBUG
-        LogManager.AddDebugListener();
-#endif
+        base.OnStartup(e);
 
-        var languageService = ServiceLocator.Default.ResolveRequiredType<ILanguageService>();
+        var serviceProvider = IoCContainer.ServiceProvider;
+
+        serviceProvider.CreateTypesThatMustBeConstructedAtStartup();
+
+        var languageService = serviceProvider.GetRequiredService<ILanguageService>();
 
         // Note: it's best to use .CurrentUICulture in actual apps since it will use the preferred language
         // of the user. But in order to demo multilingual features for devs (who mostly have en-US as .CurrentUICulture),
@@ -31,23 +68,33 @@ public partial class App
         languageService.PreferredCulture = CultureInfo.CurrentCulture;
         languageService.FallbackCulture = new CultureInfo("en-US");
 
+        this.ApplyTheme();
+
+        StyleHelper.CreateStyleForwardersForDefaultStyles();
+
         FontImage.RegisterFont("FontAwesome", new FontFamily(new Uri("pack://application:,,,/Orc.Theming.Example;component/Resources/Fonts/", UriKind.RelativeOrAbsolute), "./#FontAwesome"));
         FontImage.DefaultFontFamily = "FontAwesome";
 
-        this.ApplyTheme();
-
-        var configurationService = ServiceLocator.Default.ResolveType<IConfigurationService>();
+        var configurationService = serviceProvider.GetRequiredService<IConfigurationService>();
         await configurationService.LoadAsync();
 
-        Logger.LogInfo("Starting application");
-        Logger.LogInfo("This log message should show up as debug");
-
-        base.OnStartup(e);
+        var mainWindow = ActivatorUtilities.CreateInstance<MainWindow>(_host.Services);
+        mainWindow.Show();
 
         // Note: run after window has been created
         var fontSize = configurationService.GetRoamingValue("FontSize", 12d);
 
-        var fontSizeService = ServiceLocator.Default.ResolveRequiredType<IFontSizeService>();
+        var fontSizeService = serviceProvider.GetRequiredService<IFontSizeService>();
         fontSizeService.SetFontSize(fontSize);
+    }
+
+    protected override async void OnExit(ExitEventArgs e)
+    {
+        using (_host)
+        {
+            await _host.StopAsync();
+        }
+
+        base.OnExit(e);
     }
 }

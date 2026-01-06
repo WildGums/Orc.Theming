@@ -1,8 +1,9 @@
 ﻿namespace Orc.Theming.Example.ViewModels;
 
-using Catel.MVVM;
+using System;
 using System.Threading.Tasks;
 using System.Timers;
+using Catel.MVVM;
 
 public class ProgressBarViewModel : ViewModelBase
 {
@@ -10,17 +11,14 @@ public class ProgressBarViewModel : ViewModelBase
     private readonly Timer _timer = new();
 #pragma warning restore IDISP006 // Implement IDisposable
 
-    public ProgressBarViewModel(/* dependency injection here */)
+    public ProgressBarViewModel(IServiceProvider serviceProvider)
+        : base(serviceProvider)
     {
     }
 
-    public override string Title { get { return "View model title"; } }
+    public override string Title { get { return "ProgressBar"; } }
 
     public int Value { get; set; } = 0;
-
-    // TODO: Register models with the vmpropmodel codesnippet
-    // TODO: Register view model properties with the vmprop or vmpropviewmodeltomodel codesnippets
-    // TODO: Register commands with the vmcommand or vmcommandwithcanexecute codesnippets
 
     protected override async Task InitializeAsync()
     {
@@ -29,7 +27,6 @@ public class ProgressBarViewModel : ViewModelBase
         _timer.Interval = 500;
         _timer.Elapsed += OnTimerElapsed;
         _timer.Start();
-        // TODO: subscribe to events here
     }
 
     private void OnTimerElapsed(object sender, ElapsedEventArgs e)
@@ -39,12 +36,5 @@ public class ProgressBarViewModel : ViewModelBase
         {
             _timer.Stop();
         }
-    }
-
-    protected override async Task CloseAsync()
-    {
-        // TODO: unsubscribe from events here
-
-        await base.CloseAsync();
     }
 }

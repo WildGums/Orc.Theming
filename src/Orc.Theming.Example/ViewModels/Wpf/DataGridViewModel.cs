@@ -10,7 +10,8 @@ public class DataGridViewModel : ViewModelBase
     private const int RecordCount = 100;
     private readonly Random _rand;
 
-    public DataGridViewModel()
+    public DataGridViewModel(IServiceProvider serviceProvider)
+        : base(serviceProvider)
     {
         _rand = new Random();
 

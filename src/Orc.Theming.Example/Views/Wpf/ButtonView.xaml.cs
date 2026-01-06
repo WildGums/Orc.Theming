@@ -2,8 +2,5 @@
 
 public partial class ButtonView
 {
-    public ButtonView()
-    {
-        InitializeComponent();
-    }
+
 }

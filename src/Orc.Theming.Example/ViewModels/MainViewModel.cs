@@ -1,5 +1,6 @@
 ﻿namespace Orc.Theming.Example.ViewModels;
 
+using System;
 using System.Threading.Tasks;
 using Catel.Configuration;
 using Catel.MVVM;
@@ -14,14 +15,13 @@ public class MainViewModel : ViewModelBase
     private readonly IDirectoryService _directoryService;
 
     public MainViewModel(IFontSizeService fontSizeService, IConfigurationService configurationService,
-        IAppDataService appDataDirectory, IDirectoryService directoryService)
+        IAppDataService appDataDirectory, IDirectoryService directoryService, IServiceProvider serviceProvider)
+        : base(serviceProvider)
     {
         _fontSizeService = fontSizeService;
         _configurationService = configurationService;
         _appDataDirectory = appDataDirectory;
         _directoryService = directoryService;
-
-        DeferValidationUntilFirstSaveCall = false;
     }
 
     public override string Title => "Orc.Theming example";

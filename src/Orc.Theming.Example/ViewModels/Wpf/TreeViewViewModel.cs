@@ -1,5 +1,6 @@
 ﻿namespace Orc.Theming.Example.ViewModels;
 
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Catel.MVVM;
@@ -14,7 +15,8 @@ public class TreeNode
 
 public class TreeViewViewModel : ViewModelBase
 {
-    public TreeViewViewModel()
+    public TreeViewViewModel(IServiceProvider serviceProvider)
+        : base(serviceProvider)
     {
         TreeNodes = new List<TreeNode>
         {

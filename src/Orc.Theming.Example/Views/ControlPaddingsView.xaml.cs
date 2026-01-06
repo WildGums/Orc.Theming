@@ -2,8 +2,5 @@
 
 public partial class ControlPaddingsView
 {
-    public ControlPaddingsView()
-    {
-        InitializeComponent();
-    }
+
 }

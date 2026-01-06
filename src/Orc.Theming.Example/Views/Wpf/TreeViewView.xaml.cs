@@ -2,8 +2,5 @@
 
 public partial class TreeViewView
 {
-    public TreeViewView()
-    {
-        InitializeComponent();
-    }
+
 }

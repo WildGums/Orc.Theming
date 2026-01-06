@@ -2,8 +2,5 @@
 
 public partial class TabControlView
 {
-    public TabControlView()
-    {
-        InitializeComponent();
-    }
+
 }

@@ -2,8 +2,5 @@
 
 public partial class ListBoxView
 {
-    public ListBoxView()
-    {
-        InitializeComponent();
-    }
+
 }

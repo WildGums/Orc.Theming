@@ -6,11 +6,6 @@ using System.Windows.Documents;
 
 public partial class RichTextBoxView
 {
-    public RichTextBoxView()
-    {
-        InitializeComponent();
-    }
-
     private void OnSpellCheckCheckBoxChecked(object sender, System.Windows.RoutedEventArgs e)
     {
         ExampleRichTextBox.SpellCheck.IsEnabled = (sender as CheckBox)?.IsChecked ?? false;

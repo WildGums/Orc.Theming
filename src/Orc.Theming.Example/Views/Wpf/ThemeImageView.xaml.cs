@@ -2,8 +2,5 @@
 
 public partial class ThemeImageView
 {
-    public ThemeImageView()
-    {
-        InitializeComponent();
-    }
+
 }

@@ -2,8 +2,5 @@
 
 public partial class ProgressBarView
 {
-    public ProgressBarView()
-    {
-        InitializeComponent();
-    }
+
 }

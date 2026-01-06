@@ -1,13 +1,14 @@
 ﻿namespace Orc.Theming.Example.ViewModels;
 
-using Catel.MVVM;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Catel.MVVM;
 
 public class ListBoxViewModel : ViewModelBase
 {
-    public ListBoxViewModel(/* dependency injection here */)
+    public ListBoxViewModel(IServiceProvider serviceProvider)
+        : base(serviceProvider)
     {
         Items = new List<string>(new[]
         {
@@ -24,18 +25,4 @@ public class ListBoxViewModel : ViewModelBase
     public List<string> Items { get; }
 
     public string SelectedItem { get; set; }
-
-    protected override async Task InitializeAsync()
-    {
-        await base.InitializeAsync();
-
-        // TODO: subscribe to events here
-    }
-
-    protected override async Task CloseAsync()
-    {
-        // TODO: unsubscribe from events here
-
-        await base.CloseAsync();
-    }
 }
