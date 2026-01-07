@@ -20,7 +20,7 @@ public class SkillsWizardPageViewModel : WizardPageViewModelBase<SkillsWizardPag
     }
 
     [ViewModelToModel]
-    public ObservableCollection<Skill>? Skills { get; private set; }
+    public System.Collections.ObjectModel.ObservableCollection<Skill>? Skills { get; private set; }
 
     #region Commands
     public Command SelectAll { get; }
