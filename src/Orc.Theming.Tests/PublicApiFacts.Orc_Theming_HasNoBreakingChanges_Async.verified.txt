@@ -150,6 +150,12 @@ namespace Orc.Theming
         public double Width { get; set; }
         protected override object ProvideDynamicValue(System.IServiceProvider? serviceProvider) { }
     }
+    public class FontInfo
+    {
+        public FontInfo() { }
+        public required System.Windows.Media.FontFamily FontFamily { get; init; }
+        public required string Name { get; init; }
+    }
     public class FontSize : Catel.Windows.Markup.UpdatableMarkupExtension
     {
         public FontSize() { }
@@ -213,6 +219,10 @@ namespace Orc.Theming
         System.Collections.Generic.IReadOnlyList<string> GetAvailableBaseColorSchemes();
         string GetBaseColorScheme();
         bool SetBaseColorScheme(string scheme);
+    }
+    public interface IFontProvider
+    {
+        Orc.Theming.FontInfo Provide();
     }
     public interface IFontSizeService
     {
@@ -555,7 +565,6 @@ namespace Orc.Theming.Views
     public class AccentColorSwitcherView : Catel.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
     {
         public AccentColorSwitcherView() { }
-        [Microsoft.Extensions.DependencyInjection.ActivatorUtilitiesConstructor]
         public AccentColorSwitcherView(System.IServiceProvider serviceProvider, Catel.Services.IViewModelWrapperService viewModelWrapperService, Catel.MVVM.IDataContextSubscriptionService dataContextSubscriptionService) { }
         public AccentColorSwitcherView(Catel.MVVM.IViewModel? viewModel, System.IServiceProvider serviceProvider, Catel.Services.IViewModelWrapperService viewModelWrapperService, Catel.MVVM.IDataContextSubscriptionService dataContextSubscriptionService) { }
         public void InitializeComponent() { }
@@ -563,7 +572,6 @@ namespace Orc.Theming.Views
     public class BaseColorSchemeSwitcherView : Catel.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
     {
         public BaseColorSchemeSwitcherView() { }
-        [Microsoft.Extensions.DependencyInjection.ActivatorUtilitiesConstructor]
         public BaseColorSchemeSwitcherView(System.IServiceProvider serviceProvider, Catel.Services.IViewModelWrapperService viewModelWrapperService, Catel.MVVM.IDataContextSubscriptionService dataContextSubscriptionService) { }
         public BaseColorSchemeSwitcherView(Catel.MVVM.IViewModel? viewModel, System.IServiceProvider serviceProvider, Catel.Services.IViewModelWrapperService viewModelWrapperService, Catel.MVVM.IDataContextSubscriptionService dataContextSubscriptionService) { }
         public void InitializeComponent() { }
@@ -571,7 +579,6 @@ namespace Orc.Theming.Views
     public class BaseColorSchemeSwitcherWithIconView : Catel.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
     {
         public BaseColorSchemeSwitcherWithIconView() { }
-        [Microsoft.Extensions.DependencyInjection.ActivatorUtilitiesConstructor]
         public BaseColorSchemeSwitcherWithIconView(System.IServiceProvider serviceProvider, Catel.Services.IViewModelWrapperService viewModelWrapperService, Catel.MVVM.IDataContextSubscriptionService dataContextSubscriptionService) { }
         public BaseColorSchemeSwitcherWithIconView(Catel.MVVM.IViewModel? viewModel, System.IServiceProvider serviceProvider, Catel.Services.IViewModelWrapperService viewModelWrapperService, Catel.MVVM.IDataContextSubscriptionService dataContextSubscriptionService) { }
         public void InitializeComponent() { }
@@ -579,7 +586,6 @@ namespace Orc.Theming.Views
     public class FontSizeSwitcherView : Catel.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
     {
         public FontSizeSwitcherView() { }
-        [Microsoft.Extensions.DependencyInjection.ActivatorUtilitiesConstructor]
         public FontSizeSwitcherView(System.IServiceProvider serviceProvider, Catel.Services.IViewModelWrapperService viewModelWrapperService, Catel.MVVM.IDataContextSubscriptionService dataContextSubscriptionService) { }
         public FontSizeSwitcherView(Catel.MVVM.IViewModel? viewModel, System.IServiceProvider serviceProvider, Catel.Services.IViewModelWrapperService viewModelWrapperService, Catel.MVVM.IDataContextSubscriptionService dataContextSubscriptionService) { }
         public void InitializeComponent() { }
@@ -587,7 +593,6 @@ namespace Orc.Theming.Views
     public class ThemeSwitcherView : Catel.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
     {
         public ThemeSwitcherView() { }
-        [Microsoft.Extensions.DependencyInjection.ActivatorUtilitiesConstructor]
         public ThemeSwitcherView(System.IServiceProvider serviceProvider, Catel.Services.IViewModelWrapperService viewModelWrapperService, Catel.MVVM.IDataContextSubscriptionService dataContextSubscriptionService) { }
         public ThemeSwitcherView(Catel.MVVM.IViewModel? viewModel, System.IServiceProvider serviceProvider, Catel.Services.IViewModelWrapperService viewModelWrapperService, Catel.MVVM.IDataContextSubscriptionService dataContextSubscriptionService) { }
         public void InitializeComponent() { }

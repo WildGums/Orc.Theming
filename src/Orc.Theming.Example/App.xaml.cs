@@ -11,6 +11,7 @@ using Catel.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Orc.Theming.Example.Providers;
 using Orc.Theming.Example.Views;
 using Orchestra;
 
@@ -39,6 +40,8 @@ public partial class App
                 services.AddOrcTheming();
                 services.AddOrcWizard();
                 services.AddOrchestraCore();
+
+                services.AddSingleton<IFontProvider, FontAwesomeFontProvider>();
 
                 services.AddLogging(x =>
                 {
@@ -72,7 +75,6 @@ public partial class App
 
         StyleHelper.CreateStyleForwardersForDefaultStyles();
 
-        FontImage.RegisterFont("FontAwesome", new FontFamily(new Uri("pack://application:,,,/Orc.Theming.Example;component/Resources/Fonts/", UriKind.RelativeOrAbsolute), "./#FontAwesome"));
         FontImage.DefaultFontFamily = "FontAwesome";
 
         var configurationService = serviceProvider.GetRequiredService<IConfigurationService>();

@@ -1,5 +1,8 @@
 ﻿namespace Orc
 {
+    using System.Collections.Generic;
+    using System.Windows;
+    using Catel.IoC;
     using Catel.Services;
     using Catel.ThirdPartyNotices;
     using Microsoft.Extensions.DependencyInjection;
@@ -26,11 +29,43 @@
             serviceCollection.AddSingleton(themeManager);
             serviceCollection.AddSingleton<ThemeManager>();
 
+            serviceCollection.AddSingleton<FontImageInitializer>();
+
             serviceCollection.AddSingleton<ILanguageSource>(new LanguageResourceSource("Orc.Theming", "Orc.Theming.Properties", "Resources"));
 
             serviceCollection.AddSingleton<IThirdPartyNotice>((x) => new LibraryThirdPartyNotice("Orc.Theming", "https://github.com/wildgums/orc.theming"));
 
             return serviceCollection;
+        }
+
+        private class FontImageInitializer : IInitializeAtStartup
+        {
+            private readonly IEnumerable<IFontProvider> _fontProviders;
+
+            public FontImageInitializer(IEnumerable<IFontProvider> fontProviders)
+            {
+                _fontProviders = fontProviders;
+            }
+
+            public void Initialize()
+            {
+                var application = Application.Current;
+
+                foreach (var fontProvider in _fontProviders)
+                {
+                    var fontInfo = fontProvider.Provide();
+
+                    var fontName = fontInfo.Name;
+                    var fontFamily = fontInfo.FontFamily;
+
+                    FontImage.RegisterFont(fontName, fontFamily);
+
+                    if (application is not null)
+                    {
+                        application.Resources[fontName] = fontFamily;
+                    }
+                }
+            }
         }
     }
 }
