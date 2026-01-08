@@ -1,7 +1,9 @@
 ﻿namespace Orc.Theming
 {
+    using System.Collections.Generic;
+
     public interface IFontProvider
     {
-        FontInfo Provide();
+        IReadOnlyList<FontInfo> Provide();
     }
 }

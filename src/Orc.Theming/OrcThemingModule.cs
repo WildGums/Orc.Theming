@@ -53,16 +53,19 @@
 
                 foreach (var fontProvider in _fontProviders)
                 {
-                    var fontInfo = fontProvider.Provide();
+                    var fontInfos = fontProvider.Provide();
 
-                    var fontName = fontInfo.Name;
-                    var fontFamily = fontInfo.FontFamily;
-
-                    FontImage.RegisterFont(fontName, fontFamily);
-
-                    if (application is not null)
+                    foreach (var fontInfo in fontInfos)
                     {
-                        application.Resources[fontName] = fontFamily;
+                        var fontName = fontInfo.Name;
+                        var fontFamily = fontInfo.FontFamily;
+
+                        FontImage.RegisterFont(fontName, fontFamily);
+
+                        if (application is not null)
+                        {
+                            application.Resources[fontName] = fontFamily;
+                        }
                     }
                 }
             }

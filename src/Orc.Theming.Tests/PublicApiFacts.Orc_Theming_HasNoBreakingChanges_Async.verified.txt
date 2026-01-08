@@ -222,7 +222,7 @@ namespace Orc.Theming
     }
     public interface IFontProvider
     {
-        Orc.Theming.FontInfo Provide();
+        System.Collections.Generic.IReadOnlyList<Orc.Theming.FontInfo> Provide();
     }
     public interface IFontSizeService
     {
