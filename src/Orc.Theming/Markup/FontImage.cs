@@ -145,6 +145,11 @@ public class FontImage : UpdatableMarkupExtension
             return brush;
         }
 
+        if (CatelEnvironment.IsInDesignMode)
+        {
+            return DefaultBrush;
+        }
+
         var currentThemeManager = ThemeManager.Current;
 
         // Step 2: respect key
@@ -326,6 +331,11 @@ public class FontImage : UpdatableMarkupExtension
     {
         base.OnTargetObjectLoaded();
 
+        if (CatelEnvironment.IsInDesignMode)
+        {
+            return;
+        }
+
         var currentThemeManager = ThemeManager.Current;
         currentThemeManager.ThemeChanged += OnThemeChanged;
 
@@ -334,6 +344,11 @@ public class FontImage : UpdatableMarkupExtension
 
     protected override void OnTargetObjectUnloaded()
     {
+        if (CatelEnvironment.IsInDesignMode)
+        {
+            return;
+        }
+
         var currentThemeManager = ThemeManager.Current;
 
         UnregisterTargetProperties();
