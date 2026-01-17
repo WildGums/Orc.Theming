@@ -13,6 +13,11 @@
   </Folder>
   <Folder Name="/src/" />
   <Folder Name="/src/Core/">
+    <Project Path="../../Catel/src/Catel.Core/Catel.Core.csproj" Id="3b47fc74-57ad-4f8b-b9c6-7f31ff39687b" />
+    <Project Path="../../Catel/src/Catel.MVVM/Catel.MVVM.csproj" Id="258d208f-4b2e-47c3-acd2-26d56eada472" />
+    <Project Path="../../Orc.Automation/src/Orc.Automation/Orc.Automation.csproj" Id="8946028d-a6f7-4a64-98cc-71f1669e1d8e" />
+    <Project Path="../../Orc.Controls/src/Orc.Controls/Orc.Controls.csproj" Id="84e22240-d816-4b43-ac37-92b805a2bee3" />
+    <Project Path="../../Orc.FileSystem/src/Orc.FileSystem/Orc.FileSystem.csproj" Id="360c62c6-7905-46d0-8b93-abd90857e478" />
     <Project Path="Orc.Theming/Orc.Theming.csproj" />
   </Folder>
   <Folder Name="/src/Examples/">
