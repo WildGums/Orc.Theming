@@ -1,10 +1,9 @@
-﻿namespace Orc.Theming
-{
-    using System.Windows.Media;
+﻿namespace Orc.Theming;
 
-    public class FontInfo
-    {
-        public required string Name { get; init; }
-        public required FontFamily FontFamily { get; init; }
-    }
+using System.Windows.Media;
+
+public class FontInfo
+{
+    public required string Name { get; init; }
+    public required FontFamily FontFamily { get; init; }
 }

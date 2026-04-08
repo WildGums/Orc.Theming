@@ -1,71 +1,70 @@
-﻿namespace Orc
+﻿namespace Orc;
+
+using System.Collections.Generic;
+using System.Windows;
+using Catel.IoC;
+using Catel.Services;
+using Catel.ThirdPartyNotices;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Orc.Theming;
+using Orc.Theming.Coloring;
+
+/// <summary>
+/// Core module which allows the registration of default services in the service collection.
+/// </summary>
+public static class OrcThemingModule
 {
-    using System.Collections.Generic;
-    using System.Windows;
-    using Catel.IoC;
-    using Catel.Services;
-    using Catel.ThirdPartyNotices;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.DependencyInjection.Extensions;
-    using Orc.Theming;
-    using Orc.Theming.Coloring;
-
-    /// <summary>
-    /// Core module which allows the registration of default services in the service collection.
-    /// </summary>
-    public static class OrcThemingModule
+    public static IServiceCollection AddOrcTheming(this IServiceCollection serviceCollection)
     {
-        public static IServiceCollection AddOrcTheming(this IServiceCollection serviceCollection)
+        serviceCollection.TryAddSingleton<IAccentColorService, AccentColorService>();
+        serviceCollection.TryAddSingleton<IBaseColorSchemeService, BaseColorSchemeService>();
+        serviceCollection.TryAddSingleton<IFontSizeService, FontSizeService>();
+        serviceCollection.TryAddSingleton<IResourceDictionaryService, ResourceDictionaryService>();
+        serviceCollection.TryAddSingleton<IThemeService, ThemeService>();
+        serviceCollection.TryAddSingleton<IColorGenerator, ColorGenerator>();
+
+        var themeManager = ControlzEx.Theming.ThemeManager.Current;
+        themeManager.RegisterLibraryThemeProvider(new LibraryThemeProvider());
+        serviceCollection.AddSingleton(themeManager);
+        serviceCollection.AddSingleton<ThemeManager>();
+
+        serviceCollection.AddSingleton<FontImageInitializer>();
+
+        serviceCollection.AddSingleton<ILanguageSource>(new LanguageResourceSource("Orc.Theming", "Orc.Theming.Properties", "Resources"));
+
+        serviceCollection.AddSingleton<IThirdPartyNotice>((x) => new LibraryThirdPartyNotice("Orc.Theming", "https://github.com/wildgums/orc.theming"));
+
+        return serviceCollection;
+    }
+
+    private class FontImageInitializer : IInitializeAtStartup
+    {
+        private readonly IEnumerable<IFontProvider> _fontProviders;
+
+        public FontImageInitializer(IEnumerable<IFontProvider> fontProviders)
         {
-            serviceCollection.TryAddSingleton<IAccentColorService, AccentColorService>();
-            serviceCollection.TryAddSingleton<IBaseColorSchemeService, BaseColorSchemeService>();
-            serviceCollection.TryAddSingleton<IFontSizeService, FontSizeService>();
-            serviceCollection.TryAddSingleton<IResourceDictionaryService, ResourceDictionaryService>();
-            serviceCollection.TryAddSingleton<IThemeService, ThemeService>();
-            serviceCollection.TryAddSingleton<IColorGenerator, ColorGenerator>();
-
-            var themeManager = ControlzEx.Theming.ThemeManager.Current;
-            themeManager.RegisterLibraryThemeProvider(new LibraryThemeProvider());
-            serviceCollection.AddSingleton(themeManager);
-            serviceCollection.AddSingleton<ThemeManager>();
-
-            serviceCollection.AddSingleton<FontImageInitializer>();
-
-            serviceCollection.AddSingleton<ILanguageSource>(new LanguageResourceSource("Orc.Theming", "Orc.Theming.Properties", "Resources"));
-
-            serviceCollection.AddSingleton<IThirdPartyNotice>((x) => new LibraryThirdPartyNotice("Orc.Theming", "https://github.com/wildgums/orc.theming"));
-
-            return serviceCollection;
+            _fontProviders = fontProviders;
         }
 
-        private class FontImageInitializer : IInitializeAtStartup
+        public void Initialize()
         {
-            private readonly IEnumerable<IFontProvider> _fontProviders;
+            var application = Application.Current;
 
-            public FontImageInitializer(IEnumerable<IFontProvider> fontProviders)
+            foreach (var fontProvider in _fontProviders)
             {
-                _fontProviders = fontProviders;
-            }
+                var fontInfos = fontProvider.Provide();
 
-            public void Initialize()
-            {
-                var application = Application.Current;
-
-                foreach (var fontProvider in _fontProviders)
+                foreach (var fontInfo in fontInfos)
                 {
-                    var fontInfos = fontProvider.Provide();
+                    var fontName = fontInfo.Name;
+                    var fontFamily = fontInfo.FontFamily;
 
-                    foreach (var fontInfo in fontInfos)
+                    FontImage.RegisterFont(fontName, fontFamily);
+
+                    if (application is not null)
                     {
-                        var fontName = fontInfo.Name;
-                        var fontFamily = fontInfo.FontFamily;
-
-                        FontImage.RegisterFont(fontName, fontFamily);
-
-                        if (application is not null)
-                        {
-                            application.Resources[fontName] = fontFamily;
-                        }
+                        application.Resources[fontName] = fontFamily;
                     }
                 }
             }
