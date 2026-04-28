@@ -1,15 +1,14 @@
-﻿namespace Orc.Theming
+﻿namespace Orc.Theming;
+
+public enum FontSizeMode
 {
-    public enum FontSizeMode
-    {
-        Default = TextBlockMetadata,
+    Default = TextBlockMetadata,
 
-        TextBlockMetadata = 1,
+    TextBlockMetadata = 1,
 
-        Service = 2,
+    Service = 2,
 
-        Parent = 3,
+    Parent = 3,
 
-        Resource = 4
-    }
+    Resource = 4
 }

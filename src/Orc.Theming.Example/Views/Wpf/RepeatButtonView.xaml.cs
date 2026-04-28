@@ -2,8 +2,5 @@
 
 public partial class RepeatButtonView
 {
-    public RepeatButtonView()
-    {
-        InitializeComponent();
-    }
+
 }

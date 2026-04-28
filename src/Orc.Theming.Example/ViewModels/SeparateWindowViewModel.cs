@@ -1,12 +1,14 @@
 ﻿namespace Orc.Theming.Example.ViewModels;
 
+using System;
 using System.Collections.ObjectModel;
 using Catel.MVVM;
 using Wizards.ExampleWizard;
 
 public class SeparateWindowViewModel : ViewModelBase
 {
-    public SeparateWindowViewModel()
+    public SeparateWindowViewModel(IServiceProvider serviceProvider)
+        : base(serviceProvider)
     {
         Skills = new ObservableCollection<Skill>(new[]
         {

@@ -2,8 +2,5 @@
 
 public partial class ToolBarView
 {
-    public ToolBarView()
-    {
-        InitializeComponent();
-    }
+
 }

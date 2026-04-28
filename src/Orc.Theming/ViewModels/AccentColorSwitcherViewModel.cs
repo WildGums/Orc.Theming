@@ -12,7 +12,9 @@ public class AccentColorSwitcherViewModel : ViewModelBase
 {
     private readonly IAccentColorService _accentColorService;
 
-    public AccentColorSwitcherViewModel(ThemeManager themeManager, IAccentColorService accentColorService)
+    public AccentColorSwitcherViewModel(IServiceProvider serviceProvider, 
+        ThemeManager themeManager, IAccentColorService accentColorService)
+        : base(serviceProvider)
     {
         ArgumentNullException.ThrowIfNull(accentColorService);
 

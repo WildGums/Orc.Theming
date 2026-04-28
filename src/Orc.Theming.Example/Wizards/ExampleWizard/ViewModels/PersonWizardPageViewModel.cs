@@ -1,5 +1,6 @@
 ﻿namespace Orc.Theming.Example.Wizards.ExampleWizard.ViewModels;
 
+using System;
 using System.Collections.Generic;
 using Catel.Data;
 using Catel.MVVM;
@@ -7,8 +8,8 @@ using Wizard;
 
 public class PersonWizardPageViewModel : WizardPageViewModelBase<PersonWizardPage>
 {
-    public PersonWizardPageViewModel(PersonWizardPage wizardPage)
-        : base(wizardPage)
+    public PersonWizardPageViewModel(PersonWizardPage wizardPage, IServiceProvider serviceProvider)
+        : base(wizardPage, serviceProvider)
     {
     }
 

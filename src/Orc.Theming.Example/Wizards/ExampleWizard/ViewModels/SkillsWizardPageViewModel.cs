@@ -1,5 +1,6 @@
 ﻿namespace Orc.Theming.Example.Wizards.ExampleWizard.ViewModels;
 
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -12,14 +13,14 @@ using Wizard;
 
 public class SkillsWizardPageViewModel : WizardPageViewModelBase<SkillsWizardPage>
 {
-    public SkillsWizardPageViewModel(SkillsWizardPage wizardPage)
-        : base(wizardPage)
+    public SkillsWizardPageViewModel(SkillsWizardPage wizardPage, IServiceProvider serviceProvider)
+        : base(wizardPage, serviceProvider)
     {
-        SelectAll = new Command(OnSelectAllExecute);
+        SelectAll = new Command(serviceProvider, OnSelectAllExecute);
     }
 
     [ViewModelToModel]
-    public ObservableCollection<Skill>? Skills { get; private set; }
+    public System.Collections.ObjectModel.ObservableCollection<Skill>? Skills { get; private set; }
 
     #region Commands
     public Command SelectAll { get; }

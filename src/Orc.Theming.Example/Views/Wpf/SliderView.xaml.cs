@@ -2,8 +2,5 @@
 
 public partial class SliderView
 {
-    public SliderView()
-    {
-        InitializeComponent();
-    }
+
 }

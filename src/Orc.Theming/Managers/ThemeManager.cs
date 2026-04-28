@@ -8,11 +8,12 @@ using Catel.IoC;
 using Catel.Logging;
 using ControlzEx.Theming;
 using MethodTimer;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 public class ThemeManager
 {
-    private static readonly ILog Log = LogManager.GetCurrentClassLogger();
-
+    private readonly ILogger<ThemeManager> _logger;
     private readonly ControlzEx.Theming.ThemeManager _controlzThemeManager;
     private readonly IAccentColorService _accentColorService;
     private readonly IBaseColorSchemeService _baseColorSchemeService;
@@ -25,18 +26,19 @@ public class ThemeManager
 
     private Theme? _currentTheme;
 
-    // Note: must be lazy because we don't want the static ctor to be invoked whenever we resolve this class correctly via DI
-    private static readonly Lazy<ThemeManager> CurrentLazy = new(() => ServiceLocator.Default.ResolveRequiredType<ThemeManager>());
+    private static readonly Lazy<ThemeManager> CurrentLazy = new(() => IoCContainer.ServiceProvider.GetRequiredService<ThemeManager>());
 
-    public ThemeManager(ControlzEx.Theming.ThemeManager controlzThemeManager, IAccentColorService accentColorService, IBaseColorSchemeService baseColorSchemeService)
+    public ThemeManager(ILogger<ThemeManager> logger, ControlzEx.Theming.ThemeManager controlzThemeManager,
+        IAccentColorService accentColorService, IBaseColorSchemeService baseColorSchemeService)
     {
         ArgumentNullException.ThrowIfNull(controlzThemeManager);
         ArgumentNullException.ThrowIfNull(accentColorService);
         ArgumentNullException.ThrowIfNull(baseColorSchemeService);
 
+        _logger = logger;
+        _controlzThemeManager = controlzThemeManager;
         _accentColorService = accentColorService;
         _baseColorSchemeService = baseColorSchemeService;
-        _controlzThemeManager = controlzThemeManager;
 
         _controlzThemeManager.ThemeChanged += OnThemeManagerThemeChanged;
         _accentColorService.AccentColorChanged += OnAccentColorChanged;
@@ -45,7 +47,13 @@ public class ThemeManager
         SynchronizeTheme();
     }
 
-    public static ThemeManager Current { get { return CurrentLazy.Value; } }
+    public static ThemeManager Current
+    {
+        get
+        {
+            return CurrentLazy.Value;
+        }
+    }
 
     public event EventHandler<EventArgs>? ThemeChanged;
 
@@ -93,7 +101,7 @@ public class ThemeManager
                 ThemeColorStyle.Gray10 => GetThemeColor("Gray10"),
                 // Text
                 ThemeColorStyle.Text => GetThemeColor("Orc.Colors.Text"),
-                _ => throw Log.ErrorAndCreateException(_ => new ArgumentOutOfRangeException(nameof(colorStyle)), string.Empty)
+                _ => throw _logger.LogErrorAndCreateException(_ => new ArgumentOutOfRangeException(nameof(colorStyle)), string.Empty)
             };
         });
     }
@@ -125,7 +133,7 @@ public class ThemeManager
 
     private void OnThemeManagerThemeChanged(object? sender, ThemeChangedEventArgs e)
     {
-        Log.Debug("Theme has changed, clearing current cache");
+        _logger.LogDebug("Theme has changed, clearing current cache");
 
         _accentColorBrushCache = null;
         _resourceBrushesCache.Clear();
@@ -147,7 +155,7 @@ public class ThemeManager
 
     public virtual void SynchronizeTheme()
     {
-        Log.Debug("Synchronizing theme");
+        _logger.LogDebug("Synchronizing theme");
 
         var themeGenerator = RuntimeThemeGenerator.Current;
         themeGenerator.Options.UseHSL = false;
@@ -155,7 +163,7 @@ public class ThemeManager
         var generatedTheme = themeGenerator.GenerateRuntimeTheme(_baseColorSchemeService.GetBaseColorScheme(), _accentColorService.GetAccentColor());
         if (generatedTheme is null)
         {
-            throw Log.ErrorAndCreateException<InvalidOperationException>("Failed to generate runtime theme");
+            throw _logger.LogErrorAndCreateException<InvalidOperationException>("Failed to generate runtime theme");
         }
 
         ChangeTheme(generatedTheme);

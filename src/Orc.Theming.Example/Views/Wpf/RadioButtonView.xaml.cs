@@ -2,8 +2,5 @@
 
 public partial class RadioButtonView
 {
-    public RadioButtonView()
-    {
-        InitializeComponent();
-    }
+
 }

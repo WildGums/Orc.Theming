@@ -1,12 +1,14 @@
 ﻿namespace Orc.Theming.Example.ViewModels;
 
+using System;
 using System.Collections.Generic;
 using Catel.Data;
 using Catel.MVVM;
 
 public class ControlsViewModel : ViewModelBase
 {
-    public ControlsViewModel()
+    public ControlsViewModel(IServiceProvider serviceProvider)
+        : base(serviceProvider)
     {
         AlignmentGridSize = 16;
     }

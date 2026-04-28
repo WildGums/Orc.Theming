@@ -3,7 +3,7 @@
 using System;
 using System.Linq;
 using System.Windows;
-using Catel.IoC;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Xaml.Behaviors;
 
 public static class FrameworkElementExtensions
@@ -21,9 +21,8 @@ public static class FrameworkElementExtensions
             return existingBehaviorOfType;
         }
 
-#pragma warning disable IDISP004 // Don't ignore created IDisposable
-        var behavior = frameworkElement.GetTypeFactory().CreateRequiredInstanceWithParametersAndAutoCompletion<TBehavior>();
-#pragma warning restore IDISP004 // Don't ignore created IDisposable
+        var serviceProvider = Catel.IoC.IoCContainer.ServiceProvider;
+        var behavior = ActivatorUtilities.CreateInstance<TBehavior>(serviceProvider);
         behaviors.Add(behavior);
 
         return behavior;

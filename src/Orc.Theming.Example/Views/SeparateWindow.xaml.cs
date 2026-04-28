@@ -2,8 +2,5 @@
 
 public partial class SeparateWindow
 {
-    public SeparateWindow()
-    {
-        InitializeComponent();
-    }
+
 }

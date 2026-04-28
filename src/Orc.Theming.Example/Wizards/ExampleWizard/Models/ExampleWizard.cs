@@ -1,24 +1,25 @@
 ﻿namespace Orc.Theming.Example.Wizards.ExampleWizard;
 
+using System;
 using System.Threading.Tasks;
-using Catel.IoC;
 using Catel.Logging;
+using Microsoft.Extensions.Logging;
 using Wizard;
 
 public class ExampleWizard : WizardBase
 {
-    private static readonly ILog Log = LogManager.GetCurrentClassLogger();
+    private static readonly ILogger Logger = LogManager.GetLogger(typeof(ExampleWizard));
 
-    public ExampleWizard(ITypeFactory typeFactory)
-        : base(typeFactory)
+    public ExampleWizard(IServiceProvider serviceProvider)
+        : base(serviceProvider)
     {
         Title = "Orc.Theming wizard example"; 
 
-        this.AddPage<PersonWizardPage>();
-        this.AddPage<AgeWizardPage>();
-        this.AddPage<SkillsWizardPage>();
-        this.AddPage<ComponentsWizardPage>();
-        this.AddPage<SummaryWizardPage>();
+        this.AddPage<PersonWizardPage>(serviceProvider);
+        this.AddPage<AgeWizardPage>(serviceProvider);
+        this.AddPage<SkillsWizardPage>(serviceProvider);
+        this.AddPage<ComponentsWizardPage>(serviceProvider);
+        this.AddPage<SummaryWizardPage>(serviceProvider);
     }
 
     public bool ShowInTaskbarWrapper
@@ -29,7 +30,7 @@ public class ExampleWizard : WizardBase
 
     public override async Task ResumeAsync()
     {
-        Log.Info("Resuming wizard");
+        Logger.LogInformation("Resuming wizard");
 
         await base.ResumeAsync();
     }

@@ -5,10 +5,11 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 using Catel.Logging;
+using Microsoft.Extensions.Logging;
 
 internal class ProgressBarValueToArcPointConverter : IMultiValueConverter
 {
-    private static readonly ILog Log = LogManager.GetCurrentClassLogger();
+    private static readonly ILogger Logger = LogManager.GetLogger(typeof(ProgressBarValueToArcPointConverter));
 
     public object? Convert(object[]? values, Type targetType, object? parameter, CultureInfo? culture)
     {
@@ -19,7 +20,7 @@ internal class ProgressBarValueToArcPointConverter : IMultiValueConverter
 
         if (values.Length < 5)
         {
-            throw Log.ErrorAndCreateException<InvalidOperationException>("Wrong argument count passed to converter");
+            throw Logger.LogErrorAndCreateException<InvalidOperationException>("Wrong argument count passed to converter");
         }
 
         var progressValue = (double)values[0];

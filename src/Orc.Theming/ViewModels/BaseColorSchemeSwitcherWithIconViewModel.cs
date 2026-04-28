@@ -11,9 +11,9 @@ public class BaseColorSchemeSwitcherWithIconViewModel : ViewModelBase
 {
     private readonly IBaseColorSchemeService _baseColorSchemeService;
 
-#pragma warning disable CA1801 // Review unused parameters
-    public BaseColorSchemeSwitcherWithIconViewModel(IBaseColorSchemeService baseColorSchemeService)
-#pragma warning restore CA1801 // Review unused parameters
+    public BaseColorSchemeSwitcherWithIconViewModel(IServiceProvider serviceProvider, 
+        IBaseColorSchemeService baseColorSchemeService)
+        : base(serviceProvider)
     {
         ArgumentNullException.ThrowIfNull(baseColorSchemeService);
 

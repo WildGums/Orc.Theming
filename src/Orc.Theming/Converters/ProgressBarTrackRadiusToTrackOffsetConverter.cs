@@ -6,10 +6,11 @@ using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
 using Catel.Logging;
+using Microsoft.Extensions.Logging;
 
 internal class ProgressBarTrackRadiusToTrackOffsetConverter : IMultiValueConverter
 {
-    private static readonly ILog Log = LogManager.GetCurrentClassLogger();
+    private static readonly ILogger Logger = LogManager.GetLogger(typeof(ProgressBarTrackRadiusToTrackOffsetConverter));
 
     public object? Convert(object?[]? values, Type targetType, object? parameter, CultureInfo culture)
     {
@@ -20,12 +21,12 @@ internal class ProgressBarTrackRadiusToTrackOffsetConverter : IMultiValueConvert
 
         if (values.Length < 2)
         {
-            throw Log.ErrorAndCreateException<InvalidOperationException>("Wrong argument count passed to converter");
+            throw Logger.LogErrorAndCreateException<InvalidOperationException>("Wrong argument count passed to converter");
         }
 
         if (values[0] is not double trackPath || values[1] is not EllipseGeometry trackGeometry)
         {
-            throw Log.ErrorAndCreateException<InvalidOperationException>("Wrong argument type");
+            throw Logger.LogErrorAndCreateException<InvalidOperationException>("Wrong argument type");
         }
 
         var propertyPath = parameter?.ToString();

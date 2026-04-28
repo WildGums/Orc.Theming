@@ -2,8 +2,5 @@
 
 public partial class CheckBoxView
 {
-    public CheckBoxView()
-    {
-        InitializeComponent();
-    }
+
 }

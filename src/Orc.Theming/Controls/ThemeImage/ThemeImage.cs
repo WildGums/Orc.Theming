@@ -8,24 +8,23 @@ using System.Windows.Media.Imaging;
 using Catel;
 using Catel.IoC;
 using Catel.Logging;
+using Microsoft.Extensions.Logging;
 
 [TemplatePart(Name = "PART_Image", Type = typeof(Image))]
-public class ThemeImage : Control
+public partial class ThemeImage : Control
 {
     private const string BaseColorScheme = "{basecolorscheme}";
 
-    private static readonly ILog Log = LogManager.GetCurrentClassLogger();
+    private static readonly ILogger Logger = LogManager.GetLogger(typeof(ThemeImage));
 
     private readonly IBaseColorSchemeService _baseColorSchemeService;
 
     private bool _isSubscribed;
     private Image? _image;
 
-    public ThemeImage()
+    public ThemeImage(IBaseColorSchemeService baseColorSchemeService)
     {
-        var serviceLocator = ServiceLocator.Default;
-
-        _baseColorSchemeService = serviceLocator.ResolveRequiredType<IBaseColorSchemeService>();
+        _baseColorSchemeService = baseColorSchemeService;
 
         Loaded += OnLoaded;
         Unloaded += OnUnloaded;
@@ -65,7 +64,7 @@ public class ThemeImage : Control
         _image = GetTemplateChild("PART_Image") as Image;
         if (_image is null)
         {
-            throw Log.ErrorAndCreateException<InvalidOperationException>("Can't find template part 'PART_Image'");
+            throw Logger.LogErrorAndCreateException<InvalidOperationException>("Can't find template part 'PART_Image'");
         }
 
         UpdateSource();
