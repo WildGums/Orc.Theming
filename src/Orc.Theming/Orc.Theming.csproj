@@ -24,9 +24,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Catel.Fody" Version="4.12.0-alpha0121" PrivateAssets="all" />
-    <!--<PackageReference Include="Catel.MVVM" Version="7.0.0-remove-ioc0079" />-->
-    <PackageReference Include="Catel.SourceGenerators" Version="1.0.0-alpha0052" PrivateAssets="all" />
+    <PackageReference Include="Catel.Fody" Version="7.0.0" PrivateAssets="all" />
+    <PackageReference Include="Catel.MVVM" Version="7.0.0-alpha0205" />
+    <PackageReference Include="Catel.SourceGenerators" Version="7.0.1" PrivateAssets="all" />
     <PackageReference Include="ControlzEx" Version="7.0.4" />
     <PackageReference Include="Fody" Version="6.9.3" PrivateAssets="all">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
@@ -68,10 +68,6 @@
       <TargetFile>Themes\Generic.generated.xaml</TargetFile>
       <Visible>True</Visible>
     </XAMLCombineItems>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Catel\src\Catel.Core\Catel.Core.csproj" />
-    <ProjectReference Include="..\..\..\Catel\src\Catel.MVVM\Catel.MVVM.csproj" />
   </ItemGroup>
 
   <Import Project="$(MSBuildProjectDirectory)\..\Directory.Build.nullable.props" Condition="Exists('$(MSBuildProjectDirectory)\..\Directory.Build.nullable.props')" />
