@@ -42,7 +42,7 @@ public class ResourceDictionaryService : IResourceDictionaryService
                 using var resourceStream = assembly.GetManifestResourceStream(generatedResourceName);
                 if (resourceStream is null)
                 {
-                    _logger.LogDebug($"Could not find generated resources @ '{generatedResourceName}', assuming the resource dictionary '{resourceDictionaryUri}' does not exist");
+                    _logger.LogDebug("Could not find generated resources @ '{GeneratedResourceName}', assuming the resource dictionary '{ResourceDictionaryUri}' does not exist", generatedResourceName, resourceDictionaryUri);
                     return false;
                 }
 
@@ -56,13 +56,13 @@ public class ResourceDictionaryService : IResourceDictionaryService
                     select x).Any();
                 if (exists)
                 {
-                    _logger.LogDebug($"Resource '{resourceDictionaryUri}' exists");
+                    _logger.LogDebug("Resource '{ResourceDictionaryUri}' exists", resourceDictionaryUri);
                     return true;
                 }
             }
         }
 
-        _logger.LogDebug($"Failed to confirm that resource '{resourceDictionaryUri}' exists");
+        _logger.LogDebug("Failed to confirm that resource '{ResourceDictionaryUri}' exists", resourceDictionaryUri);
 
         return false;
     }

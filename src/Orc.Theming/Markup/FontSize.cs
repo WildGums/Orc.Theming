@@ -151,7 +151,7 @@ public class FontSize : UpdatableMarkupExtension
                 break;
 
             default:
-                throw Logger.LogErrorAndCreateException<NotSupportedException>($"Mode '{Mode}' is not supported");
+                throw Logger.LogErrorAndCreateException<NotSupportedException>("Mode '{Mode}' is not supported", Mode);
         }
 
         var finalFontSize = defaultFontSize;

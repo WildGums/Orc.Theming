@@ -16,6 +16,6 @@ public static class ControlExtensions
     {
         var part = control.Template.FindName(partName, control) as TControl;
         return part
-               ?? throw Logger.LogErrorAndCreateException<InvalidOperationException>($"Can't find template part '{typeof(TControl)}' with name: '{partName}' in control: '{control.GetType()}' with name '{control.Name}'");
+               ?? throw Logger.LogErrorAndCreateException<InvalidOperationException>("Can't find template part '{TemplatePartType}' with name: '{PartName}' in control: '{ControlType}' with name '{ControlName}'", typeof(TControl), partName, control.GetType(), control.Name);
     }
 }

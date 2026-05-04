@@ -34,7 +34,7 @@ public class BaseColorSchemeService : IBaseColorSchemeService
             return false;
         }
 
-        _logger.LogInformation($"Setting base color scheme '{scheme}'");
+        _logger.LogInformation("Setting base color scheme '{Scheme}'", scheme);
 
         _baseColorScheme = scheme;
 

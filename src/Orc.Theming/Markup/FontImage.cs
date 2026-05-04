@@ -126,7 +126,7 @@ public class FontImage : UpdatableMarkupExtension
 
         if (!RegisteredFontFamilies.TryGetValue(fontFamily, out var family))
         {
-            throw Logger.LogErrorAndCreateException<InvalidOperationException>("FontFamily '{0}' is not yet registered, register it first using the RegisterFont method", fontFamily);
+            throw Logger.LogErrorAndCreateException<InvalidOperationException>("FontFamily '{FontFamily}' is not yet registered, register it first using the RegisterFont method", fontFamily);
         }
 
         var brush = GetBrush();
@@ -241,7 +241,7 @@ public class FontImage : UpdatableMarkupExtension
 
         if (!typeface.TryGetGlyphTypeface(out var glyphTypeface))
         {
-            throw Logger.LogErrorAndCreateException<InvalidOperationException>($"No glyph type face found for font family '{fontFamily.FamilyNames.FirstOrDefault()}'");
+            throw Logger.LogErrorAndCreateException<InvalidOperationException>("No glyph type face found for font family '{FontFamily}'", fontFamily.FamilyNames.FirstOrDefault());
         }
 
         const int notFoundValue = 42;
