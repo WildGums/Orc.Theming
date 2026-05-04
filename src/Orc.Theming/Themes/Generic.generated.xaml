@@ -345,7 +345,7 @@
               <ControlTemplate.Resources>
                 <!-- Start: Data template for header button -->
                 <DataTemplate x:Key="{x:Static CalendarItem.DayTitleTemplateResourceKey}">
-                  <TextBlock FontWeight="Bold" FontFamily="Verdana" FontSize="{local:FontSize Absolute=9.5}" Foreground="{DynamicResource Orc.Brushes.Control.Default.Foreground}" HorizontalAlignment="Center" Text="{Binding}" Margin="0,6,0,6" VerticalAlignment="Center" />
+                  <TextBlock FontWeight="Bold" FontFamily="Verdana" FontSize="{DynamicResource Orc.FontSizes.Calendar.DayTitle}" Foreground="{DynamicResource Orc.Brushes.Control.Default.Foreground}" HorizontalAlignment="Center" Text="{Binding}" Margin="0,6,0,6" VerticalAlignment="Center" />
                 </DataTemplate>
                 <!-- End: Data template for header button -->
               </ControlTemplate.Resources>
@@ -465,7 +465,7 @@
                       <Button x:Name="PART_PreviousButton" Grid.Row="0" Grid.Column="0" Template="{StaticResource Ö}" Height="20" Width="28" HorizontalAlignment="Left" Focusable="False" />
                       <!-- End: Previous button content -->
                       <!-- Start: Header button content -->
-                      <Button x:Name="PART_HeaderButton" Grid.Row="0" Grid.Column="1" Template="{StaticResource Ø}" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="{local:FontSize Absolute=10.5}" Focusable="False" />
+                      <Button x:Name="PART_HeaderButton" Grid.Row="0" Grid.Column="1" Template="{StaticResource Ø}" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="{DynamicResource Orc.FontSizes.Calendar.Header}" Focusable="False" />
                       <!-- End: Header button content -->
                       <!-- Start: Next button content -->
                       <Button x:Name="PART_NextButton" Grid.Row="0" Grid.Column="2" Height="20" Width="28" HorizontalAlignment="Right" Template="{StaticResource ×}" Focusable="False" />
@@ -547,7 +547,7 @@
       <Style x:Key="CalendarDayButtonStyle" TargetType="CalendarDayButton">
         <Setter Property="MinWidth" Value="5" />
         <Setter Property="MinHeight" Value="5" />
-        <Setter Property="FontSize" Value="10" />
+        <Setter Property="FontSize" Value="{DynamicResource Orc.FontSizes.Calendar.DayButton}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Template">
@@ -673,7 +673,7 @@
         <Setter Property="Foreground" Value="{DynamicResource Orc.Brushes.Control.Default.Foreground}" />
         <Setter Property="MinWidth" Value="40" />
         <Setter Property="MinHeight" Value="42" />
-        <Setter Property="FontSize" Value="10" />
+        <Setter Property="FontSize" Value="{DynamicResource Orc.FontSizes.Calendar.DayButton}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Template">

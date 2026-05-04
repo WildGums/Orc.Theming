@@ -1,6 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:Orc.Theming">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style x:Key="Orc.Styles.Calendar"
            TargetType="{x:Type Calendar}">
@@ -25,7 +24,7 @@
                                 <DataTemplate x:Key="{x:Static CalendarItem.DayTitleTemplateResourceKey}">
                                     <TextBlock FontWeight="Bold"
                                                FontFamily="Verdana"
-                                               FontSize="{local:FontSize Absolute=9.5}"
+                                               FontSize="{DynamicResource Orc.FontSizes.Calendar.DayTitle}"
                                                Foreground="{DynamicResource Orc.Brushes.Control.Default.Foreground}"
                                                HorizontalAlignment="Center"
                                                Text="{Binding}"
@@ -226,7 +225,7 @@
                                                     HorizontalAlignment="Center"
                                                     VerticalAlignment="Center"
                                                     FontWeight="Bold"
-                                                    FontSize="{local:FontSize Absolute=10.5}"
+                                                    FontSize="{DynamicResource Orc.FontSizes.Calendar.Header}"
                                                     Focusable="False" />
                                             <!-- End: Header button content -->
 
@@ -356,7 +355,7 @@
                 <Setter Property="MinHeight"
                         Value="5" />
                 <Setter Property="FontSize"
-                        Value="10" />
+                        Value="{DynamicResource Orc.FontSizes.Calendar.DayButton}" />
                 <Setter Property="HorizontalContentAlignment"
                         Value="Center" />
                 <Setter Property="VerticalContentAlignment"
@@ -560,7 +559,7 @@
                 <Setter Property="MinHeight"
                         Value="42" />
                 <Setter Property="FontSize"
-                        Value="10" />
+                        Value="{DynamicResource Orc.FontSizes.Calendar.DayButton}" />
                 <Setter Property="HorizontalContentAlignment"
                         Value="Center" />
                 <Setter Property="VerticalContentAlignment"
