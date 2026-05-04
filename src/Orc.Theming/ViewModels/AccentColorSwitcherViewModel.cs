@@ -12,8 +12,10 @@ public class AccentColorSwitcherViewModel : ViewModelBase
 {
     private readonly IAccentColorService _accentColorService;
 
-    public AccentColorSwitcherViewModel(IServiceProvider serviceProvider, 
+    public AccentColorSwitcherViewModel(IServiceProvider serviceProvider,
+#pragma warning disable CTL0012 // Concrete types should go first
         ThemeManager themeManager, IAccentColorService accentColorService)
+#pragma warning restore CTL0012 // Concrete types should go first
         : base(serviceProvider)
     {
         ArgumentNullException.ThrowIfNull(accentColorService);
