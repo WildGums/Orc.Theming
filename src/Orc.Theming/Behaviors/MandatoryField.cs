@@ -61,7 +61,7 @@ public class MandatoryField : BehaviorBase<FrameworkElement>
             var myAdornerLayer = AdornerLayer.GetAdornerLayer(element);
             if (myAdornerLayer is null)
             {
-                Logger.LogWarning($"FrameworkElement {element} doesn't have adorner layer in the visual tree");
+                Logger.LogWarning("FrameworkElement {Element} doesn't have adorner layer in the visual tree", element);
                 return;
             }
 

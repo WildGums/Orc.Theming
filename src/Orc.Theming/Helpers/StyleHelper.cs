@@ -204,7 +204,7 @@ public static class StyleHelper
             catch (Exception ex)
             {
                 var tag = defaultStyle.TargetType?.ToString() ?? defaultStyle.ToString();
-                Logger.LogWarning(ex, "Failed to complete the style for '{0}'", tag);
+                Logger.LogWarning(ex, "Failed to complete the style for '{Tag}'", tag);
             }
         }
 
@@ -261,7 +261,7 @@ public static class StyleHelper
             }
             catch (Exception ex)
             {
-                Logger.LogWarning(ex, $"Failed to add a default style ('{key}') definition to the list of styles");
+                Logger.LogWarning(ex, "Failed to add a default style ('{Key}') definition to the list of styles", key);
             }
         }
 

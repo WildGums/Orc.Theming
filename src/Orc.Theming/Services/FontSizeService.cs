@@ -43,7 +43,7 @@ public class FontSizeService : IFontSizeService
 
     public virtual bool SetFontSize(double fontSize)
     {
-        _logger.LogInformation($"Setting font size '{fontSize}'");
+        _logger.LogInformation("Setting font size '{FontSize}'", fontSize);
 
         _fontSize = fontSize;
 
@@ -167,7 +167,7 @@ public class FontSizeService : IFontSizeService
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, $"Failed to override font size metadata for '{targetType.Name}'");
+            _logger.LogError(ex, "Failed to override font size metadata for '{TypeName}'", targetType.Name);
         }
     }
 }

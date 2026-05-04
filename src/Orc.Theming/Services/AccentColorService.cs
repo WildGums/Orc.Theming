@@ -40,7 +40,7 @@ public class AccentColorService : IAccentColorService
             return false;
         }
 
-        _logger.LogInformation($"Setting accent color '{color}'");
+        _logger.LogInformation("Setting accent color '{Color}'", color);
 
         _accentColor = color;
 
