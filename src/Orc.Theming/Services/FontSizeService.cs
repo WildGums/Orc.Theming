@@ -54,6 +54,9 @@ public class FontSizeService : IFontSizeService
             // they must work with dynamic resources
             UpdateAppResourceFontSize("Orc.FontSizes.ContextMenu", fontSize);
             UpdateAppResourceFontSize("Orc.FontSizes.ToolTip", fontSize);
+            UpdateAppResourceFontSize("Orc.FontSizes.Calendar.DayTitle", fontSize);
+            UpdateAppResourceFontSize("Orc.FontSizes.Calendar.Header", fontSize);
+            UpdateAppResourceFontSize("Orc.FontSizes.Calendar.DayButton", fontSize);
 
             var mainWindow = application.MainWindow;
             if (mainWindow is not null)

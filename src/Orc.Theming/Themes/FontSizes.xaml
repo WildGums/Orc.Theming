@@ -13,4 +13,13 @@
     <sys:Double x:Key="Orc.FontSizes.ToolTip.DefaultValue">12</sys:Double>
     <sys:Double x:Key="Orc.FontSizes.ToolTip">12</sys:Double>
 
+    <sys:Double x:Key="Orc.FontSizes.Calendar.DayTitle.DefaultValue">9.5</sys:Double>
+    <sys:Double x:Key="Orc.FontSizes.Calendar.DayTitle">9.5</sys:Double>
+
+    <sys:Double x:Key="Orc.FontSizes.Calendar.Header.DefaultValue">10.5</sys:Double>
+    <sys:Double x:Key="Orc.FontSizes.Calendar.Header">10.5</sys:Double>
+
+    <sys:Double x:Key="Orc.FontSizes.Calendar.DayButton.DefaultValue">10</sys:Double>
+    <sys:Double x:Key="Orc.FontSizes.Calendar.DayButton">10</sys:Double>
+
 </ResourceDictionary>
