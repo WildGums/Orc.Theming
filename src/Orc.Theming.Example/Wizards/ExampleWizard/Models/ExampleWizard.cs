@@ -28,10 +28,10 @@ public class ExampleWizard : WizardBase
         set { ShowInTaskbar = value; }
     }
 
-    public override async Task ResumeAsync()
+    public override Task<bool> ResumeAsync()
     {
         Logger.LogInformation("Resuming wizard");
 
-        await base.ResumeAsync();
+        return base.ResumeAsync();
     }
 }
