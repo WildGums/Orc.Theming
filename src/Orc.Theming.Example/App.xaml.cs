@@ -71,9 +71,7 @@ public partial class App
         languageService.PreferredCulture = CultureInfo.CurrentCulture;
         languageService.FallbackCulture = new CultureInfo("en-US");
 
-        this.ApplyTheme();
-
-        StyleHelper.CreateStyleForwardersForDefaultStyles();
+        this.ApplyTheme(true);
 
         FontImage.DefaultFontFamily = "FontAwesome";
 

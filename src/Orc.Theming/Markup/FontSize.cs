@@ -24,32 +24,18 @@ public partial class FontSize : UpdatableMarkupExtension
     private static readonly Stopwatch LastUpdatedTextBlockFontSizeStopwatch = Stopwatch.StartNew();
     private static double? DefaultTextBlockFontSize = null;
 
-    private readonly IFontSizeService? _fontSizeService;
+    private IFontSizeService? _fontSizeService = default!;
 
     public FontSize()
-        : this(IoCContainer.GetServiceProvider()?.GetService<IFontSizeService>()!)
-    {
-        // Leave empty, here for runtime support
-    }
-
-    public FontSize(IFontSizeService fontSizeService)
-    {
-        _fontSizeService = fontSizeService;
-
+    { 
         Scale = 1.0d;
         SubscribeToEvents = false;
         Mode = FontSizeMode.Default;
     }
 
     public FontSize(double absolute)
-        : this(absolute, IoCContainer.GetServiceProvider()?.GetService<IFontSizeService>()!)
-    {
-        // Leave empty, here for runtime support
-    }
-
-    public FontSize(double absolute, IFontSizeService fontSizeService)
-        : this(fontSizeService)
-    {
+        : this()
+    { 
         Absolute = absolute;
     }
 
@@ -211,7 +197,7 @@ public partial class FontSize : UpdatableMarkupExtension
 
     protected virtual double GetFontSizeFromService()
     {
-        var service = _fontSizeService;
+        var service = GetFontSizeService();
         if (service is null)
         {
             // Design time
@@ -261,9 +247,10 @@ public partial class FontSize : UpdatableMarkupExtension
     {
         base.OnTargetObjectLoaded();
 
-        if (SubscribeToEvents)
+        if (SubscribeToEvents &&
+            Mode == FontSizeMode.Service)
         {
-            var fontSizeService = _fontSizeService;
+            var fontSizeService = GetFontSizeService();
             if (fontSizeService is not null)
             {
                 fontSizeService.FontSizeChanged += OnFontSizeServiceFontSizeChanged;
@@ -273,10 +260,13 @@ public partial class FontSize : UpdatableMarkupExtension
 
     protected override void OnTargetObjectUnloaded()
     {
-        var fontSizeService = _fontSizeService;
-        if (fontSizeService is not null)
+        if (Mode == FontSizeMode.Service)
         {
-            fontSizeService.FontSizeChanged -= OnFontSizeServiceFontSizeChanged;
+            var fontSizeService = GetFontSizeService();
+            if (fontSizeService is not null)
+            {
+                fontSizeService.FontSizeChanged -= OnFontSizeServiceFontSizeChanged;
+            }
         }
 
         base.OnTargetObjectUnloaded();
@@ -291,5 +281,15 @@ public partial class FontSize : UpdatableMarkupExtension
         }
 
         UpdateValue();
+    }
+
+    private IFontSizeService? GetFontSizeService()
+    {
+        if (_fontSizeService is null)
+        {
+            _fontSizeService = ServiceProvider.GetService<IFontSizeService>();
+        }
+
+        return _fontSizeService;
     }
 }
