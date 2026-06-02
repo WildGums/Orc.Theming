@@ -7,7 +7,7 @@ using Catel.Windows;
 using Catel.Windows.Interactivity;
 using Window = System.Windows.Window;
 
-public class CorrectPopupWidth : BehaviorBase<Popup>
+public partial class CorrectPopupWidth : BehaviorBase<Popup>
 {
     private FrameworkElement? _parentElement;
 

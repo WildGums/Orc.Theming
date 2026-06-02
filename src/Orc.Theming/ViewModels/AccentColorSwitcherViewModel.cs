@@ -8,7 +8,7 @@ using System.Windows.Media;
 using Catel.MVVM;
 using Catel.Reflection;
 
-public class AccentColorSwitcherViewModel : ViewModelBase
+public partial class AccentColorSwitcherViewModel : ViewModelBase
 {
     private readonly IAccentColorService _accentColorService;
 

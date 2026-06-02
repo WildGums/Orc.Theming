@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Media;
 using Catel.MVVM.Converters;
 
-internal class ProgressBarTrackToIndicatorSizeConverter : ValueConverterBase
+internal partial class ProgressBarTrackToIndicatorSizeConverter : ValueConverterBase
 {
     protected override object? Convert(object? value, Type targetType, object? parameter)
     {

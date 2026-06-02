@@ -4,7 +4,7 @@ using System;
 using System.Windows;
 using Catel.MVVM.Converters;
 
-internal class ThicknessToDoubleConverter : ValueConverterBase
+internal partial class ThicknessToDoubleConverter : ValueConverterBase
 {
     protected override object Convert(object? value, Type targetType, object? parameter)
     {

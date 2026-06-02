@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Catel.Windows.Interactivity;
 
-public class Square : BehaviorBase<FrameworkElement>
+public partial class Square : BehaviorBase<FrameworkElement>
 {
     private bool _isChanging;
 

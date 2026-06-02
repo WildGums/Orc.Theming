@@ -17,7 +17,7 @@ using Microsoft.Extensions.Logging;
 /// <remarks>
 ///     Original idea comes from http://www.codeproject.com/Tips/634540/Using-Font-Icons
 /// </remarks>
-public class FontImage : UpdatableMarkupExtension
+public partial class FontImage : UpdatableMarkupExtension
 {
     private static readonly ILogger Logger = LogManager.GetLogger(typeof(FontImage));
 

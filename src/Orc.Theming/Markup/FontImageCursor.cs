@@ -4,7 +4,7 @@ using System;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-public class FontImageCursor : FontImage
+public partial class FontImageCursor : FontImage
 {
     public FontImageCursor()
     {

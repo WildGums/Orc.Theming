@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Catel.MVVM;
 
-public class FontSizeSwitcherViewModel : ViewModelBase
+public partial class FontSizeSwitcherViewModel : ViewModelBase
 {
     private readonly IFontSizeService _fontSizeService;
 

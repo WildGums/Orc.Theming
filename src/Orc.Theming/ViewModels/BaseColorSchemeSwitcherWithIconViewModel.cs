@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Catel.IoC;
 using Catel.MVVM;
 
-public class BaseColorSchemeSwitcherWithIconViewModel : ViewModelBase
+public partial class BaseColorSchemeSwitcherWithIconViewModel : ViewModelBase
 {
     private readonly IBaseColorSchemeService _baseColorSchemeService;
 

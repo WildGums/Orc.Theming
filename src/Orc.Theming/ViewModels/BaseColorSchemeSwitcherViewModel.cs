@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Catel.MVVM;
 
-public class BaseColorSchemeSwitcherViewModel : ViewModelBase
+public partial class BaseColorSchemeSwitcherViewModel : ViewModelBase
 {
     private readonly IBaseColorSchemeService _baseColorSchemeService;
 

@@ -3,7 +3,7 @@
 using System;
 using Catel.Windows.Markup;
 
-public class ThemeColorBrush : UpdatableMarkupExtension
+public partial class ThemeColorBrush : UpdatableMarkupExtension
 {
     private readonly ControlzEx.Theming.ThemeManager _controlzThemeManager;
     private readonly ThemeManager _themeManager;

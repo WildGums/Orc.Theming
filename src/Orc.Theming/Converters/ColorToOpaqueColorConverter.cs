@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Media;
 using Catel.MVVM.Converters;
 
-public class ColorToOpaqueColorConverter : ValueConverterBase
+public partial class ColorToOpaqueColorConverter : ValueConverterBase
 {
     protected override object? Convert(object? value, Type targetType, object? parameter)
     {

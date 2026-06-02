@@ -7,7 +7,7 @@ using System.Windows.Media;
 using Catel.MVVM;
 using Catel.Reflection;
 
-public class ThemeSwitcherViewModel : ViewModelBase
+public partial class ThemeSwitcherViewModel : ViewModelBase
 {
     private readonly IAccentColorService _accentColorService;
     private readonly IBaseColorSchemeService _baseColorSchemeService;

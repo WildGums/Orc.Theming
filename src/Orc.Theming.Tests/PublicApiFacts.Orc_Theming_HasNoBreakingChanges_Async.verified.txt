@@ -158,7 +158,9 @@ namespace Orc.Theming
     public class FontSize : Catel.Windows.Markup.UpdatableMarkupExtension
     {
         public FontSize() { }
+        public FontSize(Orc.Theming.IFontSizeService fontSizeService) { }
         public FontSize(double absolute) { }
+        public FontSize(double absolute, Orc.Theming.IFontSizeService fontSizeService) { }
         [System.Windows.Markup.ConstructorArgument("absolute")]
         public double? Absolute { get; set; }
         [System.Windows.Markup.ConstructorArgument("delta")]

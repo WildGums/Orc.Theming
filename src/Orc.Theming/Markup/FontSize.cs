@@ -15,7 +15,7 @@ using Microsoft.Extensions.Logging;
 /// <summary>
 /// Markup extension that can set a relative font size.
 /// </summary>
-public class FontSize : UpdatableMarkupExtension
+public partial class FontSize : UpdatableMarkupExtension
 {
     private const double DefaultFontSize = 12d;
 
@@ -24,24 +24,31 @@ public class FontSize : UpdatableMarkupExtension
     private static readonly Stopwatch LastUpdatedTextBlockFontSizeStopwatch = Stopwatch.StartNew();
     private static double? DefaultTextBlockFontSize = null;
 
-    private readonly IFontSizeService _fontSizeService = Catel.IoC.IoCContainer.ServiceProvider.GetRequiredService<IFontSizeService>();
+    private readonly IFontSizeService? _fontSizeService;
 
-    static FontSize()
+    public FontSize()
+        : this(IoCContainer.GetServiceProvider()?.GetService<IFontSizeService>()!)
     {
+        // Leave empty, here for runtime support
     }
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="FontSize" /> class.
-    /// </summary>
-    public FontSize()
+    public FontSize(IFontSizeService fontSizeService)
     {
+        _fontSizeService = fontSizeService;
+
         Scale = 1.0d;
         SubscribeToEvents = false;
         Mode = FontSizeMode.Default;
     }
 
     public FontSize(double absolute)
-        : this()
+        : this(absolute, IoCContainer.GetServiceProvider()?.GetService<IFontSizeService>()!)
+    {
+        // Leave empty, here for runtime support
+    }
+
+    public FontSize(double absolute, IFontSizeService fontSizeService)
+        : this(fontSizeService)
     {
         Absolute = absolute;
     }
@@ -205,6 +212,12 @@ public class FontSize : UpdatableMarkupExtension
     protected virtual double GetFontSizeFromService()
     {
         var service = _fontSizeService;
+        if (service is null)
+        {
+            // Design time
+            return DefaultFontSize;
+        }
+
         return service.GetFontSize();
     }
 
@@ -251,7 +264,10 @@ public class FontSize : UpdatableMarkupExtension
         if (SubscribeToEvents)
         {
             var fontSizeService = _fontSizeService;
-            fontSizeService.FontSizeChanged += OnFontSizeServiceFontSizeChanged;
+            if (fontSizeService is not null)
+            {
+                fontSizeService.FontSizeChanged += OnFontSizeServiceFontSizeChanged;
+            }
         }
     }
 

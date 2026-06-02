@@ -8,7 +8,7 @@ using Catel.Logging;
 using Catel.Windows.Interactivity;
 using Microsoft.Extensions.Logging;
 
-public class MandatoryField : BehaviorBase<FrameworkElement>
+public partial class MandatoryField : BehaviorBase<FrameworkElement>
 {
     private static readonly ILogger Logger = LogManager.GetLogger(typeof(MandatoryField));
 

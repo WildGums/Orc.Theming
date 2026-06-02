@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Input;
 using Catel.Windows.Interactivity;
 
-public class OverrideCursor : BehaviorBase<FrameworkElement>
+public partial class OverrideCursor : BehaviorBase<FrameworkElement>
 {
     private Cursor? _previousCursor;
 
