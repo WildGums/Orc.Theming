@@ -34,12 +34,12 @@
                 <StackPanel>
                     <Label>
                         <TextBlock TextWrapping="Wrap"
-                                   Text="This view shows all the controls with the alignments updated with the style forwarders. The first row contains an alignment helper border. All styles must also respect the current theme color." />
+                                   Text="{catel:LanguageBinding ControlsView_Description}" />
                     </Label>
 
                     <StackPanel Orientation="Horizontal">
                         <CheckBox x:Name="alignmentCheckBox"
-                                  Content="Enable alignment grid"
+                                  Content="{catel:LanguageBinding ControlsView_EnableAlignmentGrid}"
                                   IsChecked="True" />
 
                         <Slider Width="100"
@@ -58,12 +58,12 @@
                                        VerticalStep="{Binding AlignmentGridSize}"
                                        Visibility="{Binding ElementName=alignmentCheckBox, Path=IsChecked, Converter={catel:BooleanToHidingVisibilityConverter}}" />
 
-            <GroupBox Header="WPF controls">
+            <GroupBox Header="{catel:LanguageBinding ControlsView_WpfControls}">
                 <WrapPanel Orientation="Horizontal">
-                    <Button Content="Button"
-                            ToolTip="Button" />
+                    <Button Content="{catel:LanguageBinding ControlsView_Button}"
+                            ToolTip="{catel:LanguageBinding ControlsView_Button}" />
                     
-                    <Button ToolTip="Button with Square behavior">
+                    <Button ToolTip="{catel:LanguageBinding ControlsView_ButtonWithSquareBehavior}">
                         <behaviors:Interaction.Behaviors>
                             <theming:Square />
                         </behaviors:Interaction.Behaviors>
@@ -75,59 +75,59 @@
                                                       ItemName="{x:Static example:FontAwesome.SmileO}" />
                     </Button>
                     
-                    <CheckBox Content="CheckBox"
-                              ToolTip="CheckBox" />
+                    <CheckBox Content="{catel:LanguageBinding ControlsView_CheckBox}"
+                              ToolTip="{catel:LanguageBinding ControlsView_CheckBox}" />
                     
-                    <ComboBox Text="ComboBox"
+                    <ComboBox Text="{catel:LanguageBinding ControlsView_ComboBox}"
                               IsEditable="true"
-                              ToolTip="ComboBox" />
+                              ToolTip="{catel:LanguageBinding ControlsView_ComboBox}" />
 
-                    <TextBox Text="Textbox should be similar to ComboBox"
-                             ToolTip="TextBox"
+                    <TextBox Text="{catel:LanguageBinding ControlsView_TextboxSimilarToComboBox}"
+                             ToolTip="{catel:LanguageBinding ControlsView_TextBox}"
                              Width="100" />
 
-                    <Label Content="Label"
-                           ToolTip="Label">
+                    <Label Content="{catel:LanguageBinding ControlsView_Label}"
+                           ToolTip="{catel:LanguageBinding ControlsView_Label}">
                         <behaviors:Interaction.Behaviors>
                             <theming:MandatoryField />
                         </behaviors:Interaction.Behaviors>
                     </Label>
 
                     <PasswordBox Width="100"
-                                 ToolTip="PasswordBox"
+                                 ToolTip="{catel:LanguageBinding ControlsView_PasswordBox}"
                                  Password="123" />
 
-                    <TextBox Text="Textbox should be similar to PasswordBox"
-                             ToolTip="TextBox"
+                    <TextBox Text="{catel:LanguageBinding ControlsView_TextboxSimilarToPasswordBox}"
+                             ToolTip="{catel:LanguageBinding ControlsView_TextBox}"
                              Width="100" />
 
                     <ProgressBar Minimum="0"
                                  Maximum="100"
                                  Value="50"
                                  Width="100"
-                                 ToolTip="ProgressBar" />
+                                 ToolTip="{catel:LanguageBinding ControlsView_ProgressBar}" />
                     
-                    <RadioButton Content="RadioButton"
-                                 ToolTip="RadioButton" />
+                    <RadioButton Content="{catel:LanguageBinding ControlsView_RadioButton}"
+                                 ToolTip="{catel:LanguageBinding ControlsView_RadioButton}" />
                     
-                    <RepeatButton ToolTip="RepeatButton"
+                    <RepeatButton ToolTip="{catel:LanguageBinding ControlsView_RepeatButton}"
                                   MinWidth="16"
-                                  Content="RepeatButton" />
+                                  Content="{catel:LanguageBinding ControlsView_RepeatButton}" />
                     
-                    <ToggleButton ToolTip="ToggleButton"
+                    <ToggleButton ToolTip="{catel:LanguageBinding ControlsView_ToggleButton}"
                                   MinWidth="16"
-                                  Content="ToggleButton" />
+                                  Content="{catel:LanguageBinding ControlsView_ToggleButton}" />
                     
-                    <RichTextBox ToolTip="RichTextBox" />
+                    <RichTextBox ToolTip="{catel:LanguageBinding ControlsView_RichTextBox}" />
                     
                     <Slider Minimum="0"
                             Maximum="100"
                             Value="50"
                             Width="100"
-                            ToolTip="Slider" />
+                            ToolTip="{catel:LanguageBinding ControlsView_Slider}" />
 
-                    <TextBlock Text="TextBlock"
-                               ToolTip="TextBlock"
+                    <TextBlock Text="{catel:LanguageBinding ControlsView_TextBlock}"
+                               ToolTip="{catel:LanguageBinding ControlsView_TextBlock}"
                                theming:MandatoryField.IsMandatory="True"
                                theming:MandatoryField.Offset="0 0 4 0">
                            <behaviors:Interaction.Behaviors>
@@ -136,12 +136,12 @@
                     </TextBlock>
 
                     <TextBox Text="{Binding Text, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
-                             ToolTip="TextBox"
+                             ToolTip="{catel:LanguageBinding ControlsView_TextBox}"
                              Width="100" />
                 </WrapPanel>
             </GroupBox>
 
-            <GroupBox Header="WPF controls (sizes)">
+            <GroupBox Header="{catel:LanguageBinding ControlsView_WpfControlsSizes}">
                 <WrapPanel Orientation="Horizontal">
                     <orccontrols:FilterBox Width="100" />
                     <orccontrols:WatermarkTextBox Width="100" />
@@ -149,92 +149,92 @@
                 </WrapPanel>
             </GroupBox>
             
-            <GroupBox Header="Orc.Controls controls">
+            <GroupBox Header="{catel:LanguageBinding ControlsView_OrcControlsControls}">
                 <WrapPanel Orientation="Horizontal">
-                    <orccontrols:DateTimePicker ToolTip="Orc.Controls: DateTimePicker" />
+                    <orccontrols:DateTimePicker ToolTip="{catel:LanguageBinding ControlsView_OrcControls_DateTimePicker}" />
                     <orccontrols:DropDownButton Width="40"
-                                                ToolTip="Orc.Controls: DropDownButton" />
+                                                ToolTip="{catel:LanguageBinding ControlsView_OrcControls_DropDownButton}" />
                     <orccontrols:FilterBox Width="100"
-                                           ToolTip="Orc.Controls: FilterBox"
-                                           Text="Filter box" />
-                    <orccontrols:LinkLabel Content="LinkLabel"
-                                           ToolTip="Orc.Controls: LinkLabel" />
+                                           ToolTip="{catel:LanguageBinding ControlsView_OrcControls_FilterBox}"
+                                           Text="{catel:LanguageBinding ControlsView_FilterBoxText}" />
+                    <orccontrols:LinkLabel Content="{catel:LanguageBinding ControlsView_LinkLabel}"
+                                           ToolTip="{catel:LanguageBinding ControlsView_OrcControls_LinkLabel}" />
                     <orccontrols:NumericTextBox Width="100"
-                                                ToolTip="Orc.Controls: NumericTextBox"
+                                                ToolTip="{catel:LanguageBinding ControlsView_OrcControls_NumericTextBox}"
                                                 Value="123" />
                     <orccontrols:RangeSlider Width="100"
                                              Minimum="0"
                                              LowerValue="25"
                                              UpperValue="75"
                                              Maximum="100"
-                                             ToolTip="Orc.Controls: RangeSlider" />
-                    <orccontrols:TimeSpanPicker ToolTip="Orc.Controls: TimeSpanPicker" />
+                                             ToolTip="{catel:LanguageBinding ControlsView_OrcControls_RangeSlider}" />
+                    <orccontrols:TimeSpanPicker ToolTip="{catel:LanguageBinding ControlsView_OrcControls_TimeSpanPicker}" />
                     <orccontrols:WatermarkTextBox Width="100"
-                                                  ToolTip="Orc.Controls: WatermarkTextBox"
-                                                  Watermark="This is a watermark" />
-                    <TextBox Text="TextBox for alignment" />
+                                                  ToolTip="{catel:LanguageBinding ControlsView_OrcControls_WatermarkTextBox}"
+                                                  Watermark="{catel:LanguageBinding ControlsView_Watermark}" />
+                    <TextBox Text="{catel:LanguageBinding ControlsView_TextBoxForAlignment}" />
                 </WrapPanel>
             </GroupBox>
 
-            <GroupBox Header="Orc controls">
+            <GroupBox Header="{catel:LanguageBinding ControlsView_OrcControls}">
                 <WrapPanel>
-                    <orccontrols:BusyIndicator ToolTip="Orchestra: BusyIndicator"
+                    <orccontrols:BusyIndicator ToolTip="{catel:LanguageBinding ControlsView_Orchestra_BusyIndicator}"
                                                Width="100"
                                                Height="12" />
-                    <orccontrols:FluidProgressBar ToolTip="Orchestra: FluidProgressBar"
+                    <orccontrols:FluidProgressBar ToolTip="{catel:LanguageBinding ControlsView_Orchestra_FluidProgressBar}"
                                                   Width="100"
                                                   Height="12" />
                 </WrapPanel>
             </GroupBox>
 
-            <GroupBox Header="Other controls">
+            <GroupBox Header="{catel:LanguageBinding ControlsView_OtherControls}">
                 <WrapPanel Orientation="Horizontal">
-                    <GroupBox Header="GroupBox"
+                    <GroupBox Header="{catel:LanguageBinding ControlsView_GroupBox}"
                               Height="200"
-                              ToolTip="GroupBox" />
+                              ToolTip="{catel:LanguageBinding ControlsView_GroupBox}" />
 
                     <GridSplitter Width="5"
                                   Height="5"
-                                  ToolTip="GridSplitter" />
+                                  ToolTip="{catel:LanguageBinding ControlsView_GridSplitter}" />
 
                     <ListBox Height="200"
-                             ToolTip="ListBox">
+                             ToolTip="{catel:LanguageBinding ControlsView_ListBox}">
                         <ListBox.Items>
-                            Item 1
-              Item 2
-              Item 3
-              Item 4
+                            <ListBoxItem Content="{catel:LanguageBinding ControlsView_Item1}" />
+                            <ListBoxItem Content="{catel:LanguageBinding ControlsView_Item2}" />
+                            <ListBoxItem Content="{catel:LanguageBinding ControlsView_Item3}" />
+                            <ListBoxItem Content="{catel:LanguageBinding ControlsView_Item4}" />
                         </ListBox.Items>
                     </ListBox>
 
                     <ListView Width="100"
                               Height="200"
-                              ToolTip="ListView">
+                              ToolTip="{catel:LanguageBinding ControlsView_ListView}">
 
                         <ListView.Items>
-                            Item 11
-                  Item 21
-                  Item 31
-                  Item 41
+                            <ListViewItem Content="{catel:LanguageBinding ControlsView_Item11}" />
+                            <ListViewItem Content="{catel:LanguageBinding ControlsView_Item21}" />
+                            <ListViewItem Content="{catel:LanguageBinding ControlsView_Item31}" />
+                            <ListViewItem Content="{catel:LanguageBinding ControlsView_Item41}" />
                         </ListView.Items>
                     </ListView>
 
                     <TreeView Width="100"
                               Height="200"
-                              ToolTip="TreeView" />
+                              ToolTip="{catel:LanguageBinding ControlsView_TreeView}" />
                 </WrapPanel>
             </GroupBox>
 
-            <GroupBox Header="Multi-line controls">
+            <GroupBox Header="{catel:LanguageBinding ControlsView_MultiLineControls}">
                 <WrapPanel Orientation="Horizontal">
-                    <GroupBox Header="TextBox"
+                    <GroupBox Header="{catel:LanguageBinding ControlsView_TextBox}"
                               Height="200"
                               Width="200">
                         <TextBox AcceptsReturn="true"
-                                 Text="this is a \r\nmultiline\r\ntexbox" />
+                                 Text="{catel:LanguageBinding ControlsView_MultilineTextBox}" />
                     </GroupBox>
 
-                    <GroupBox Header="RichTextBox"
+                    <GroupBox Header="{catel:LanguageBinding ControlsView_RichTextBox}"
                               Height="200"
                               Width="200">
                         <RichTextBox />

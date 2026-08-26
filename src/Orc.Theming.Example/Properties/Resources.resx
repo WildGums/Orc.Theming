@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- AgeWizardPageView -->
+  <data name="AgeWizardPageView_Age" xml:space="preserve">
+    <value>Age</value>
+  </data>
+
+  <!-- PersonWizardPageView -->
+  <data name="PersonWizardPageView_Description" xml:space="preserve">
+    <value>This wizard page shows you how to map textbox elements to a model and validate them. Notice that you cannot move to the next page while the fields are not yet valid. When navigating forward and back, you will see the values are automatically restored.
+
+The cool thing is that the view model for this page only has 28 (!) lines of code. This means your pages stay small and are easily maintainable.</value>
+  </data>
+  <data name="PersonWizardPageView_FirstName" xml:space="preserve">
+    <value>First name</value>
+  </data>
+  <data name="PersonWizardPageView_LastName" xml:space="preserve">
+    <value>Last name</value>
+  </data>
+
+  <!-- ComponentsWizardPageView -->
+  <data name="ComponentsWizardPageView_Description" xml:space="preserve">
+    <value>Please select the components you want to use:</value>
+  </data>
+  <data name="ComponentsWizardPageView_SelectAll" xml:space="preserve">
+    <value>Select all</value>
+  </data>
+  <data name="ComponentsWizardPageView_MoveBackViaCode" xml:space="preserve">
+    <value>Move back via code</value>
+  </data>
+  <data name="ComponentsWizardPageView_MoveForwardViaCode" xml:space="preserve">
+    <value>Move forward via code</value>
+  </data>
+  <data name="ComponentsWizardPageView_CancelViaCode" xml:space="preserve">
+    <value>Cancel via code</value>
+  </data>
+  <data name="ComponentsWizardPageView_MoveNextOrFinishViaCode" xml:space="preserve">
+    <value>Move next or finish via code</value>
+  </data>
+
+  <!-- SkillsWizardPageView -->
+  <data name="SkillsWizardPageView_Description" xml:space="preserve">
+    <value>Please select your skills:</value>
+  </data>
+  <data name="SkillsWizardPageView_SelectAll" xml:space="preserve">
+    <value>Select all</value>
+  </data>
+
+  <!-- WizardView -->
+  <data name="WizardView_ShowWizard" xml:space="preserve">
+    <value>Show wizard...</value>
+  </data>
+  <data name="WizardView_ShowSeparateWindow" xml:space="preserve">
+    <value>Show separate window...</value>
+  </data>
+
+  <!-- ButtonView -->
+  <data name="ButtonView_TestMenuItem1" xml:space="preserve">
+    <value>Test menu item 1</value>
+  </data>
+  <data name="ButtonView_TestMenuItem1_Sub1" xml:space="preserve">
+    <value>test_1</value>
+  </data>
+  <data name="ButtonView_TestMenuItem1_Sub2" xml:space="preserve">
+    <value>test_2</value>
+  </data>
+  <data name="ButtonView_TestMenuItem1_Sub3" xml:space="preserve">
+    <value>test_3</value>
+  </data>
+  <data name="ButtonView_TestMenuItem2" xml:space="preserve">
+    <value>Test menu item 2</value>
+  </data>
+  <data name="ButtonView_TestMenuItem3" xml:space="preserve">
+    <value>Test menu item 3</value>
+  </data>
+  <data name="ButtonView_Disabled" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+
+  <!-- CheckBoxView -->
+  <data name="CheckBoxView_UncheckedState" xml:space="preserve">
+    <value>Unchecked state</value>
+  </data>
+  <data name="CheckBoxView_UncheckedDisabledState" xml:space="preserve">
+    <value>Unchecked &amp; disabled state</value>
+  </data>
+  <data name="CheckBoxView_ThreeState" xml:space="preserve">
+    <value>Three state</value>
+  </data>
+  <data name="CheckBoxView_CheckedState" xml:space="preserve">
+    <value>Checked state</value>
+  </data>
+  <data name="CheckBoxView_CheckedDisabledState" xml:space="preserve">
+    <value>Checked &amp; disabled state</value>
+  </data>
+
+  <!-- RadioButtonView -->
+  <data name="RadioButtonView_UncheckedState" xml:space="preserve">
+    <value>Unchecked state</value>
+  </data>
+  <data name="RadioButtonView_UncheckedDisabledState" xml:space="preserve">
+    <value>Unchecked &amp; disabled state</value>
+  </data>
+  <data name="RadioButtonView_CheckedState" xml:space="preserve">
+    <value>Checked state</value>
+  </data>
+  <data name="RadioButtonView_CheckedDisabledState" xml:space="preserve">
+    <value>Checked &amp; disabled state</value>
+  </data>
+
+  <!-- ToggleButtonView -->
+  <data name="ToggleButtonView_Default" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="ToggleButtonView_Pressed" xml:space="preserve">
+    <value>Pressed</value>
+  </data>
+  <data name="ToggleButtonView_Disabled" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="ToggleButtonView_CompareAll" xml:space="preserve">
+    <value>Compare all</value>
+  </data>
+
+  <!-- RepeatButtonView -->
+  <data name="RepeatButtonView_Default" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="RepeatButtonView_Disabled" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+
+  <!-- TextBoxView -->
+  <data name="TextBoxView_DefaultState" xml:space="preserve">
+    <value>Default state</value>
+  </data>
+  <data name="TextBoxView_FocusedStateTextSelection" xml:space="preserve">
+    <value>Focused state + text selection</value>
+  </data>
+  <data name="TextBoxView_InactiveTextSelection" xml:space="preserve">
+    <value>Inactive text selection</value>
+  </data>
+  <data name="TextBoxView_Disabled" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="TextBoxView_HorizontalStretch" xml:space="preserve">
+    <value>Horizontal Stretch</value>
+  </data>
+  <data name="TextBoxView_VerticalStretchAndMultiline" xml:space="preserve">
+    <value>Vertical Stretch and multiline</value>
+  </data>
+
+  <!-- ToolBarView -->
+  <data name="ToolBarView_New" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="ToolBarView_Open" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="ToolBarView_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="ToolBarView_Cut" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="ToolBarView_Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="ToolBarView_Paste" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+
+  <!-- TabControlView -->
+  <data name="TabControlView_RealContent" xml:space="preserve">
+    <value>Here goes your real content</value>
+  </data>
+
+  <!-- MenuView -->
+  <data name="MenuView_RealContent" xml:space="preserve">
+    <value>Here goes your real content</value>
+  </data>
+
+  <!-- ProgressBarView -->
+  <data name="ProgressBarView_EnabledDeterminate" xml:space="preserve">
+    <value>Enabled | Determinate</value>
+  </data>
+  <data name="ProgressBarView_EnabledIndeterminate" xml:space="preserve">
+    <value>Enabled | Indeterminate</value>
+  </data>
+  <data name="ProgressBarView_DisabledDeterminate" xml:space="preserve">
+    <value>Disabled | Determinate</value>
+  </data>
+  <data name="ProgressBarView_DisabledIndeterminate" xml:space="preserve">
+    <value>Disabled | Indeterminate</value>
+  </data>
+  <data name="ProgressBarView_CircularProgressBars" xml:space="preserve">
+    <value>Circular progress bars</value>
+  </data>
+  <data name="ProgressBarView_CircularBar1" xml:space="preserve">
+    <value>Circular bar 1</value>
+  </data>
+  <data name="ProgressBarView_CircularBar2" xml:space="preserve">
+    <value>Circular bar 2</value>
+  </data>
+  <data name="ProgressBarView_CircularBar3" xml:space="preserve">
+    <value>Circular bar 3</value>
+  </data>
+
+  <!-- ControlsView -->
+  <data name="ControlsView_Description" xml:space="preserve">
+    <value>This view shows all the controls with the alignments updated with the style forwarders. The first row contains an alignment helper border. All styles must also respect the current theme color.</value>
+  </data>
+  <data name="ControlsView_EnableAlignmentGrid" xml:space="preserve">
+    <value>Enable alignment grid</value>
+  </data>
+  <data name="ControlsView_WpfControls" xml:space="preserve">
+    <value>WPF controls</value>
+  </data>
+  <data name="ControlsView_WpfControlsSizes" xml:space="preserve">
+    <value>WPF controls (sizes)</value>
+  </data>
+  <data name="ControlsView_OrcControlsControls" xml:space="preserve">
+    <value>Orc.Controls controls</value>
+  </data>
+  <data name="ControlsView_OrcControls" xml:space="preserve">
+    <value>Orc controls</value>
+  </data>
+  <data name="ControlsView_OtherControls" xml:space="preserve">
+    <value>Other controls</value>
+  </data>
+  <data name="ControlsView_MultiLineControls" xml:space="preserve">
+    <value>Multi-line controls</value>
+  </data>
+  <data name="ControlsView_Button" xml:space="preserve">
+    <value>Button</value>
+  </data>
+  <data name="ControlsView_ButtonWithSquareBehavior" xml:space="preserve">
+    <value>Button with Square behavior</value>
+  </data>
+  <data name="ControlsView_CheckBox" xml:space="preserve">
+    <value>CheckBox</value>
+  </data>
+  <data name="ControlsView_ComboBox" xml:space="preserve">
+    <value>ComboBox</value>
+  </data>
+  <data name="ControlsView_TextboxSimilarToComboBox" xml:space="preserve">
+    <value>Textbox should be similar to ComboBox</value>
+  </data>
+  <data name="ControlsView_TextBox" xml:space="preserve">
+    <value>TextBox</value>
+  </data>
+  <data name="ControlsView_Label" xml:space="preserve">
+    <value>Label</value>
+  </data>
+  <data name="ControlsView_PasswordBox" xml:space="preserve">
+    <value>PasswordBox</value>
+  </data>
+  <data name="ControlsView_TextboxSimilarToPasswordBox" xml:space="preserve">
+    <value>Textbox should be similar to PasswordBox</value>
+  </data>
+  <data name="ControlsView_ProgressBar" xml:space="preserve">
+    <value>ProgressBar</value>
+  </data>
+  <data name="ControlsView_RadioButton" xml:space="preserve">
+    <value>RadioButton</value>
+  </data>
+  <data name="ControlsView_RepeatButton" xml:space="preserve">
+    <value>RepeatButton</value>
+  </data>
+  <data name="ControlsView_ToggleButton" xml:space="preserve">
+    <value>ToggleButton</value>
+  </data>
+  <data name="ControlsView_RichTextBox" xml:space="preserve">
+    <value>RichTextBox</value>
+  </data>
+  <data name="ControlsView_Slider" xml:space="preserve">
+    <value>Slider</value>
+  </data>
+  <data name="ControlsView_TextBlock" xml:space="preserve">
+    <value>TextBlock</value>
+  </data>
+  <data name="ControlsView_TextBoxForAlignment" xml:space="preserve">
+    <value>TextBox for alignment</value>
+  </data>
+  <data name="ControlsView_OrcControls_DateTimePicker" xml:space="preserve">
+    <value>Orc.Controls: DateTimePicker</value>
+  </data>
+  <data name="ControlsView_OrcControls_DropDownButton" xml:space="preserve">
+    <value>Orc.Controls: DropDownButton</value>
+  </data>
+  <data name="ControlsView_OrcControls_FilterBox" xml:space="preserve">
+    <value>Orc.Controls: FilterBox</value>
+  </data>
+  <data name="ControlsView_FilterBoxText" xml:space="preserve">
+    <value>Filter box</value>
+  </data>
+  <data name="ControlsView_LinkLabel" xml:space="preserve">
+    <value>LinkLabel</value>
+  </data>
+  <data name="ControlsView_OrcControls_LinkLabel" xml:space="preserve">
+    <value>Orc.Controls: LinkLabel</value>
+  </data>
+  <data name="ControlsView_OrcControls_NumericTextBox" xml:space="preserve">
+    <value>Orc.Controls: NumericTextBox</value>
+  </data>
+  <data name="ControlsView_OrcControls_RangeSlider" xml:space="preserve">
+    <value>Orc.Controls: RangeSlider</value>
+  </data>
+  <data name="ControlsView_OrcControls_TimeSpanPicker" xml:space="preserve">
+    <value>Orc.Controls: TimeSpanPicker</value>
+  </data>
+  <data name="ControlsView_OrcControls_WatermarkTextBox" xml:space="preserve">
+    <value>Orc.Controls: WatermarkTextBox</value>
+  </data>
+  <data name="ControlsView_Watermark" xml:space="preserve">
+    <value>This is a watermark</value>
+  </data>
+  <data name="ControlsView_Orchestra_BusyIndicator" xml:space="preserve">
+    <value>Orchestra: BusyIndicator</value>
+  </data>
+  <data name="ControlsView_Orchestra_FluidProgressBar" xml:space="preserve">
+    <value>Orchestra: FluidProgressBar</value>
+  </data>
+  <data name="ControlsView_GroupBox" xml:space="preserve">
+    <value>GroupBox</value>
+  </data>
+  <data name="ControlsView_GridSplitter" xml:space="preserve">
+    <value>GridSplitter</value>
+  </data>
+  <data name="ControlsView_ListBox" xml:space="preserve">
+    <value>ListBox</value>
+  </data>
+  <data name="ControlsView_ListView" xml:space="preserve">
+    <value>ListView</value>
+  </data>
+  <data name="ControlsView_TreeView" xml:space="preserve">
+    <value>TreeView</value>
+  </data>
+  <data name="ControlsView_MultilineTextBox" xml:space="preserve">
+    <value>this is a multiline textbox</value>
+  </data>
+  <data name="ControlsView_Item1" xml:space="preserve">
+    <value>Item 1</value>
+  </data>
+  <data name="ControlsView_Item2" xml:space="preserve">
+    <value>Item 2</value>
+  </data>
+  <data name="ControlsView_Item3" xml:space="preserve">
+    <value>Item 3</value>
+  </data>
+  <data name="ControlsView_Item4" xml:space="preserve">
+    <value>Item 4</value>
+  </data>
+  <data name="ControlsView_Item11" xml:space="preserve">
+    <value>Item 11</value>
+  </data>
+  <data name="ControlsView_Item21" xml:space="preserve">
+    <value>Item 21</value>
+  </data>
+  <data name="ControlsView_Item31" xml:space="preserve">
+    <value>Item 31</value>
+  </data>
+  <data name="ControlsView_Item41" xml:space="preserve">
+    <value>Item 41</value>
+  </data>
+
+  <!-- ControlPaddingsView -->
+  <data name="ControlPaddingsView_WatermarkTextBox" xml:space="preserve">
+    <value>WatermarkTextBox</value>
+  </data>
+  <data name="ControlPaddingsView_TextBox" xml:space="preserve">
+    <value>TextBox</value>
+  </data>
+  <data name="ControlPaddingsView_Combobox" xml:space="preserve">
+    <value>Combobox</value>
+  </data>
+  <data name="ControlPaddingsView_FilterBox" xml:space="preserve">
+    <value>FilterBox</value>
+  </data>
+
+  <!-- FontImageCursorView -->
+  <data name="FontImageCursorView_MovePointerHere" xml:space="preserve">
+    <value>Move pointer here...</value>
+  </data>
+
+  <!-- FontSizeView -->
+  <data name="FontSizeView_DefaultFontSize" xml:space="preserve">
+    <value>Default font size</value>
+  </data>
+  <data name="FontSizeView_NoSubscriptions" xml:space="preserve">
+    <value>No subscriptions (not responsive)</value>
+  </data>
+  <data name="FontSizeView_Subscriptions" xml:space="preserve">
+    <value>Subscriptions (responsive)</value>
+  </data>
+  <data name="FontSizeView_Scaling" xml:space="preserve">
+    <value>Scaling</value>
+  </data>
+  <data name="FontSizeView_Delta" xml:space="preserve">
+    <value>Delta</value>
+  </data>
+  <data name="FontSizeView_Absolute" xml:space="preserve">
+    <value>Absolute</value>
+  </data>
+  <data name="FontSizeView_Scale_0_6" xml:space="preserve">
+    <value>This is 0.6</value>
+  </data>
+  <data name="FontSizeView_Scale_0_8" xml:space="preserve">
+    <value>This is 0.8</value>
+  </data>
+  <data name="FontSizeView_Scale_1_0" xml:space="preserve">
+    <value>This is 1.0</value>
+  </data>
+  <data name="FontSizeView_Scale_1_2" xml:space="preserve">
+    <value>This is 1.2</value>
+  </data>
+  <data name="FontSizeView_Scale_1_4" xml:space="preserve">
+    <value>This is 1.4</value>
+  </data>
+  <data name="FontSizeView_Delta_Minus4" xml:space="preserve">
+    <value>This is -4</value>
+  </data>
+  <data name="FontSizeView_Delta_Minus2" xml:space="preserve">
+    <value>This is -2</value>
+  </data>
+  <data name="FontSizeView_Delta_0" xml:space="preserve">
+    <value>This is 0</value>
+  </data>
+  <data name="FontSizeView_Delta_Plus2" xml:space="preserve">
+    <value>This is +2</value>
+  </data>
+  <data name="FontSizeView_Delta_Plus4" xml:space="preserve">
+    <value>This is +4</value>
+  </data>
+  <data name="FontSizeView_Absolute_10" xml:space="preserve">
+    <value>This is 10</value>
+  </data>
+  <data name="FontSizeView_Absolute_12" xml:space="preserve">
+    <value>This is 12</value>
+  </data>
+  <data name="FontSizeView_Absolute_14" xml:space="preserve">
+    <value>This is 14</value>
+  </data>
+  <data name="FontSizeView_Absolute_16" xml:space="preserve">
+    <value>This is 16</value>
+  </data>
+  <data name="FontSizeView_Absolute_18" xml:space="preserve">
+    <value>This is 18</value>
+  </data>
+
+  <!-- ThemeImageView -->
+  <data name="ThemeImageView_ImageWithPlaceholder" xml:space="preserve">
+    <value>Image with placeholder</value>
+  </data>
+  <data name="ThemeImageView_ImageWithAutoReplacement" xml:space="preserve">
+    <value>Image with auto replacement</value>
+  </data>
+
+  <!-- ListViewView -->
+  <data name="ListViewView_Enabled" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+
+  <!-- ListBoxView -->
+  <data name="ListBoxView_Text" xml:space="preserve">
+    <value>text</value>
+  </data>
+
+  <!-- SeparateWindow -->
+  <data name="SeparateWindow_IsSelected" xml:space="preserve">
+    <value>IsSelected</value>
+  </data>
+  <data name="SeparateWindow_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+
+</root>

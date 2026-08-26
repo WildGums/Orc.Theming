@@ -10,10 +10,10 @@
              d:DesignHeight="450" d:DesignWidth="800">
     
     <StackPanel Orientation="Vertical">
-        <orccontrols:WatermarkTextBox Watermark="WatermarkTextBox"/>
-        <TextBox Text="TextBox"/>
-        <ComboBox Text="Combobox" IsEditable="True"/>
-        <orccontrols:FilterBox Text="FilterBox"/>
+        <orccontrols:WatermarkTextBox Watermark="{catel:LanguageBinding ControlPaddingsView_WatermarkTextBox}"/>
+        <TextBox Text="{catel:LanguageBinding ControlPaddingsView_TextBox}"/>
+        <ComboBox Text="{catel:LanguageBinding ControlPaddingsView_Combobox}" IsEditable="True"/>
+        <orccontrols:FilterBox Text="{catel:LanguageBinding ControlPaddingsView_FilterBox}"/>
         <orccontrols:DateTimePicker Value="{x:Static system:DateTime.Now}"/>
 
     </StackPanel>

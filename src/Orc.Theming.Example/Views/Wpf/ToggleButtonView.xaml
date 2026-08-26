@@ -7,15 +7,15 @@
                    xmlns:ribbon="clr-namespace:Orc.Theming.Example">
     
     <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-        <ToggleButton Content="Default" >
+        <ToggleButton Content="{catel:LanguageBinding ToggleButtonView_Default}" >
             <b:Interaction.Behaviors>
                 <orctheming:OverrideCursor Cursor="{orctheming:FontImageCursor {x:Static ribbon:FontAwesome.SmileO}, Brush=Green, FontFamily=FontAwesome}"/>
             </b:Interaction.Behaviors>
 
         </ToggleButton>
-        <ToggleButton Content="Pressed" IsChecked="True"/>
-        <ToggleButton Content="Disabled" IsEnabled="False" />
-        <ToggleButton ToolTip="Compare all"
+        <ToggleButton Content="{catel:LanguageBinding ToggleButtonView_Pressed}" IsChecked="True"/>
+        <ToggleButton Content="{catel:LanguageBinding ToggleButtonView_Disabled}" IsEnabled="False" />
+        <ToggleButton ToolTip="{catel:LanguageBinding ToggleButtonView_CompareAll}"
                       VerticalAlignment="Center"
                       HorizontalContentAlignment="Center"
                       VerticalContentAlignment="Center"

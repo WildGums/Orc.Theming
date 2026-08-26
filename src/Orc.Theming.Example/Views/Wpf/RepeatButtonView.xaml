@@ -4,8 +4,8 @@
                    xmlns:catel="http://schemas.catelproject.com">
 
     <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-        <RepeatButton Content="Default" />
-        <RepeatButton Content="Disabled" IsEnabled="False" />
+        <RepeatButton Content="{catel:LanguageBinding RepeatButtonView_Default}" />
+        <RepeatButton Content="{catel:LanguageBinding RepeatButtonView_Disabled}" IsEnabled="False" />
     </StackPanel>
 
 </catel:UserControl>

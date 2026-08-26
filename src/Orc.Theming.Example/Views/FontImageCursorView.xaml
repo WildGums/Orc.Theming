@@ -24,7 +24,7 @@
                 HorizontalAlignment="Center"
                 Cursor="{Binding ElementName=CursorImagesListView, Path=SelectedItem.DataContext}">
 
-            <TextBlock Text="Move pointer here..."
+            <TextBlock Text="{catel:LanguageBinding FontImageCursorView_MovePointerHere}"
                        TextWrapping="Wrap"
                        VerticalAlignment="Stretch"
                        HorizontalAlignment="Stretch" />
