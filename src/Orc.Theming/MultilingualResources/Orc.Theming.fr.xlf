@@ -17,4 +17,22 @@
       </group>
     </body>
   </file>
+  <file datatype="xml" source-language="en-US" target-language="fr" original="ORC.THEMING/PROPERTIES/RESOURCES.RESX">
+    <body>
+      <group id="ORC.THEMING/PROPERTIES/RESOURCES.RESX" datatype="resx">
+        <trans-unit id="AccentColorSwitcherView_SelectAccentColor" translate="yes" xml:space="preserve">
+          <source>Select accent color</source>
+          <target state="new">Sélectionnez la couleur d’accent</target>
+        </trans-unit>
+        <trans-unit id="BaseColorSchemeSwitcherView_SelectBaseColorScheme" translate="yes" xml:space="preserve">
+          <source>Select base color scheme</source>
+          <target state="new">Sélectionnez le schéma de couleurs de base</target>
+        </trans-unit>
+        <trans-unit id="FontSizeSwitcherView_SelectFontSize" translate="yes" xml:space="preserve">
+          <source>Select font size</source>
+          <target state="new">Sélectionnez la taille de la police</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
 </xliff>
