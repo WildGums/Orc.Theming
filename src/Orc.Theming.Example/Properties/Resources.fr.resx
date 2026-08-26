@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AgeWizardPageView_Age" xml:space="preserve">
+    <value>Âge</value>
+  </data>
+  <data name="PersonWizardPageView_Description" xml:space="preserve">
+    <value>Cette page d’assistant vous montre comment mapper des éléments de boîte de texte à un modèle et les valider. Remarquez que vous ne pouvez pas passer à la page suivante tant que les champs ne sont pas encore valides. En naviguant vers l’avant et en arrière, vous verrez que les valeurs sont automatiquement rétablies.
+
+Le plus intéressant, c’est que le modèle de vue de cette page n’a que 28 ( !) lignes de code. Cela signifie que vos pages restent petites et faciles à entretenir.</value>
+  </data>
+  <data name="PersonWizardPageView_FirstName" xml:space="preserve">
+    <value>Prénom</value>
+  </data>
+  <data name="PersonWizardPageView_LastName" xml:space="preserve">
+    <value>Nom de famille</value>
+  </data>
+  <data name="ComponentsWizardPageView_Description" xml:space="preserve">
+    <value>Veuillez sélectionner les composants que vous souhaitez utiliser :</value>
+  </data>
+  <data name="ComponentsWizardPageView_SelectAll" xml:space="preserve">
+    <value>Sélectionner tout</value>
+  </data>
+  <data name="ComponentsWizardPageView_MoveBackViaCode" xml:space="preserve">
+    <value>Revenir en arrière via le code</value>
+  </data>
+  <data name="ComponentsWizardPageView_MoveForwardViaCode" xml:space="preserve">
+    <value>Avancer via le code</value>
+  </data>
+  <data name="ComponentsWizardPageView_CancelViaCode" xml:space="preserve">
+    <value>Annuler via un code</value>
+  </data>
+  <data name="ComponentsWizardPageView_MoveNextOrFinishViaCode" xml:space="preserve">
+    <value>Passer ensuite ou finir via le code</value>
+  </data>
+  <data name="SkillsWizardPageView_Description" xml:space="preserve">
+    <value>Veuillez sélectionner vos compétences :</value>
+  </data>
+  <data name="SkillsWizardPageView_SelectAll" xml:space="preserve">
+    <value>Sélectionner tout</value>
+  </data>
+  <data name="WizardView_ShowWizard" xml:space="preserve">
+    <value>Sorcier du spectacle...</value>
+  </data>
+  <data name="WizardView_ShowSeparateWindow" xml:space="preserve">
+    <value>Montre une fenêtre séparée...</value>
+  </data>
+  <data name="ButtonView_TestMenuItem1" xml:space="preserve">
+    <value>Élément du menu de test 1</value>
+  </data>
+  <data name="ButtonView_TestMenuItem1_Sub1" xml:space="preserve">
+    <value>Test1</value>
+  </data>
+  <data name="ButtonView_TestMenuItem1_Sub2" xml:space="preserve">
+    <value>Test2</value>
+  </data>
+  <data name="ButtonView_TestMenuItem1_Sub3" xml:space="preserve">
+    <value>Test3</value>
+  </data>
+  <data name="ButtonView_TestMenuItem2" xml:space="preserve">
+    <value>Élément du menu de test 2</value>
+  </data>
+  <data name="ButtonView_TestMenuItem3" xml:space="preserve">
+    <value>Élément du menu de test 3</value>
+  </data>
+  <data name="ButtonView_Disabled" xml:space="preserve">
+    <value>Handicapé</value>
+  </data>
+  <data name="CheckBoxView_UncheckedState" xml:space="preserve">
+    <value>État non contrôlé</value>
+  </data>
+  <data name="CheckBoxView_UncheckedDisabledState" xml:space="preserve">
+    <value>État non contrôlé et désactivé</value>
+  </data>
+  <data name="CheckBoxView_ThreeState" xml:space="preserve">
+    <value>Trois États</value>
+  </data>
+  <data name="CheckBoxView_CheckedState" xml:space="preserve">
+    <value>État vérifié</value>
+  </data>
+  <data name="CheckBoxView_CheckedDisabledState" xml:space="preserve">
+    <value>État vérifié et désactivé</value>
+  </data>
+  <data name="RadioButtonView_UncheckedState" xml:space="preserve">
+    <value>État non contrôlé</value>
+  </data>
+  <data name="RadioButtonView_UncheckedDisabledState" xml:space="preserve">
+    <value>État non contrôlé et désactivé</value>
+  </data>
+  <data name="RadioButtonView_CheckedState" xml:space="preserve">
+    <value>État vérifié</value>
+  </data>
+  <data name="RadioButtonView_CheckedDisabledState" xml:space="preserve">
+    <value>État vérifié et désactivé</value>
+  </data>
+  <data name="ToggleButtonView_Default" xml:space="preserve">
+    <value>Par défaut</value>
+  </data>
+  <data name="ToggleButtonView_Pressed" xml:space="preserve">
+    <value>Pressé</value>
+  </data>
+  <data name="ToggleButtonView_Disabled" xml:space="preserve">
+    <value>Handicapé</value>
+  </data>
+  <data name="ToggleButtonView_CompareAll" xml:space="preserve">
+    <value>Comparer tout</value>
+  </data>
+  <data name="RepeatButtonView_Default" xml:space="preserve">
+    <value>Par défaut</value>
+  </data>
+  <data name="RepeatButtonView_Disabled" xml:space="preserve">
+    <value>Handicapé</value>
+  </data>
+  <data name="TextBoxView_DefaultState" xml:space="preserve">
+    <value>État par défaut</value>
+  </data>
+  <data name="TextBoxView_FocusedStateTextSelection" xml:space="preserve">
+    <value>État focalisé + sélection de texte</value>
+  </data>
+  <data name="TextBoxView_InactiveTextSelection" xml:space="preserve">
+    <value>Sélection de texte inactif</value>
+  </data>
+  <data name="TextBoxView_Disabled" xml:space="preserve">
+    <value>Handicapé</value>
+  </data>
+  <data name="TextBoxView_HorizontalStretch" xml:space="preserve">
+    <value>Tronçon horizontal</value>
+  </data>
+  <data name="TextBoxView_VerticalStretchAndMultiline" xml:space="preserve">
+    <value>Étirement vertical et multiligne</value>
+  </data>
+  <data name="ToolBarView_New" xml:space="preserve">
+    <value>Nouveau</value>
+  </data>
+  <data name="ToolBarView_Open" xml:space="preserve">
+    <value>Ouvre</value>
+  </data>
+  <data name="ToolBarView_Save" xml:space="preserve">
+    <value>Sauvegarder</value>
+  </data>
+  <data name="ToolBarView_Cut" xml:space="preserve">
+    <value>Coupez</value>
+  </data>
+  <data name="ToolBarView_Copy" xml:space="preserve">
+    <value>Bien reçu</value>
+  </data>
+  <data name="ToolBarView_Paste" xml:space="preserve">
+    <value>Pâte</value>
+  </data>
+  <data name="TabControlView_RealContent" xml:space="preserve">
+    <value>Voici votre vrai contenu</value>
+  </data>
+  <data name="MenuView_RealContent" xml:space="preserve">
+    <value>Voici votre vrai contenu</value>
+  </data>
+  <data name="ProgressBarView_EnabledDeterminate" xml:space="preserve">
+    <value>Activé | Déterminée</value>
+  </data>
+  <data name="ProgressBarView_EnabledIndeterminate" xml:space="preserve">
+    <value>Activé | Indéterminé</value>
+  </data>
+  <data name="ProgressBarView_DisabledDeterminate" xml:space="preserve">
+    <value>Handicapé | Déterminée</value>
+  </data>
+  <data name="ProgressBarView_DisabledIndeterminate" xml:space="preserve">
+    <value>Handicapé | Indéterminé</value>
+  </data>
+  <data name="ProgressBarView_CircularProgressBars" xml:space="preserve">
+    <value>Barres de progression circulaires</value>
+  </data>
+  <data name="ProgressBarView_CircularBar1" xml:space="preserve">
+    <value>Barre circulaire 1</value>
+  </data>
+  <data name="ProgressBarView_CircularBar2" xml:space="preserve">
+    <value>Barre circulaire 2</value>
+  </data>
+  <data name="ProgressBarView_CircularBar3" xml:space="preserve">
+    <value>Barre circulaire 3</value>
+  </data>
+  <data name="ControlsView_Description" xml:space="preserve">
+    <value>Cette vue montre tous les contrôles avec les alignements mis à jour avec les forwarders de style. La première rangée contient une bordure d’alignement d’assistance. Tous les styles doivent également respecter la couleur du thème en cours.</value>
+  </data>
+  <data name="ControlsView_EnableAlignmentGrid" xml:space="preserve">
+    <value>Activer la grille d’alignement</value>
+  </data>
+  <data name="ControlsView_WpfControls" xml:space="preserve">
+    <value>Contrôles WPF</value>
+  </data>
+  <data name="ControlsView_WpfControlsSizes" xml:space="preserve">
+    <value>Contrôles WPF (tailles)</value>
+  </data>
+  <data name="ControlsView_OrcControlsControls" xml:space="preserve">
+    <value>Contrôles Orc.Controls</value>
+  </data>
+  <data name="ControlsView_OrcControls" xml:space="preserve">
+    <value>Contrôles orcaux</value>
+  </data>
+  <data name="ControlsView_OtherControls" xml:space="preserve">
+    <value>Autres commandes</value>
+  </data>
+  <data name="ControlsView_MultiLineControls" xml:space="preserve">
+    <value>Commandes multi-lignes</value>
+  </data>
+  <data name="ControlsView_Button" xml:space="preserve">
+    <value>Bouton</value>
+  </data>
+  <data name="ControlsView_ButtonWithSquareBehavior" xml:space="preserve">
+    <value>Bouton avec comportement carré</value>
+  </data>
+  <data name="ControlsView_CheckBox" xml:space="preserve">
+    <value>Case à cocher</value>
+  </data>
+  <data name="ControlsView_ComboBox" xml:space="preserve">
+    <value>ComboBox</value>
+  </data>
+  <data name="ControlsView_TextboxSimilarToComboBox" xml:space="preserve">
+    <value>La boîte de texte devrait être similaire à ComboBox</value>
+  </data>
+  <data name="ControlsView_TextBox" xml:space="preserve">
+    <value>TextBox</value>
+  </data>
+  <data name="ControlsView_Label" xml:space="preserve">
+    <value>Label</value>
+  </data>
+  <data name="ControlsView_PasswordBox" xml:space="preserve">
+    <value>PasswordBox</value>
+  </data>
+  <data name="ControlsView_TextboxSimilarToPasswordBox" xml:space="preserve">
+    <value>La boîte de texte devrait être similaire à celle de PasswordBox</value>
+  </data>
+  <data name="ControlsView_ProgressBar" xml:space="preserve">
+    <value>ProgressBar</value>
+  </data>
+  <data name="ControlsView_RadioButton" xml:space="preserve">
+    <value>RadioButton</value>
+  </data>
+  <data name="ControlsView_RepeatButton" xml:space="preserve">
+    <value>RepeatButton</value>
+  </data>
+  <data name="ControlsView_ToggleButton" xml:space="preserve">
+    <value>Bouton à basculer</value>
+  </data>
+  <data name="ControlsView_RichTextBox" xml:space="preserve">
+    <value>RichTextBox</value>
+  </data>
+  <data name="ControlsView_Slider" xml:space="preserve">
+    <value>Slider</value>
+  </data>
+  <data name="ControlsView_TextBlock" xml:space="preserve">
+    <value>TextBlock</value>
+  </data>
+  <data name="ControlsView_TextBoxForAlignment" xml:space="preserve">
+    <value>TextBox pour l’alignement</value>
+  </data>
+  <data name="ControlsView_OrcControls_DateTimePicker" xml:space="preserve">
+    <value>Orc.Contrôles : DateTimePicker</value>
+  </data>
+  <data name="ControlsView_OrcControls_DropDownButton" xml:space="preserve">
+    <value>Orc.Contrôles : Bouton Déroulant</value>
+  </data>
+  <data name="ControlsView_OrcControls_FilterBox" xml:space="preserve">
+    <value>Orc.Contrôles : FilterBox</value>
+  </data>
+  <data name="ControlsView_FilterBoxText" xml:space="preserve">
+    <value>Boîte à filtres</value>
+  </data>
+  <data name="ControlsView_LinkLabel" xml:space="preserve">
+    <value>LinkLabel</value>
+  </data>
+  <data name="ControlsView_OrcControls_LinkLabel" xml:space="preserve">
+    <value>Orc.Contrôles : LinkLabel</value>
+  </data>
+  <data name="ControlsView_OrcControls_NumericTextBox" xml:space="preserve">
+    <value>Orc.Contrôles : NumericTextBox</value>
+  </data>
+  <data name="ControlsView_OrcControls_RangeSlider" xml:space="preserve">
+    <value>Orc.Contrôles : Curseur de Portée</value>
+  </data>
+  <data name="ControlsView_OrcControls_TimeSpanPicker" xml:space="preserve">
+    <value>Orc.Contrôles : TimeSpanPicker</value>
+  </data>
+  <data name="ControlsView_OrcControls_WatermarkTextBox" xml:space="preserve">
+    <value>Orc.Contrôles : WatermarkTextBox</value>
+  </data>
+  <data name="ControlsView_Watermark" xml:space="preserve">
+    <value>C’est un filigrane</value>
+  </data>
+  <data name="ControlsView_Orchestra_BusyIndicator" xml:space="preserve">
+    <value>Orchestre : BusyIndicator</value>
+  </data>
+  <data name="ControlsView_Orchestra_FluidProgressBar" xml:space="preserve">
+    <value>Orchestre : FluidProgressBar</value>
+  </data>
+  <data name="ControlsView_GroupBox" xml:space="preserve">
+    <value>GroupBox</value>
+  </data>
+  <data name="ControlsView_GridSplitter" xml:space="preserve">
+    <value>GridSplitter</value>
+  </data>
+  <data name="ControlsView_ListBox" xml:space="preserve">
+    <value>ListBox</value>
+  </data>
+  <data name="ControlsView_ListView" xml:space="preserve">
+    <value>ListView</value>
+  </data>
+  <data name="ControlsView_TreeView" xml:space="preserve">
+    <value>TreeView</value>
+  </data>
+  <data name="ControlsView_MultilineTextBox" xml:space="preserve">
+    <value>Ceci est une boîte de texte multiligne</value>
+  </data>
+  <data name="ControlsView_Item1" xml:space="preserve">
+    <value>Point 1</value>
+  </data>
+  <data name="ControlsView_Item2" xml:space="preserve">
+    <value>Point 2</value>
+  </data>
+  <data name="ControlsView_Item3" xml:space="preserve">
+    <value>Point 3</value>
+  </data>
+  <data name="ControlsView_Item4" xml:space="preserve">
+    <value>Point 4</value>
+  </data>
+  <data name="ControlsView_Item11" xml:space="preserve">
+    <value>Point 11</value>
+  </data>
+  <data name="ControlsView_Item21" xml:space="preserve">
+    <value>Point 21</value>
+  </data>
+  <data name="ControlsView_Item31" xml:space="preserve">
+    <value>Point 31</value>
+  </data>
+  <data name="ControlsView_Item41" xml:space="preserve">
+    <value>Point 41</value>
+  </data>
+  <data name="ControlPaddingsView_WatermarkTextBox" xml:space="preserve">
+    <value>WatermarkTextBox</value>
+  </data>
+  <data name="ControlPaddingsView_TextBox" xml:space="preserve">
+    <value>TextBox</value>
+  </data>
+  <data name="ControlPaddingsView_Combobox" xml:space="preserve">
+    <value>Combobox</value>
+  </data>
+  <data name="ControlPaddingsView_FilterBox" xml:space="preserve">
+    <value>FilterBox</value>
+  </data>
+  <data name="FontImageCursorView_MovePointerHere" xml:space="preserve">
+    <value>Pointeur de déplacement ici...</value>
+  </data>
+  <data name="FontSizeView_DefaultFontSize" xml:space="preserve">
+    <value>Taille de police par défaut</value>
+  </data>
+  <data name="FontSizeView_NoSubscriptions" xml:space="preserve">
+    <value>Pas d’abonnements (non réactif)</value>
+  </data>
+  <data name="FontSizeView_Subscriptions" xml:space="preserve">
+    <value>Abonnements (réactif)</value>
+  </data>
+  <data name="FontSizeView_Scaling" xml:space="preserve">
+    <value>Mise à l’échelle</value>
+  </data>
+  <data name="FontSizeView_Delta" xml:space="preserve">
+    <value>Delta</value>
+  </data>
+  <data name="FontSizeView_Absolute" xml:space="preserve">
+    <value>Absolu</value>
+  </data>
+  <data name="FontSizeView_Scale_0_6" xml:space="preserve">
+    <value>Ici 0,6</value>
+  </data>
+  <data name="FontSizeView_Scale_0_8" xml:space="preserve">
+    <value>C’est 0,8</value>
+  </data>
+  <data name="FontSizeView_Scale_1_0" xml:space="preserve">
+    <value>C’est la version 1.0</value>
+  </data>
+  <data name="FontSizeView_Scale_1_2" xml:space="preserve">
+    <value>Ceci est la version 1.2</value>
+  </data>
+  <data name="FontSizeView_Scale_1_4" xml:space="preserve">
+    <value>Ceci est la version 1.4</value>
+  </data>
+  <data name="FontSizeView_Delta_Minus4" xml:space="preserve">
+    <value>C’est -4</value>
+  </data>
+  <data name="FontSizeView_Delta_Minus2" xml:space="preserve">
+    <value>Ici -2</value>
+  </data>
+  <data name="FontSizeView_Delta_0" xml:space="preserve">
+    <value>C’est 0</value>
+  </data>
+  <data name="FontSizeView_Delta_Plus2" xml:space="preserve">
+    <value>C’est +2</value>
+  </data>
+  <data name="FontSizeView_Delta_Plus4" xml:space="preserve">
+    <value>C’est +4</value>
+  </data>
+  <data name="FontSizeView_Absolute_10" xml:space="preserve">
+    <value>Ici 10</value>
+  </data>
+  <data name="FontSizeView_Absolute_12" xml:space="preserve">
+    <value>Ici 12</value>
+  </data>
+  <data name="FontSizeView_Absolute_14" xml:space="preserve">
+    <value>Ici 14</value>
+  </data>
+  <data name="FontSizeView_Absolute_16" xml:space="preserve">
+    <value>C’est 16</value>
+  </data>
+  <data name="FontSizeView_Absolute_18" xml:space="preserve">
+    <value>C’est 18</value>
+  </data>
+  <data name="ThemeImageView_ImageWithPlaceholder" xml:space="preserve">
+    <value>Image avec un indicateur</value>
+  </data>
+  <data name="ThemeImageView_ImageWithAutoReplacement" xml:space="preserve">
+    <value>Image avec remplacement automatique</value>
+  </data>
+  <data name="ListViewView_Enabled" xml:space="preserve">
+    <value>Activé</value>
+  </data>
+  <data name="ListBoxView_Text" xml:space="preserve">
+    <value>Texte</value>
+  </data>
+  <data name="SeparateWindow_IsSelected" xml:space="preserve">
+    <value>IsSelected</value>
+  </data>
+  <data name="SeparateWindow_Name" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+</root>

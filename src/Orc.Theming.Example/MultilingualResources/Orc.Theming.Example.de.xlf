@@ -1,0 +1,581 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="de" original="ORC.THEMING.EXAMPLE/PROPERTIES/RESOURCES.RESX">
+    <body>
+      <group id="ORC.THEMING.EXAMPLE/PROPERTIES/RESOURCES.RESX" datatype="resx">
+        <trans-unit id="AgeWizardPageView_Age" translate="yes" xml:space="preserve">
+          <source>Age</source>
+          <target state="new">Alter</target>
+        </trans-unit>
+        <trans-unit id="ButtonView_Disabled" translate="yes" xml:space="preserve">
+          <source>Disabled</source>
+          <target state="new">Behindert</target>
+        </trans-unit>
+        <trans-unit id="ButtonView_TestMenuItem1" translate="yes" xml:space="preserve">
+          <source>Test menu item 1</source>
+          <target state="new">Testmenü-Punkt 1</target>
+        </trans-unit>
+        <trans-unit id="ButtonView_TestMenuItem1_Sub1" translate="yes" xml:space="preserve">
+          <source>test_1</source>
+          <target state="new">Test1</target>
+        </trans-unit>
+        <trans-unit id="ButtonView_TestMenuItem1_Sub2" translate="yes" xml:space="preserve">
+          <source>test_2</source>
+          <target state="new">Test2</target>
+        </trans-unit>
+        <trans-unit id="ButtonView_TestMenuItem1_Sub3" translate="yes" xml:space="preserve">
+          <source>test_3</source>
+          <target state="new">Test3</target>
+        </trans-unit>
+        <trans-unit id="ButtonView_TestMenuItem2" translate="yes" xml:space="preserve">
+          <source>Test menu item 2</source>
+          <target state="new">Testmenü-Punkt 2</target>
+        </trans-unit>
+        <trans-unit id="ButtonView_TestMenuItem3" translate="yes" xml:space="preserve">
+          <source>Test menu item 3</source>
+          <target state="new">Testmenü-Punkt 3</target>
+        </trans-unit>
+        <trans-unit id="CheckBoxView_CheckedDisabledState" translate="yes" xml:space="preserve">
+          <source>Checked &amp; disabled state</source>
+          <target state="new">Überprüfter und deaktivierter Zustand</target>
+        </trans-unit>
+        <trans-unit id="CheckBoxView_CheckedState" translate="yes" xml:space="preserve">
+          <source>Checked state</source>
+          <target state="new">Kontrollierter Zustand</target>
+        </trans-unit>
+        <trans-unit id="CheckBoxView_ThreeState" translate="yes" xml:space="preserve">
+          <source>Three state</source>
+          <target state="new">Drei Bundesstaaten</target>
+        </trans-unit>
+        <trans-unit id="CheckBoxView_UncheckedDisabledState" translate="yes" xml:space="preserve">
+          <source>Unchecked &amp; disabled state</source>
+          <target state="new">Unkontrollierter und deaktivierter Zustand</target>
+        </trans-unit>
+        <trans-unit id="CheckBoxView_UncheckedState" translate="yes" xml:space="preserve">
+          <source>Unchecked state</source>
+          <target state="new">Unkontrollierter Zustand</target>
+        </trans-unit>
+        <trans-unit id="ComponentsWizardPageView_CancelViaCode" translate="yes" xml:space="preserve">
+          <source>Cancel via code</source>
+          <target state="new">Kündigen per Code</target>
+        </trans-unit>
+        <trans-unit id="ComponentsWizardPageView_Description" translate="yes" xml:space="preserve">
+          <source>Please select the components you want to use:</source>
+          <target state="new">Bitte wählen Sie die Komponenten aus, die Sie verwenden möchten:</target>
+        </trans-unit>
+        <trans-unit id="ComponentsWizardPageView_MoveBackViaCode" translate="yes" xml:space="preserve">
+          <source>Move back via code</source>
+          <target state="new">Zurückziehen per Code</target>
+        </trans-unit>
+        <trans-unit id="ComponentsWizardPageView_MoveForwardViaCode" translate="yes" xml:space="preserve">
+          <source>Move forward via code</source>
+          <target state="new">Vorwärts über Code gehen</target>
+        </trans-unit>
+        <trans-unit id="ComponentsWizardPageView_MoveNextOrFinishViaCode" translate="yes" xml:space="preserve">
+          <source>Move next or finish via code</source>
+          <target state="new">Als Nächstes weitergehen oder per Code abschließen</target>
+        </trans-unit>
+        <trans-unit id="ComponentsWizardPageView_SelectAll" translate="yes" xml:space="preserve">
+          <source>Select all</source>
+          <target state="new">Alle auswählen</target>
+        </trans-unit>
+        <trans-unit id="ControlPaddingsView_Combobox" translate="yes" xml:space="preserve">
+          <source>Combobox</source>
+          <target state="new">Combobox</target>
+        </trans-unit>
+        <trans-unit id="ControlPaddingsView_FilterBox" translate="yes" xml:space="preserve">
+          <source>FilterBox</source>
+          <target state="new">FilterBox</target>
+        </trans-unit>
+        <trans-unit id="ControlPaddingsView_TextBox" translate="yes" xml:space="preserve">
+          <source>TextBox</source>
+          <target state="new">TextBox</target>
+        </trans-unit>
+        <trans-unit id="ControlPaddingsView_WatermarkTextBox" translate="yes" xml:space="preserve">
+          <source>WatermarkTextBox</source>
+          <target state="new">WatermarkTextBox</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_Button" translate="yes" xml:space="preserve">
+          <source>Button</source>
+          <target state="new">Knopf</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_ButtonWithSquareBehavior" translate="yes" xml:space="preserve">
+          <source>Button with Square behavior</source>
+          <target state="new">Knopf mit Quadrat-Verhalten</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_CheckBox" translate="yes" xml:space="preserve">
+          <source>CheckBox</source>
+          <target state="new">CheckBox</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_ComboBox" translate="yes" xml:space="preserve">
+          <source>ComboBox</source>
+          <target state="new">ComboBox</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_Description" translate="yes" xml:space="preserve">
+          <source>This view shows all the controls with the alignments updated with the style forwarders. The first row contains an alignment helper border. All styles must also respect the current theme color.</source>
+          <target state="new">Diese Ansicht zeigt alle Steuerungen mit den Ausrichtungen, die mit den Style-Forwardern aktualisiert wurden. Die erste Reihe enthält einen Rand für den Ausrichtungshilfen. Alle Stile müssen außerdem die aktuelle Themenfarbe respektieren.</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_EnableAlignmentGrid" translate="yes" xml:space="preserve">
+          <source>Enable alignment grid</source>
+          <target state="new">Ausrichtungsgitter aktivieren</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_FilterBoxText" translate="yes" xml:space="preserve">
+          <source>Filter box</source>
+          <target state="new">Filterbox</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_GridSplitter" translate="yes" xml:space="preserve">
+          <source>GridSplitter</source>
+          <target state="new">GridSplitter</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_GroupBox" translate="yes" xml:space="preserve">
+          <source>GroupBox</source>
+          <target state="new">GroupBox</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_Item1" translate="yes" xml:space="preserve">
+          <source>Item 1</source>
+          <target state="new">Punkt 1</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_Item11" translate="yes" xml:space="preserve">
+          <source>Item 11</source>
+          <target state="new">Punkt 11</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_Item2" translate="yes" xml:space="preserve">
+          <source>Item 2</source>
+          <target state="new">Punkt 2</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_Item21" translate="yes" xml:space="preserve">
+          <source>Item 21</source>
+          <target state="new">Punkt 21</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_Item3" translate="yes" xml:space="preserve">
+          <source>Item 3</source>
+          <target state="new">Punkt 3</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_Item31" translate="yes" xml:space="preserve">
+          <source>Item 31</source>
+          <target state="new">Punkt 31</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_Item4" translate="yes" xml:space="preserve">
+          <source>Item 4</source>
+          <target state="new">Punkt 4</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_Item41" translate="yes" xml:space="preserve">
+          <source>Item 41</source>
+          <target state="new">Punkt 41</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_Label" translate="yes" xml:space="preserve">
+          <source>Label</source>
+          <target state="new">Label</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_LinkLabel" translate="yes" xml:space="preserve">
+          <source>LinkLabel</source>
+          <target state="new">LinkLabel</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_ListBox" translate="yes" xml:space="preserve">
+          <source>ListBox</source>
+          <target state="new">ListBox</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_ListView" translate="yes" xml:space="preserve">
+          <source>ListView</source>
+          <target state="new">ListView</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_MultiLineControls" translate="yes" xml:space="preserve">
+          <source>Multi-line controls</source>
+          <target state="new">Mehrliniensteuerung</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_MultilineTextBox" translate="yes" xml:space="preserve">
+          <source>this is a multiline textbox</source>
+          <target state="new">Dies ist ein mehrzeiliges Textfeld</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_OrcControls" translate="yes" xml:space="preserve">
+          <source>Orc controls</source>
+          <target state="new">Ork-Steuerung</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_OrcControlsControls" translate="yes" xml:space="preserve">
+          <source>Orc.Controls controls</source>
+          <target state="new">Ork. Steuerung</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_OrcControls_DateTimePicker" translate="yes" xml:space="preserve">
+          <source>Orc.Controls: DateTimePicker</source>
+          <target state="new">Orc.Controls: DateTimePicker</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_OrcControls_DropDownButton" translate="yes" xml:space="preserve">
+          <source>Orc.Controls: DropDownButton</source>
+          <target state="new">Ork. Steuerung: Dropdown-Button</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_OrcControls_FilterBox" translate="yes" xml:space="preserve">
+          <source>Orc.Controls: FilterBox</source>
+          <target state="new">Orc.Controls: FilterBox</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_OrcControls_LinkLabel" translate="yes" xml:space="preserve">
+          <source>Orc.Controls: LinkLabel</source>
+          <target state="new">Orc.Controls: LinkLabel</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_OrcControls_NumericTextBox" translate="yes" xml:space="preserve">
+          <source>Orc.Controls: NumericTextBox</source>
+          <target state="new">Orc.Controls: NumericTextBox</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_OrcControls_RangeSlider" translate="yes" xml:space="preserve">
+          <source>Orc.Controls: RangeSlider</source>
+          <target state="new">Ork. Steuerung: RangeSlider</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_OrcControls_TimeSpanPicker" translate="yes" xml:space="preserve">
+          <source>Orc.Controls: TimeSpanPicker</source>
+          <target state="new">Orc.Controls: TimeSpanPicker</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_OrcControls_WatermarkTextBox" translate="yes" xml:space="preserve">
+          <source>Orc.Controls: WatermarkTextBox</source>
+          <target state="new">Orc.Controls: WatermarkTextBox</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_Orchestra_BusyIndicator" translate="yes" xml:space="preserve">
+          <source>Orchestra: BusyIndicator</source>
+          <target state="new">Orchester: BusyIndicator</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_Orchestra_FluidProgressBar" translate="yes" xml:space="preserve">
+          <source>Orchestra: FluidProgressBar</source>
+          <target state="new">Orchester: FluidProgressBar</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_OtherControls" translate="yes" xml:space="preserve">
+          <source>Other controls</source>
+          <target state="new">Weitere Steuerungen</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_PasswordBox" translate="yes" xml:space="preserve">
+          <source>PasswordBox</source>
+          <target state="new">PasswordBox</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_ProgressBar" translate="yes" xml:space="preserve">
+          <source>ProgressBar</source>
+          <target state="new">ProgressBar</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_RadioButton" translate="yes" xml:space="preserve">
+          <source>RadioButton</source>
+          <target state="new">RadioButton</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_RepeatButton" translate="yes" xml:space="preserve">
+          <source>RepeatButton</source>
+          <target state="new">RepeatButton</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_RichTextBox" translate="yes" xml:space="preserve">
+          <source>RichTextBox</source>
+          <target state="new">RichTextBox</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_Slider" translate="yes" xml:space="preserve">
+          <source>Slider</source>
+          <target state="new">Slider</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_TextBlock" translate="yes" xml:space="preserve">
+          <source>TextBlock</source>
+          <target state="new">TextBlock</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_TextBox" translate="yes" xml:space="preserve">
+          <source>TextBox</source>
+          <target state="new">TextBox</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_TextBoxForAlignment" translate="yes" xml:space="preserve">
+          <source>TextBox for alignment</source>
+          <target state="new">TextBox zur Ausrichtung</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_TextboxSimilarToComboBox" translate="yes" xml:space="preserve">
+          <source>Textbox should be similar to ComboBox</source>
+          <target state="new">Textbox sollte ähnlich wie ComboBox sein</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_TextboxSimilarToPasswordBox" translate="yes" xml:space="preserve">
+          <source>Textbox should be similar to PasswordBox</source>
+          <target state="new">Textbox sollte ähnlich wie PasswordBox sein</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_ToggleButton" translate="yes" xml:space="preserve">
+          <source>ToggleButton</source>
+          <target state="new">ToggleButton</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_TreeView" translate="yes" xml:space="preserve">
+          <source>TreeView</source>
+          <target state="new">TreeView</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_Watermark" translate="yes" xml:space="preserve">
+          <source>This is a watermark</source>
+          <target state="new">Das ist ein Wasserzeichen</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_WpfControls" translate="yes" xml:space="preserve">
+          <source>WPF controls</source>
+          <target state="new">WPF-Steuerungen</target>
+        </trans-unit>
+        <trans-unit id="ControlsView_WpfControlsSizes" translate="yes" xml:space="preserve">
+          <source>WPF controls (sizes)</source>
+          <target state="new">WPF-Steuerungen (Größen)</target>
+        </trans-unit>
+        <trans-unit id="FontImageCursorView_MovePointerHere" translate="yes" xml:space="preserve">
+          <source>Move pointer here...</source>
+          <target state="new">Hier ein Move-Pointer...</target>
+        </trans-unit>
+        <trans-unit id="FontSizeView_Absolute" translate="yes" xml:space="preserve">
+          <source>Absolute</source>
+          <target state="new">Absolut</target>
+        </trans-unit>
+        <trans-unit id="FontSizeView_Absolute_10" translate="yes" xml:space="preserve">
+          <source>This is 10</source>
+          <target state="new">Das ist 10</target>
+        </trans-unit>
+        <trans-unit id="FontSizeView_Absolute_12" translate="yes" xml:space="preserve">
+          <source>This is 12</source>
+          <target state="new">Das ist 12</target>
+        </trans-unit>
+        <trans-unit id="FontSizeView_Absolute_14" translate="yes" xml:space="preserve">
+          <source>This is 14</source>
+          <target state="new">Das ist 14</target>
+        </trans-unit>
+        <trans-unit id="FontSizeView_Absolute_16" translate="yes" xml:space="preserve">
+          <source>This is 16</source>
+          <target state="new">Das ist 16</target>
+        </trans-unit>
+        <trans-unit id="FontSizeView_Absolute_18" translate="yes" xml:space="preserve">
+          <source>This is 18</source>
+          <target state="new">Das ist 18</target>
+        </trans-unit>
+        <trans-unit id="FontSizeView_DefaultFontSize" translate="yes" xml:space="preserve">
+          <source>Default font size</source>
+          <target state="new">Standard-Schriftgröße</target>
+        </trans-unit>
+        <trans-unit id="FontSizeView_Delta" translate="yes" xml:space="preserve">
+          <source>Delta</source>
+          <target state="new">Delta</target>
+        </trans-unit>
+        <trans-unit id="FontSizeView_Delta_0" translate="yes" xml:space="preserve">
+          <source>This is 0</source>
+          <target state="new">Das ist 0</target>
+        </trans-unit>
+        <trans-unit id="FontSizeView_Delta_Minus2" translate="yes" xml:space="preserve">
+          <source>This is -2</source>
+          <target state="new">Das ist -2</target>
+        </trans-unit>
+        <trans-unit id="FontSizeView_Delta_Minus4" translate="yes" xml:space="preserve">
+          <source>This is -4</source>
+          <target state="new">Das ist -4</target>
+        </trans-unit>
+        <trans-unit id="FontSizeView_Delta_Plus2" translate="yes" xml:space="preserve">
+          <source>This is +2</source>
+          <target state="new">Das ist +2</target>
+        </trans-unit>
+        <trans-unit id="FontSizeView_Delta_Plus4" translate="yes" xml:space="preserve">
+          <source>This is +4</source>
+          <target state="new">Das ist +4</target>
+        </trans-unit>
+        <trans-unit id="FontSizeView_NoSubscriptions" translate="yes" xml:space="preserve">
+          <source>No subscriptions (not responsive)</source>
+          <target state="new">Keine Abonnements (nicht responsiv)</target>
+        </trans-unit>
+        <trans-unit id="FontSizeView_Scale_0_6" translate="yes" xml:space="preserve">
+          <source>This is 0.6</source>
+          <target state="new">Das ist 0,6</target>
+        </trans-unit>
+        <trans-unit id="FontSizeView_Scale_0_8" translate="yes" xml:space="preserve">
+          <source>This is 0.8</source>
+          <target state="new">Das ist 0,8</target>
+        </trans-unit>
+        <trans-unit id="FontSizeView_Scale_1_0" translate="yes" xml:space="preserve">
+          <source>This is 1.0</source>
+          <target state="new">Das ist 1.0</target>
+        </trans-unit>
+        <trans-unit id="FontSizeView_Scale_1_2" translate="yes" xml:space="preserve">
+          <source>This is 1.2</source>
+          <target state="new">Das ist 1.2</target>
+        </trans-unit>
+        <trans-unit id="FontSizeView_Scale_1_4" translate="yes" xml:space="preserve">
+          <source>This is 1.4</source>
+          <target state="new">Das ist 1.4</target>
+        </trans-unit>
+        <trans-unit id="FontSizeView_Scaling" translate="yes" xml:space="preserve">
+          <source>Scaling</source>
+          <target state="new">Skalierung</target>
+        </trans-unit>
+        <trans-unit id="FontSizeView_Subscriptions" translate="yes" xml:space="preserve">
+          <source>Subscriptions (responsive)</source>
+          <target state="new">Abonnements (responsiv)</target>
+        </trans-unit>
+        <trans-unit id="ListBoxView_Text" translate="yes" xml:space="preserve">
+          <source>text</source>
+          <target state="new">Text</target>
+        </trans-unit>
+        <trans-unit id="ListViewView_Enabled" translate="yes" xml:space="preserve">
+          <source>Enabled</source>
+          <target state="new">Aktiviert</target>
+        </trans-unit>
+        <trans-unit id="MenuView_RealContent" translate="yes" xml:space="preserve">
+          <source>Here goes your real content</source>
+          <target state="new">Hier kommt dein echter Inhalt</target>
+        </trans-unit>
+        <trans-unit id="PersonWizardPageView_Description" translate="yes" xml:space="preserve">
+          <source>This wizard page shows you how to map textbox elements to a model and validate them. Notice that you cannot move to the next page while the fields are not yet valid. When navigating forward and back, you will see the values are automatically restored.
+
+The cool thing is that the view model for this page only has 28 (!) lines of code. This means your pages stay small and are easily maintainable.</source>
+          <target state="new">Diese Wizard-Seite zeigt Ihnen, wie Sie Textbox-Elemente einem Modell zuordnen und validieren können. Beachte, dass du nicht zur nächsten Seite wechseln kannst, solange die Felder noch nicht gültig sind. Wenn Sie vor- und zurücknavigieren, werden die Werte automatisch wiederhergestellt.
+
+Das Coole ist, dass das Ansichtsmodell dieser Seite nur 28 (!) Codezeilen enthält. Das bedeutet, dass Ihre Seiten klein bleiben und leicht zu pflegen sind.</target>
+        </trans-unit>
+        <trans-unit id="PersonWizardPageView_FirstName" translate="yes" xml:space="preserve">
+          <source>First name</source>
+          <target state="new">Vorname</target>
+        </trans-unit>
+        <trans-unit id="PersonWizardPageView_LastName" translate="yes" xml:space="preserve">
+          <source>Last name</source>
+          <target state="new">Nachname</target>
+        </trans-unit>
+        <trans-unit id="ProgressBarView_CircularBar1" translate="yes" xml:space="preserve">
+          <source>Circular bar 1</source>
+          <target state="new">Kreisbalken 1</target>
+        </trans-unit>
+        <trans-unit id="ProgressBarView_CircularBar2" translate="yes" xml:space="preserve">
+          <source>Circular bar 2</source>
+          <target state="new">Kreisförmiger Takt 2</target>
+        </trans-unit>
+        <trans-unit id="ProgressBarView_CircularBar3" translate="yes" xml:space="preserve">
+          <source>Circular bar 3</source>
+          <target state="new">Kreisförmiger Takt 3</target>
+        </trans-unit>
+        <trans-unit id="ProgressBarView_CircularProgressBars" translate="yes" xml:space="preserve">
+          <source>Circular progress bars</source>
+          <target state="new">Kreisförmige Fortschrittsbalken</target>
+        </trans-unit>
+        <trans-unit id="ProgressBarView_DisabledDeterminate" translate="yes" xml:space="preserve">
+          <source>Disabled | Determinate</source>
+          <target state="new">Deaktiviert | Bestimmung</target>
+        </trans-unit>
+        <trans-unit id="ProgressBarView_DisabledIndeterminate" translate="yes" xml:space="preserve">
+          <source>Disabled | Indeterminate</source>
+          <target state="new">Deaktiviert | Unbestimmt</target>
+        </trans-unit>
+        <trans-unit id="ProgressBarView_EnabledDeterminate" translate="yes" xml:space="preserve">
+          <source>Enabled | Determinate</source>
+          <target state="new">Aktiviert | Bestimmung</target>
+        </trans-unit>
+        <trans-unit id="ProgressBarView_EnabledIndeterminate" translate="yes" xml:space="preserve">
+          <source>Enabled | Indeterminate</source>
+          <target state="new">Aktiviert | Unbestimmt</target>
+        </trans-unit>
+        <trans-unit id="RadioButtonView_CheckedDisabledState" translate="yes" xml:space="preserve">
+          <source>Checked &amp; disabled state</source>
+          <target state="new">Überprüfter und deaktivierter Zustand</target>
+        </trans-unit>
+        <trans-unit id="RadioButtonView_CheckedState" translate="yes" xml:space="preserve">
+          <source>Checked state</source>
+          <target state="new">Kontrollierter Zustand</target>
+        </trans-unit>
+        <trans-unit id="RadioButtonView_UncheckedDisabledState" translate="yes" xml:space="preserve">
+          <source>Unchecked &amp; disabled state</source>
+          <target state="new">Unkontrollierter und deaktivierter Zustand</target>
+        </trans-unit>
+        <trans-unit id="RadioButtonView_UncheckedState" translate="yes" xml:space="preserve">
+          <source>Unchecked state</source>
+          <target state="new">Unkontrollierter Zustand</target>
+        </trans-unit>
+        <trans-unit id="RepeatButtonView_Default" translate="yes" xml:space="preserve">
+          <source>Default</source>
+          <target state="new">Default</target>
+        </trans-unit>
+        <trans-unit id="RepeatButtonView_Disabled" translate="yes" xml:space="preserve">
+          <source>Disabled</source>
+          <target state="new">Behindert</target>
+        </trans-unit>
+        <trans-unit id="SeparateWindow_IsSelected" translate="yes" xml:space="preserve">
+          <source>IsSelected</source>
+          <target state="new">IsSelected</target>
+        </trans-unit>
+        <trans-unit id="SeparateWindow_Name" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <target state="new">Name</target>
+        </trans-unit>
+        <trans-unit id="SkillsWizardPageView_Description" translate="yes" xml:space="preserve">
+          <source>Please select your skills:</source>
+          <target state="new">Bitte wählen Sie Ihre Fähigkeiten aus:</target>
+        </trans-unit>
+        <trans-unit id="SkillsWizardPageView_SelectAll" translate="yes" xml:space="preserve">
+          <source>Select all</source>
+          <target state="new">Alle auswählen</target>
+        </trans-unit>
+        <trans-unit id="TabControlView_RealContent" translate="yes" xml:space="preserve">
+          <source>Here goes your real content</source>
+          <target state="new">Hier kommt dein echter Inhalt</target>
+        </trans-unit>
+        <trans-unit id="TextBoxView_DefaultState" translate="yes" xml:space="preserve">
+          <source>Default state</source>
+          <target state="new">Standardzustand</target>
+        </trans-unit>
+        <trans-unit id="TextBoxView_Disabled" translate="yes" xml:space="preserve">
+          <source>Disabled</source>
+          <target state="new">Behindert</target>
+        </trans-unit>
+        <trans-unit id="TextBoxView_FocusedStateTextSelection" translate="yes" xml:space="preserve">
+          <source>Focused state + text selection</source>
+          <target state="new">Fokussierter Zustand + Textauswahl</target>
+        </trans-unit>
+        <trans-unit id="TextBoxView_HorizontalStretch" translate="yes" xml:space="preserve">
+          <source>Horizontal Stretch</source>
+          <target state="new">Horizontale Dehnung</target>
+        </trans-unit>
+        <trans-unit id="TextBoxView_InactiveTextSelection" translate="yes" xml:space="preserve">
+          <source>Inactive text selection</source>
+          <target state="new">Inaktive Textauswahl</target>
+        </trans-unit>
+        <trans-unit id="TextBoxView_VerticalStretchAndMultiline" translate="yes" xml:space="preserve">
+          <source>Vertical Stretch and multiline</source>
+          <target state="new">Vertikale Streckung und Multiline</target>
+        </trans-unit>
+        <trans-unit id="ThemeImageView_ImageWithAutoReplacement" translate="yes" xml:space="preserve">
+          <source>Image with auto replacement</source>
+          <target state="new">Bild mit automatischem Austausch</target>
+        </trans-unit>
+        <trans-unit id="ThemeImageView_ImageWithPlaceholder" translate="yes" xml:space="preserve">
+          <source>Image with placeholder</source>
+          <target state="new">Bild mit Platzhalter</target>
+        </trans-unit>
+        <trans-unit id="ToggleButtonView_CompareAll" translate="yes" xml:space="preserve">
+          <source>Compare all</source>
+          <target state="new">Vergleichen Sie alle</target>
+        </trans-unit>
+        <trans-unit id="ToggleButtonView_Default" translate="yes" xml:space="preserve">
+          <source>Default</source>
+          <target state="new">Default</target>
+        </trans-unit>
+        <trans-unit id="ToggleButtonView_Disabled" translate="yes" xml:space="preserve">
+          <source>Disabled</source>
+          <target state="new">Behindert</target>
+        </trans-unit>
+        <trans-unit id="ToggleButtonView_Pressed" translate="yes" xml:space="preserve">
+          <source>Pressed</source>
+          <target state="new">Gepresst</target>
+        </trans-unit>
+        <trans-unit id="ToolBarView_Copy" translate="yes" xml:space="preserve">
+          <source>Copy</source>
+          <target state="new">Verstanden</target>
+        </trans-unit>
+        <trans-unit id="ToolBarView_Cut" translate="yes" xml:space="preserve">
+          <source>Cut</source>
+          <target state="new">Schnitt</target>
+        </trans-unit>
+        <trans-unit id="ToolBarView_New" translate="yes" xml:space="preserve">
+          <source>New</source>
+          <target state="new">Neu</target>
+        </trans-unit>
+        <trans-unit id="ToolBarView_Open" translate="yes" xml:space="preserve">
+          <source>Open</source>
+          <target state="new">Offen</target>
+        </trans-unit>
+        <trans-unit id="ToolBarView_Paste" translate="yes" xml:space="preserve">
+          <source>Paste</source>
+          <target state="new">Paste</target>
+        </trans-unit>
+        <trans-unit id="ToolBarView_Save" translate="yes" xml:space="preserve">
+          <source>Save</source>
+          <target state="new">Speichern</target>
+        </trans-unit>
+        <trans-unit id="WizardView_ShowSeparateWindow" translate="yes" xml:space="preserve">
+          <source>Show separate window...</source>
+          <target state="new">Zeigt separates Fenster...</target>
+        </trans-unit>
+        <trans-unit id="WizardView_ShowWizard" translate="yes" xml:space="preserve">
+          <source>Show wizard...</source>
+          <target state="new">Show-Zauberer...</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>
