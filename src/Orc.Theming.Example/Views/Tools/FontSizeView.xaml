@@ -17,108 +17,108 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Label Content="Default font size"
+        <Label Content="{catel:LanguageBinding FontSizeView_DefaultFontSize}"
                Grid.ColumnSpan="2" 
                HorizontalAlignment="Center" />
 
-        <GroupBox Header="No subscriptions (not responsive)">
+        <GroupBox Header="{catel:LanguageBinding FontSizeView_NoSubscriptions}">
             <StackPanel Orientation="Horizontal">
-                <GroupBox Header="Scaling">
+                <GroupBox Header="{catel:LanguageBinding FontSizeView_Scaling}">
                     <StackPanel Orientation="Vertical"
                                 HorizontalAlignment="Left">
-                        <Label Content="This is 0.6"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Scale_0_6}"
                                FontSize="{orctheming:FontSize Scale=0.6}" />
-                        <Label Content="This is 0.8"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Scale_0_8}"
                                FontSize="{orctheming:FontSize Scale=0.8}" />
-                        <Label Content="This is 1.0"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Scale_1_0}"
                                FontSize="{orctheming:FontSize Scale=1.0}" />
-                        <Label Content="This is 1.2"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Scale_1_2}"
                                FontSize="{orctheming:FontSize Scale=1.2}" />
-                        <Label Content="This is 1.4"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Scale_1_4}"
                                FontSize="{orctheming:FontSize Scale=1.4}" />
                     </StackPanel>
                 </GroupBox>
 
-                <GroupBox Header="Delta">
+                <GroupBox Header="{catel:LanguageBinding FontSizeView_Delta}">
                     <StackPanel Orientation="Vertical"
                                 HorizontalAlignment="Left">
-                        <Label Content="This is -4"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Delta_Minus4}"
                                FontSize="{orctheming:FontSize Delta=-4}" />
-                        <Label Content="This is -2"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Delta_Minus2}"
                                FontSize="{orctheming:FontSize Delta=-2}" />
-                        <Label Content="This is 0"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Delta_0}"
                                FontSize="{orctheming:FontSize Delta=0}" />
-                        <Label Content="This is +2"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Delta_Plus2}"
                                FontSize="{orctheming:FontSize Delta=2}" />
-                        <Label Content="This is +4"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Delta_Plus4}"
                                FontSize="{orctheming:FontSize Delta=4}" />
                     </StackPanel>
                 </GroupBox>
 
-                <GroupBox Header="Absolute">
+                <GroupBox Header="{catel:LanguageBinding FontSizeView_Absolute}">
                     <StackPanel Orientation="Vertical"
                                 HorizontalAlignment="Left">
-                        <Label Content="This is 10"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Absolute_10}"
                                FontSize="{orctheming:FontSize 10}" />
-                        <Label Content="This is 12"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Absolute_12}"
                                FontSize="{orctheming:FontSize 12}" />
-                        <Label Content="This is 14"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Absolute_14}"
                                FontSize="{orctheming:FontSize 14}" />
-                        <Label Content="This is 16"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Absolute_16}"
                                FontSize="{orctheming:FontSize 16}" />
-                        <Label Content="This is 18"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Absolute_18}"
                                FontSize="{orctheming:FontSize 18}" />
                     </StackPanel>
                 </GroupBox>
             </StackPanel>
         </GroupBox>
 
-        <GroupBox Header="Subscriptions (responsive)">
+        <GroupBox Header="{catel:LanguageBinding FontSizeView_Subscriptions}">
             <StackPanel Orientation="Horizontal">
-                <GroupBox Header="Scaling">
+                <GroupBox Header="{catel:LanguageBinding FontSizeView_Scaling}">
                     <StackPanel Orientation="Vertical"
                                 HorizontalAlignment="Left">
-                        <Label Content="This is 0.6"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Scale_0_6}"
                                FontSize="{orctheming:FontSize Scale=0.6, SubscribeToEvents=True}" />
-                        <Label Content="This is 0.8"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Scale_0_8}"
                                FontSize="{orctheming:FontSize Scale=0.8, SubscribeToEvents=True}" />
-                        <Label Content="This is 1.0"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Scale_1_0}"
                                FontSize="{orctheming:FontSize Scale=1.0, SubscribeToEvents=True}" />
-                        <Label Content="This is 1.2"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Scale_1_2}"
                                FontSize="{orctheming:FontSize Scale=1.2, SubscribeToEvents=True}" />
-                        <Label Content="This is 1.4"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Scale_1_4}"
                                FontSize="{orctheming:FontSize Scale=1.4, SubscribeToEvents=True}" />
                     </StackPanel>
                 </GroupBox>
 
-                <GroupBox Header="Delta">
+                <GroupBox Header="{catel:LanguageBinding FontSizeView_Delta}">
                     <StackPanel Orientation="Vertical"
                                 HorizontalAlignment="Left">
-                        <Label Content="This is -4"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Delta_Minus4}"
                                FontSize="{orctheming:FontSize Delta=-4, SubscribeToEvents=True}" />
-                        <Label Content="This is -2"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Delta_Minus2}"
                                FontSize="{orctheming:FontSize Delta=-2, SubscribeToEvents=True}" />
-                        <Label Content="This is 0"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Delta_0}"
                                FontSize="{orctheming:FontSize Delta=0, SubscribeToEvents=True}" />
-                        <Label Content="This is +2"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Delta_Plus2}"
                                FontSize="{orctheming:FontSize Delta=2, SubscribeToEvents=True}" />
-                        <Label Content="This is +4"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Delta_Plus4}"
                                FontSize="{orctheming:FontSize Delta=4, SubscribeToEvents=True}" />
                     </StackPanel>
                 </GroupBox>
 
-                <GroupBox Header="Absolute">
+                <GroupBox Header="{catel:LanguageBinding FontSizeView_Absolute}">
                     <StackPanel Orientation="Vertical"
                                 HorizontalAlignment="Left">
-                        <Label Content="This is 10"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Absolute_10}"
                                FontSize="{orctheming:FontSize 10, SubscribeToEvents=True}" />
-                        <Label Content="This is 12"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Absolute_12}"
                                FontSize="{orctheming:FontSize 12, SubscribeToEvents=True}" />
-                        <Label Content="This is 14"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Absolute_14}"
                                FontSize="{orctheming:FontSize 14, SubscribeToEvents=True}" />
-                        <Label Content="This is 16"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Absolute_16}"
                                FontSize="{orctheming:FontSize 16, SubscribeToEvents=True}" />
-                        <Label Content="This is 18"
+                        <Label Content="{catel:LanguageBinding FontSizeView_Absolute_18}"
                                FontSize="{orctheming:FontSize 18, SubscribeToEvents=True}" />
                     </StackPanel>
                 </GroupBox>

@@ -4,8 +4,8 @@
                    xmlns:catel="http://schemas.catelproject.com">
 
     <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-        <Button Content="Show wizard..." Command="{Binding ShowWizard}" />
-        <Button Content="Show separate window..." Command="{Binding ShowSeparateWindow}" />
+        <Button Content="{catel:LanguageBinding WizardView_ShowWizard}" Command="{Binding ShowWizard}" />
+        <Button Content="{catel:LanguageBinding WizardView_ShowSeparateWindow}" Command="{Binding ShowSeparateWindow}" />
     </StackPanel>
     
 </catel:UserControl>

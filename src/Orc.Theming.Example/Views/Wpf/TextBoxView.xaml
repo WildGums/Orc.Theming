@@ -16,23 +16,23 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <TextBox Text="Default state"/>
+        <TextBox Text="{catel:LanguageBinding TextBoxView_DefaultState}"/>
         <TextBox x:Name="FocusTextBox"
                  Grid.Row="1" 
-                 Text="Focused state + text selection" 
+                 Text="{catel:LanguageBinding TextBoxView_FocusedStateTextSelection}" 
                  Loaded="TextBox_Loaded"/>
         <TextBox Grid.Row="2" 
                  IsInactiveSelectionHighlightEnabled="True"
-                 Text="Inactive text selection" 
+                 Text="{catel:LanguageBinding TextBoxView_InactiveTextSelection}" 
                  Loaded="TextBox_Loaded"/>
         <TextBox Grid.Row="3"
-                 Text="Disabled" 
+                 Text="{catel:LanguageBinding TextBoxView_Disabled}" 
                  IsEnabled="False"/>
         <TextBox Grid.Row="4" Grid.ColumnSpan="2"
-                 Text="Horizontal Stretch"
+                 Text="{catel:LanguageBinding TextBoxView_HorizontalStretch}"
                  HorizontalAlignment="Stretch"/>
         <TextBox Grid.Column="1" Grid.RowSpan="4" Height="Auto"
-                 Text="Vetical Stretch and multiline"
+                 Text="{catel:LanguageBinding TextBoxView_VerticalStretchAndMultiline}"
                  TextWrapping="Wrap"
                  AcceptsReturn="True"
                  VerticalAlignment="Stretch"/>

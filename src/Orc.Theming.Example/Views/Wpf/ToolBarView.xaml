@@ -9,14 +9,14 @@
         <DockPanel>
             <ToolBarTray DockPanel.Dock="Top">
                 <ToolBar>
-                    <Button Command="New" Content="New" />
-                    <Button Command="Open" Content="Open" />
-                    <Button Command="Save" Content="Save" />
+                    <Button Command="New" Content="{catel:LanguageBinding ToolBarView_New}" />
+                    <Button Command="Open" Content="{catel:LanguageBinding ToolBarView_Open}" />
+                    <Button Command="Save" Content="{catel:LanguageBinding ToolBarView_Save}" />
                 </ToolBar>
                 <ToolBar>
-                    <Button Command="Cut" Content="Cut" />
-                    <Button Command="Copy" Content="Copy" />
-                    <Button Command="Paste" Content="Paste" />
+                    <Button Command="Cut" Content="{catel:LanguageBinding ToolBarView_Cut}" />
+                    <Button Command="Copy" Content="{catel:LanguageBinding ToolBarView_Copy}" />
+                    <Button Command="Paste" Content="{catel:LanguageBinding ToolBarView_Paste}" />
                 </ToolBar>
             </ToolBarTray>
             <TextBox AcceptsReturn="True" />

@@ -6,6 +6,6 @@
     <ListView ItemsSource="{Binding Items}"
               SelectedItem="{Binding SelectedItem}"
               IsEnabled="True"
-              ToolTip="Enabled" />
+              ToolTip="{catel:LanguageBinding ListViewView_Enabled}" />
 
 </catel:UserControl>

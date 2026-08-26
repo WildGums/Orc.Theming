@@ -43,6 +43,8 @@ public partial class App
 
                 services.AddSingleton<IFontProvider, FontAwesomeFontProvider>();
 
+                services.AddSingleton<ILanguageSource>(new LanguageResourceSource("Orc.Theming.Example", "Orc.Theming.Example.Properties", "Resources"));
+
                 services.AddLogging(x =>
                 {
                     x.AddConsole();

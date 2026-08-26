@@ -5,38 +5,38 @@
 
     <StackPanel Orientation="Vertical">
         <ProgressBar Minimum="0" Maximum="100" Value="50"
-                     IsEnabled="True" IsIndeterminate="False" ToolTip="Enabled | Determinate" />
+                     IsEnabled="True" IsIndeterminate="False" ToolTip="{catel:LanguageBinding ProgressBarView_EnabledDeterminate}" />
         <ProgressBar Minimum="0" Maximum="100" Value="50"
-                     IsEnabled="True" IsIndeterminate="True" ToolTip="Enabled | Indeterminate" />
+                     IsEnabled="True" IsIndeterminate="True" ToolTip="{catel:LanguageBinding ProgressBarView_EnabledIndeterminate}" />
 
         <ProgressBar Minimum="0" Maximum="100" Value="50"
-                     IsEnabled="False" IsIndeterminate="False" ToolTip="Enabled | Determinate" />
+                     IsEnabled="False" IsIndeterminate="False" ToolTip="{catel:LanguageBinding ProgressBarView_DisabledDeterminate}" />
         <ProgressBar Minimum="0" Maximum="100" Value="50"
-                     IsEnabled="False" IsIndeterminate="True" ToolTip="Enabled | Indeterminate" />
+                     IsEnabled="False" IsIndeterminate="True" ToolTip="{catel:LanguageBinding ProgressBarView_DisabledIndeterminate}" />
 
-        <TextBlock Text="Circular progress bars" />
+        <TextBlock Text="{catel:LanguageBinding ProgressBarView_CircularProgressBars}" />
 
         <StackPanel Orientation="Horizontal">
             <ProgressBar Style="{StaticResource Orc.Styles.ProgressBar.Circular}"
-                         IsEnabled="True" IsIndeterminate="False" ToolTip="Circular bar 1"
+                         IsEnabled="True" IsIndeterminate="False" ToolTip="{catel:LanguageBinding ProgressBarView_CircularBar1}"
                          Height="60" Width="60"
                          Minimum="0" Maximum="100" Value="25"
                          BorderThickness="5" />
 
             <ProgressBar Style="{StaticResource Orc.Styles.ProgressBar.Circular}"
-                         IsEnabled="True" IsIndeterminate="False" ToolTip="Circular bar 2"
+                         IsEnabled="True" IsIndeterminate="False" ToolTip="{catel:LanguageBinding ProgressBarView_CircularBar2}"
                          Height="120" Width="120"
                          BorderThickness="10"
                          Minimum="0" Maximum="100" Value="50"/>
 
             <ProgressBar Style="{StaticResource Orc.Styles.ProgressBar.Circular}"
-                         IsEnabled="True" IsIndeterminate="False" ToolTip="Circular bar 3"
+                         IsEnabled="True" IsIndeterminate="False" ToolTip="{catel:LanguageBinding ProgressBarView_CircularBar3}"
                          Height="180" Width="180"
                          BorderThickness="15"
                          Minimum="0" Maximum="100" Value="75"/>
 
             <ProgressBar Style="{StaticResource Orc.Styles.ProgressBar.Circular}"
-                         IsEnabled="True" IsIndeterminate="False" ToolTip="Circular bar 3"
+                         IsEnabled="True" IsIndeterminate="False" ToolTip="{catel:LanguageBinding ProgressBarView_CircularBar3}"
                          Height="180" Width="180"
                          BorderThickness="15"
                          Minimum="0" Maximum="100" Value="{Binding Value}"/>
@@ -44,19 +44,19 @@
 
         <StackPanel Orientation="Horizontal">
             <ProgressBar Style="{StaticResource Orc.Styles.ProgressBar.Circular}"
-                         IsEnabled="True" IsIndeterminate="True" ToolTip="Circular bar 1"
+                         IsEnabled="True" IsIndeterminate="True" ToolTip="{catel:LanguageBinding ProgressBarView_CircularBar1}"
                          Height="60" Width="60"
                          Minimum="0" Maximum="100" Value="25"
                          BorderThickness="5" />
 
             <ProgressBar Style="{StaticResource Orc.Styles.ProgressBar.Circular}"
-                         IsEnabled="True" IsIndeterminate="True" ToolTip="Circular bar 2"
+                         IsEnabled="True" IsIndeterminate="True" ToolTip="{catel:LanguageBinding ProgressBarView_CircularBar2}"
                          Height="120" Width="120"
                          BorderThickness="10"
                          Minimum="0" Maximum="100" Value="50"/>
 
             <ProgressBar Style="{StaticResource Orc.Styles.ProgressBar.Circular}"
-                         IsEnabled="True" IsIndeterminate="True" ToolTip="Circular bar 3"
+                         IsEnabled="True" IsIndeterminate="True" ToolTip="{catel:LanguageBinding ProgressBarView_CircularBar3}"
                          Height="180" Width="180"
                          BorderThickness="15"
                          Minimum="0" Maximum="100" Value="75"/>
