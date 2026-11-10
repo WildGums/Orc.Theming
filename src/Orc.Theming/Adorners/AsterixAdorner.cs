@@ -52,7 +52,9 @@ public class AsterixAdorner : Adorner
     private void DrawTextOnPosition(DrawingContext drawingContext)
     {
         // Note: drawingContext.DrawGlyphRun can be used for better performance
-        var drawRect = new Rect(AdornedElement.DesiredSize);
+        // Use RenderSize instead of DesiredSize to account for the actual rendered bounds
+        // This ensures adorners position correctly when elements have margins
+        var drawRect = new Rect(new Point(0, 0), AdornedElement.RenderSize);
 
         switch (_positionCorner)
         {
