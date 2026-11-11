@@ -1,7 +1,7 @@
 ﻿namespace Orc.Theming.Example.ViewModels;
 
 using System;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 using Catel.MVVM;
 
 public class PasswordBoxViewModel : ViewModelBase
@@ -11,5 +11,8 @@ public class PasswordBoxViewModel : ViewModelBase
     {
     }
 
-    public override string Title { get { return "PasswordBox"; } }
+    public override string Title => "PasswordBox";
+
+    [Required(ErrorMessage = "Password is required")]
+    public string? ValidationTestPassword { get; set; }
 }

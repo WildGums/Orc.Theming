@@ -1,15 +1,21 @@
 ﻿namespace Orc.Theming.Example.ViewModels;
 
-using Catel.MVVM;
 using System;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using Catel.MVVM;
 
-public class RichTextBoxViewModel : ViewModelBase
+public class RichTextBoxViewModel : FeaturedViewModelBase
 {
-    public RichTextBoxViewModel(IServiceProvider serviceProvider) 
+    public RichTextBoxViewModel(IServiceProvider serviceProvider)
         : base(serviceProvider)
     {
+        DeferValidationUntilFirstSaveCall = false;
+
+        Validate(true);
     }
 
-    public override string Title { get { return "RichTextBox"; } }
+    public override string Title => "RichTextBox";
+
+    [Required(ErrorMessage = "Content is required")]
+    public string? ValidationTestContent { get; set; }
 }

@@ -1,0 +1,212 @@
+﻿<catel:UserControl x:Class="Orc.Theming.Example.Views.ValidatedTextBoxView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:catel="http://schemas.catelproject.com"
+                   xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+                   xmlns:theming="clr-namespace:Orc.Theming.Behaviors;assembly=Orc.Theming"
+                   xmlns:localcontrols="clr-namespace:Orc.Theming.Example.Controls">
+
+    <catel:UserControl.Resources>
+    </catel:UserControl.Resources>
+
+    <Grid Background="White">
+        <Border Padding="20">
+            <ScrollViewer>
+                <StackPanel>
+                    <!-- Title -->
+                    <TextBlock Text="Custom Validation Adorner Behavior Example"
+                               FontSize="16"
+                               FontWeight="Bold" />
+
+                    <!-- Description -->
+                    <TextBlock Text="This example demonstrates the CustomValidationAdornerBehavior. The behavior configures which control should be the validation adorner site. Validation adorners will be anchored to the specified child control."
+                               TextWrapping="Wrap"
+                               Foreground="Gray"
+                               Margin="0,10,0,20" />
+
+                    <!-- Example 0: User control -->
+                    <localcontrols:ExampleUserControl Value="{Binding Example0Text, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
+                                                      HorizontalAlignment="Stretch" />
+
+                    <!-- Example 1: Basic validation adorner -->
+                    <Border BorderBrush="#E0E0E0"
+                            BorderThickness="1"
+                            Padding="15"
+                            CornerRadius="4"
+                            Margin="0,0,0,20">
+                        <StackPanel>
+                            <TextBlock Text="Example 1: Text Input with Validation"
+                                       FontWeight="Bold"
+                                       FontSize="13" />
+
+                            <TextBlock Text="Enter a number (validation error shown at the text box):"
+                                       FontSize="11"
+                                       Foreground="Gray"
+                                       Margin="0,8,0,8" />
+
+                            <!-- Container with validation adorner site configured -->
+                            <ContentControl>
+                                <i:Interaction.Behaviors>
+                                    <theming:ValidationAdornerSite ValidationAdornerSiteName="Example1TextBox" />
+                                </i:Interaction.Behaviors>
+
+                                <StackPanel>
+                                    <TextBox x:Name="Example1TextBox"
+                                             Text="{Binding Example1Text, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}"
+                                             Padding="8"
+                                             Height="32"
+                                             FontSize="12"
+                                             Margin="0,0,0,8" />
+
+                                    <Button Content="Validate"
+                                            Command="{Binding ValidateExample1Command}"
+                                            Height="28"
+                                            Width="100"
+                                            HorizontalAlignment="Left"
+                                            Margin="0,0,0,8" />
+
+                                    <TextBlock Text="{Binding Example1ValidationMessage}"
+                                               Foreground="Red"
+                                               FontSize="11"
+                                               Visibility="{Binding Example1HasError, Converter={catel:BooleanToHidingVisibilityConverter}}" />
+                                </StackPanel>
+                            </ContentControl>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Example 2: Email validation -->
+                    <Border BorderBrush="#E0E0E0"
+                            BorderThickness="1"
+                            Padding="15"
+                            CornerRadius="4"
+                            Margin="0,0,0,20">
+                        <StackPanel>
+                            <TextBlock Text="Example 2: Email Input with Validation"
+                                       FontWeight="Bold"
+                                       FontSize="13" />
+
+                            <TextBlock Text="Enter a valid email address:"
+                                       FontSize="11"
+                                       Foreground="Gray"
+                                       Margin="0,8,0,8" />
+
+                            <!-- Container with validation adorner site configured -->
+                            <ContentControl>
+                                <i:Interaction.Behaviors>
+                                    <theming:ValidationAdornerSite ValidationAdornerSiteName="Example2TextBox" />
+                                </i:Interaction.Behaviors>
+
+                                <StackPanel>
+                                    <TextBox x:Name="Example2TextBox"
+                                             Text="{Binding Example2Text, UpdateSourceTrigger=PropertyChanged}"
+                                             Padding="8"
+                                             Height="32"
+                                             FontSize="12"
+                                             Margin="0,0,0,8" />
+
+                                    <Button Content="Validate"
+                                            Command="{Binding ValidateExample2Command}"
+                                            Height="28"
+                                            Width="100"
+                                            HorizontalAlignment="Left"
+                                            Margin="0,0,0,8" />
+
+                                    <TextBlock Text="{Binding Example2ValidationMessage}"
+                                               Foreground="Red"
+                                               FontSize="11"
+                                               Visibility="{Binding Example2HasError, Converter={catel:BooleanToHidingVisibilityConverter}}" />
+                                </StackPanel>
+                            </ContentControl>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Example 3: Length validation -->
+                    <Border BorderBrush="#E0E0E0"
+                            BorderThickness="1"
+                            Padding="15"
+                            CornerRadius="4">
+                        <StackPanel>
+                            <TextBlock Text="Example 3: Text Length Validation"
+                                       FontWeight="Bold"
+                                       FontSize="13" />
+
+                            <TextBlock Text="Enter text (5-20 characters):"
+                                       FontSize="11"
+                                       Foreground="Gray"
+                                       Margin="0,8,0,8" />
+
+                            <!-- Container with validation adorner site configured -->
+                            <ContentControl>
+                                <i:Interaction.Behaviors>
+                                    <theming:ValidationAdornerSite ValidationAdornerSiteName="Example3TextBox" />
+                                </i:Interaction.Behaviors>
+
+                                <StackPanel>
+                                    <TextBox x:Name="Example3TextBox"
+                                             Text="{Binding Example3Text, UpdateSourceTrigger=PropertyChanged}"
+                                             Padding="8"
+                                             Height="32"
+                                             FontSize="12"
+                                             Margin="0,0,0,8" />
+
+                                    <Button Content="Validate"
+                                            Command="{Binding ValidateExample3Command}"
+                                            Height="28"
+                                            Width="100"
+                                            HorizontalAlignment="Left"
+                                            Margin="0,0,0,8" />
+
+                                    <TextBlock Text="{Binding Example3ValidationMessage}"
+                                               Foreground="Orange"
+                                               FontSize="11"
+                                               Visibility="{Binding Example3HasError, Converter={catel:BooleanToHidingVisibilityConverter}}" />
+                                </StackPanel>
+                            </ContentControl>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Example 4: Direct behavior on control -->
+                    <Border BorderBrush="#E0E0E0"
+                            BorderThickness="1"
+                            Padding="15"
+                            CornerRadius="4">
+                        <StackPanel>
+                            <TextBlock Text="Example 4: Direct Behavior on Control (No Name Required)"
+                                       FontWeight="Bold"
+                                       FontSize="13" />
+
+                            <TextBlock Text="Enter any text (ValidationAdornerSiteBehavior applied directly):"
+                                       FontSize="11"
+                                       Foreground="Gray"
+                                       Margin="0,8,0,8" />
+
+                            <TextBox Text="{Binding Example4Text, UpdateSourceTrigger=PropertyChanged}"
+                                     Padding="8"
+                                     Height="32"
+                                     FontSize="12"
+                                     Margin="0,0,0,8">
+                                <i:Interaction.Behaviors>
+                                    <theming:ValidationAdornerSiteFor />
+                                </i:Interaction.Behaviors>
+                            </TextBox>
+
+                            <Button Content="Validate"
+                                    Command="{Binding ValidateExample4Command}"
+                                    Height="28"
+                                    Width="100"
+                                    HorizontalAlignment="Left"
+                                    Margin="0,0,0,8" />
+
+                            <TextBlock Text="{Binding Example4ValidationMessage}"
+                                       Foreground="Blue"
+                                       FontSize="11"
+                                       Visibility="{Binding Example4HasError, Converter={catel:BooleanToHidingVisibilityConverter}}" />
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+
+</catel:UserControl>
+

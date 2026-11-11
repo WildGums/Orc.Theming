@@ -1,15 +1,21 @@
 ﻿namespace Orc.Theming.Example.ViewModels;
 
-using Catel.MVVM;
 using System;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using Catel.MVVM;
 
-public class TextBoxViewModel : ViewModelBase
+public class TextBoxViewModel : FeaturedViewModelBase
 {
     public TextBoxViewModel(IServiceProvider serviceProvider) 
         : base(serviceProvider)
     {
+        DeferValidationUntilFirstSaveCall = false;
+
+        Validate(true);
     }
 
-    public override string Title { get { return "TextBox"; } }
+    public override string Title => "TextBox";
+
+    [Required(ErrorMessage = "Text is required")]
+    public string? ValidationTestText { get; set; }
 }

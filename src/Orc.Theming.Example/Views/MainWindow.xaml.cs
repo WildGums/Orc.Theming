@@ -23,7 +23,7 @@ public partial class MainWindow
         });
 
         var viewsToAdd = (from viewType in GetType().Assembly.GetTypesEx()
-                          where typeof(UserControl).IsAssignableFromEx(viewType) &&
+                          where typeof(Catel.Windows.Controls.UserControl).IsAssignableFromEx(viewType) &&
                                 viewType != typeof(ControlsView)
                           orderby viewType.Name
                           select viewType);

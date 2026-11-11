@@ -3,39 +3,32 @@
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                    xmlns:catel="http://schemas.catelproject.com">
 
-    <Grid FocusManager.FocusedElement="{Binding ElementName=FocusTextBox}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
 
-        <TextBox Text="{catel:LanguageBinding TextBoxView_DefaultState}"/>
-        <TextBox x:Name="FocusTextBox"
-                 Grid.Row="1" 
-                 Text="{catel:LanguageBinding TextBoxView_FocusedStateTextSelection}" 
-                 Loaded="TextBox_Loaded"/>
-        <TextBox Grid.Row="2" 
-                 IsInactiveSelectionHighlightEnabled="True"
-                 Text="{catel:LanguageBinding TextBoxView_InactiveTextSelection}" 
-                 Loaded="TextBox_Loaded"/>
+        <TextBlock Text="Default State" FontWeight="Bold" />
+        <TextBox Grid.Row="1" />
+
+        <TextBlock Grid.Row="2" Text="TextBox with validation error (empty text)" FontWeight="Bold" Margin="0,10,0,0" />
         <TextBox Grid.Row="3"
-                 Text="{catel:LanguageBinding TextBoxView_Disabled}" 
-                 IsEnabled="False"/>
-        <TextBox Grid.Row="4" Grid.ColumnSpan="2"
+                 Text="{Binding ValidationTestText, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
+
+        <TextBlock Grid.Row="4" Text="Multiline with Text Wrapping" FontWeight="Bold" Margin="0,10,0,0" />
+        <TextBox Grid.Row="5"
                  Text="{catel:LanguageBinding TextBoxView_HorizontalStretch}"
-                 HorizontalAlignment="Stretch"/>
-        <TextBox Grid.Column="1" Grid.RowSpan="4" Height="Auto"
-                 Text="{catel:LanguageBinding TextBoxView_VerticalStretchAndMultiline}"
                  TextWrapping="Wrap"
                  AcceptsReturn="True"
-                 VerticalAlignment="Stretch"/>
+                 Height="80"
+                 VerticalAlignment="Top"
+                 HorizontalAlignment="Stretch"/>
     </Grid>
 
 </catel:UserControl>

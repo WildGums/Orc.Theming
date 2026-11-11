@@ -428,6 +428,21 @@ namespace Orc.Theming.Behaviors
         public static void SetOffset(System.Windows.DependencyObject element, System.Windows.Thickness value) { }
         public static void SetPosition(System.Windows.DependencyObject element, Orc.Theming.ArrangePosition value) { }
     }
+    public class ValidationAdornerSite : Catel.Windows.Interactivity.BehaviorBase<System.Windows.Controls.ContentControl>
+    {
+        public static readonly System.Windows.DependencyProperty ValidationAdornerSiteNameProperty;
+        public ValidationAdornerSite() { }
+        public string? ValidationAdornerSiteName { get; set; }
+        protected override void OnAssociatedObjectLoaded() { }
+    }
+    public class ValidationAdornerSiteFor : Catel.Windows.Interactivity.BehaviorBase<System.Windows.FrameworkElement>
+    {
+        public static readonly System.Windows.DependencyProperty ElementProperty;
+        public ValidationAdornerSiteFor() { }
+        public System.Windows.FrameworkElement? Element { get; set; }
+        protected override void OnAssociatedObjectLoaded() { }
+        protected override void OnAssociatedObjectUnloaded() { }
+    }
 }
 namespace Orc.Theming.Coloring
 {
